@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kotoka – Language Select</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #E5E7EB;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Dark mode toggle button */
+    .dark-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #1E293B;
+      color: #F9FAFB;
+      border: 1px solid #374151;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 1000;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+    body:not(.dark) .dark-toggle {
+      background: #F3F4F6;
+      color: #111827;
+      border-color: #D1D5DB;
+    }
+
+    /* Dark mode page */
+    body.dark {
+      background: #0F172A;
+    }
+
+    .phone {
+      width: 390px;
+      min-height: 844px;
+      background: #EFF6FF;
+      border-radius: 40px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body.dark .phone {
+      background: #1E293B;
+    }
+
+    /* AppBar */
+    .appbar {
+      height: 56px;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    body.dark .appbar {
+      background: #0C1A3A;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .back-btn {
+      font-size: 20px;
+      color: #111827;
+      cursor: pointer;
+      line-height: 1;
+      margin-right: 8px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    body.dark .back-btn {
+      color: #F9FAFB;
+    }
+
+    .appbar-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      font-size: 16px;
+      color: #111827;
+      white-space: nowrap;
+    }
+
+    body.dark .appbar-title {
+      color: #F9FAFB;
+    }
+
+    /* Scrollable body */
+    .body {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #6B7280;
+      margin-bottom: 16px;
+    }
+
+    body.dark .subtitle {
+      color: #9CA3AF;
+    }
+
+    /* 2-column grid */
+    .lang-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .lang-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      padding: 16px;
+      cursor: pointer;
+      position: relative;
+      border: 2px solid transparent;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    body.dark .lang-card {
+      background: #1F2937;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      border-color: #374151;
+    }
+
+    .lang-card.selected {
+      border-color: #1E3A8A;
+      background: #EFF6FF;
+    }
+
+    body.dark .lang-card.selected {
+      border-color: #3B82F6;
+      background: #1E3A5F;
+    }
+
+    .lang-card:hover:not(.selected) {
+      border-color: #BFDBFE;
+    }
+
+    body.dark .lang-card:hover:not(.selected) {
+      border-color: #374151;
+    }
+
+    .flag-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .flag-arrow {
+      font-size: 12px;
+      color: #9CA3AF;
+    }
+
+    .lang-name {
+      font-weight: 700;
+      font-size: 13px;
+      color: #111827;
+      line-height: 1.3;
+    }
+
+    body.dark .lang-name {
+      color: #F9FAFB;
+    }
+
+    /* Checkmark */
+    .checkmark {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 20px;
+      height: 20px;
+      background: #1E3A8A;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Bottom */
+    .bottom {
+      padding: 16px;
+      background: #EFF6FF;
+      flex-shrink: 0;
+    }
+
+    body.dark .bottom {
+      background: #1E293B;
+    }
+
+    .btn-continue {
+      width: 100%;
+      height: 56px;
+      background: #1E3A8A;
+      color: #FFFFFF;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn-continue:hover { opacity: 0.9; }
+  </style>
+</head>
+<body class="dark">
+  <button class="dark-toggle" onclick="toggleDark(this)">☀️ Light</button>
+
+  <div class="phone">
+    <!-- AppBar -->
+    <div class="appbar">
+      <button class="back-btn">&#8592;</button>
+      <span class="appbar-title">What are you learning?</span>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+      <p class="subtitle">Choose your language pair</p>
+
+      <div class="lang-grid">
+        <!-- Card 1: Selected -->
+        <div class="lang-card selected">
+          <div class="checkmark">&#10003;</div>
+          <div class="flag-row">
+            <span>🇹🇭</span>
+            <span class="flag-arrow">→</span>
+            <span>🇬🇧</span>
+          </div>
+          <div class="lang-name">Thai to English</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="lang-card">
+          <div class="flag-row">
+            <span>🇹🇭</span>
+            <span class="flag-arrow">→</span>
+            <span>🇨🇳</span>
+          </div>
+          <div class="lang-name">Thai to Mandarin</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="lang-card">
+          <div class="flag-row">
+            <span>🇹🇭</span>
+            <span class="flag-arrow">→</span>
+            <span>🇻🇳</span>
+          </div>
+          <div class="lang-name">Thai to Vietnamese</div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="lang-card">
+          <div class="flag-row">
+            <span>🇬🇧</span>
+            <span class="flag-arrow">→</span>
+            <span>🇨🇳</span>
+          </div>
+          <div class="lang-name">English to Mandarin</div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="lang-card">
+          <div class="flag-row">
+            <span>🇬🇧</span>
+            <span class="flag-arrow">→</span>
+            <span>🇹🇭</span>
+          </div>
+          <div class="lang-name">English to Thai</div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="lang-card">
+          <div class="flag-row">
+            <span style="font-size:28px;">➕</span>
+          </div>
+          <div class="lang-name">Other pairs</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom button -->
+    <div class="bottom">
+      <button class="btn-continue">Continue</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleDark(btn) {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    }
+  </script>
+</body>
+</html>

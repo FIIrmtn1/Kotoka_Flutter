@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kotoka – PDPA Consent</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #E5E7EB;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Dark mode toggle button */
+    .dark-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #1E293B;
+      color: #F9FAFB;
+      border: 1px solid #374151;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 1000;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+    body:not(.dark) .dark-toggle {
+      background: #F3F4F6;
+      color: #111827;
+      border-color: #D1D5DB;
+    }
+
+    /* Dark mode page */
+    body.dark {
+      background: #0F172A;
+    }
+
+    .phone {
+      width: 390px;
+      min-height: 844px;
+      background: #EFF6FF;
+      border-radius: 40px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body.dark .phone {
+      background: #1E293B;
+    }
+
+    /* AppBar */
+    .appbar {
+      height: 56px;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    body.dark .appbar {
+      background: #0C1A3A;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .appbar-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: #111827;
+    }
+
+    body.dark .appbar-title {
+      color: #F9FAFB;
+    }
+
+    /* Body */
+    .body {
+      flex: 1;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+    }
+
+    /* Koko small */
+    .koko-small {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3B82F6, #1E3A8A);
+      position: relative;
+      animation: kokoThink 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes kokoThink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.6; }
+    }
+
+    .koko-small::before,
+    .koko-small::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      top: 26px;
+    }
+    .koko-small::before { left: 20px; }
+    .koko-small::after  { right: 20px; }
+
+    .koko-smile-sm {
+      position: absolute;
+      width: 22px;
+      height: 11px;
+      border: 2px solid #FFFFFF;
+      border-top: none;
+      border-radius: 0 0 11px 11px;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .intro-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #374151;
+      text-align: center;
+      margin-top: 16px;
+      max-width: 300px;
+    }
+
+    body.dark .intro-text {
+      color: #D1D5DB;
+    }
+
+    /* Permission cards */
+    .permissions {
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    .perm-card {
+      background: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    body.dark .perm-card {
+      background: #1F2937;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* Checkbox */
+    .perm-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #D1D5DB;
+      border-radius: 8px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.dark .perm-checkbox {
+      border-color: #374151;
+      background: #111827;
+    }
+
+    .perm-icon {
+      font-size: 28px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .perm-text {
+      flex: 1;
+    }
+
+    .perm-title {
+      font-weight: 600;
+      font-size: 14px;
+      color: #111827;
+      line-height: 1.4;
+    }
+
+    body.dark .perm-title {
+      color: #F9FAFB;
+    }
+
+    .perm-caption {
+      font-size: 12px;
+      color: #6B7280;
+      line-height: 1.5;
+      margin-top: 2px;
+    }
+
+    body.dark .perm-caption {
+      color: #9CA3AF;
+    }
+
+    .perm-expand {
+      font-size: 12px;
+      color: #2563EB;
+      margin-top: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    body.dark .perm-expand {
+      color: #93C5FD;
+    }
+
+    /* Required note */
+    .required-note {
+      font-size: 12px;
+      color: #3B82F6;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    body.dark .required-note {
+      color: #93C5FD;
+    }
+
+    /* Bottom */
+    .bottom {
+      padding: 24px;
+      flex-shrink: 0;
+    }
+
+    .btn-continue-disabled {
+      width: 100%;
+      height: 56px;
+      background: #93C5FD;
+      color: #FFFFFF;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      border-radius: 999px;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body class="dark">
+  <button class="dark-toggle" onclick="toggleDark(this)">☀️ Light</button>
+
+  <div class="phone">
+    <!-- AppBar -->
+    <div class="appbar">
+      <span class="appbar-title">Before we begin...</span>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+      <div class="koko-small">
+        <div class="koko-smile-sm"></div>
+      </div>
+
+      <p class="intro-text">Kotoka needs these permissions to personalise your learning</p>
+
+      <div class="permissions">
+        <!-- Camera & Photos -->
+        <div class="perm-card">
+          <div class="perm-checkbox"></div>
+          <div class="perm-icon">📷</div>
+          <div class="perm-text">
+            <div class="perm-title">Camera &amp; Photos</div>
+            <div class="perm-caption">To snap words from your world</div>
+            <div class="perm-expand">Why we need this ▾</div>
+          </div>
+        </div>
+
+        <!-- GPS Location -->
+        <div class="perm-card">
+          <div class="perm-checkbox"></div>
+          <div class="perm-icon">📍</div>
+          <div class="perm-text">
+            <div class="perm-title">GPS Location</div>
+            <div class="perm-caption">To review words where you learned them</div>
+          </div>
+        </div>
+
+        <!-- Microphone -->
+        <div class="perm-card">
+          <div class="perm-checkbox"></div>
+          <div class="perm-icon">🎤</div>
+          <div class="perm-text">
+            <div class="perm-title">Microphone</div>
+            <div class="perm-caption">For pronunciation practice with Koko</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="required-note">All 3 permissions are required to continue</p>
+    </div>
+
+    <!-- Bottom -->
+    <div class="bottom">
+      <button class="btn-continue-disabled" disabled>Continue</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleDark(btn) {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    }
+  </script>
+</body>
+</html>

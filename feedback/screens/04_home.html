@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kotoka – Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #E5E7EB;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Dark mode toggle button */
+    .dark-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #1E293B;
+      color: #F9FAFB;
+      border: 1px solid #374151;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 1000;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+    body:not(.dark) .dark-toggle {
+      background: #F3F4F6;
+      color: #111827;
+      border-color: #D1D5DB;
+    }
+
+    /* Dark mode page */
+    body.dark {
+      background: #0F172A;
+    }
+
+    .phone {
+      width: 390px;
+      min-height: 844px;
+      background: #EFF6FF;
+      border-radius: 40px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    body.dark .phone {
+      background: #1E293B;
+    }
+
+    /* Mood tint overlay */
+    .mood-tint {
+      position: absolute;
+      inset: 0;
+      background: rgba(16,185,129,0.06);
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 40px;
+    }
+
+    /* AppBar */
+    .appbar {
+      height: 56px;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    body.dark .appbar {
+      background: #0C1A3A;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .appbar-greeting {
+      font-weight: 600;
+      font-size: 16px;
+      color: #111827;
+    }
+
+    body.dark .appbar-greeting {
+      color: #F9FAFB;
+    }
+
+    /* Koko mini */
+    .koko-mini {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3B82F6, #1E3A8A);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .koko-mini::before,
+    .koko-mini::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      top: 11px;
+    }
+    .koko-mini::before { left: 8px; }
+    .koko-mini::after  { right: 8px; }
+
+    .koko-mini-smile {
+      position: absolute;
+      width: 12px;
+      height: 6px;
+      border: 1.5px solid #FFFFFF;
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      bottom: 9px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Offline banner */
+    .offline-banner {
+      background: #FEF3C7;
+      color: #92400E;
+      font-size: 12px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    body.dark .offline-banner {
+      background: #1F2937;
+      color: #93C5FD;
+    }
+
+    .offline-banner-text {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .offline-dismiss {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      color: inherit;
+      padding: 0 0 0 8px;
+      opacity: 0.7;
+      font-family: inherit;
+    }
+    .offline-dismiss:hover { opacity: 1; }
+
+    /* Scrollable body */
+    .body {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+      /* bottom nav space */
+      padding-bottom: 80px;
+    }
+
+    /* Cards shared */
+    .phone-screen { transition: opacity 0.2s ease; }
+
+    .card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      padding: 16px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    body.dark .card {
+      background: #1F2937;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* Streak card */
+    .streak-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .streak-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .streak-emoji {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .streak-days {
+      font-weight: 700;
+      font-size: 24px;
+      color: #111827;
+      line-height: 1.1;
+    }
+
+    body.dark .streak-days {
+      color: #F9FAFB;
+    }
+
+    .streak-label {
+      font-size: 14px;
+      color: #6B7280;
+      margin-top: 2px;
+    }
+
+    body.dark .streak-label {
+      color: #9CA3AF;
+    }
+
+    .streak-ring {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+    }
+
+    .streak-ring svg {
+      width: 64px;
+      height: 64px;
+    }
+
+    .ring-pct {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 11px;
+      color: #374151;
+    }
+
+    body.dark .ring-pct {
+      color: #D1D5DB;
+    }
+
+    /* Mission card */
+    .mission-header {
+      font-weight: 600;
+      font-size: 14px;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    body.dark .mission-header {
+      color: #F9FAFB;
+    }
+
+    .mission-body {
+      font-size: 14px;
+      color: #6B7280;
+      margin-bottom: 10px;
+    }
+
+    body.dark .mission-body {
+      color: #9CA3AF;
+    }
+
+    .progress-bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: #E5E7EB;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    body.dark .progress-bar-wrap {
+      background: #374151;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: #3B82F6;
+      border-radius: 3px;
+      width: 60%;
+    }
+
+    .progress-label {
+      font-size: 12px;
+      color: #6B7280;
+      margin-top: 4px;
+    }
+
+    body.dark .progress-label {
+      color: #9CA3AF;
+    }
+
+    .btn-start-review {
+      width: 100%;
+      height: 44px;
+      background: #1E3A8A;
+      color: #FFFFFF;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: opacity 0.15s;
+    }
+    .btn-start-review:hover { opacity: 0.9; }
+
+    /* Section header */
+    .section-header {
+      font-weight: 700;
+      font-size: 16px;
+      color: #111827;
+      padding: 0 2px;
+    }
+
+    body.dark .section-header {
+      color: #F9FAFB;
+    }
+
+    /* Vocab card */
+    .vocab-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.06);
+      padding: 16px;
+      margin-bottom: 0;
+    }
+
+    body.dark .vocab-card {
+      background: #1F2937;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .vocab-word {
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #1E3A8A;
+    }
+
+    body.dark .vocab-word {
+      color: #93C5FD;
+    }
+
+    .vocab-translation {
+      font-weight: 600;
+      font-size: 16px;
+      color: #374151;
+      margin-top: 4px;
+    }
+
+    body.dark .vocab-translation {
+      color: #D1D5DB;
+    }
+
+    .vocab-romanization {
+      font-weight: 400;
+      font-size: 15px;
+      color: #6B7280;
+      margin-top: 2px;
+    }
+
+    body.dark .vocab-romanization {
+      color: #9CA3AF;
+    }
+
+    /* Example sentence */
+    .vocab-example {
+      font-size: 13px;
+      font-style: italic;
+      color: #6B7280;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #E5E7EB;
+      line-height: 1.5;
+    }
+
+    body.dark .vocab-example {
+      color: #9CA3AF;
+      border-top-color: #374151;
+    }
+
+    /* Tag bar */
+    .tag-bar {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      margin-top: 12px;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .tag-bar::-webkit-scrollbar { display: none; }
+
+    .tag-chip {
+      background: #DBEAFE;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #1E3A8A;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    body.dark .tag-chip {
+      background: #1E3A5F;
+      color: #93C5FD;
+    }
+
+    /* Bottom nav */
+    .bottom-nav {
+      height: 64px;
+      background: #FFFFFF;
+      border-top: 1px solid #E5E7EB;
+      box-shadow: 0 -1px 3px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      border-radius: 0 0 40px 40px;
+    }
+
+    body.dark .bottom-nav {
+      background: #0C1A3A;
+      border-top-color: #374151;
+    }
+
+    .nav-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .nav-tab.active {
+      background: #DBEAFE;
+    }
+
+    body.dark .nav-tab.active {
+      background: #1E3A5F;
+    }
+
+    .nav-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .nav-label {
+      font-size: 11px;
+      font-weight: 400;
+      color: #9CA3AF;
+      line-height: 1;
+    }
+
+    .nav-tab.active .nav-label {
+      font-weight: 600;
+      color: #1E3A8A;
+    }
+
+    body.dark .nav-tab.active .nav-label {
+      color: #93C5FD;
+    }
+  </style>
+</head>
+<body class="dark">
+  <button class="dark-toggle" onclick="toggleDark(this)">☀️ Light</button>
+
+  <div class="phone">
+    <div class="mood-tint"></div>
+
+    <!-- AppBar -->
+    <div class="appbar">
+      <span class="appbar-greeting">Good morning, Pam 👋</span>
+      <div class="koko-mini">
+        <div class="koko-mini-smile"></div>
+      </div>
+    </div>
+
+    <!-- Offline Banner -->
+    <div class="offline-banner" id="offlineBanner">
+      <span class="offline-banner-text">📡 Offline mode — words synced locally</span>
+      <button class="offline-dismiss" onclick="document.getElementById('offlineBanner').style.display='none'">dismiss ✕</button>
+    </div>
+
+    <!-- Scrollable body -->
+    <div class="body">
+
+      <!-- Streak Card -->
+      <div class="card streak-card">
+        <div class="streak-left">
+          <div class="streak-emoji">🔥</div>
+          <div>
+            <div class="streak-days">7 days</div>
+            <div class="streak-label">Keep it up!</div>
+          </div>
+        </div>
+        <div class="streak-ring">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background ring -->
+            <circle cx="32" cy="32" r="27" stroke="#E5E7EB" stroke-width="6" fill="none"/>
+            <!-- Progress ring: circumference = 2*pi*27 ≈ 169.6; 70% = 118.72; offset = 169.6 - 118.72 = 50.88 -->
+            <circle cx="32" cy="32" r="27"
+              stroke="#10B981" stroke-width="6" fill="none"
+              stroke-dasharray="169.6"
+              stroke-dashoffset="50.88"
+              stroke-linecap="round"
+              transform="rotate(-90 32 32)"/>
+          </svg>
+          <div class="ring-pct">70%</div>
+        </div>
+      </div>
+
+      <!-- KotoCoin teaser - brief explanation -->
+      <div class="card" style="padding:12px 16px; display:flex; align-items:center; gap:12px; background: linear-gradient(135deg, #1E3A8A, #2563EB);">
+        <span style="font-size:28px;">🪙</span>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:14px; color:#fff;">KotoCoin</div>
+          <div style="font-size:12px; color:#BFDBFE;">Earn coins by reviewing words. Spend in Shop.</div>
+        </div>
+        <div style="font-weight:700; font-size:18px; color:#FCD34D;">120</div>
+      </div>
+
+      <!-- Today's Mission Card -->
+      <div class="card">
+        <div class="mission-header">Today's Goal</div>
+        <div class="mission-body">Review 10 words · Add 2 new</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill"></div>
+        </div>
+        <div class="progress-label">6 / 10 words reviewed</div>
+        <button class="btn-start-review">Start Review →</button>
+      </div>
+
+      <!-- Recent Words header -->
+      <div class="section-header">Recent Words</div>
+
+      <!-- Vocab Card 1 -->
+      <div class="vocab-card">
+        <div class="vocab-word">deadline</div>
+        <div class="vocab-translation">เส้นตาย</div>
+        <div class="vocab-romanization">dee-layn</div>
+        <div class="vocab-example">[Example] "The project deadline is this Friday afternoon."</div>
+        <div class="tag-bar">
+          <span class="tag-chip">📍 Silom Office</span>
+          <span class="tag-chip">☀️ Morning</span>
+          <span class="tag-chip">😊 Mood 6/10</span>
+        </div>
+      </div>
+
+      <!-- Vocab Card 2 -->
+      <div class="vocab-card">
+        <div class="vocab-word">stakeholder</div>
+        <div class="vocab-translation">ผู้มีส่วนได้ส่วนเสีย</div>
+        <div class="vocab-romanization">stayk-hohl-der</div>
+        <div class="vocab-example">[Example] "We need to update all stakeholders before the launch."</div>
+        <div class="tag-bar">
+          <span class="tag-chip">📍 BTS Chong Nonsi</span>
+          <span class="tag-chip">💨 AC Cool</span>
+          <span class="tag-chip">⚡ Energy 7</span>
+        </div>
+      </div>
+
+      <!-- Vocab Card 3 -->
+      <div class="vocab-card">
+        <div class="vocab-word">deliverable</div>
+        <div class="vocab-translation">ผลส่งมอบ</div>
+        <div class="vocab-romanization">deh-liv-er-uh-bul</div>
+        <div class="vocab-example">[Example] "Please send the deliverable by end of day."</div>
+        <div class="tag-bar">
+          <span class="tag-chip">📍 Meeting Room</span>
+          <span class="tag-chip">🌧️ Rainy</span>
+          <span class="tag-chip">😴 Tired</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="bottom-nav">
+      <div class="nav-tab active">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+      </div>
+      <div class="nav-tab">
+        <span class="nav-icon">📷</span>
+        <span class="nav-label">Snap</span>
+      </div>
+      <div class="nav-tab">
+        <span class="nav-icon">📖</span>
+        <span class="nav-label">Review</span>
+      </div>
+      <div class="nav-tab">
+        <span class="nav-icon">🛍️</span>
+        <span class="nav-label">Shop</span>
+      </div>
+      <div class="nav-tab">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profile</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleDark(btn) {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    }
+  </script>
+</body>
+</html>

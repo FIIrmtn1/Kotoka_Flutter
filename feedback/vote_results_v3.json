@@ -1,0 +1,454 @@
+{
+  "phase": "Phase 1",
+  "date": "2026-04-25",
+  "screenshotsCaptured": true,
+  "totalVoters": 30,
+  "averageScore": 86.7,
+  "minScore": 59,
+  "maxScore": 100,
+  "passingThreshold": 85,
+  "passed": true,
+  "verdict": "✅ PASSED — proceed to Phase 2",
+  "distribution": {
+    "excellent": 18,
+    "good": 8,
+    "fair": 4,
+    "poor": 0
+  },
+  "topPositives": [
+    {
+      "feedback": "Love the blue color — feels professional and calm",
+      "count": 5
+    },
+    {
+      "feedback": "PDPA consent screen explains WHY — I trust this app more",
+      "count": 4
+    },
+    {
+      "feedback": "Onboarding is clear, I knew what to do immediately",
+      "count": 4
+    },
+    {
+      "feedback": "Koko character feels friendly, not childish",
+      "count": 3
+    },
+    {
+      "feedback": "Vocabulary cards feel personal, not generic",
+      "count": 3
+    }
+  ],
+  "topImprovements": [
+    {
+      "feedback": "Want to see more word examples in vocab card",
+      "count": 7
+    },
+    {
+      "feedback": "Notification timing could be smarter",
+      "count": 5
+    },
+    {
+      "feedback": "Need offline mode indicator — my internet cuts out",
+      "count": 4
+    },
+    {
+      "feedback": "Would love Mandarin tones shown more prominently",
+      "count": 4
+    },
+    {
+      "feedback": "Goal descriptions could be more specific to my job",
+      "count": 3
+    }
+  ],
+  "votes": [
+    {
+      "agent": "Pam Suwan",
+      "city": "Bangkok Silom",
+      "age": 28,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 100,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Nong Chai",
+      "city": "Bangkok Lat Krabang",
+      "age": 31,
+      "lang": "Thai→ZH",
+      "model": "sonnet",
+      "score": 93,
+      "warmth": 5,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "Would love swipe gestures between vocab cards"
+    },
+    {
+      "agent": "Mint Pornpan",
+      "city": "Bangkok Sukhumvit",
+      "age": 26,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 100,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Koko character feels friendly, not childish",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Arm Kittipong",
+      "city": "Bangkok Silom",
+      "age": 29,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 94,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "Loading animation between screens feels slow"
+    },
+    {
+      "agent": "Fah Natnicha",
+      "city": "Bangkok Ari",
+      "age": 24,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 63,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "App doesn't feel like a typical boring language app",
+      "improve": "Need offline mode indicator — my internet cuts out"
+    },
+    {
+      "agent": "Top Phichit",
+      "city": "Bangkok Asoke",
+      "age": 33,
+      "lang": "Thai→ZH",
+      "model": "sonnet",
+      "score": 78,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "Would love Mandarin tones shown more prominently"
+    },
+    {
+      "agent": "Nam Siriporn",
+      "city": "Bangkok Chatuchak",
+      "age": 27,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 91,
+      "warmth": 5,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Oak Wanchai",
+      "city": "Bangkok Bang Na",
+      "age": 35,
+      "lang": "Thai→VI",
+      "model": "sonnet",
+      "score": 59,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "Vocabulary cards feel personal, not generic",
+      "improve": "Goal descriptions could be more specific to my job"
+    },
+    {
+      "agent": "Rina Dewi",
+      "city": "Jakarta Sudirman",
+      "age": 25,
+      "lang": "ID→EN",
+      "model": "haiku",
+      "score": 99,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "Need offline mode indicator — my internet cuts out"
+    },
+    {
+      "agent": "Budi Santoso",
+      "city": "Jakarta SCBD",
+      "age": 30,
+      "lang": "ID→EN",
+      "model": "haiku",
+      "score": 80,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Language selection with flags is very intuitive",
+      "improve": "Loading animation between screens feels slow"
+    },
+    {
+      "agent": "Siti Rahayu",
+      "city": "Jakarta Kuningan",
+      "age": 28,
+      "lang": "ID→EN",
+      "model": "haiku",
+      "score": 83,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Vocabulary cards feel personal, not generic",
+      "improve": "Notification timing could be smarter"
+    },
+    {
+      "agent": "Arif Permana",
+      "city": "Jakarta Thamrin",
+      "age": 32,
+      "lang": "ID→ZH",
+      "model": "haiku",
+      "score": 93,
+      "warmth": 5,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Sensory tags are a smart idea — never seen this before",
+      "improve": "Need offline mode indicator — my internet cuts out"
+    },
+    {
+      "agent": "Dewi Kusuma",
+      "city": "Jakarta Gatot Subroto",
+      "age": 23,
+      "lang": "ID→EN",
+      "model": "haiku",
+      "score": 98,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "Would love swipe gestures between vocab cards"
+    },
+    {
+      "agent": "Wei Ling Tan",
+      "city": "KL KLCC",
+      "age": 27,
+      "lang": "MY→EN",
+      "model": "haiku",
+      "score": 78,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "Would love Mandarin tones shown more prominently"
+    },
+    {
+      "agent": "Aisha Rahman",
+      "city": "KL Bukit Bintang",
+      "age": 29,
+      "lang": "MY→ZH",
+      "model": "haiku",
+      "score": 82,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "The streak design motivates me without being aggressive",
+      "improve": "Would love Mandarin tones shown more prominently"
+    },
+    {
+      "agent": "Raj Krishnan",
+      "city": "KL Damansara",
+      "age": 31,
+      "lang": "TA→EN",
+      "model": "haiku",
+      "score": 62,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "Clean, no clutter — I can use this during commute",
+      "improve": "The shop tab — not sure what KotoCoin is from home screen"
+    },
+    {
+      "agent": "Lisa Chen",
+      "city": "KL Mont Kiara",
+      "age": 26,
+      "lang": "ZH→EN",
+      "model": "haiku",
+      "score": 97,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Clean, no clutter — I can use this during commute",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Alex Lim",
+      "city": "Singapore CBD",
+      "age": 28,
+      "lang": "EN→ZH",
+      "model": "haiku",
+      "score": 82,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Koko character feels friendly, not childish",
+      "improve": "Notification timing could be smarter"
+    },
+    {
+      "agent": "Priya Nair",
+      "city": "Singapore Raffles",
+      "age": 30,
+      "lang": "EN→ZH",
+      "model": "haiku",
+      "score": 64,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "App doesn't feel like a typical boring language app",
+      "improve": "Need offline mode indicator — my internet cuts out"
+    },
+    {
+      "agent": "James Tan",
+      "city": "Singapore Marina Bay",
+      "age": 33,
+      "lang": "EN→TH",
+      "model": "haiku",
+      "score": 89,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Koko character feels friendly, not childish",
+      "improve": "Notification timing could be smarter"
+    },
+    {
+      "agent": "Ana Santos",
+      "city": "Manila Makati",
+      "age": 25,
+      "lang": "FIL→EN",
+      "model": "haiku",
+      "score": 95,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "The PDPA screen text is a bit dense"
+    },
+    {
+      "agent": "Miguel Reyes",
+      "city": "Manila BGC",
+      "age": 29,
+      "lang": "FIL→EN",
+      "model": "haiku",
+      "score": 75,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Language selection with flags is very intuitive",
+      "improve": "Notification timing could be smarter"
+    },
+    {
+      "agent": "Grace Villanueva",
+      "city": "Manila Ortigas",
+      "age": 27,
+      "lang": "FIL→EN",
+      "model": "haiku",
+      "score": 99,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Carlo Mendoza",
+      "city": "Manila Alabang",
+      "age": 32,
+      "lang": "FIL→ES",
+      "model": "haiku",
+      "score": 88,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "Goal descriptions could be more specific to my job"
+    },
+    {
+      "agent": "Linh Nguyen",
+      "city": "HCMC District 1",
+      "age": 24,
+      "lang": "VI→EN",
+      "model": "haiku",
+      "score": 95,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Vocabulary cards feel personal, not generic",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Tuan Pham",
+      "city": "HCMC District 3",
+      "age": 30,
+      "lang": "VI→EN",
+      "model": "haiku",
+      "score": 70,
+      "warmth": 4,
+      "ease": 3,
+      "wouldUseDaily": "Yes",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "Notification timing could be smarter"
+    },
+    {
+      "agent": "Huong Tran",
+      "city": "Hanoi Hoan Kiem",
+      "age": 28,
+      "lang": "VI→EN",
+      "model": "haiku",
+      "score": 100,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Sensory tags are a smart idea — never seen this before",
+      "improve": "Would love Mandarin tones shown more prominently"
+    },
+    {
+      "agent": "Thida Kyaw",
+      "city": "Yangon Pabedan",
+      "age": 26,
+      "lang": "MY→EN",
+      "model": "haiku",
+      "score": 100,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Sophal Chhun",
+      "city": "Phnom Penh BKK1",
+      "age": 29,
+      "lang": "KH→EN",
+      "model": "haiku",
+      "score": 97,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Clean, no clutter — I can use this during commute",
+      "improve": "The shop tab — not sure what KotoCoin is from home screen"
+    },
+    {
+      "agent": "Kham Phommasack",
+      "city": "Vientiane Chanthabouly",
+      "age": 31,
+      "lang": "LO→EN",
+      "model": "haiku",
+      "score": 96,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Sensory tags are a smart idea — never seen this before",
+      "improve": "Goal descriptions could be more specific to my job"
+    }
+  ]
+}

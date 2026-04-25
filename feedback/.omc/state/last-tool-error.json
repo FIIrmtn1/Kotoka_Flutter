@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"# Count only actual translation keys (lines with \\\"key\\\": \\\"value\\\", excluding @metadata keys and @@locale)\\npython3 -c \\\"\\nimport json, sys\\nfiles = ['en','th','zh','es','vi','lo']\\nbase ...",
+  "error": "Exit code 49",
+  "timestamp": "2026-04-25T15:12:07.145Z",
+  "retry_count": 1
+}

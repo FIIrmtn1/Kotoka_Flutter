@@ -1,0 +1,660 @@
+{
+  "@@locale": "en",
+
+  "appName": "Kotoka",
+  "@appName": {
+    "description": "The name of the application"
+  },
+
+  "tagline": "Learn vocabulary from your real life",
+  "@tagline": {
+    "description": "App tagline shown on onboarding splash"
+  },
+
+  "getStarted": "Get Started",
+  "@getStarted": {
+    "description": "Primary CTA button on splash screen"
+  },
+
+  "selectLanguage": "Choose your language",
+  "@selectLanguage": {
+    "description": "Prompt on language selection screen"
+  },
+
+  "selectGoal": "What's your goal?",
+  "@selectGoal": {
+    "description": "Prompt on goal selection screen"
+  },
+
+  "selectLevel": "What's your level?",
+  "@selectLevel": {
+    "description": "Prompt on level selection screen"
+  },
+
+  "selectSchedule": "Set your daily schedule",
+  "@selectSchedule": {
+    "description": "Prompt on schedule selection screen"
+  },
+
+  "pdpaTitle": "Privacy & Permissions",
+  "@pdpaTitle": {
+    "description": "Title of the PDPA / permissions screen"
+  },
+
+  "pdpaConsent": "By continuing you agree to our Privacy Policy and consent to the data uses described below.",
+  "@pdpaConsent": {
+    "description": "PDPA consent paragraph"
+  },
+
+  "profileSetup": "Set up your profile",
+  "@profileSetup": {
+    "description": "Title on profile setup screen"
+  },
+
+  "letsGo": "Let's Go!",
+  "@letsGo": {
+    "description": "Final onboarding completion button"
+  },
+
+  "goalCareer": "Career",
+  "@goalCareer": {
+    "description": "Career learning goal label"
+  },
+
+  "goalTravel": "Travel",
+  "@goalTravel": {
+    "description": "Travel learning goal label"
+  },
+
+  "goalAcademic": "Academic",
+  "@goalAcademic": {
+    "description": "Academic learning goal label"
+  },
+
+  "goalPersonal": "Personal Growth",
+  "@goalPersonal": {
+    "description": "Personal growth learning goal label"
+  },
+
+  "goalCareerDesc": "Vocabulary for the workplace and professional contexts",
+  "@goalCareerDesc": {
+    "description": "Description for the career goal"
+  },
+
+  "goalTravelDesc": "Words and phrases for exploring the world",
+  "@goalTravelDesc": {
+    "description": "Description for the travel goal"
+  },
+
+  "goalAcademicDesc": "Terminology for study, research and exams",
+  "@goalAcademicDesc": {
+    "description": "Description for the academic goal"
+  },
+
+  "goalPersonalDesc": "Everyday language for connecting with others",
+  "@goalPersonalDesc": {
+    "description": "Description for the personal growth goal"
+  },
+
+  "levelBeginner": "Beginner",
+  "@levelBeginner": {
+    "description": "Beginner proficiency level label"
+  },
+
+  "levelIntermediate": "Intermediate",
+  "@levelIntermediate": {
+    "description": "Intermediate proficiency level label"
+  },
+
+  "levelAdvanced": "Advanced",
+  "@levelAdvanced": {
+    "description": "Advanced proficiency level label"
+  },
+
+  "levelBeginnerDesc": "I know fewer than 500 words",
+  "@levelBeginnerDesc": {
+    "description": "Description for beginner level"
+  },
+
+  "levelIntermediateDesc": "I can hold basic conversations",
+  "@levelIntermediateDesc": {
+    "description": "Description for intermediate level"
+  },
+
+  "levelAdvancedDesc": "I'm comfortable but want to grow",
+  "@levelAdvancedDesc": {
+    "description": "Description for advanced level"
+  },
+
+  "scheduleTitle": "How much time can you spare each day?",
+  "@scheduleTitle": {
+    "description": "Title for the daily schedule selection"
+  },
+
+  "schedule5min": "5 minutes",
+  "@schedule5min": {
+    "description": "5-minute daily schedule option"
+  },
+
+  "schedule10min": "10 minutes",
+  "@schedule10min": {
+    "description": "10-minute daily schedule option"
+  },
+
+  "schedule15min": "15 minutes",
+  "@schedule15min": {
+    "description": "15-minute daily schedule option"
+  },
+
+  "schedule30min": "30 minutes",
+  "@schedule30min": {
+    "description": "30-minute daily schedule option"
+  },
+
+  "wordsPerDay": "{count} words / day",
+  "@wordsPerDay": {
+    "description": "Words learned per day indicator",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+
+  "pdpaCamera": "Camera",
+  "@pdpaCamera": {
+    "description": "Camera permission label"
+  },
+
+  "pdpaCameraReason": "Snap photos to identify and learn vocabulary in context",
+  "@pdpaCameraReason": {
+    "description": "Reason for camera permission"
+  },
+
+  "pdpaGPS": "Location",
+  "@pdpaGPS": {
+    "description": "GPS permission label"
+  },
+
+  "pdpaGPSReason": "Tailor words to places you visit",
+  "@pdpaGPSReason": {
+    "description": "Reason for GPS permission"
+  },
+
+  "pdpaVoice": "Microphone",
+  "@pdpaVoice": {
+    "description": "Microphone permission label"
+  },
+
+  "pdpaVoiceReason": "Practice pronunciation with voice recognition",
+  "@pdpaVoiceReason": {
+    "description": "Reason for microphone permission"
+  },
+
+  "pdpaRequired": "Required",
+  "@pdpaRequired": {
+    "description": "Tag shown next to required permissions"
+  },
+
+  "homeGreetingMorning": "Good morning, {name}!",
+  "@homeGreetingMorning": {
+    "description": "Morning greeting on home screen",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Alex"
+      }
+    }
+  },
+
+  "homeGreetingAfternoon": "Good afternoon, {name}!",
+  "@homeGreetingAfternoon": {
+    "description": "Afternoon greeting on home screen",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Alex"
+      }
+    }
+  },
+
+  "homeGreetingEvening": "Good evening, {name}!",
+  "@homeGreetingEvening": {
+    "description": "Evening greeting on home screen",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Alex"
+      }
+    }
+  },
+
+  "homeStreak": "{days} day streak",
+  "@homeStreak": {
+    "description": "Current learning streak",
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "example": "7"
+      }
+    }
+  },
+
+  "homeMissions": "Today's Missions",
+  "@homeMissions": {
+    "description": "Section title for daily missions"
+  },
+
+  "homeStartReview": "Start Review",
+  "@homeStartReview": {
+    "description": "Button to begin a review session"
+  },
+
+  "homeRecentWords": "Recently Learned",
+  "@homeRecentWords": {
+    "description": "Section title for recently learned words"
+  },
+
+  "continueBtn": "Continue",
+  "@continueBtn": {
+    "description": "Generic continue button"
+  },
+
+  "backBtn": "Back",
+  "@backBtn": {
+    "description": "Generic back button"
+  },
+
+  "skipBtn": "Skip",
+  "@skipBtn": {
+    "description": "Generic skip button"
+  },
+
+  "doneBtn": "Done",
+  "@doneBtn": {
+    "description": "Generic done button"
+  },
+
+  "loadingText": "Loading…",
+  "@loadingText": {
+    "description": "Generic loading indicator text"
+  },
+
+  "errorGeneric": "Something went wrong. Please try again.",
+  "@errorGeneric": {
+    "description": "Generic error message"
+  },
+
+  "retryBtn": "Retry",
+  "@retryBtn": {
+    "description": "Generic retry button"
+  },
+
+  "navHome": "Home",
+  "@navHome": {
+    "description": "Bottom nav Home tab label"
+  },
+
+  "navSnap": "Snap",
+  "@navSnap": {
+    "description": "Bottom nav Snap tab label"
+  },
+
+  "navReview": "Review",
+  "@navReview": {
+    "description": "Bottom nav Review tab label"
+  },
+
+  "navShop": "Shop",
+  "@navShop": {
+    "description": "Bottom nav Shop tab label"
+  },
+
+  "navProfile": "Profile",
+  "@navProfile": {
+    "description": "Bottom nav Profile tab label"
+  },
+
+  "langThai": "Thai",
+  "@langThai": {
+    "description": "Thai language option"
+  },
+
+  "langEnglish": "English",
+  "@langEnglish": {
+    "description": "English language option"
+  },
+
+  "langMandarin": "Mandarin",
+  "@langMandarin": {
+    "description": "Mandarin language option"
+  },
+
+  "langSpanish": "Spanish",
+  "@langSpanish": {
+    "description": "Spanish language option"
+  },
+
+  "langVietnamese": "Vietnamese",
+  "@langVietnamese": {
+    "description": "Vietnamese language option"
+  },
+
+  "langLao": "Lao",
+  "@langLao": {
+    "description": "Lao language option"
+  },
+
+  "welcomeTagline": "Learn words that matter — anchored to your world.",
+  "@welcomeTagline": { "description": "Tagline on welcome screen" },
+
+  "welcomeGetStarted": "Get Started",
+  "@welcomeGetStarted": { "description": "Primary CTA on welcome screen" },
+
+  "welcomeTerms": "By continuing you agree to our Terms of Service and Privacy Policy.",
+  "@welcomeTerms": { "description": "Terms caption on welcome screen" },
+
+  "continueButton": "Continue",
+  "@continueButton": { "description": "Generic continue button label" },
+
+  "languageSelectTitle": "Choose Language",
+  "@languageSelectTitle": { "description": "Title for language select screen" },
+
+  "languageSelectSubtitle": "Which language pair do you want to learn?",
+  "@languageSelectSubtitle": { "description": "Subtitle for language select screen" },
+
+  "goalSelectTitle": "Your Goal",
+  "@goalSelectTitle": { "description": "Title for goal select screen" },
+
+  "goalSelectSubtitle": "What brings you to Kotoka?",
+  "@goalSelectSubtitle": { "description": "Subtitle for goal select screen" },
+
+  "levelSelectTitle": "Your Level",
+  "@levelSelectTitle": { "description": "Title for level select screen" },
+
+  "levelSelectSubtitle": "How much do you already know?",
+  "@levelSelectSubtitle": { "description": "Subtitle for level select screen" },
+
+  "scheduleSubtitle": "How many minutes can you spend each day?",
+  "@scheduleSubtitle": { "description": "Subtitle for schedule screen" },
+
+  "scheduleMinutes": "{count} min",
+  "@scheduleMinutes": {
+    "description": "Minutes chip label",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "scheduleWordsPerDay": "~{count} new words per day",
+  "@scheduleWordsPerDay": {
+    "description": "Estimated words per day",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "pdpaExplanation": "Kotoka uses your camera, location, and microphone to build personalised vocabulary from your real world. Your data is encrypted and never sold. This is required under Thailand's Personal Data Protection Act (PDPA).",
+  "@pdpaExplanation": { "description": "PDPA explanation paragraph on consent screen" },
+
+  "pdpaRequiredAll": "All three permissions are required to continue.",
+  "@pdpaRequiredAll": { "description": "Note that all 3 permissions are required" },
+
+  "pdpaLocation": "GPS Location",
+  "@pdpaLocation": { "description": "GPS location permission label" },
+
+  "pdpaMicrophone": "Voice & Microphone",
+  "@pdpaMicrophone": { "description": "Microphone permission label" },
+
+  "pdpaLocationReason": "Used to detect the places you visit and suggest relevant vocabulary for each location.",
+  "@pdpaLocationReason": { "description": "Reason for location permission" },
+
+  "pdpaMicrophoneReason": "Used for voice exercises and pronunciation feedback during review sessions.",
+  "@pdpaMicrophoneReason": { "description": "Reason for microphone permission" },
+
+  "pdpaWhatWeUse": "What we use this for",
+  "@pdpaWhatWeUse": { "description": "Expandable label for permission detail" },
+
+  "profileSetupTitle": "Your Profile",
+  "@profileSetupTitle": { "description": "Title for profile setup screen" },
+
+  "profileNameLabel": "Display Name",
+  "@profileNameLabel": { "description": "Label for display name field" },
+
+  "profileNameHint": "Enter your name",
+  "@profileNameHint": { "description": "Hint for display name field" },
+
+  "profileAvatarHint": "Tap to change photo",
+  "@profileAvatarHint": { "description": "Avatar placeholder caption" },
+
+  "profileLetsGo": "Let's Go",
+  "@profileLetsGo": { "description": "Final CTA on profile setup screen" },
+
+  "homeGreeting": "Good morning, {name}",
+  "@homeGreeting": {
+    "description": "Home screen greeting",
+    "placeholders": { "name": { "type": "String" } }
+  },
+
+  "homeStreakDays": "{count}-day streak",
+  "@homeStreakDays": {
+    "description": "Streak day count",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "homeStreakLabel": "Keep it going!",
+  "@homeStreakLabel": { "description": "Streak encouragement caption" },
+
+  "homeTodaysMission": "Today's Mission",
+  "@homeTodaysMission": { "description": "Mission card section label" },
+
+  "homeMissionReview": "Review 10 words",
+  "@homeMissionReview": { "description": "Review mission title" },
+
+  "homeMissionNewWords": "Learn 5 new words",
+  "@homeMissionNewWords": { "description": "New words mission title" },
+
+  "homeMissionProgress": "{current} of {total} done",
+  "@homeMissionProgress": {
+    "description": "Mission progress label",
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "onbWelcomeFocusToggle": "Focus Mode (hide Koko)",
+  "@onbWelcomeFocusToggle": { "description": "Label for focus mode toggle on welcome screen" },
+
+  "onbWelcomeFocusToggleHint": "Minimal UI for professional use.",
+  "@onbWelcomeFocusToggleHint": { "description": "Hint for focus mode toggle" },
+
+  "onbGoalWorkMeeting": "Work Meeting",
+  "@onbGoalWorkMeeting": { "description": "Work Meeting goal chip label" },
+
+  "onbGoalEmailWriting": "Email Writing",
+  "@onbGoalEmailWriting": { "description": "Email Writing goal chip label" },
+
+  "onbGoalPresentation": "Presentation",
+  "@onbGoalPresentation": { "description": "Presentation goal chip label" },
+
+  "onbCommitTitle": "Stay on track",
+  "@onbCommitTitle": { "description": "Title on commitment screen" },
+
+  "onbCommitValueProp1": "Daily reminder at your chosen time.",
+  "@onbCommitValueProp1": { "description": "First value proposition on commitment screen" },
+
+  "onbCommitValueProp2": "Streak nudge so you never break the chain.",
+  "@onbCommitValueProp2": { "description": "Second value proposition on commitment screen" },
+
+  "onbCommitAllow": "Allow notifications",
+  "@onbCommitAllow": { "description": "Allow notifications CTA on commitment screen" },
+
+  "onbCommitGrace": "Miss a day? You get 1 free pass per week.",
+  "@onbCommitGrace": { "description": "Grace period copy below streak commit CTA" },
+
+  "onbMissionTitle": "Your first mission awaits",
+  "@onbMissionTitle": { "description": "ONB-06 mission intro headline" },
+  "onbMissionBody": "Snap a word from your world. Koko will help you remember it forever.",
+  "@onbMissionBody": { "description": "ONB-06 mission intro body copy" },
+
+  "homeTooltipSensoryTag": "Tags show how a word feels — sound, sight, action. Tap to explore.",
+  "@homeTooltipSensoryTag": { "description": "First-use tooltip for sensory tag bar on home screen" },
+
+  "a11yFocusToggleOn": "Focus mode on: Koko hidden",
+  "@a11yFocusToggleOn": { "description": "Accessibility label when focus mode is active" },
+
+  "a11yFocusToggleOff": "Focus mode off: Koko visible",
+  "@a11yFocusToggleOff": { "description": "Accessibility label when focus mode is inactive" },
+
+  "snapTitle": "Snap",
+  "@snapTitle": { "description": "Snap screen app bar title" },
+  "snapTabCamera": "Camera",
+  "@snapTabCamera": { "description": "Snap tab: camera mode" },
+  "snapTabText": "Text",
+  "@snapTabText": { "description": "Snap tab: text input mode" },
+  "snapTabGps": "GPS",
+  "@snapTabGps": { "description": "Snap tab: GPS mode" },
+  "snapCameraViewfinder": "Camera viewfinder",
+  "@snapCameraViewfinder": { "description": "Placeholder text inside camera viewfinder" },
+  "snapTextPrompt": "Type or paste words you want to learn:",
+  "@snapTextPrompt": { "description": "Prompt above text input in snap text mode" },
+  "snapTextHint": "Enter text here…",
+  "@snapTextHint": { "description": "Hint inside the text field on snap text screen" },
+  "snapTextGenerate": "Generate words",
+  "@snapTextGenerate": { "description": "CTA button to generate vocab from typed text" },
+  "snapProcessingTitle": "Reading your photo…",
+  "@snapProcessingTitle": { "description": "Title shown while Gemini processes the snap" },
+  "snapProcessingSubtitle": "Gemini is finding the words that matter in this place.",
+  "@snapProcessingSubtitle": { "description": "Subtitle on processing screen" },
+  "snapProcessingCancel": "Cancel",
+  "@snapProcessingCancel": { "description": "Cancel button on processing screen" },
+  "snapResultsWordsFound": "{count} words found",
+  "@snapResultsWordsFound": {
+    "description": "AppBar subtitle showing how many words were extracted",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "snapResultsMoreWords": "+ {count} more",
+  "@snapResultsMoreWords": {
+    "description": "Expandable row showing hidden word count",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "snapResultsSaveAll": "Save all to my words",
+  "@snapResultsSaveAll": { "description": "Primary CTA on snap results screen" },
+  "snapResultsReviewNow": "Review now (quick 3-min)",
+  "@snapResultsReviewNow": { "description": "Secondary CTA on snap results screen" },
+
+  "reviewTitle": "Today's review",
+  "@reviewTitle": { "description": "App bar title on review session intro screen" },
+  "reviewWordsDue": "{count} words due · ~{minutes} minutes",
+  "@reviewWordsDue": {
+    "description": "Session card subtitle showing words due and estimated time",
+    "placeholders": {
+      "count": { "type": "int" },
+      "minutes": { "type": "int" }
+    }
+  },
+  "reviewStartSession": "Start session",
+  "@reviewStartSession": { "description": "Primary CTA to begin a review session" },
+  "reviewQuickMode": "Quick mode: 3 words, 2 min",
+  "@reviewQuickMode": { "description": "Quick mode text button on session intro" },
+  "reviewProgressOf": "{current} of {total}",
+  "@reviewProgressOf": {
+    "description": "Progress indicator showing card position in session",
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "reviewTapToFlip": "Tap to flip",
+  "@reviewTapToFlip": { "description": "Hint label on flashcard front" },
+  "reviewRateHard": "Hard",
+  "@reviewRateHard": { "description": "Hard rating button label" },
+  "reviewRateOk": "OK",
+  "@reviewRateOk": { "description": "OK rating button label" },
+  "reviewRateEasy": "Easy",
+  "@reviewRateEasy": { "description": "Easy rating button label" },
+  "reviewFillBlankTitle": "Fill in the blank",
+  "@reviewFillBlankTitle": { "description": "Title for fill-in-the-blank exercise" },
+  "reviewConversationPrompt": "Your response:",
+  "@reviewConversationPrompt": { "description": "Label above response text field in conversation exercise" },
+  "reviewCompleteTitle": "Session Complete!",
+  "@reviewCompleteTitle": { "description": "Title on review complete screen" },
+  "reviewCompleteBackHome": "Back to home",
+  "@reviewCompleteBackHome": { "description": "Primary CTA on review complete screen" },
+  "reviewCompleteSnapAnother": "Snap another place",
+  "@reviewCompleteSnapAnother": { "description": "Secondary CTA on review complete screen" },
+
+  "shopTitle": "Shop",
+  "@shopTitle": { "description": "Shop screen app bar title" },
+  "shopPremiumTitle": "Kotoka Premium",
+  "@shopPremiumTitle": { "description": "Premium subscription card title" },
+  "shopPremiumDesc": "Unlimited snaps, offline packs, Koko priority",
+  "@shopPremiumDesc": { "description": "Premium subscription card description" },
+  "shopStartTrial": "Start free trial",
+  "@shopStartTrial": { "description": "CTA button on premium card" },
+  "shopVocabPacks": "Vocab Packs",
+  "@shopVocabPacks": { "description": "Section heading for vocab packs grid" },
+  "shopGetPack": "Get",
+  "@shopGetPack": { "description": "Button label on each pack card" },
+
+  "profileTitle": "Profile",
+  "@profileTitle": { "description": "Profile screen app bar title" },
+  "profileMemoryMap": "My Memory Map",
+  "@profileMemoryMap": { "description": "Section heading for memory map" },
+  "profileStatsWeek": "Stats this week",
+  "@profileStatsWeek": { "description": "Section heading for weekly stats" },
+  "profileLanguagePairs": "Language pairs",
+  "@profileLanguagePairs": { "description": "Section heading for language pairs" },
+  "profileAddPair": "+ Add another language pair",
+  "@profileAddPair": { "description": "Button to add a new language pair" },
+  "profileMapEmpty": "Your learning locations will appear here",
+  "@profileMapEmpty": { "description": "Placeholder text in memory map container" },
+  "profileStatWords": "Words learned",
+  "@profileStatWords": { "description": "Stat tile label for words learned this week" },
+  "profileStatSessions": "Sessions",
+  "@profileStatSessions": { "description": "Stat tile label for sessions this week" },
+  "profileStatAccuracy": "Accuracy",
+  "@profileStatAccuracy": { "description": "Stat tile label for accuracy this week" },
+
+  "homeSnapLearnBtn": "Snap & Learn",
+  "@homeSnapLearnBtn": { "description": "Snap & Learn CTA button on home screen" },
+  "homeSubtitle": "Let's learn something today!",
+  "@homeSubtitle": { "description": "Home screen subtitle below greeting" },
+  "homeWordsLearned": "Words Learned",
+  "@homeWordsLearned": { "description": "Words learned stat label" },
+  "homeDaysStreak": "Day Streak",
+  "@homeDaysStreak": { "description": "Streak days stat label" },
+  "homeWordsCount": "{count} words",
+  "@homeWordsCount": {
+    "description": "Words count on stat card",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "homeRecentDecks": "Recent Decks",
+  "@homeRecentDecks": { "description": "Section title for recent decks" },
+  "homeDeckReviewBtn": "Review",
+  "@homeDeckReviewBtn": { "description": "Review button on deck card" },
+  "homeWeeklyStory": "Weekly Story",
+  "@homeWeeklyStory": { "description": "Section title for weekly story" },
+  "homeForgettingCurve": "Forgetting Curve",
+  "@homeForgettingCurve": { "description": "Section title for forgetting curve chart" },
+  "homeUrgentLabel": "Urgent",
+  "@homeUrgentLabel": { "description": "Urgent label on forgetting curve chart" },
+  "homeAchievementBanner": "{title} Unlocked!",
+  "@homeAchievementBanner": {
+    "description": "Achievement unlocked banner text",
+    "placeholders": { "title": { "type": "String" } }
+  },
+  "homeAchievementCta": "Take CEFR retest →",
+  "@homeAchievementCta": { "description": "CTA on achievement banner" },
+  "homeReadStory": "Read Story →",
+  "@homeReadStory": { "description": "Read story CTA on weekly story card" },
+
+  "langDisplayLanguage": "Display language",
+  "@langDisplayLanguage": { "description": "Label for UI language dropdown" },
+  "langCustomPair": "Custom pair",
+  "@langCustomPair": { "description": "Card to open custom language pair picker" },
+  "langISpeak": "I speak…",
+  "@langISpeak": { "description": "Source language dropdown hint" },
+  "langILearn": "I want to learn…",
+  "@langILearn": { "description": "Target language dropdown hint" },
+  "langSelectPair": "Select this pair",
+  "@langSelectPair": { "description": "Confirm custom pair button" }
+}

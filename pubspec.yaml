@@ -1,0 +1,87 @@
+name: kotoka_app
+description: Sensory-anchored vocabulary learning app
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Navigation
+  go_router: ^13.2.4
+
+  # Firebase
+  firebase_core: ^2.31.1
+  firebase_auth: ^4.19.6
+  cloud_firestore: ^4.17.3
+  firebase_messaging: ^14.9.4
+  firebase_storage: ^11.7.6
+  firebase_analytics: ^10.10.7
+
+  # Local storage
+  flutter_secure_storage: ^9.0.0
+  sqflite: ^2.3.3
+  shared_preferences: ^2.3.2
+
+  # Network
+  dio: ^5.4.3+1
+
+  # UI
+  cached_network_image: ^3.3.1
+  flutter_svg: ^2.0.10+1
+
+  # Kokoanimation (local package)
+  kokoanimation:
+    path: packages/kokoanimation
+
+  # Utils
+  intl: 0.20.2
+  equatable: ^2.0.5
+  freezed_annotation: ^2.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.9
+  freezed: ^2.5.2
+  riverpod_generator: ^2.4.0
+  json_serializable: ^6.8.0
+  flutter_gen_runner: ^5.4.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/icons/logo.png"
+  adaptive_icon_background: "#1E3A8A"
+  adaptive_icon_foreground: "assets/icons/logo.png"
+  min_sdk_android: 21
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - Kokoanimation/koko-idle.webp
+    - Kokoanimation/koko-celebrate.webp
+    - Kokoanimation/koko-thinking.webp
+    - Kokoanimation/koko-wave.webp
+    - Kokoanimation/koko-excited.webp
+    - Kokoanimation/koko-encourage.webp
+
+  # Font TTF files go in assets/fonts/ — declarations re-enable once files are present
+  # fonts:
+  #   - family: IBMPlexSans  (IBMPlexSans-Regular/Medium/SemiBold/Bold.ttf)
+  #   - family: Sarabun      (Sarabun-Regular/Medium/Bold.ttf)

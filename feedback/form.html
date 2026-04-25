@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kotoka – Phase 1 Feedback</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #EFF6FF;
+      font-family: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 48px;
+      color: #1F2937;
+    }
+
+    .phone-frame {
+      width: 100%;
+      max-width: 390px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .header .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: #1E3A8A;
+      color: #fff;
+      font-size: 26px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 14px rgba(30,58,138,.30);
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1E3A8A;
+      letter-spacing: -0.3px;
+    }
+    .header p {
+      font-size: 13px;
+      color: #6B7280;
+      margin-top: 4px;
+    }
+
+    /* Card */
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 16px rgba(30,58,138,.08), 0 1px 4px rgba(30,58,138,.06);
+      margin-bottom: 12px;
+    }
+
+    /* Field label */
+    .field { margin-bottom: 22px; }
+    .field:last-child { margin-bottom: 0; }
+
+    label.field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Slider */
+    .slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+      background: #DBEAFE;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #1E3A8A;
+      box-shadow: 0 2px 8px rgba(30,58,138,.35);
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .score-badge {
+      min-width: 44px;
+      height: 36px;
+      border-radius: 10px;
+      background: #1E3A8A;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Stars */
+    .stars {
+      display: flex;
+      gap: 8px;
+    }
+    .stars input[type="radio"] { display: none; }
+    .stars label {
+      font-size: 28px;
+      cursor: pointer;
+      transition: transform 0.15s;
+      filter: grayscale(1) opacity(0.4);
+      user-select: none;
+    }
+    .stars input[type="radio"]:checked ~ label,
+    .stars label:hover,
+    .stars label:hover ~ label { filter: none; }
+    .stars { flex-direction: row-reverse; justify-content: flex-end; }
+    .stars label:hover,
+    .stars label:hover ~ label { filter: none; transform: scale(1.18); }
+    /* forward-fill trick — items are reversed in DOM */
+    .stars input[type="radio"]:checked ~ label { filter: none; }
+
+    /* Radio group */
+    .radio-group {
+      display: flex;
+      gap: 10px;
+    }
+    .radio-option { flex: 1; }
+    .radio-option input[type="radio"] { display: none; }
+    .radio-option label {
+      display: block;
+      text-align: center;
+      padding: 10px 6px;
+      border-radius: 12px;
+      border: 2px solid #DBEAFE;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.18s;
+      background: #F8FAFF;
+    }
+    .radio-option input[type="radio"]:checked + label {
+      border-color: #1E3A8A;
+      background: #EFF6FF;
+      color: #1E3A8A;
+      box-shadow: 0 0 0 3px rgba(30,58,138,.10);
+    }
+    .radio-option label:hover { border-color: #93C5FD; background: #EFF6FF; }
+
+    /* Textarea */
+    textarea {
+      width: 100%;
+      border: 2px solid #DBEAFE;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      color: #1F2937;
+      background: #F8FAFF;
+      resize: none;
+      outline: none;
+      transition: border-color 0.18s;
+      line-height: 1.5;
+    }
+    textarea:focus { border-color: #1E3A8A; background: #fff; }
+    .char-count {
+      text-align: right;
+      font-size: 11px;
+      color: #9CA3AF;
+      margin-top: 4px;
+    }
+
+    /* Text input */
+    input[type="text"] {
+      width: 100%;
+      border: 2px solid #DBEAFE;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      color: #1F2937;
+      background: #F8FAFF;
+      outline: none;
+      transition: border-color 0.18s;
+    }
+    input[type="text"]:focus { border-color: #1E3A8A; background: #fff; }
+
+    /* Submit button */
+    .btn-submit {
+      width: 100%;
+      height: 56px;
+      background: #1E3A8A;
+      color: #fff;
+      border: none;
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      margin-top: 16px;
+      box-shadow: 0 4px 18px rgba(30,58,138,.35);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .btn-submit:hover { background: #1e40af; transform: translateY(-1px); box-shadow: 0 6px 22px rgba(30,58,138,.4); }
+    .btn-submit:active { transform: translateY(0); }
+
+    /* Error hint */
+    .error-hint {
+      display: none;
+      font-size: 12px;
+      color: #DC2626;
+      margin-top: 5px;
+      font-weight: 500;
+    }
+    .field.has-error .error-hint { display: block; }
+    .field.has-error textarea,
+    .field.has-error input[type="text"] { border-color: #FCA5A5; }
+
+    /* Thank-you overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,.55);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+    .overlay.show { display: flex; }
+    .thanks-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 28px;
+      max-width: 340px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(15,23,42,.25);
+      animation: popIn 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.82); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .thanks-emoji { font-size: 52px; margin-bottom: 14px; }
+    .thanks-card h2 { font-size: 22px; font-weight: 700; color: #1E3A8A; margin-bottom: 8px; }
+    .thanks-card p { font-size: 15px; color: #6B7280; line-height: 1.6; }
+    .thanks-name { color: #1E3A8A; font-weight: 600; }
+    .btn-close {
+      margin-top: 24px;
+      display: inline-block;
+      padding: 12px 32px;
+      background: #EFF6FF;
+      color: #1E3A8A;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-close:hover { background: #DBEAFE; }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #93C5FD;
+      margin-bottom: 14px;
+    }
+    .divider {
+      height: 1px;
+      background: #EFF6FF;
+      margin: 18px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="phone-frame">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-mark">🐦</div>
+    <h1>Kotoka Feedback</h1>
+    <p>Phase 1 User Testing · April 2026</p>
+  </div>
+
+  <form id="feedbackForm" novalidate>
+
+    <!-- Card 1: Experience scores -->
+    <div class="card">
+      <div class="section-title">Experience Scores</div>
+
+      <!-- Slider -->
+      <div class="field" id="field-slider">
+        <label class="field-label" for="uiScore">Overall UI / UX Score</label>
+        <div class="slider-wrap">
+          <input type="range" id="uiScore" name="uiScore" min="0" max="100" value="50" />
+          <div class="score-badge" id="scoreDisplay">50</div>
+        </div>
+        <span class="error-hint">Please rate the UI/UX.</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Warmth stars -->
+      <div class="field" id="field-warmth">
+        <label class="field-label">Warmth &amp; Personal Feel</label>
+        <div class="stars" id="stars-warmth">
+          <input type="radio" name="warmth" id="w5" value="5" /><label for="w5">⭐</label>
+          <input type="radio" name="warmth" id="w4" value="4" /><label for="w4">⭐</label>
+          <input type="radio" name="warmth" id="w3" value="3" /><label for="w3">⭐</label>
+          <input type="radio" name="warmth" id="w2" value="2" /><label for="w2">⭐</label>
+          <input type="radio" name="warmth" id="w1" value="1" /><label for="w1">⭐</label>
+        </div>
+        <span class="error-hint">Please choose a star rating.</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Ease stars -->
+      <div class="field" id="field-ease">
+        <label class="field-label">Ease of Use (3-tap rule)</label>
+        <div class="stars" id="stars-ease">
+          <input type="radio" name="ease" id="e5" value="5" /><label for="e5">⭐</label>
+          <input type="radio" name="ease" id="e4" value="4" /><label for="e4">⭐</label>
+          <input type="radio" name="ease" id="e3" value="3" /><label for="e3">⭐</label>
+          <input type="radio" name="ease" id="e2" value="2" /><label for="e2">⭐</label>
+          <input type="radio" name="ease" id="e1" value="1" /><label for="e1">⭐</label>
+        </div>
+        <span class="error-hint">Please choose a star rating.</span>
+      </div>
+    </div>
+
+    <!-- Card 2: Intent -->
+    <div class="card">
+      <div class="section-title">Intent</div>
+      <div class="field" id="field-daily">
+        <label class="field-label">Would you use this app daily?</label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" name="daily" id="d-yes" value="yes" />
+            <label for="d-yes">Yes</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="daily" id="d-maybe" value="maybe" />
+            <label for="d-maybe">Maybe</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="daily" id="d-no" value="no" />
+            <label for="d-no">No</label>
+          </div>
+        </div>
+        <span class="error-hint">Please select an option.</span>
+      </div>
+    </div>
+
+    <!-- Card 3: Open text -->
+    <div class="card">
+      <div class="section-title">Open Feedback</div>
+
+      <div class="field" id="field-love">
+        <label class="field-label" for="love">One thing you love</label>
+        <textarea id="love" name="love" rows="3" maxlength="100" placeholder="e.g. The mascot feels friendly…"></textarea>
+        <div class="char-count"><span id="love-count">0</span> / 100</div>
+        <span class="error-hint">Please share what you love.</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field" id="field-improve">
+        <label class="field-label" for="improve">One thing to improve</label>
+        <textarea id="improve" name="improve" rows="3" maxlength="100" placeholder="e.g. I wish the onboarding was shorter…"></textarea>
+        <div class="char-count"><span id="improve-count">0</span> / 100</div>
+        <span class="error-hint">Please share a suggestion.</span>
+      </div>
+    </div>
+
+    <!-- Card 4: Identity -->
+    <div class="card">
+      <div class="section-title">Tester Identity</div>
+      <div class="field" id="field-name">
+        <label class="field-label" for="testerName">Your name</label>
+        <input type="text" id="testerName" name="testerName" value="Anonymous" maxlength="60" placeholder="Anonymous" />
+        <span class="error-hint">Please enter a name.</span>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-submit">Submit Feedback</button>
+
+  </form>
+</div>
+
+<!-- Thank-you overlay -->
+<div class="overlay" id="overlay">
+  <div class="thanks-card">
+    <div class="thanks-emoji">🎉</div>
+    <h2>Thank you!</h2>
+    <p>Your feedback helps make <strong>Kotoka</strong> better for everyone, <span class="thanks-name" id="thanksName">tester</span>. Koko appreciates you! 🐦</p>
+    <button class="btn-close" id="btnClose">Done</button>
+  </div>
+</div>
+
+<script>
+  // Live slider score
+  const slider = document.getElementById('uiScore');
+  const display = document.getElementById('scoreDisplay');
+  slider.addEventListener('input', () => { display.textContent = slider.value; });
+
+  // Char counters
+  function bindCounter(id, countId) {
+    const el = document.getElementById(id);
+    const cnt = document.getElementById(countId);
+    el.addEventListener('input', () => { cnt.textContent = el.value.length; });
+  }
+  bindCounter('love', 'love-count');
+  bindCounter('improve', 'improve-count');
+
+  // Validation helpers
+  function clearErrors() {
+    document.querySelectorAll('.field.has-error').forEach(f => f.classList.remove('has-error'));
+  }
+  function markError(id) {
+    document.getElementById(id).classList.add('has-error');
+  }
+
+  // Form submit
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearErrors();
+    let valid = true;
+
+    // Warmth stars
+    if (!document.querySelector('input[name="warmth"]:checked')) {
+      markError('field-warmth'); valid = false;
+    }
+    // Ease stars
+    if (!document.querySelector('input[name="ease"]:checked')) {
+      markError('field-ease'); valid = false;
+    }
+    // Daily
+    if (!document.querySelector('input[name="daily"]:checked')) {
+      markError('field-daily'); valid = false;
+    }
+    // Love
+    const love = document.getElementById('love').value.trim();
+    if (!love) { markError('field-love'); valid = false; }
+    // Improve
+    const improve = document.getElementById('improve').value.trim();
+    if (!improve) { markError('field-improve'); valid = false; }
+    // Name
+    const name = document.getElementById('testerName').value.trim();
+    if (!name) { markError('field-name'); valid = false; }
+
+    if (!valid) {
+      document.querySelector('.field.has-error').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Show thank-you
+    document.getElementById('thanksName').textContent = name;
+    document.getElementById('overlay').classList.add('show');
+  });
+
+  document.getElementById('btnClose').addEventListener('click', () => {
+    document.getElementById('overlay').classList.remove('show');
+  });
+</script>
+</body>
+</html>

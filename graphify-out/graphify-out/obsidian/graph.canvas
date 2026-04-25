@@ -1,0 +1,2249 @@
+{
+  "nodes": [
+    {
+      "id": "g0",
+      "type": "group",
+      "label": "Sensory Input & Core Architecture",
+      "x": 0,
+      "y": 0,
+      "width": 1100,
+      "height": 920,
+      "color": "1"
+    },
+    {
+      "id": "n_arch_core_concept",
+      "type": "file",
+      "file": "Core Concept \u2014 Sensory-Anchored Mobile Vocabulary.md",
+      "x": 20,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_core_word_record",
+      "type": "file",
+      "file": "Core Word Record (5 fields).md",
+      "x": 220,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_social_media_deferred",
+      "type": "file",
+      "file": "Future Input Social Media Integration (Deferred from V1).md",
+      "x": 420,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_input_layer",
+      "type": "file",
+      "file": "Input Layer (Text, Photo, Location).md",
+      "x": 20,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_input_location",
+      "type": "file",
+      "file": "Input Mode \u2014 Location (Manual + Auto).md",
+      "x": 220,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_input_photo",
+      "type": "file",
+      "file": "Input Mode \u2014 Photo (Manual).md",
+      "x": 420,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_input_text",
+      "type": "file",
+      "file": "Input Mode \u2014 Text (Manual).md",
+      "x": 20,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_kotoka_system",
+      "type": "file",
+      "file": "KOTOKA System Architecture Document.md",
+      "x": 220,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_llm_augmentation_engine",
+      "type": "file",
+      "file": "LLM-Based Vocabulary Corpus Augmentation Engine.md",
+      "x": 420,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_onboarding_data",
+      "type": "file",
+      "file": "Onboarding Data \u2014 LLM Calibration.md",
+      "x": 20,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_onboarding_flow",
+      "type": "file",
+      "file": "Onboarding Flow (7 Steps).md",
+      "x": 220,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_onboarding_tier1",
+      "type": "file",
+      "file": "Onboarding Tier 1 \u2014 Must-Have Fields.md",
+      "x": 420,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_onboarding_tier2",
+      "type": "file",
+      "file": "Onboarding Tier 2 \u2014 Optional Fields.md",
+      "x": 20,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_pedagogical_tags",
+      "type": "file",
+      "file": "Pedagogical Tags (CEFR, grammar, prerequisites).md",
+      "x": 220,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_personal_context_tags",
+      "type": "file",
+      "file": "Personal Context Tags.md",
+      "x": 420,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_rationale_no_shared_curriculum",
+      "type": "file",
+      "file": "Rationale No Shared Curriculum \u2014 LLM Replaces Content Team.md",
+      "x": 20,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_rationale_living_profile",
+      "type": "file",
+      "file": "Rationale Onboarding Data as Living Profile (Not Static Form).md",
+      "x": 220,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_rationale_manual_inputs_v1",
+      "type": "file",
+      "file": "Rationale TextPhoto Manual-Only in V1 (Intent Signal + Privacy).md",
+      "x": 420,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_state_variables",
+      "type": "file",
+      "file": "State Variables per Word (S_w, R_w, F_w, \u03b2_w).md",
+      "x": 20,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_vocab_corpus",
+      "type": "file",
+      "file": "Structured Vocabulary Corpus Data Model.md",
+      "x": 220,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_three_input_modes",
+      "type": "file",
+      "file": "Three Input Modes (Photo, Text, Location).md",
+      "x": 420,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_arch_user_level_variables",
+      "type": "file",
+      "file": "User-Level Variables (\u03b8, T_sess, A).md",
+      "x": 20,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g1",
+      "type": "group",
+      "label": "UI/UX Design System",
+      "x": 1180,
+      "y": 0,
+      "width": 1100,
+      "height": 820,
+      "color": "2"
+    },
+    {
+      "id": "n_design_color_system",
+      "type": "file",
+      "file": "Color System \u2014 Blue Theme (PRDDesign).md",
+      "x": 1200,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_component_library",
+      "type": "file",
+      "file": "Component Library \u2014 34 Components.md",
+      "x": 1400,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_evaluation_framework",
+      "type": "file",
+      "file": "Design Evaluation Framework (4-Question Test).md",
+      "x": 1600,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_philosophy",
+      "type": "file",
+      "file": "Design Philosophy (Warm + Cognitively Lightweight).md",
+      "x": 1200,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_design_token_system",
+      "type": "file",
+      "file": "Design Token System (PRD).md",
+      "x": 1400,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_elevation_system",
+      "type": "file",
+      "file": "Elevation System.md",
+      "x": 1600,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_icon_library",
+      "type": "file",
+      "file": "Icon Library \u2014 Ionicons.md",
+      "x": 1200,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_spec_doc",
+      "type": "file",
+      "file": "KOTOKA Design Specification v1.1.md",
+      "x": 1400,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_koko_animation_system",
+      "type": "file",
+      "file": "Koko Character & Animation System.md",
+      "x": 1600,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_koko_animation",
+      "type": "file",
+      "file": "KokoAnimation Component.md",
+      "x": 1200,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_mood_tint_overlays",
+      "type": "file",
+      "file": "Mood Tint Overlays (Applied at 20% Opacity).md",
+      "x": 1400,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_navigation_architecture",
+      "type": "file",
+      "file": "Navigation Architecture.md",
+      "x": 1600,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_onboarding_screens",
+      "type": "file",
+      "file": "Onboarding Screen Specifications (7 Screens).md",
+      "x": 1200,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_pdpa_consent",
+      "type": "file",
+      "file": "PDPA Consent Gate.md",
+      "x": 1400,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_phase1_design",
+      "type": "file",
+      "file": "Phase 1 \u2014 Design System & UIUX Specification.md",
+      "x": 1600,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_rationale_no_guilt_errors",
+      "type": "file",
+      "file": "Rationale No Guilt \u2014 Errors are Data, Not Failures.md",
+      "x": 1200,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_rationale_warmth_clarity",
+      "type": "file",
+      "file": "Rationale Warmth and Clarity Reinforce Each Other (Not Opposites).md",
+      "x": 1400,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_spacing_system",
+      "type": "file",
+      "file": "Spacing System (4px base unit).md",
+      "x": 1600,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_three_laws",
+      "type": "file",
+      "file": "Three Design Laws (No Guilt, Context is King, 30s Session).md",
+      "x": 1200,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_vocab_card",
+      "type": "file",
+      "file": "VocabCard Component.md",
+      "x": 1400,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g2",
+      "type": "group",
+      "label": "Mathematical Foundations & Theory",
+      "x": 2360,
+      "y": 0,
+      "width": 1100,
+      "height": 720,
+      "color": "3"
+    },
+    {
+      "id": "n_sig_context_sheaf",
+      "type": "file",
+      "file": "Context Sheaf \u2131 of Vocabulary.md",
+      "x": 2380,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_galois_closure_drive",
+      "type": "file",
+      "file": "Galois Closure Drive \u2014 \u03bb\u2083\u27e8\u03c1, \ud835\udfd9_{Gap}\u27e9.md",
+      "x": 2580,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_galois_connection",
+      "type": "file",
+      "file": "Galois Connection (\u03b5, \u03ba) between Knowledge and Environment Lattices.md",
+      "x": 2780,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_h1_transfer_obstruction",
+      "type": "file",
+      "file": "H\u00b9(\u2131) \u2014 Transfer Obstruction (First Cohomology).md",
+      "x": 2380,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_h0_transferable_mastery",
+      "type": "file",
+      "file": "H\u2070(\u2131) \u2014 Transferable Mastery (Global Sections).md",
+      "x": 2580,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_interaction_kotoka",
+      "type": "file",
+      "file": "KOTOKA Interaction Terms \ud835\udcd8_KOTOKA\u03c1.md",
+      "x": 2780,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_life_episode_graph",
+      "type": "file",
+      "file": "Life-Episode Graph (LEG).md",
+      "x": 2380,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_leg_curvature",
+      "type": "file",
+      "file": "Life-Episode Graph Curvature Term (LEG) \u2014 \u03bb\u2082\u27e8exp(\u2212\u03baLEG), \u03c1\u27e9.md",
+      "x": 2580,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_native_speaker_regime",
+      "type": "file",
+      "file": "Native-Speaker Regime (Absorbing Equilibrium, Gap=\u2205).md",
+      "x": 2780,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_ref_ollivier_2009",
+      "type": "file",
+      "file": "Ollivier (2009) \u2014 Ricci Curvature of Markov Chains.md",
+      "x": 2380,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_ollivier_ricci_curvature",
+      "type": "file",
+      "file": "Ollivier-Ricci Curvature \u03baLEG on Life-Episode Graph.md",
+      "x": 2580,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_rationale_esct_over_independent",
+      "type": "file",
+      "file": "Rationale ESCT Required Because Independent-Word Assumption is Actively Wrong.md",
+      "x": 2780,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_rationale_ollivier_vs_forman",
+      "type": "file",
+      "file": "Rationale Ollivier-Ricci Over FormanResistance Curvature.md",
+      "x": 2380,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_rationale_sheaf_for_transfer",
+      "type": "file",
+      "file": "Rationale Sheaves are Canonical Tool for Local-to-Global Coherence.md",
+      "x": 2580,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_coupling_tensor",
+      "type": "file",
+      "file": "Scene Coupling Tensor T\u03c3 (Symmetric PSD).md",
+      "x": 2780,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_esct_scene_entanglement",
+      "type": "file",
+      "file": "Scene Entanglement Term (ESCT) \u2014 \u03bb\u2081\u27e8T\u03c3\u03c1, \u03c1\u27e9.md",
+      "x": 2380,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_transfer_cohomology",
+      "type": "file",
+      "file": "Transfer Cohomology Penalty \u2014 \u03bb\u2084 dim H\u00b9(\u2131\u03c1).md",
+      "x": 2580,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_ref_tulving_thomson_1973",
+      "type": "file",
+      "file": "Tulving & Thomson (1973) \u2014 Encoding Specificity Principle.md",
+      "x": 2780,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g3",
+      "type": "group",
+      "label": "Optimization & Control Theory",
+      "x": 3540,
+      "y": 0,
+      "width": 880,
+      "height": 720,
+      "color": "4"
+    },
+    {
+      "id": "n_ref_bellman_1957",
+      "type": "file",
+      "file": "Bellman (1957) \u2014 Dynamic Programming  HJB Equation.md",
+      "x": 3560,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_ref_benamou_brenier_2000",
+      "type": "file",
+      "file": "Benamou & Brenier (2000) \u2014 Optimal Transport Fluid Mechanics.md",
+      "x": 3760,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_benamou_brenier",
+      "type": "file",
+      "file": "Benamou-Brenier Equation v = \u2207\u03c6.md",
+      "x": 3960,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_continuity_constraint",
+      "type": "file",
+      "file": "Continuity Constraint \u27e8\u03c6, \u2202_t\u03c1 + \u2207\u00b7(\u03c1v)\u27e9.md",
+      "x": 3560,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_euler_lagrange_equations",
+      "type": "file",
+      "file": "Euler-Lagrange Equations (Three).md",
+      "x": 3760,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_free_energy_term",
+      "type": "file",
+      "file": "Free Energy Term \ud835\udcd5\u03c1.md",
+      "x": 3960,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_ref_friston_2010",
+      "type": "file",
+      "file": "Friston (2010) \u2014 Free Energy Principle.md",
+      "x": 3560,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_hjb_equation",
+      "type": "file",
+      "file": "Hamilton-Jacobi-Bellman Equation with KOTOKA Corrections.md",
+      "x": 3760,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_kinetic_term",
+      "type": "file",
+      "file": "Kinetic Term \u00bd\u27e8\u03c1, \u2016v\u2016\u00b2\u27e9.md",
+      "x": 3960,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_knowledge_density",
+      "type": "file",
+      "file": "Knowledge Density \u03c1(w,t).md",
+      "x": 3560,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_lagrangian",
+      "type": "file",
+      "file": "Lagrangian \u2112_KOTOKA.md",
+      "x": 3760,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_rationale_free_energy_principle",
+      "type": "file",
+      "file": "Rationale Free Energy Principle (Friston 2010) for \ud835\udcd5\u03c1.md",
+      "x": 3960,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_rationale_quadratic_kinetic",
+      "type": "file",
+      "file": "Rationale Quadratic Kinetic Cost (Benamou-Brenier inheritance).md",
+      "x": 3560,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_value_function",
+      "type": "file",
+      "file": "Value Function  Lagrange Multiplier \u03c6(w,t).md",
+      "x": 3760,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_velocity_field",
+      "type": "file",
+      "file": "Velocity Field v(w,t).md",
+      "x": 3960,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_vocabulary_space_w",
+      "type": "file",
+      "file": "Vocabulary Space W (Finite Discrete Set).md",
+      "x": 3560,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g4",
+      "type": "group",
+      "label": "Product Requirements & Personas",
+      "x": 0,
+      "y": 1000,
+      "width": 880,
+      "height": 620,
+      "color": "5"
+    },
+    {
+      "id": "n_prd_activation_failure_gap",
+      "type": "file",
+      "file": "Activation Failure Gap.md",
+      "x": 20,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_ref_godden_baddeley_1975",
+      "type": "file",
+      "file": "Godden & Baddeley (1975) \u2014 Context-Dependent Memory.md",
+      "x": 220,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_kotoka",
+      "type": "file",
+      "file": "KOTOKA PRD v1.0.md",
+      "x": 420,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_kotoka_signature_equation",
+      "type": "file",
+      "file": "KOTOKA Signature Equation Document.md",
+      "x": 20,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_ref_paivio_1991",
+      "type": "file",
+      "file": "Paivio (1991) \u2014 Dual Coding Theory.md",
+      "x": 220,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_persona_pam",
+      "type": "file",
+      "file": "Primary Persona \u2014 Pam.md",
+      "x": 420,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_rationale_google_stack",
+      "type": "file",
+      "file": "Rationale Google Cloud Stack (83%+ Google Services).md",
+      "x": 20,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_rationale_personal_content",
+      "type": "file",
+      "file": "Rationale Personal Content Sourcing as Core Innovation.md",
+      "x": 220,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_root_cause_no_personal_relevance",
+      "type": "file",
+      "file": "Root Cause 1 \u2014 No Personal Relevance Anchor.md",
+      "x": 420,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_root_cause_context_mismatch",
+      "type": "file",
+      "file": "Root Cause 2 \u2014 Context-Encoding Mismatch.md",
+      "x": 20,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_root_cause_no_sensory_binding",
+      "type": "file",
+      "file": "Root Cause 3 \u2014 No Sensory Binding.md",
+      "x": 220,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_persona_nong",
+      "type": "file",
+      "file": "Secondary Persona \u2014 Nong.md",
+      "x": 420,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_system_architecture",
+      "type": "file",
+      "file": "System Architecture Overview (PRD).md",
+      "x": 20,
+      "y": 1400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_tech_stack",
+      "type": "file",
+      "file": "Tech Stack \u2014 React Native + Expo.md",
+      "x": 220,
+      "y": 1400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g5",
+      "type": "group",
+      "label": "Learning Engine & SRS",
+      "x": 1180,
+      "y": 1000,
+      "width": 880,
+      "height": 620,
+      "color": "6"
+    },
+    {
+      "id": "n_sig_action_functional",
+      "type": "file",
+      "file": "Action Functional \ud835\udcae_KOTOKA.md",
+      "x": 1200,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_closure_theorem",
+      "type": "file",
+      "file": "Closure Theorem \u2014 All Operational Formulas as Corollaries.md",
+      "x": 1400,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_koko_srs_algorithm",
+      "type": "file",
+      "file": "Koko SRS Algorithm.md",
+      "x": 1600,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_core_loop",
+      "type": "file",
+      "file": "Kotoka Core Loop.md",
+      "x": 1200,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_ref_noether_1918",
+      "type": "file",
+      "file": "Noether (1918) \u2014 Invariante Variationsprobleme.md",
+      "x": 1400,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_noether_conservation_laws",
+      "type": "file",
+      "file": "Noether Conservation Laws (Four).md",
+      "x": 1600,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_rationale_sensory_tag_visible",
+      "type": "file",
+      "file": "Rationale SensoryTagBar Non-Optional on Every Review Card (Core Differentiator).md",
+      "x": 1200,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_rationale_variational_framing",
+      "type": "file",
+      "file": "Rationale Variational Framing (J \u03a0\u2192\u211d must exist for engineering system).md",
+      "x": 1400,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_sensory_tag_engine",
+      "type": "file",
+      "file": "Sensory Tag Engine (Gemini Prompt Layer).md",
+      "x": 1600,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_sensory_tag_bar",
+      "type": "file",
+      "file": "SensoryTagBar Component.md",
+      "x": 1200,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_session_learning_pathway",
+      "type": "file",
+      "file": "Session & Learning Pathway.md",
+      "x": 1400,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_six_sense_channels",
+      "type": "file",
+      "file": "Six Sense Channels (Visual, Location, Atmosphere, Mood, Energy, Sound).md",
+      "x": 1600,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_composite_score",
+      "type": "file",
+      "file": "Six-Factor Composite Score S(w).md",
+      "x": 1200,
+      "y": 1400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_sig_stationarity_principle",
+      "type": "file",
+      "file": "Stationarity Principle \u03b4\ud835\udcae_KOTOKA = 0.md",
+      "x": 1400,
+      "y": 1400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g6",
+      "type": "group",
+      "label": "Brand, Dev Stack & Identity",
+      "x": 2360,
+      "y": 1000,
+      "width": 880,
+      "height": 620,
+      "color": "1"
+    },
+    {
+      "id": "n_master_brand_identity",
+      "type": "file",
+      "file": "Brand Identity & Personality.md",
+      "x": 2380,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_cloud_run_api",
+      "type": "file",
+      "file": "Cloud Run API Layer (Node.jsFastify).md",
+      "x": 2580,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_consent_record_model",
+      "type": "file",
+      "file": "ConsentRecord Data Model.md",
+      "x": 2780,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_font_resolver",
+      "type": "file",
+      "file": "Font Resolver getFontFamily() TypeScript.md",
+      "x": 2380,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_koko_character",
+      "type": "file",
+      "file": "Koko Character (Mascot & Voice).md",
+      "x": 2580,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_kotoka_master_prompt",
+      "type": "file",
+      "file": "Kotoka Developer Master Prompt v2.0.md",
+      "x": 2780,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_meeting_prep",
+      "type": "file",
+      "file": "Meeting Prep Special Input Mode.md",
+      "x": 2380,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_multilingual_typography",
+      "type": "file",
+      "file": "Multilingual Typography (4 Script Groups).md",
+      "x": 2580,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_security_controls",
+      "type": "file",
+      "file": "Security Controls (API keys, auth, geolocation, PDPA).md",
+      "x": 2780,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_senses_tag_model",
+      "type": "file",
+      "file": "SensesTag Data Model.md",
+      "x": 2380,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_session_model",
+      "type": "file",
+      "file": "Session Data Model.md",
+      "x": 2580,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_design_typography_system",
+      "type": "file",
+      "file": "Typography System (Design Spec).md",
+      "x": 2780,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_userword_model",
+      "type": "file",
+      "file": "UserWord Data Model (per-user SRS state).md",
+      "x": 2380,
+      "y": 1400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_word_model",
+      "type": "file",
+      "file": "Word Data Model (TypeScript interfaces).md",
+      "x": 2580,
+      "y": 1400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g7",
+      "type": "group",
+      "label": "Features & Roadmap",
+      "x": 3540,
+      "y": 1000,
+      "width": 880,
+      "height": 520,
+      "color": "2"
+    },
+    {
+      "id": "n_prd_executive_summary",
+      "type": "file",
+      "file": "Executive Summary.md",
+      "x": 3560,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_fcm_location_push",
+      "type": "file",
+      "file": "FCM Location-Based Push Notifications.md",
+      "x": 3760,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_four_phase_plan",
+      "type": "file",
+      "file": "Four-Phase Development Plan.md",
+      "x": 3960,
+      "y": 1080,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_koko_ai_partner",
+      "type": "file",
+      "file": "Koko AI Conversation Partner.md",
+      "x": 3560,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_kotocoin_economy",
+      "type": "file",
+      "file": "KotoCoin Economy.md",
+      "x": 3760,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_master_memory_map_logic",
+      "type": "file",
+      "file": "Memory Map Logic (Geohash + Pin Colors + Revisit Trigger).md",
+      "x": 3960,
+      "y": 1160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_memory_map",
+      "type": "file",
+      "file": "Memory Map with Geohash.md",
+      "x": 3560,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_mixed_session_engine",
+      "type": "file",
+      "file": "Mixed Session Engine (Four Node Types).md",
+      "x": 3760,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_phase2_foundation",
+      "type": "file",
+      "file": "Phase 2 \u2014 Foundation & Core Data Pipeline.md",
+      "x": 3960,
+      "y": 1240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_phase3_ai_engine",
+      "type": "file",
+      "file": "Phase 3 \u2014 AILearning Engine & Sensory Layer.md",
+      "x": 3560,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_phase4_monetization",
+      "type": "file",
+      "file": "Phase 4 \u2014 Monetization, Polish & Launch.md",
+      "x": 3760,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_prd_srs_algorithm",
+      "type": "file",
+      "file": "SRS Algorithm \u2014 \u03b4S_KOTOKA = 0.md",
+      "x": 3960,
+      "y": 1320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g8",
+      "type": "group",
+      "label": "Multilingual Support",
+      "x": 0,
+      "y": 1700,
+      "width": 600,
+      "height": 400,
+      "color": "3"
+    },
+    {
+      "id": "n_prd_six_language_support",
+      "type": "file",
+      "file": "Six-Language Support (30 Directional Pairs).md",
+      "x": 20,
+      "y": 1780,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g9",
+      "type": "group",
+      "label": "AI Vocabulary Generation",
+      "x": 1180,
+      "y": 1700,
+      "width": 600,
+      "height": 400,
+      "color": "4"
+    },
+    {
+      "id": "n_prd_gemini_vocab_generation",
+      "type": "file",
+      "file": "Gemini-Powered Vocabulary Generation.md",
+      "x": 1200,
+      "y": 1780,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g10",
+      "type": "group",
+      "label": "Snap Input Pipeline",
+      "x": 2360,
+      "y": 1700,
+      "width": 600,
+      "height": 400,
+      "color": "5"
+    },
+    {
+      "id": "n_prd_snap_input_pipeline",
+      "type": "file",
+      "file": "Snap Input Pipeline (Camera, Text, GPS).md",
+      "x": 2380,
+      "y": 1780,
+      "width": 180,
+      "height": 60
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_prd_kotoka_prd_executive_summary",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_prd_executive_summary",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_kotoka_prd_activation_failure_gap",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_prd_activation_failure_gap",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_kotoka_prd_persona_pam",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_prd_persona_pam",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_kotoka_prd_persona_nong",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_prd_persona_nong",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_kotoka_prd_system_architecture",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_prd_system_architecture",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_kotoka_arch_kotoka_system",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_arch_kotoka_system",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_kotoka_design_spec_doc",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_design_spec_doc",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_kotoka_sig_kotoka_signature_equation",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_sig_kotoka_signature_equation",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_executive_summary_prd_four_phase_plan",
+      "fromNode": "n_prd_executive_summary",
+      "toNode": "n_prd_four_phase_plan",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_four_phase_plan_prd_phase1_design",
+      "fromNode": "n_prd_four_phase_plan",
+      "toNode": "n_prd_phase1_design",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_four_phase_plan_prd_phase2_foundation",
+      "fromNode": "n_prd_four_phase_plan",
+      "toNode": "n_prd_phase2_foundation",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_four_phase_plan_prd_phase3_ai_engine",
+      "fromNode": "n_prd_four_phase_plan",
+      "toNode": "n_prd_phase3_ai_engine",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_four_phase_plan_prd_phase4_monetization",
+      "fromNode": "n_prd_four_phase_plan",
+      "toNode": "n_prd_phase4_monetization",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase1_design_prd_design_token_system",
+      "fromNode": "n_prd_phase1_design",
+      "toNode": "n_prd_design_token_system",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase1_design_prd_component_library",
+      "fromNode": "n_prd_phase1_design",
+      "toNode": "n_prd_component_library",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase1_design_prd_onboarding_screens",
+      "fromNode": "n_prd_phase1_design",
+      "toNode": "n_prd_onboarding_screens",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase1_design_design_spec_doc",
+      "fromNode": "n_prd_phase1_design",
+      "toNode": "n_design_spec_doc",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase3_ai_engine_prd_srs_algorithm",
+      "fromNode": "n_prd_phase3_ai_engine",
+      "toNode": "n_prd_srs_algorithm",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase3_ai_engine_prd_memory_map",
+      "fromNode": "n_prd_phase3_ai_engine",
+      "toNode": "n_prd_memory_map",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase3_ai_engine_prd_fcm_location_push",
+      "fromNode": "n_prd_phase3_ai_engine",
+      "toNode": "n_prd_fcm_location_push",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase3_ai_engine_prd_koko_ai_partner",
+      "fromNode": "n_prd_phase3_ai_engine",
+      "toNode": "n_prd_koko_ai_partner",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase3_ai_engine_prd_mixed_session_engine",
+      "fromNode": "n_prd_phase3_ai_engine",
+      "toNode": "n_prd_mixed_session_engine",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase3_ai_engine_prd_composite_score",
+      "fromNode": "n_prd_phase3_ai_engine",
+      "toNode": "n_prd_composite_score",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_phase4_monetization_prd_kotocoin_economy",
+      "fromNode": "n_prd_phase4_monetization",
+      "toNode": "n_prd_kotocoin_economy",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_activation_failure_gap_prd_root_cause_no_personal_relevance",
+      "fromNode": "n_prd_activation_failure_gap",
+      "toNode": "n_prd_root_cause_no_personal_relevance",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_activation_failure_gap_prd_root_cause_context_mismatch",
+      "fromNode": "n_prd_activation_failure_gap",
+      "toNode": "n_prd_root_cause_context_mismatch",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_activation_failure_gap_prd_root_cause_no_sensory_binding",
+      "fromNode": "n_prd_activation_failure_gap",
+      "toNode": "n_prd_root_cause_no_sensory_binding",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_activation_failure_gap_prd_rationale_personal_content",
+      "fromNode": "n_prd_activation_failure_gap",
+      "toNode": "n_prd_rationale_personal_content",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_root_cause_no_personal_relevance_ref_paivio_1991",
+      "fromNode": "n_prd_root_cause_no_personal_relevance",
+      "toNode": "n_ref_paivio_1991",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_root_cause_context_mismatch_ref_godden_baddeley_1975",
+      "fromNode": "n_prd_root_cause_context_mismatch",
+      "toNode": "n_ref_godden_baddeley_1975",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_system_architecture_prd_tech_stack",
+      "fromNode": "n_prd_system_architecture",
+      "toNode": "n_prd_tech_stack",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_tech_stack_prd_rationale_google_stack",
+      "fromNode": "n_prd_tech_stack",
+      "toNode": "n_prd_rationale_google_stack",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_component_library_prd_koko_animation",
+      "fromNode": "n_prd_component_library",
+      "toNode": "n_prd_koko_animation",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_component_library_prd_vocab_card",
+      "fromNode": "n_prd_component_library",
+      "toNode": "n_prd_vocab_card",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_component_library_prd_sensory_tag_bar",
+      "fromNode": "n_prd_component_library",
+      "toNode": "n_prd_sensory_tag_bar",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_sensory_tag_bar_design_rationale_sensory_tag_visible",
+      "fromNode": "n_prd_sensory_tag_bar",
+      "toNode": "n_design_rationale_sensory_tag_visible",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_onboarding_screens_prd_pdpa_consent",
+      "fromNode": "n_prd_onboarding_screens",
+      "toNode": "n_prd_pdpa_consent",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_srs_algorithm_sig_stationarity_principle",
+      "fromNode": "n_prd_srs_algorithm",
+      "toNode": "n_sig_stationarity_principle",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_fcm_location_push_master_memory_map_logic",
+      "fromNode": "n_prd_fcm_location_push",
+      "toNode": "n_master_memory_map_logic",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_composite_score_sig_stationarity_principle",
+      "fromNode": "n_prd_composite_score",
+      "toNode": "n_sig_stationarity_principle",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_composite_score_sig_closure_theorem",
+      "fromNode": "n_prd_composite_score",
+      "toNode": "n_sig_closure_theorem",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_kotoka_system_arch_core_concept",
+      "fromNode": "n_arch_kotoka_system",
+      "toNode": "n_arch_core_concept",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_kotoka_system_arch_input_layer",
+      "fromNode": "n_arch_kotoka_system",
+      "toNode": "n_arch_input_layer",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_kotoka_system_arch_onboarding_data",
+      "fromNode": "n_arch_kotoka_system",
+      "toNode": "n_arch_onboarding_data",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_kotoka_system_arch_llm_augmentation_engine",
+      "fromNode": "n_arch_kotoka_system",
+      "toNode": "n_arch_llm_augmentation_engine",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_kotoka_system_arch_state_variables",
+      "fromNode": "n_arch_kotoka_system",
+      "toNode": "n_arch_state_variables",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_kotoka_system_arch_user_level_variables",
+      "fromNode": "n_arch_kotoka_system",
+      "toNode": "n_arch_user_level_variables",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_input_layer_arch_input_text",
+      "fromNode": "n_arch_input_layer",
+      "toNode": "n_arch_input_text",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_input_layer_arch_input_photo",
+      "fromNode": "n_arch_input_layer",
+      "toNode": "n_arch_input_photo",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_input_layer_arch_input_location",
+      "fromNode": "n_arch_input_layer",
+      "toNode": "n_arch_input_location",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_input_layer_arch_llm_augmentation_engine",
+      "fromNode": "n_arch_input_layer",
+      "toNode": "n_arch_llm_augmentation_engine",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_input_text_arch_rationale_manual_inputs_v1",
+      "fromNode": "n_arch_input_text",
+      "toNode": "n_arch_rationale_manual_inputs_v1",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_input_photo_arch_rationale_manual_inputs_v1",
+      "fromNode": "n_arch_input_photo",
+      "toNode": "n_arch_rationale_manual_inputs_v1",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_input_location_arch_social_media_deferred",
+      "fromNode": "n_arch_input_location",
+      "toNode": "n_arch_social_media_deferred",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_onboarding_data_arch_onboarding_tier1",
+      "fromNode": "n_arch_onboarding_data",
+      "toNode": "n_arch_onboarding_tier1",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_onboarding_data_arch_onboarding_tier2",
+      "fromNode": "n_arch_onboarding_data",
+      "toNode": "n_arch_onboarding_tier2",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_onboarding_data_arch_llm_augmentation_engine",
+      "fromNode": "n_arch_onboarding_data",
+      "toNode": "n_arch_llm_augmentation_engine",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_onboarding_data_arch_rationale_living_profile",
+      "fromNode": "n_arch_onboarding_data",
+      "toNode": "n_arch_rationale_living_profile",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_llm_augmentation_engine_arch_vocab_corpus",
+      "fromNode": "n_arch_llm_augmentation_engine",
+      "toNode": "n_arch_vocab_corpus",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_llm_augmentation_engine_arch_rationale_no_shared_curriculum",
+      "fromNode": "n_arch_llm_augmentation_engine",
+      "toNode": "n_arch_rationale_no_shared_curriculum",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_vocab_corpus_arch_core_word_record",
+      "fromNode": "n_arch_vocab_corpus",
+      "toNode": "n_arch_core_word_record",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_vocab_corpus_arch_pedagogical_tags",
+      "fromNode": "n_arch_vocab_corpus",
+      "toNode": "n_arch_pedagogical_tags",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_arch_vocab_corpus_arch_personal_context_tags",
+      "fromNode": "n_arch_vocab_corpus",
+      "toNode": "n_arch_personal_context_tags",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_kotoka_signature_equation_sig_stationarity_principle",
+      "fromNode": "n_sig_kotoka_signature_equation",
+      "toNode": "n_sig_stationarity_principle",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_kotoka_signature_equation_master_kotoka_master_prompt",
+      "fromNode": "n_sig_kotoka_signature_equation",
+      "toNode": "n_master_kotoka_master_prompt",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_action_functional_sig_stationarity_principle",
+      "fromNode": "n_sig_action_functional",
+      "toNode": "n_sig_stationarity_principle",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_action_functional_sig_lagrangian",
+      "fromNode": "n_sig_action_functional",
+      "toNode": "n_sig_lagrangian",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_stationarity_principle_sig_euler_lagrange_equations",
+      "fromNode": "n_sig_stationarity_principle",
+      "toNode": "n_sig_euler_lagrange_equations",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_stationarity_principle_sig_noether_conservation_laws",
+      "fromNode": "n_sig_stationarity_principle",
+      "toNode": "n_sig_noether_conservation_laws",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_stationarity_principle_sig_closure_theorem",
+      "fromNode": "n_sig_stationarity_principle",
+      "toNode": "n_sig_closure_theorem",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_stationarity_principle_sig_rationale_variational_framing",
+      "fromNode": "n_sig_stationarity_principle",
+      "toNode": "n_sig_rationale_variational_framing",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_stationarity_principle_master_koko_srs_algorithm",
+      "fromNode": "n_sig_stationarity_principle",
+      "toNode": "n_master_koko_srs_algorithm",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_lagrangian_sig_kinetic_term",
+      "fromNode": "n_sig_lagrangian",
+      "toNode": "n_sig_kinetic_term",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_lagrangian_sig_free_energy_term",
+      "fromNode": "n_sig_lagrangian",
+      "toNode": "n_sig_free_energy_term",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_lagrangian_sig_continuity_constraint",
+      "fromNode": "n_sig_lagrangian",
+      "toNode": "n_sig_continuity_constraint",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_lagrangian_sig_interaction_kotoka",
+      "fromNode": "n_sig_lagrangian",
+      "toNode": "n_sig_interaction_kotoka",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_lagrangian_sig_knowledge_density",
+      "fromNode": "n_sig_lagrangian",
+      "toNode": "n_sig_knowledge_density",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_lagrangian_sig_velocity_field",
+      "fromNode": "n_sig_lagrangian",
+      "toNode": "n_sig_velocity_field",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_lagrangian_sig_value_function",
+      "fromNode": "n_sig_lagrangian",
+      "toNode": "n_sig_value_function",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_lagrangian_sig_vocabulary_space_w",
+      "fromNode": "n_sig_lagrangian",
+      "toNode": "n_sig_vocabulary_space_w",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_kinetic_term_ref_benamou_brenier_2000",
+      "fromNode": "n_sig_kinetic_term",
+      "toNode": "n_ref_benamou_brenier_2000",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_kinetic_term_sig_rationale_quadratic_kinetic",
+      "fromNode": "n_sig_kinetic_term",
+      "toNode": "n_sig_rationale_quadratic_kinetic",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_free_energy_term_ref_friston_2010",
+      "fromNode": "n_sig_free_energy_term",
+      "toNode": "n_ref_friston_2010",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_free_energy_term_sig_rationale_free_energy_principle",
+      "fromNode": "n_sig_free_energy_term",
+      "toNode": "n_sig_rationale_free_energy_principle",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_continuity_constraint_sig_euler_lagrange_equations",
+      "fromNode": "n_sig_continuity_constraint",
+      "toNode": "n_sig_euler_lagrange_equations",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_interaction_kotoka_sig_esct_scene_entanglement",
+      "fromNode": "n_sig_interaction_kotoka",
+      "toNode": "n_sig_esct_scene_entanglement",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_interaction_kotoka_sig_leg_curvature",
+      "fromNode": "n_sig_interaction_kotoka",
+      "toNode": "n_sig_leg_curvature",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_interaction_kotoka_sig_galois_closure_drive",
+      "fromNode": "n_sig_interaction_kotoka",
+      "toNode": "n_sig_galois_closure_drive",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_interaction_kotoka_sig_transfer_cohomology",
+      "fromNode": "n_sig_interaction_kotoka",
+      "toNode": "n_sig_transfer_cohomology",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_esct_scene_entanglement_sig_coupling_tensor",
+      "fromNode": "n_sig_esct_scene_entanglement",
+      "toNode": "n_sig_coupling_tensor",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_esct_scene_entanglement_ref_tulving_thomson_1973",
+      "fromNode": "n_sig_esct_scene_entanglement",
+      "toNode": "n_ref_tulving_thomson_1973",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_esct_scene_entanglement_sig_rationale_esct_over_independent",
+      "fromNode": "n_sig_esct_scene_entanglement",
+      "toNode": "n_sig_rationale_esct_over_independent",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_leg_curvature_sig_ollivier_ricci_curvature",
+      "fromNode": "n_sig_leg_curvature",
+      "toNode": "n_sig_ollivier_ricci_curvature",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_leg_curvature_sig_life_episode_graph",
+      "fromNode": "n_sig_leg_curvature",
+      "toNode": "n_sig_life_episode_graph",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_galois_closure_drive_sig_galois_connection",
+      "fromNode": "n_sig_galois_closure_drive",
+      "toNode": "n_sig_galois_connection",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_galois_closure_drive_sig_native_speaker_regime",
+      "fromNode": "n_sig_galois_closure_drive",
+      "toNode": "n_sig_native_speaker_regime",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_transfer_cohomology_sig_context_sheaf",
+      "fromNode": "n_sig_transfer_cohomology",
+      "toNode": "n_sig_context_sheaf",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_transfer_cohomology_sig_h0_transferable_mastery",
+      "fromNode": "n_sig_transfer_cohomology",
+      "toNode": "n_sig_h0_transferable_mastery",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_transfer_cohomology_sig_h1_transfer_obstruction",
+      "fromNode": "n_sig_transfer_cohomology",
+      "toNode": "n_sig_h1_transfer_obstruction",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_euler_lagrange_equations_sig_benamou_brenier",
+      "fromNode": "n_sig_euler_lagrange_equations",
+      "toNode": "n_sig_benamou_brenier",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_euler_lagrange_equations_sig_hjb_equation",
+      "fromNode": "n_sig_euler_lagrange_equations",
+      "toNode": "n_sig_hjb_equation",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_benamou_brenier_ref_benamou_brenier_2000",
+      "fromNode": "n_sig_benamou_brenier",
+      "toNode": "n_ref_benamou_brenier_2000",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_hjb_equation_ref_bellman_1957",
+      "fromNode": "n_sig_hjb_equation",
+      "toNode": "n_ref_bellman_1957",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_noether_conservation_laws_ref_noether_1918",
+      "fromNode": "n_sig_noether_conservation_laws",
+      "toNode": "n_ref_noether_1918",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_closure_theorem_master_koko_srs_algorithm",
+      "fromNode": "n_sig_closure_theorem",
+      "toNode": "n_master_koko_srs_algorithm",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_ollivier_ricci_curvature_ref_ollivier_2009",
+      "fromNode": "n_sig_ollivier_ricci_curvature",
+      "toNode": "n_ref_ollivier_2009",
+      "label": "cites [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_ollivier_ricci_curvature_sig_rationale_ollivier_vs_forman",
+      "fromNode": "n_sig_ollivier_ricci_curvature",
+      "toNode": "n_sig_rationale_ollivier_vs_forman",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_sig_context_sheaf_sig_rationale_sheaf_for_transfer",
+      "fromNode": "n_sig_context_sheaf",
+      "toNode": "n_sig_rationale_sheaf_for_transfer",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_core_loop",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_core_loop",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_word_model",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_word_model",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_userword_model",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_userword_model",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_senses_tag_model",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_senses_tag_model",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_session_model",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_session_model",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_consent_record_model",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_consent_record_model",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_cloud_run_api",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_cloud_run_api",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_security_controls",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_security_controls",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_onboarding_flow",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_onboarding_flow",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_meeting_prep",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_meeting_prep",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_multilingual_typography",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_multilingual_typography",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_koko_character",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_koko_character",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_kotoka_master_prompt_master_brand_identity",
+      "fromNode": "n_master_kotoka_master_prompt",
+      "toNode": "n_master_brand_identity",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_core_loop_master_sensory_tag_engine",
+      "fromNode": "n_master_core_loop",
+      "toNode": "n_master_sensory_tag_engine",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_core_loop_master_koko_srs_algorithm",
+      "fromNode": "n_master_core_loop",
+      "toNode": "n_master_koko_srs_algorithm",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_core_loop_master_session_learning_pathway",
+      "fromNode": "n_master_core_loop",
+      "toNode": "n_master_session_learning_pathway",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_sensory_tag_engine_master_six_sense_channels",
+      "fromNode": "n_master_sensory_tag_engine",
+      "toNode": "n_master_six_sense_channels",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_six_sense_channels_master_senses_tag_model",
+      "fromNode": "n_master_six_sense_channels",
+      "toNode": "n_master_senses_tag_model",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_master_userword_model_master_senses_tag_model",
+      "fromNode": "n_master_userword_model",
+      "toNode": "n_master_senses_tag_model",
+      "label": "shares_data_with [EXTRACTED]"
+    },
+    {
+      "id": "e_master_onboarding_flow_master_three_input_modes",
+      "fromNode": "n_master_onboarding_flow",
+      "toNode": "n_master_three_input_modes",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_onboarding_flow_master_memory_map_logic",
+      "fromNode": "n_master_onboarding_flow",
+      "toNode": "n_master_memory_map_logic",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_master_multilingual_typography_master_font_resolver",
+      "fromNode": "n_master_multilingual_typography",
+      "toNode": "n_master_font_resolver",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_philosophy",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_philosophy",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_color_system",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_color_system",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_typography_system",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_typography_system",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_spacing_system",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_spacing_system",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_elevation_system",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_elevation_system",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_icon_library",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_icon_library",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_koko_animation_system",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_koko_animation_system",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_navigation_architecture",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_navigation_architecture",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_spec_doc_design_evaluation_framework",
+      "fromNode": "n_design_spec_doc",
+      "toNode": "n_design_evaluation_framework",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_philosophy_design_three_laws",
+      "fromNode": "n_design_philosophy",
+      "toNode": "n_design_three_laws",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_design_philosophy_design_rationale_warmth_clarity",
+      "fromNode": "n_design_philosophy",
+      "toNode": "n_design_rationale_warmth_clarity",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_design_three_laws_design_rationale_no_guilt_errors",
+      "fromNode": "n_design_three_laws",
+      "toNode": "n_design_rationale_no_guilt_errors",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_design_color_system_design_mood_tint_overlays",
+      "fromNode": "n_design_color_system",
+      "toNode": "n_design_mood_tint_overlays",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_memory_map_master_memory_map_logic",
+      "fromNode": "n_prd_memory_map",
+      "toNode": "n_master_memory_map_logic",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_master_multilingual_typography_design_typography_system",
+      "fromNode": "n_master_multilingual_typography",
+      "toNode": "n_design_typography_system",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_prd_koko_animation_design_koko_animation_system",
+      "fromNode": "n_prd_koko_animation",
+      "toNode": "n_design_koko_animation_system",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_arch_input_layer_master_three_input_modes",
+      "fromNode": "n_arch_input_layer",
+      "toNode": "n_master_three_input_modes",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_prd_koko_ai_partner_master_koko_character",
+      "fromNode": "n_prd_koko_ai_partner",
+      "toNode": "n_master_koko_character",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_prd_kotoka_master_kotoka_master_prompt",
+      "fromNode": "n_prd_kotoka",
+      "toNode": "n_master_kotoka_master_prompt",
+      "label": "references [INFERRED]"
+    },
+    {
+      "id": "e_prd_design_token_system_design_color_system",
+      "fromNode": "n_prd_design_token_system",
+      "toNode": "n_design_color_system",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_arch_personal_context_tags_master_senses_tag_model",
+      "fromNode": "n_arch_personal_context_tags",
+      "toNode": "n_master_senses_tag_model",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_prd_activation_failure_gap_arch_core_concept",
+      "fromNode": "n_prd_activation_failure_gap",
+      "toNode": "n_arch_core_concept",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_prd_sensory_tag_bar_master_sensory_tag_engine",
+      "fromNode": "n_prd_sensory_tag_bar",
+      "toNode": "n_master_sensory_tag_engine",
+      "label": "implements [INFERRED]"
+    },
+    {
+      "id": "e_arch_kotoka_system_master_kotoka_master_prompt",
+      "fromNode": "n_arch_kotoka_system",
+      "toNode": "n_master_kotoka_master_prompt",
+      "label": "references [INFERRED]"
+    },
+    {
+      "id": "e_arch_onboarding_data_master_onboarding_flow",
+      "fromNode": "n_arch_onboarding_data",
+      "toNode": "n_master_onboarding_flow",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_arch_state_variables_master_userword_model",
+      "fromNode": "n_arch_state_variables",
+      "toNode": "n_master_userword_model",
+      "label": "semantically_similar_to [INFERRED]"
+    }
+  ]
+}

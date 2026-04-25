@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/c/Users/FIIrm/OneDrive/Desktop/DEs/Qwen/money-flutter/flutter/bin/flutter.bat build *)",
+      "Bash(node run_capture.js)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(node -e \"require.resolve\\('@playwright/test'\\)\")",
+      "Bash(npm root *)",
+      "mcp__plugin_oh-my-claudecode_t__state_clear",
+      "Bash(\"C:\\\\Users\\\\FIIrm\\\\flutter\\\\bin\\\\flutter.bat\" run *)",
+      "Bash(C:\\\\Users\\\\FIIrm\\\\flutter\\\\bin\\\\flutter.bat emulators *)",
+      "Bash(claude mcp *)",
+      "Bash(/c/flutter/bin/dart run *)",
+      "mcp__android__screenshot",
+      "mcp__android__get_ui_tree",
+      "mcp__android__tap",
+      "Bash(where flutter *)",
+      "Bash(dir C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat)",
+      "Bash(dir C:\\\\flutter\\\\bin\\\\flutter.bat)",
+      "mcp__android__tap_element",
+      "Bash(flutter build *)",
+      "Bash(adb -s emulator-5554 install -r \"C:\\\\Users\\\\FIIrm\\\\OneDrive\\\\Desktop\\\\Kotoka_appv3\\\\build\\\\app\\\\outputs\\\\flutter-apk\\\\app-debug.apk\")",
+      "Bash(adb -s emulator-5554 shell am start -n com.example.kotoka_app/.MainActivity)",
+      "mcp__android__swipe"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "code-review-graph"
+  ]
+}

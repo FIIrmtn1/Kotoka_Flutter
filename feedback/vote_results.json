@@ -1,0 +1,454 @@
+{
+  "phase": "Phase 1",
+  "date": "2026-04-25",
+  "screenshotsCaptured": true,
+  "totalVoters": 30,
+  "averageScore": 81,
+  "minScore": 41,
+  "maxScore": 100,
+  "passingThreshold": 85,
+  "passed": false,
+  "verdict": "❌ BELOW THRESHOLD — revise and re-test",
+  "distribution": {
+    "excellent": 14,
+    "good": 10,
+    "fair": 5,
+    "poor": 1
+  },
+  "topPositives": [
+    {
+      "feedback": "Onboarding is clear, I knew what to do immediately",
+      "count": 5
+    },
+    {
+      "feedback": "PDPA consent screen explains WHY — I trust this app more",
+      "count": 5
+    },
+    {
+      "feedback": "Sensory tags are a smart idea — never seen this before",
+      "count": 5
+    },
+    {
+      "feedback": "Love the blue color — feels professional and calm",
+      "count": 4
+    },
+    {
+      "feedback": "Koko character feels friendly, not childish",
+      "count": 3
+    }
+  ],
+  "topImprovements": [
+    {
+      "feedback": "Loading animation between screens feels slow",
+      "count": 6
+    },
+    {
+      "feedback": "Need dark mode for late-night use on BTS",
+      "count": 5
+    },
+    {
+      "feedback": "The shop tab — not sure what KotoCoin is from home screen",
+      "count": 5
+    },
+    {
+      "feedback": "Wish I could set multiple target languages",
+      "count": 4
+    },
+    {
+      "feedback": "Want to see more word examples in vocab card",
+      "count": 3
+    }
+  ],
+  "votes": [
+    {
+      "agent": "Pam Suwan",
+      "city": "Bangkok Silom",
+      "age": 28,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 88,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "The streak design motivates me without being aggressive",
+      "improve": "Loading animation between screens feels slow"
+    },
+    {
+      "agent": "Nong Chai",
+      "city": "Bangkok Lat Krabang",
+      "age": 31,
+      "lang": "Thai→ZH",
+      "model": "sonnet",
+      "score": 81,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Vocabulary cards feel personal, not generic",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Mint Pornpan",
+      "city": "Bangkok Sukhumvit",
+      "age": 26,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 97,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "Need dark mode for late-night use on BTS"
+    },
+    {
+      "agent": "Arm Kittipong",
+      "city": "Bangkok Silom",
+      "age": 29,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 88,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "Would love Mandarin tones shown more prominently"
+    },
+    {
+      "agent": "Fah Natnicha",
+      "city": "Bangkok Ari",
+      "age": 24,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 41,
+      "warmth": 2,
+      "ease": 2,
+      "wouldUseDaily": "No",
+      "loves": "Koko character feels friendly, not childish",
+      "improve": "Need dark mode for late-night use on BTS"
+    },
+    {
+      "agent": "Top Phichit",
+      "city": "Bangkok Asoke",
+      "age": 33,
+      "lang": "Thai→ZH",
+      "model": "sonnet",
+      "score": 73,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "Loading animation between screens feels slow"
+    },
+    {
+      "agent": "Nam Siriporn",
+      "city": "Bangkok Chatuchak",
+      "age": 27,
+      "lang": "Thai→EN",
+      "model": "sonnet",
+      "score": 87,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Vocabulary cards feel personal, not generic",
+      "improve": "Wish I could set multiple target languages"
+    },
+    {
+      "agent": "Oak Wanchai",
+      "city": "Bangkok Bang Na",
+      "age": 35,
+      "lang": "Thai→VI",
+      "model": "sonnet",
+      "score": 67,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "The shop tab — not sure what KotoCoin is from home screen"
+    },
+    {
+      "agent": "Rina Dewi",
+      "city": "Jakarta Sudirman",
+      "age": 25,
+      "lang": "ID→EN",
+      "model": "haiku",
+      "score": 81,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "Need offline mode indicator — my internet cuts out"
+    },
+    {
+      "agent": "Budi Santoso",
+      "city": "Jakarta SCBD",
+      "age": 30,
+      "lang": "ID→EN",
+      "model": "haiku",
+      "score": 80,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "The shop tab — not sure what KotoCoin is from home screen"
+    },
+    {
+      "agent": "Siti Rahayu",
+      "city": "Jakarta Kuningan",
+      "age": 28,
+      "lang": "ID→EN",
+      "model": "haiku",
+      "score": 76,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Clean, no clutter — I can use this during commute",
+      "improve": "Loading animation between screens feels slow"
+    },
+    {
+      "agent": "Arif Permana",
+      "city": "Jakarta Thamrin",
+      "age": 32,
+      "lang": "ID→ZH",
+      "model": "haiku",
+      "score": 84,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Language selection with flags is very intuitive",
+      "improve": "Wish I could set multiple target languages"
+    },
+    {
+      "agent": "Dewi Kusuma",
+      "city": "Jakarta Gatot Subroto",
+      "age": 23,
+      "lang": "ID→EN",
+      "model": "haiku",
+      "score": 100,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "The streak design motivates me without being aggressive",
+      "improve": "Loading animation between screens feels slow"
+    },
+    {
+      "agent": "Wei Ling Tan",
+      "city": "KL KLCC",
+      "age": 27,
+      "lang": "MY→EN",
+      "model": "haiku",
+      "score": 72,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "Goal descriptions could be more specific to my job"
+    },
+    {
+      "agent": "Aisha Rahman",
+      "city": "KL Bukit Bintang",
+      "age": 29,
+      "lang": "MY→ZH",
+      "model": "haiku",
+      "score": 85,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "Need dark mode for late-night use on BTS"
+    },
+    {
+      "agent": "Raj Krishnan",
+      "city": "KL Damansara",
+      "age": 31,
+      "lang": "TA→EN",
+      "model": "haiku",
+      "score": 69,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "Sensory tags are a smart idea — never seen this before",
+      "improve": "The shop tab — not sure what KotoCoin is from home screen"
+    },
+    {
+      "agent": "Lisa Chen",
+      "city": "KL Mont Kiara",
+      "age": 26,
+      "lang": "ZH→EN",
+      "model": "haiku",
+      "score": 88,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Koko character feels friendly, not childish",
+      "improve": "Wish I could set multiple target languages"
+    },
+    {
+      "agent": "Alex Lim",
+      "city": "Singapore CBD",
+      "age": 28,
+      "lang": "EN→ZH",
+      "model": "haiku",
+      "score": 78,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Sensory tags are a smart idea — never seen this before",
+      "improve": "Loading animation between screens feels slow"
+    },
+    {
+      "agent": "Priya Nair",
+      "city": "Singapore Raffles",
+      "age": 30,
+      "lang": "EN→ZH",
+      "model": "haiku",
+      "score": 63,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "James Tan",
+      "city": "Singapore Marina Bay",
+      "age": 33,
+      "lang": "EN→TH",
+      "model": "haiku",
+      "score": 76,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "App doesn't feel like a typical boring language app",
+      "improve": "Need offline mode indicator — my internet cuts out"
+    },
+    {
+      "agent": "Ana Santos",
+      "city": "Manila Makati",
+      "age": 25,
+      "lang": "FIL→EN",
+      "model": "haiku",
+      "score": 90,
+      "warmth": 5,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Love the blue color — feels professional and calm",
+      "improve": "Want to see more word examples in vocab card"
+    },
+    {
+      "agent": "Miguel Reyes",
+      "city": "Manila BGC",
+      "age": 29,
+      "lang": "FIL→EN",
+      "model": "haiku",
+      "score": 69,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "Koko character feels friendly, not childish",
+      "improve": "The shop tab — not sure what KotoCoin is from home screen"
+    },
+    {
+      "agent": "Grace Villanueva",
+      "city": "Manila Ortigas",
+      "age": 27,
+      "lang": "FIL→EN",
+      "model": "haiku",
+      "score": 93,
+      "warmth": 5,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Sensory tags are a smart idea — never seen this before",
+      "improve": "Need offline mode indicator — my internet cuts out"
+    },
+    {
+      "agent": "Carlo Mendoza",
+      "city": "Manila Alabang",
+      "age": 32,
+      "lang": "FIL→ES",
+      "model": "haiku",
+      "score": 92,
+      "warmth": 5,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Sensory tags are a smart idea — never seen this before",
+      "improve": "Wish I could set multiple target languages"
+    },
+    {
+      "agent": "Linh Nguyen",
+      "city": "HCMC District 1",
+      "age": 24,
+      "lang": "VI→EN",
+      "model": "haiku",
+      "score": 89,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "PDPA consent screen explains WHY — I trust this app more",
+      "improve": "Goal descriptions could be more specific to my job"
+    },
+    {
+      "agent": "Tuan Pham",
+      "city": "HCMC District 3",
+      "age": 30,
+      "lang": "VI→EN",
+      "model": "haiku",
+      "score": 57,
+      "warmth": 3,
+      "ease": 3,
+      "wouldUseDaily": "Maybe",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "Loading animation between screens feels slow"
+    },
+    {
+      "agent": "Huong Tran",
+      "city": "Hanoi Hoan Kiem",
+      "age": 28,
+      "lang": "VI→EN",
+      "model": "haiku",
+      "score": 88,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "The shop tab — not sure what KotoCoin is from home screen"
+    },
+    {
+      "agent": "Thida Kyaw",
+      "city": "Yangon Pabedan",
+      "age": 26,
+      "lang": "MY→EN",
+      "model": "haiku",
+      "score": 100,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Sensory tags are a smart idea — never seen this before",
+      "improve": "Would love Mandarin tones shown more prominently"
+    },
+    {
+      "agent": "Sophal Chhun",
+      "city": "Phnom Penh BKK1",
+      "age": 29,
+      "lang": "KH→EN",
+      "model": "haiku",
+      "score": 84,
+      "warmth": 4,
+      "ease": 4,
+      "wouldUseDaily": "Yes",
+      "loves": "Onboarding is clear, I knew what to do immediately",
+      "improve": "Need dark mode for late-night use on BTS"
+    },
+    {
+      "agent": "Kham Phommasack",
+      "city": "Vientiane Chanthabouly",
+      "age": 31,
+      "lang": "LO→EN",
+      "model": "haiku",
+      "score": 94,
+      "warmth": 5,
+      "ease": 5,
+      "wouldUseDaily": "Yes",
+      "loves": "Clean, no clutter — I can use this during commute",
+      "improve": "Need dark mode for late-night use on BTS"
+    }
+  ]
+}

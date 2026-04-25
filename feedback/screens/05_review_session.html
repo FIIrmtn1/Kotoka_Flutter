@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kotoka – Review Session</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #E5E7EB;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Dark mode toggle button */
+    .dark-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #1E293B;
+      color: #F9FAFB;
+      border: 1px solid #374151;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 1000;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+    body:not(.dark) .dark-toggle {
+      background: #F3F4F6;
+      color: #111827;
+      border-color: #D1D5DB;
+    }
+
+    /* Dark mode page */
+    body.dark {
+      background: #0F172A;
+    }
+
+    .phone {
+      width: 390px;
+      min-height: 844px;
+      background: #EFF6FF;
+      border-radius: 40px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    body.dark .phone {
+      background: #1E293B;
+    }
+
+    /* Mood tint */
+    .mood-tint {
+      position: absolute;
+      inset: 0;
+      background: rgba(16,185,129,0.06);
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 40px;
+    }
+
+    /* AppBar */
+    .appbar {
+      height: 56px;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    body.dark .appbar {
+      background: #0C1A3A;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .appbar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      color: #111827;
+    }
+
+    body.dark .appbar-left {
+      color: #F9FAFB;
+    }
+
+    .back-arrow {
+      font-size: 18px;
+      color: #111827;
+      cursor: pointer;
+    }
+
+    body.dark .back-arrow {
+      color: #F9FAFB;
+    }
+
+    .progress-text {
+      font-size: 14px;
+      color: #6B7280;
+      font-weight: 400;
+    }
+
+    body.dark .progress-text {
+      color: #9CA3AF;
+    }
+
+    /* Session progress bar */
+    .session-progress-bar {
+      width: 100%;
+      height: 4px;
+      background: #DBEAFE;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    body.dark .session-progress-bar {
+      background: #1E3A5F;
+    }
+
+    .session-progress-fill {
+      height: 100%;
+      background: #1E3A8A;
+      width: 37.5%;
+    }
+
+    body.dark .session-progress-fill {
+      background: #3B82F6;
+    }
+
+    /* Offline banner */
+    .offline-banner {
+      background: #FEF3C7;
+      color: #92400E;
+      font-size: 12px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    body.dark .offline-banner {
+      background: #1F2937;
+      color: #93C5FD;
+    }
+
+    .offline-banner-text {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .offline-dismiss {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      color: inherit;
+      padding: 0 0 0 8px;
+      opacity: 0.7;
+      font-family: inherit;
+    }
+    .offline-dismiss:hover { opacity: 1; }
+
+    /* Body */
+    .body {
+      flex: 1;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 80px;
+      gap: 0;
+    }
+
+    /* Session type chip */
+    .session-chip {
+      background: #DBEAFE;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1E3A8A;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    body.dark .session-chip {
+      background: #1E3A5F;
+      color: #93C5FD;
+    }
+
+    /* Big vocab card */
+    .vocab-card-big {
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    body.dark .vocab-card-big {
+      background: #1F2937;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Sensory tags */
+    .sensory-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .tag-chip {
+      background: #DBEAFE;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #1E3A8A;
+      white-space: nowrap;
+    }
+
+    body.dark .tag-chip {
+      background: #1E3A5F;
+      color: #93C5FD;
+    }
+
+    .vocab-word-big {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.2;
+      color: #1E3A8A;
+    }
+
+    body.dark .vocab-word-big {
+      color: #93C5FD;
+    }
+
+    .vocab-romanization {
+      font-weight: 400;
+      font-size: 18px;
+      color: #6B7280;
+      margin-top: 8px;
+    }
+
+    body.dark .vocab-romanization {
+      color: #9CA3AF;
+    }
+
+    /* Thai romanization line — minimum 15px */
+    .vocab-romanization-thai {
+      font-weight: 400;
+      font-size: 15px;
+      color: #6B7280;
+      margin-top: 4px;
+    }
+
+    body.dark .vocab-romanization-thai {
+      color: #9CA3AF;
+    }
+
+    .vocab-definition {
+      font-weight: 400;
+      font-size: 14px;
+      color: #374151;
+      margin-top: 12px;
+      max-width: 240px;
+      line-height: 1.6;
+    }
+
+    body.dark .vocab-definition {
+      color: #D1D5DB;
+    }
+
+    /* Example sentence */
+    .vocab-example {
+      font-size: 13px;
+      font-style: italic;
+      color: #6B7280;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #E5E7EB;
+      line-height: 1.5;
+      width: 100%;
+      text-align: center;
+    }
+
+    body.dark .vocab-example {
+      color: #9CA3AF;
+      border-top-color: #374151;
+    }
+
+    /* Pronunciation button */
+    .pron-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #DBEAFE;
+      background: #FFFFFF;
+      color: #1E3A8A;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: background 0.15s;
+    }
+    .pron-btn:hover { background: #EFF6FF; }
+
+    body.dark .pron-btn {
+      background: #1F2937;
+      border-color: #1E3A5F;
+      color: #93C5FD;
+    }
+    body.dark .pron-btn:hover { background: #1E3A5F; }
+
+    /* Divider */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #E5E7EB;
+      margin: 24px 0;
+    }
+
+    body.dark .divider {
+      background: #374151;
+    }
+
+    .remember-label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    body.dark .remember-label {
+      color: #D1D5DB;
+    }
+
+    /* Answer buttons */
+    .answer-btns {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-answer {
+      width: 100%;
+      height: 56px;
+      border-radius: 999px;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-answer:hover { opacity: 0.85; }
+
+    .btn-yes {
+      background: #10B981;
+      color: #FFFFFF;
+      border: none;
+    }
+
+    .btn-almost {
+      background: #FFFFFF;
+      color: #F59E0B;
+      border: 2px solid #F59E0B;
+    }
+
+    body.dark .btn-almost {
+      background: #1F2937;
+    }
+
+    .btn-no {
+      background: #FFFFFF;
+      color: #F87171;
+      border: 2px solid #F87171;
+    }
+
+    body.dark .btn-no {
+      background: #1F2937;
+    }
+
+    /* Koko encouragement */
+    .koko-encourage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .koko-small {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3B82F6, #1E3A8A);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .koko-small::before,
+    .koko-small::after {
+      content: '';
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      top: 18px;
+    }
+    .koko-small::before { left: 14px; }
+    .koko-small::after  { right: 14px; }
+
+    .koko-smile-sm {
+      position: absolute;
+      width: 18px;
+      height: 9px;
+      border: 1.5px solid #FFFFFF;
+      border-top: none;
+      border-radius: 0 0 9px 9px;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .koko-caption {
+      font-size: 12px;
+      color: #6B7280;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    body.dark .koko-caption {
+      color: #9CA3AF;
+    }
+
+    /* Bottom nav */
+    .bottom-nav {
+      height: 64px;
+      background: #FFFFFF;
+      border-top: 1px solid #E5E7EB;
+      box-shadow: 0 -1px 3px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      border-radius: 0 0 40px 40px;
+    }
+
+    body.dark .bottom-nav {
+      background: #0C1A3A;
+      border-top-color: #374151;
+    }
+
+    .nav-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .nav-tab.active {
+      background: #DBEAFE;
+    }
+
+    body.dark .nav-tab.active {
+      background: #1E3A5F;
+    }
+
+    .nav-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .nav-label {
+      font-size: 11px;
+      font-weight: 400;
+      color: #9CA3AF;
+      line-height: 1;
+    }
+
+    .nav-tab.active .nav-label {
+      font-weight: 600;
+      color: #1E3A8A;
+    }
+
+    body.dark .nav-tab.active .nav-label {
+      color: #93C5FD;
+    }
+  </style>
+</head>
+<body class="dark">
+  <button class="dark-toggle" onclick="toggleDark(this)">☀️ Light</button>
+
+  <div class="phone">
+    <div class="mood-tint"></div>
+
+    <!-- AppBar -->
+    <div class="appbar">
+      <div class="appbar-left">
+        <span class="back-arrow">&#8592;</span>
+        <span>Review Session</span>
+      </div>
+      <span class="progress-text">3 / 8</span>
+    </div>
+
+    <!-- Session progress bar -->
+    <div class="session-progress-bar">
+      <div class="session-progress-fill"></div>
+    </div>
+
+    <!-- Offline Banner -->
+    <div class="offline-banner" id="offlineBanner">
+      <span class="offline-banner-text">📡 Offline mode — words synced locally</span>
+      <button class="offline-dismiss" onclick="document.getElementById('offlineBanner').style.display='none'">dismiss ✕</button>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+
+      <!-- Session type chip -->
+      <div class="session-chip">📖 Flashcard</div>
+
+      <!-- Big Vocab Card -->
+      <div class="vocab-card-big">
+        <!-- Sensory tags -->
+        <div class="sensory-tags">
+          <span class="tag-chip">📍 Conference Room B</span>
+          <span class="tag-chip">☀️ Morning</span>
+          <span class="tag-chip">😊 Focused</span>
+        </div>
+
+        <div class="vocab-word-big">proposal</div>
+        <div class="vocab-romanization">โปรโพซัล</div>
+        <div class="vocab-romanization-thai">proh-poh-san</div>
+        <div class="vocab-definition">a formal suggestion or plan</div>
+
+        <!-- Example sentence -->
+        <div class="vocab-example">[Example] "Please send the deliverable by end of day."</div>
+
+        <!-- Pronunciation button -->
+        <button class="pron-btn" title="Play pronunciation">🔊</button>
+
+        <div class="divider"></div>
+        <div class="remember-label">Did you remember?</div>
+      </div>
+
+      <!-- Answer buttons -->
+      <div class="answer-btns">
+        <button class="btn-answer btn-yes">
+          <span>✓</span>
+          <span>Yes, easily</span>
+        </button>
+        <button class="btn-answer btn-almost">
+          <span>↻</span>
+          <span>Almost</span>
+        </button>
+        <button class="btn-answer btn-no">
+          <span>✗</span>
+          <span>No, show me</span>
+        </button>
+      </div>
+
+      <!-- Koko encouragement -->
+      <div class="koko-encourage">
+        <div class="koko-small">
+          <div class="koko-smile-sm"></div>
+        </div>
+        <div class="koko-caption">You've reviewed this word 3 times</div>
+      </div>
+
+    </div>
+
+    <!-- Bottom nav — Review tab active -->
+    <div class="bottom-nav">
+      <div class="nav-tab">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+      </div>
+      <div class="nav-tab">
+        <span class="nav-icon">📷</span>
+        <span class="nav-label">Snap</span>
+      </div>
+      <div class="nav-tab active">
+        <span class="nav-icon">📖</span>
+        <span class="nav-label">Review</span>
+      </div>
+      <div class="nav-tab">
+        <span class="nav-icon">🛍️</span>
+        <span class="nav-label">Shop</span>
+      </div>
+      <div class="nav-tab">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profile</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleDark(btn) {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    }
+  </script>
+</body>
+</html>
