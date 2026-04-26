@@ -575,4 +575,28 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get langSelectPair => 'Seleccionar este par';
+
+  @override
+  String get reviewTipsHeading => 'Consejos de hoy';
+
+  @override
+  String get reviewTip1 =>
+      'Repasar hoy fija las palabras antes de que las olvides.';
+
+  @override
+  String get reviewTip2 =>
+      'Sesiones cortas (10 min) superan a las largas — hazlo a diario.';
+
+  @override
+  String get reviewTip3 => 'Tu precisión mejora cada vez que repasas.';
+
+  @override
+  String get profileMapEmptyDesc =>
+      'Captura palabras en cafés, oficinas y lugares que visitas — aparecerán aquí en tu mapa.';
+
+  @override
+  String get profileMapEmptyCta => 'Haz tu primer Snap →';
+
+  @override
+  String get reviewIncludesSpeaking => 'Incluye práctica oral';
 }

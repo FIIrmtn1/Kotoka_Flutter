@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
+import 'package:kotoka_app/core/widgets/koko_emoji.dart' show KokoEmoji, KokoFlag;
+import 'package:kotoka_app/core/providers/locale_provider.dart';
 import 'package:kotoka_app/core/widgets/kotoka_button.dart';
 import 'package:kotoka_app/main.dart';
 
@@ -191,23 +193,37 @@ class _DisplayLanguageRow extends ConsumerWidget {
               items: _kUILangs
                   .map((lang) => DropdownMenuItem(
                         value: lang.locale,
-                        child: Text('${lang.flag}  ${lang.name}',
-                            style: const TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w500)),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            KokoFlag(emoji: lang.flag, size: 18, radius: 3),
+                            const SizedBox(width: 8),
+                            Text(lang.name,
+                                style: const TextStyle(
+                                    fontSize: 13, fontWeight: FontWeight.w500)),
+                          ],
+                        ),
                       ))
                   .toList(),
               onChanged: (loc) {
                 if (loc != null) {
-                  ref.read(localeProvider.notifier).state = loc;
+                  ref.read(localeProvider.notifier).setLocale(loc);
                 }
               },
               selectedItemBuilder: (_) => _kUILangs
                   .map((lang) => Center(
-                        child: Text(
-                          '${lang.flag}  ${lang.name}',
-                          style: KTypography.getStyle(KTextStyle.label, locale)
-                              .copyWith(
-                                  color: KColors.brand500, letterSpacing: 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            KokoFlag(emoji: lang.flag, size: 16, radius: 3),
+                            const SizedBox(width: 6),
+                            Text(
+                              lang.name,
+                              style: KTypography.getStyle(KTextStyle.label, locale)
+                                  .copyWith(
+                                      color: KColors.brand500, letterSpacing: 0),
+                            ),
+                          ],
                         ),
                       ))
                   .toList(),
@@ -265,21 +281,35 @@ class _LangDropdown extends StatelessWidget {
           items: items
               .map((lang) => DropdownMenuItem(
                     value: lang,
-                    child: Text('${lang.flag}  ${lang.name}',
-                        style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500)),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        KokoFlag(emoji: lang.flag, size: 20, radius: 3),
+                        const SizedBox(width: 8),
+                        Text(lang.name,
+                            style: const TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w500)),
+                      ],
+                    ),
                   ))
               .toList(),
           onChanged: onChanged,
           selectedItemBuilder: (_) => items
               .map((lang) => Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(
-                      '${lang.flag}  ${lang.name}',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: KColors.brand500),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        KokoFlag(emoji: lang.flag, size: 20, radius: 3),
+                        const SizedBox(width: 6),
+                        Text(
+                          lang.name,
+                          style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: KColors.brand500),
+                        ),
+                      ],
                     ),
                   ))
               .toList(),

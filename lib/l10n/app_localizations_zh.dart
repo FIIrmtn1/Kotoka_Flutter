@@ -556,4 +556,25 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get langSelectPair => '选择此语言对';
+
+  @override
+  String get reviewTipsHeading => '今日小贴士';
+
+  @override
+  String get reviewTip1 => '今天复习，在遗忘前巩固词汇。';
+
+  @override
+  String get reviewTip2 => '短时练习（10分钟）胜过长时间——每天坚持。';
+
+  @override
+  String get reviewTip3 => '每次复习都能提高你的准确率。';
+
+  @override
+  String get profileMapEmptyDesc => '在咖啡馆、办公室和您去过的地方拍下单词 — 它们将显示在您的地图上。';
+
+  @override
+  String get profileMapEmptyCta => '开始第一次拍摄 →';
+
+  @override
+  String get reviewIncludesSpeaking => '包含口语练习';
 }

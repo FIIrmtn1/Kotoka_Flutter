@@ -565,4 +565,26 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get langSelectPair => 'เลือกคู่นี้';
+
+  @override
+  String get reviewTipsHeading => 'เคล็ดลับวันนี้';
+
+  @override
+  String get reviewTip1 => 'การทบทวนวันนี้ช่วยให้คำศัพท์ติดแน่นก่อนที่คุณจะลืม';
+
+  @override
+  String get reviewTip2 => 'เซสชันสั้น (10 นาที) ดีกว่าเซสชันยาว — ทำทุกวัน';
+
+  @override
+  String get reviewTip3 => 'ความแม่นยำของคุณดีขึ้นทุกครั้งที่ทบทวน';
+
+  @override
+  String get profileMapEmptyDesc =>
+      'สแนปคำศัพท์ที่คาเฟ่ ออฟฟิศ และสถานที่ที่คุณไป — แล้วมันจะปรากฏบนแผนที่ของคุณ';
+
+  @override
+  String get profileMapEmptyCta => 'สแนปครั้งแรกของคุณ →';
+
+  @override
+  String get reviewIncludesSpeaking => 'มีการฝึกพูดรวมอยู่ด้วย';
 }

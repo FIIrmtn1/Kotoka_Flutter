@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kotoka - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#6b7a7a",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-fixed": "#002021",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-variant": "#d3e4fe",
+                    "on-error-container": "#93000a",
+                    "secondary": "#565e74",
+                    "secondary-fixed": "#dae2fd",
+                    "on-tertiary-container": "#703600",
+                    "on-secondary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#954a00",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "on-primary-container": "#004e50",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "tertiary-fixed-dim": "#ffb785",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-container": "#dae2fd",
+                    "on-surface": "#0b1c30",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed-variant": "#004f51",
+                    "inverse-primary": "#37dbdf",
+                    "on-background": "#0b1c30",
+                    "inverse-surface": "#213145",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#5c647a",
+                    "primary-fixed-dim": "#37dbdf",
+                    "on-surface-variant": "#3c4949",
+                    "primary-container": "#00c8cc",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#5ff8fb",
+                    "surface-tint": "#00696c",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-container": "#ff9c51",
+                    "on-primary": "#ffffff",
+                    "primary": "#00696c",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "outline-variant": "#bac9c9",
+                    "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "xxxl": "64px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["IBM Plex Sans"],
+                    "h3": ["IBM Plex Sans"],
+                    "body-lg": ["IBM Plex Sans"],
+                    "h1": ["IBM Plex Sans"],
+                    "caption": ["IBM Plex Sans"],
+                    "label-md": ["IBM Plex Sans"],
+                    "h2": ["IBM Plex Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: #f8f9ff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Left Side: Visual/Branding (Following ONB-02 Style Layout) -->
+<section class="hidden md:flex md:w-1/2 lg:w-3/5 bg-primary relative overflow-hidden items-center justify-center p-xl">
+<div class="absolute inset-0 opacity-20">
+<img alt="abstract" class="w-full h-full object-cover" data-alt="Abstract fluid shapes in shades of teal and cyan with soft light reflecting off smooth surfaces and gentle gradients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmkrEShyeG2KD5QEVk0Cknvpmom5F8HpsI4MnJDZV54jGJPmxeJjygOM0LCx-kiKaWqNdnahUAm9ndcSeG0ALStUaPemgIyQCGLd7clqjEoMLieqD4lkYEohGdW-SAxawkv23j4rgN7yUmuYDkMM6hEGuQs74b6MXxdGEv3fsmgd1IKxqq9r97zuf5lLQ84K5HbwFxbRZTv7GVSBk5SkXWjnqwxAkSgN36v8_c0E9AjhlB26Y9Jo1zxBYyEiUQp7Uof5f9ahsOTVj4"/>
+</div>
+<div class="relative z-10 max-w-lg text-on-primary">
+<h1 class="font-h1 text-h1 mb-lg tracking-tight">Kotoka</h1>
+<p class="font-body-lg text-body-lg opacity-90 leading-relaxed">
+                Your memory companion. Designed for clarity, reliability, and total peace of mind. Revisit your moments through a lucid minimalism experience.
+            </p>
+<div class="mt-xxl grid grid-cols-2 gap-md">
+<div class="p-lg bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
+<span class="material-symbols-outlined mb-sm text-primary-fixed">cloud_done</span>
+<h3 class="font-label-md text-label-md font-bold mb-xs">Safe &amp; Secure</h3>
+<p class="font-caption text-caption opacity-80">Encrypted storage for your most private memories.</p>
+</div>
+<div class="p-lg bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
+<span class="material-symbols-outlined mb-sm text-primary-fixed">auto_awesome</span>
+<h3 class="font-label-md text-label-md font-bold mb-xs">AI Insights</h3>
+<p class="font-caption text-caption opacity-80">Intelligent categorization and search for your photos.</p>
+</div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary-container rounded-full blur-3xl opacity-30"></div>
+<div class="absolute -top-24 -right-24 w-80 h-80 bg-secondary rounded-full blur-3xl opacity-20"></div>
+</section>
+<!-- Right Side: Auth Form -->
+<main class="w-full md:w-1/2 lg:w-2/5 flex flex-col justify-center items-center p-lg md:p-xl lg:p-xxl bg-white min-h-screen">
+<div class="w-full max-w-sm">
+<!-- Mobile Brand Header -->
+<div class="md:hidden flex flex-col items-center mb-xl">
+<div class="w-16 h-16 bg-primary-container flex items-center justify-center rounded-xl mb-md">
+<span class="material-symbols-outlined text-on-primary-container text-4xl">psychology</span>
+</div>
+<h2 class="font-h2 text-h2 text-primary font-bold">Kotoka</h2>
+</div>
+<div class="mb-xl text-center md:text-left">
+<h2 class="font-h2 text-h2 mb-sm text-on-surface">Welcome back</h2>
+<p class="font-body-md text-body-md text-outline">Please enter your details to sign in</p>
+</div>
+<!-- Social Sign In Buttons -->
+<div class="flex flex-col gap-md mb-xl">
+<button class="w-full flex items-center justify-center gap-sm py-md px-lg border border-outline-variant rounded-xl font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors duration-200 active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                    Continue with Google
+                </button>
+<button class="w-full flex items-center justify-center gap-sm py-md px-lg bg-black text-white rounded-xl font-label-md text-label-md hover:bg-slate-900 transition-colors duration-200 active:scale-[0.98]">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.702z"></path>
+</svg>
+                    Continue with Apple
+                </button>
+</div>
+<!-- Divider -->
+<div class="relative flex items-center mb-xl">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 text-caption font-caption text-outline uppercase tracking-widest">or sign in with email</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Email Form -->
+<form class="space-y-lg" onsubmit="return false;">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs ml-1">Email address</label>
+<input class="w-full px-lg py-md rounded-xl border border-outline-variant focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 outline-none transition-all duration-200 font-body-md text-body-md placeholder:text-outline-variant" placeholder="name@company.com" type="email"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-xs ml-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Password</label>
+<a class="font-caption text-caption text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<input class="w-full px-lg py-md rounded-xl border border-outline-variant focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 outline-none transition-all duration-200 font-body-md text-body-md placeholder:text-outline-variant" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-outline-variant hover:text-outline" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-sm px-1">
+<input class="w-5 h-5 rounded-md border-outline-variant text-primary focus:ring-primary" id="remember" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface-variant cursor-pointer" for="remember">Remember for 30 days</label>
+</div>
+<button class="w-full py-md bg-primary-container text-on-primary-container font-label-md text-label-md font-bold rounded-xl shadow-sm hover:shadow-md transition-all duration-200 active:scale-95">
+                    Sign in to Kotoka
+                </button>
+</form>
+<p class="mt-xl text-center font-body-md text-body-md text-on-surface-variant">
+                Don't have an account? <a class="text-primary font-bold hover:underline" href="#">Sign up for free</a>
+</p>
+<!-- Footer Links -->
+<div class="mt-xxxl flex justify-center gap-lg font-caption text-caption text-outline opacity-60">
+<a class="hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</main>
+<!-- Shell Suppression applied: No Nav Bars for Transactional/Auth Auth flow -->
+</body></html>

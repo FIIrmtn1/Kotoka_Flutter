@@ -40,13 +40,12 @@ class _SnapResultsScreenState extends ConsumerState<SnapResultsScreen> {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: KColors.brand50,
       appBar: AppBar(
-        backgroundColor: KColors.brand50,
         elevation: KElevation.elevation0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: KColors.neutral900),
+          icon: Icon(Icons.arrow_back, color: theme.colorScheme.onSurface),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Column(
@@ -55,7 +54,7 @@ class _SnapResultsScreenState extends ConsumerState<SnapResultsScreen> {
             Text(
               l10n.snapResultsWordsFound(12), //MOCKDATA
               style: KTypography.getStyle(KTextStyle.h4, locale)
-                  .copyWith(color: KColors.neutral900),
+                  .copyWith(color: theme.colorScheme.onSurface),
             ),
           ],
         ),
@@ -111,7 +110,7 @@ class _SnapResultsScreenState extends ConsumerState<SnapResultsScreen> {
                             horizontal: KSpacing.sp16,
                           ),
                           decoration: BoxDecoration(
-                            color: KColors.neutral0,
+                            color: Theme.of(context).cardColor,
                             borderRadius: KRadius.md,
                             border: Border.all(color: KColors.borderDefault),
                           ),

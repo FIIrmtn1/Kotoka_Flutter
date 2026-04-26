@@ -59,16 +59,15 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: KColors.brand50,
       appBar: AppBar(
-        backgroundColor: KColors.brand50,
         elevation: KElevation.elevation0,
         leading: BackButton(color: KColors.brand500),
         title: Text(
           l10n.levelSelectTitle,
           style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: KColors.neutral900),
+              .copyWith(color: theme.colorScheme.onSurface),
         ),
       ),
       body: SafeArea(
@@ -80,7 +79,7 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
               Text(
                 l10n.levelSelectSubtitle,
                 style: KTypography.getStyle(KTextStyle.body, locale)
-                    .copyWith(color: KColors.neutral700),
+                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
               const SizedBox(height: KSpacing.sp24),
               Expanded(
@@ -143,7 +142,7 @@ class _LevelCard extends StatelessWidget {
         duration: KMotion.fast,
         padding: const EdgeInsets.all(KSpacing.sp16),
         decoration: BoxDecoration(
-          color: isSelected ? KColors.brand100 : KColors.neutral0,
+          color: isSelected ? KColors.brand100 : Theme.of(context).cardColor,
           borderRadius: KRadius.md,
           border: Border.all(
             color: isSelected ? KColors.brand500 : KColors.neutral200,
@@ -169,7 +168,7 @@ class _LevelCard extends StatelessWidget {
                         .copyWith(
                             color: isSelected
                                 ? KColors.brand500
-                                : KColors.neutral900),
+                                : Theme.of(context).colorScheme.onSurface),
                   ),
                   const SizedBox(height: KSpacing.sp4),
                   Text(

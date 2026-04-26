@@ -33,16 +33,15 @@ class _SnapTextScreenState extends ConsumerState<SnapTextScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: KColors.brand50,
       appBar: AppBar(
-        backgroundColor: KColors.brand50,
         elevation: KElevation.elevation0,
         title: Text(
           l10n.snapTitle,
           style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: KColors.neutral900),
+              .copyWith(color: theme.colorScheme.onSurface),
         ),
       ),
       body: SafeArea(
@@ -65,7 +64,7 @@ class _SnapTextScreenState extends ConsumerState<SnapTextScreen> {
               // Text field
               Container(
                 decoration: BoxDecoration(
-                  color: KColors.neutral0,
+                  color: Theme.of(context).cardColor,
                   borderRadius: KRadius.md,
                   border: Border.all(color: KColors.borderDefault),
                   boxShadow: KElevation.shadow1,

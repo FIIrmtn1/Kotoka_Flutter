@@ -191,7 +191,7 @@ class AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: KRadius.lg,
           side: BorderSide(
-            color: isDark ? KColors.neutral700 : KColors.borderDefault,
+            color: isDark ? KColorsDark.border : KColors.borderDefault,
             width: 1.0,
           ),
         ),
@@ -201,7 +201,7 @@ class AppTheme {
       // Bottom navigation bar
       // ----------------------------------------------------------------
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: isDark ? KColors.neutral900 : KColors.surfacePrimary,
+        backgroundColor: isDark ? KColorsDark.bgPage : KColors.surfacePrimary,
         selectedItemColor: KColors.brand600,
         unselectedItemColor: KColors.neutral500,
         elevation: KElevation.elevation2,
@@ -254,7 +254,7 @@ class AppTheme {
       // Chip
       // ----------------------------------------------------------------
       chipTheme: ChipThemeData(
-        backgroundColor: isDark ? KColors.neutral800 : KColors.neutral100,
+        backgroundColor: isDark ? KColorsDark.bgCard : KColors.neutral100,
         selectedColor: KColors.brand100,
         disabledColor: KColors.neutral200,
         labelStyle: const TextStyle(
@@ -293,7 +293,7 @@ class AppTheme {
       // Snack bar
       // ----------------------------------------------------------------
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: isDark ? KColors.neutral700 : KColors.neutral900,
+        backgroundColor: isDark ? KColorsDark.bgCard : KColors.neutral900,
         contentTextStyle: const TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 14.0,
@@ -307,7 +307,7 @@ class AppTheme {
       // Dialog
       // ----------------------------------------------------------------
       dialogTheme: DialogThemeData(
-        backgroundColor: isDark ? KColors.neutral800 : KColors.surfacePrimary,
+        backgroundColor: isDark ? KColorsDark.bgCard : KColors.surfacePrimary,
         elevation: KElevation.elevation4,
         shape: RoundedRectangleBorder(borderRadius: KRadius.xl),
         titleTextStyle: TextStyle(
@@ -367,7 +367,7 @@ class AppTheme {
     onPrimaryContainer: KColors.neutral0,
     secondary: KColors.brand400,     // bright cyan accent
     onSecondary: KColors.neutral900,
-    secondaryContainer: KColors.neutral800,
+    secondaryContainer: KColorsDark.bgCard,
     onSecondaryContainer: KColors.brand400,
     tertiary: KColors.info300,
     onTertiary: KColors.neutral900,
@@ -377,9 +377,9 @@ class AppTheme {
     onError: KColors.neutral900,
     errorContainer: KColors.error700,
     onErrorContainer: KColors.error100,
-    surface: KColors.neutral900,
+    surface: KColorsDark.bgPage,
     onSurface: KColors.neutral50,
-    surfaceContainerHighest: KColors.neutral800,
+    surfaceContainerHighest: KColorsDark.bgCard,
     onSurfaceVariant: KColors.neutral400,
     outline: KColors.neutral700,
     outlineVariant: KColors.neutral800,

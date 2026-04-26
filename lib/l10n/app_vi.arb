@@ -189,5 +189,13 @@
   "langCustomPair": "Cặp ngôn ngữ tùy chỉnh",
   "langISpeak": "Tôi nói…",
   "langILearn": "Tôi muốn học…",
-  "langSelectPair": "Chọn cặp này"
+  "langSelectPair": "Chọn cặp này",
+  "reviewTipsHeading": "Mẹo hôm nay",
+  "reviewTip1": "Ôn tập hôm nay giúp ghi nhớ từ vựng trước khi quên.",
+  "reviewTip2": "Buổi học ngắn (10 phút) hiệu quả hơn buổi dài — làm mỗi ngày.",
+  "reviewTip3": "Độ chính xác của bạn cải thiện mỗi lần ôn tập.",
+
+  "profileMapEmptyDesc": "Chụp từ vựng ở quán cà phê, văn phòng và những nơi bạn ghé — chúng sẽ hiện trên bản đồ của bạn.",
+  "profileMapEmptyCta": "Snap lần đầu tiên →",
+  "reviewIncludesSpeaking": "Bao gồm luyện nói"
 }

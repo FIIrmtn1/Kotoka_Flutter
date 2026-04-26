@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kotoka_app/core/providers/koko_visible_provider.dart';
 import 'package:kotoka_app/core/providers/tooltip_seen_provider.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
@@ -82,6 +83,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
+    final kokoVisible = ref.watch(kokoVisibleProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -106,6 +108,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   _AppBarChip(icon: '🔥', value: '$_mockStreak'),  //MOCKDATA
                   const SizedBox(width: KSpacing.sp8),
                   _AppBarChip(icon: '🪙', value: '$_mockCoins'),   //MOCKDATA
+                  const SizedBox(width: KSpacing.sp4),
+                  Consumer(
+                    builder: (context, ref, _) {
+                      final kokoVisible = ref.watch(kokoVisibleProvider);
+                      return IconButton(
+                        icon: Icon(
+                          kokoVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                          color: kokoVisible ? KColors.brand500 : KColors.neutral400,
+                          size: 20,
+                        ),
+                        onPressed: () => ref.read(kokoVisibleProvider.notifier).toggle(),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        tooltip: kokoVisible ? 'Focus mode' : 'Show Koko',
+                      );
+                    },
+                  ),
                   const SizedBox(width: KSpacing.sp4),
                   Consumer(
                     builder: (context, ref, _) {
@@ -139,17 +158,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 delegate: SliverChildListDelegate([
                   const SizedBox(height: KSpacing.sp8),
 
-                  // Koko mascot
-                  const Center(
-                    child: KokoAnimation(state: KokoState.celebrating, size: 120),
-                  ),
-                  const SizedBox(height: KSpacing.sp12),
+                  // Koko mascot (hidden in focus mode)
+                  if (kokoVisible) ...[
+                    const Center(
+                      child: KokoAnimation(state: KokoState.celebrating, size: 120),
+                    ),
+                    const SizedBox(height: KSpacing.sp12),
+                  ],
 
                   // Greeting
                   Text(
                     l10n.homeGreeting('Kai'), //MOCKDATA
                     style: KTypography.getStyle(KTextStyle.h2, locale)
-                        .copyWith(color: KColors.neutral900),
+                        .copyWith(color: Theme.of(context).colorScheme.onSurface),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: KSpacing.sp4),
@@ -158,7 +179,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   Text(
                     l10n.homeSubtitle,
                     style: KTypography.getStyle(KTextStyle.body, locale)
-                        .copyWith(color: KColors.neutral600),
+                        .copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: KSpacing.sp24),
@@ -193,9 +214,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   const SizedBox(height: KSpacing.sp16),
 
-                  // Achievement banner
-                  _AchievementBanner(l10n: l10n, locale: locale),
-                  const SizedBox(height: KSpacing.sp24),
+                  // Achievement banner (hidden in focus mode)
+                  if (kokoVisible) ...[
+                    _AchievementBanner(l10n: l10n, locale: locale),
+                    const SizedBox(height: KSpacing.sp24),
+                  ],
 
                   // Recent Decks
                   _SectionHeader(title: l10n.homeRecentDecks, locale: locale),
@@ -242,11 +265,13 @@ class _AppBarChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.symmetric(
           horizontal: KSpacing.sp8, vertical: KSpacing.sp4),
       decoration: BoxDecoration(
-        color: KColors.neutral100,
+        color: isDark ? KColorsDark.bgCard : KColors.neutral100,
         borderRadius: KRadius.full,
       ),
       child: Row(
@@ -256,10 +281,10 @@ class _AppBarChip extends StatelessWidget {
           const SizedBox(width: KSpacing.sp4),
           Text(
             value,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w600,
-              color: KColors.neutral900,
+              color: theme.colorScheme.onSurface,
             ),
           ),
         ],
@@ -283,12 +308,13 @@ class _StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.all(KSpacing.sp16),
       decoration: BoxDecoration(
-        color: KColors.neutral0,
+        color: theme.cardColor,
         borderRadius: KRadius.md,
-        border: Border.all(color: KColors.neutral200),
+        border: Border.all(color: theme.colorScheme.outline),
         boxShadow: KElevation.shadow1,
       ),
       child: Column(
@@ -298,19 +324,19 @@ class _StatCard extends StatelessWidget {
           const SizedBox(height: KSpacing.sp8),
           Text(
             value,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.w700,
-              color: KColors.neutral900,
+              color: theme.colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: KSpacing.sp2),
           Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w400,
-              color: KColors.neutral600,
+              color: theme.colorScheme.onSurfaceVariant,
             ),
           ),
         ],
@@ -329,11 +355,12 @@ class _AchievementBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.symmetric(
           horizontal: KSpacing.sp16, vertical: KSpacing.sp12),
       decoration: BoxDecoration(
-        color: const Color(0xFFE6FAF8),
+        color: isDark ? KColorsDark.bgCard : const Color(0xFFE6FAF8),
         borderRadius: KRadius.md,
         border: Border.all(color: KColors.brand500, width: 1.5),
       ),
@@ -357,7 +384,7 @@ class _AchievementBanner extends StatelessWidget {
                 Text(
                   l10n.homeAchievementCta,
                   style: KTypography.getStyle(KTextStyle.caption, locale)
-                      .copyWith(color: KColors.neutral700),
+                      .copyWith(color: isDark ? KColors.neutral400 : KColors.neutral700),
                 ),
               ],
             ),
@@ -382,7 +409,7 @@ class _SectionHeader extends StatelessWidget {
     return Text(
       title,
       style: KTypography.getStyle(KTextStyle.h4, locale)
-          .copyWith(color: KColors.neutral900),
+          .copyWith(color: Theme.of(context).colorScheme.onSurface),
     );
   }
 }
@@ -402,12 +429,13 @@ class _DeckCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.all(KSpacing.sp16),
       decoration: BoxDecoration(
-        color: KColors.neutral0,
+        color: theme.cardColor,
         borderRadius: KRadius.md,
-        border: Border.all(color: KColors.neutral200),
+        border: Border.all(color: theme.colorScheme.outline),
         boxShadow: KElevation.shadow1,
       ),
       child: Row(
@@ -433,7 +461,7 @@ class _DeckCard extends StatelessWidget {
                 Text(
                   deck.name,
                   style: KTypography.getStyle(KTextStyle.h4, locale)
-                      .copyWith(color: KColors.neutral900, fontSize: 14),
+                      .copyWith(color: theme.colorScheme.onSurface, fontSize: 14),
                 ),
                 const SizedBox(height: KSpacing.sp4),
                 ClipRRect(
@@ -489,12 +517,14 @@ class _WeeklyStoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(KSpacing.sp16),
       decoration: BoxDecoration(
-        color: KColors.brand50,
+        color: isDark ? KColorsDark.bgCard : KColors.brand50,
         borderRadius: KRadius.md,
-        border: Border.all(color: KColors.neutral200),
+        border: Border.all(color: theme.colorScheme.outline),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -506,7 +536,7 @@ class _WeeklyStoryCard extends StatelessWidget {
               Text(
                 l10n.homeWeeklyStory,
                 style: KTypography.getStyle(KTextStyle.h4, locale)
-                    .copyWith(color: KColors.neutral900),
+                    .copyWith(color: theme.colorScheme.onSurface),
               ),
             ],
           ),
@@ -514,7 +544,7 @@ class _WeeklyStoryCard extends StatelessWidget {
           Text(
             'A morning at the market — 12 new words inside.', //MOCKDATA
             style: KTypography.getStyle(KTextStyle.body, locale)
-                .copyWith(color: KColors.neutral700),
+                .copyWith(color: theme.colorScheme.onSurfaceVariant),
           ),
           const SizedBox(height: KSpacing.sp12),
           GestureDetector(
@@ -559,12 +589,13 @@ class _ForgettingCurveChart extends StatelessWidget {
   Widget build(BuildContext context) {
     const maxBarHeight = 72.0;
 
+    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.all(KSpacing.sp16),
       decoration: BoxDecoration(
-        color: KColors.neutral0,
+        color: theme.cardColor,
         borderRadius: KRadius.md,
-        border: Border.all(color: KColors.neutral200),
+        border: Border.all(color: theme.colorScheme.outline),
         boxShadow: KElevation.shadow1,
       ),
       child: Column(

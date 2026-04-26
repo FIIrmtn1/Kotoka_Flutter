@@ -1,6 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
+import 'package:kotoka_app/core/widgets/language_picker_sheet.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 
 // ---------------------------------------------------------------------------
@@ -25,22 +26,21 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: KColors.brand50,
       appBar: AppBar(
-        backgroundColor: KColors.surfacePrimary,
         elevation: KElevation.elevation1,
         title: Text(
           l10n.profileTitle,
-          style: const TextStyle(
-            color: KColors.textPrimary,
+          style: TextStyle(
+            color: theme.colorScheme.onSurface,
             fontWeight: FontWeight.w600,
           ),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings_outlined, color: KColors.textSecondary),
+            icon: Icon(Icons.settings_outlined, color: theme.colorScheme.onSurfaceVariant),
             onPressed: () {},
           ),
         ],
@@ -54,10 +54,10 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: KSpacing.sp24),
             Text(
               l10n.profileMemoryMap,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: KColors.textPrimary,
+                color: theme.colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: KSpacing.sp12),
@@ -65,10 +65,10 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: KSpacing.sp24),
             Text(
               l10n.profileStatsWeek,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: KColors.textPrimary,
+                color: theme.colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: KSpacing.sp12),
@@ -76,10 +76,10 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: KSpacing.sp24),
             Text(
               l10n.profileLanguagePairs,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: KColors.textPrimary,
+                color: theme.colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: KSpacing.sp12),
@@ -91,6 +91,47 @@ class ProfileScreen extends ConsumerWidget {
                 style: const TextStyle(
                   color: KColors.brand500,
                   fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            const SizedBox(height: KSpacing.sp24),
+            Text(
+              l10n.langDisplayLanguage,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: theme.colorScheme.onSurface,
+              ),
+            ),
+            const SizedBox(height: KSpacing.sp12),
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: KRadius.md),
+              elevation: KElevation.elevation1,
+              child: ListTile(
+                leading: const Icon(
+                  Icons.language_outlined,
+                  color: KColors.brand500,
+                ),
+                title: Text(
+                  l10n.langDisplayLanguage,
+                  style: TextStyle(
+                    color: theme.colorScheme.onSurface,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.chevron_right,
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+                onTap: () => showModalBottomSheet<void>(
+                  context: context,
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(KRadius.radiusXl),
+                    ),
+                  ),
+                  builder: (_) => const LanguagePickerSheet(),
                 ),
               ),
             ),
@@ -109,8 +150,8 @@ class _ProfileHeaderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Card(
-      color: KColors.surfacePrimary,
       shape: RoundedRectangleBorder(borderRadius: KRadius.lg),
       elevation: KElevation.elevation2,
       child: Padding(
@@ -137,24 +178,24 @@ class _ProfileHeaderCard extends StatelessWidget {
                 children: [
                   Text(
                     _mockName, //MOCKDATA
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
-                      color: KColors.textPrimary,
+                      color: theme.colorScheme.onSurface,
                     ),
                   ),
                   const SizedBox(height: KSpacing.sp2),
                   Text(
                     _mockLanguagePair, //MOCKDATA
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 13,
-                      color: KColors.textSecondary,
+                      color: theme.colorScheme.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(height: KSpacing.sp2),
-                  Text(
+                  const Text(
                     _mockLevel, //MOCKDATA
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 13,
                       color: KColors.brand600,
                       fontWeight: FontWeight.w500,
@@ -171,10 +212,10 @@ class _ProfileHeaderCard extends StatelessWidget {
                       const SizedBox(width: KSpacing.sp4),
                       Text(
                         '$_mockStreakDays days', //MOCKDATA
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
-                          color: KColors.textPrimary,
+                          color: theme.colorScheme.onSurface,
                         ),
                       ),
                       const SizedBox(width: KSpacing.sp12),
@@ -186,10 +227,10 @@ class _ProfileHeaderCard extends StatelessWidget {
                       const SizedBox(width: KSpacing.sp4),
                       Text(
                         '$_mockWordsLearned words', //MOCKDATA
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
-                          color: KColors.textPrimary,
+                          color: theme.colorScheme.onSurface,
                         ),
                       ),
                     ],
@@ -213,33 +254,63 @@ class _MemoryMapPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Container(
-      height: 200,
-      decoration: BoxDecoration(
-        color: KColors.brand50,
-        borderRadius: KRadius.md,
-        border: Border.all(color: KColors.borderDefault),
+      padding: const EdgeInsets.symmetric(
+        horizontal: KSpacing.sp24,
+        vertical: KSpacing.sp24,
       ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(
-              Icons.map_outlined,
-              color: KColors.brand500,
-              size: 48,
+      decoration: BoxDecoration(
+        color: isDark ? theme.colorScheme.surface : KColors.brand50,
+        borderRadius: KRadius.md,
+        border: Border.all(color: theme.colorScheme.outline),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.map_outlined,
+            color: KColors.brand500,
+            size: 48,
+          ),
+          const SizedBox(height: KSpacing.sp12),
+          Text(
+            l10n.profileMapEmpty,
+            style: TextStyle(
+              color: theme.colorScheme.onSurface,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
             ),
-            const SizedBox(height: KSpacing.sp12),
-            Text(
-              l10n.profileMapEmpty, //MOCKDATA
-              style: const TextStyle(
-                color: KColors.textSecondary,
-                fontSize: 14,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: KSpacing.sp8),
+          Text(
+            l10n.profileMapEmptyDesc,
+            style: TextStyle(
+              color: theme.colorScheme.onSurfaceVariant,
+              fontSize: 13,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: KSpacing.sp16),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: KColors.brand500,
+                foregroundColor: KColors.neutral0,
+                shape: RoundedRectangleBorder(borderRadius: KRadius.full),
+                padding: const EdgeInsets.symmetric(vertical: KSpacing.sp12),
               ),
-              textAlign: TextAlign.center,
+              child: Text(
+                l10n.profileMapEmptyCta,
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -288,8 +359,8 @@ class _StatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Card(
-      color: KColors.surfacePrimary,
       shape: RoundedRectangleBorder(borderRadius: KRadius.md),
       elevation: KElevation.elevation1,
       child: Padding(
@@ -310,9 +381,9 @@ class _StatTile extends StatelessWidget {
             const SizedBox(height: KSpacing.sp4),
             Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 11,
-                color: KColors.textSecondary,
+                color: theme.colorScheme.onSurfaceVariant,
               ),
               textAlign: TextAlign.center,
             ),

@@ -35,7 +35,6 @@ class _SnapProcessingScreenState extends ConsumerState<SnapProcessingScreen> {
     final locale = Localizations.localeOf(context);
 
     return Scaffold(
-      backgroundColor: KColors.brand50,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
@@ -54,7 +53,7 @@ class _SnapProcessingScreenState extends ConsumerState<SnapProcessingScreen> {
               Text(
                 l10n.snapProcessingTitle,
                 style: KTypography.getStyle(KTextStyle.h2, locale)
-                    .copyWith(color: KColors.neutral900),
+                    .copyWith(color: Theme.of(context).colorScheme.onSurface),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: KSpacing.sp24),

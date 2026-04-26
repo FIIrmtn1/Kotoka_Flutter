@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kotoka Shop - Premium Language Learning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#6b7a7a",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-fixed": "#002021",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-variant": "#d3e4fe",
+                    "on-error-container": "#93000a",
+                    "secondary": "#565e74",
+                    "secondary-fixed": "#dae2fd",
+                    "on-tertiary-container": "#703600",
+                    "on-secondary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#954a00",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "on-primary-container": "#004e50",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "tertiary-fixed-dim": "#ffb785",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-container": "#dae2fd",
+                    "on-surface": "#0b1c30",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed-variant": "#004f51",
+                    "inverse-primary": "#37dbdf",
+                    "on-background": "#0b1c30",
+                    "inverse-surface": "#213145",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#5c647a",
+                    "primary-fixed-dim": "#37dbdf",
+                    "on-surface-variant": "#3c4949",
+                    "primary-container": "#00c8cc",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#5ff8fb",
+                    "surface-tint": "#00696c",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-container": "#ff9c51",
+                    "on-primary": "#ffffff",
+                    "primary": "#00696c",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "outline-variant": "#bac9c9",
+                    "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "xxxl": "64px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["IBM Plex Sans"],
+                    "h3": ["IBM Plex Sans"],
+                    "body-lg": ["IBM Plex Sans"],
+                    "h1": ["IBM Plex Sans"],
+                    "caption": ["IBM Plex Sans"],
+                    "label-md": ["IBM Plex Sans"],
+                    "h2": ["IBM Plex Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9ff;
+            color: #0b1c30;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background bg-background">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-4 py-2 w-full bg-white dark:bg-slate-900 shadow-sm border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-md">
+<button class="transition-all duration-200 active:scale-95 text-cyan-500 p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-sans tracking-tight text-2xl font-bold text-cyan-500 dark:text-cyan-400">Kotoka</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="transition-all duration-200 active:scale-95 text-slate-500 dark:text-slate-400 p-2">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="transition-all duration-200 active:scale-95 text-slate-500 dark:text-slate-400 p-2 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-lg pb-xxxl">
+<!-- Premium Banner - SHO-01 Layout Style -->
+<section class="mb-xl relative overflow-hidden rounded-xl bg-primary-container text-on-primary shadow-lg h-64 md:h-80 flex flex-col md:flex-row items-center">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="abstract flowing gradients of teal and cyan with subtle grain texture and soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFRqU27QveNVLf5lUvfyPH214wqf558cihazovxH3UHs6FoqSjVOdc_9lGsX7s079Eb8PxvZCewNDG7V44hkKH-5StACyLh45HCB2KJYV_WDIpL45X9LIe3_UdVtGMhmvni8wXLL1K-b4YLu8uvAaTlueGVnFEYjYCGOnRMil-0xBEy9LrHxiul54dEsZIyv-AX5-S1rVpu4-zpxn4RxD0h-tO7r3t-yWt_y8k0elOL8Jw4xv2vq3uHupqxg-r2XPJxRLWnLdjKsno"/>
+</div>
+<div class="relative z-10 p-lg md:p-xl flex-1 flex flex-col justify-center items-start">
+<span class="bg-white/20 backdrop-blur-sm px-sm py-xs rounded-lg font-label-md text-white mb-md">LIMITED OFFER</span>
+<h2 class="font-h1 text-h2 md:text-h1 mb-sm leading-tight">Master Japanese with Visual Logic</h2>
+<p class="font-body-lg text-body-md md:text-body-lg max-w-xl mb-lg opacity-90">Unlock the Full Memory Deck and start your journey toward fluency with Kotoka Premium.</p>
+<button class="bg-white text-primary px-xl py-md rounded-xl font-h3 text-body-md hover:bg-surface-container-low transition-all">Get Premium Now</button>
+</div>
+<div class="hidden md:flex relative z-10 w-1/3 h-full items-center justify-center p-xl">
+<div class="w-48 h-64 bg-white/10 backdrop-blur-md border border-white/30 rounded-xl transform rotate-6 absolute shadow-2xl"></div>
+<div class="w-48 h-64 bg-white/20 backdrop-blur-md border border-white/40 rounded-xl transform -rotate-3 relative flex flex-col items-center justify-center p-md text-center shadow-xl">
+<span class="material-symbols-outlined text-white text-6xl mb-md">verified_user</span>
+<p class="font-label-md text-white">Full Vocab Access</p>
+</div>
+</div>
+</section>
+<!-- Category Filter -->
+<div class="flex overflow-x-auto gap-md pb-md no-scrollbar mb-xl">
+<button class="flex-shrink-0 bg-primary-container text-white px-lg py-sm rounded-full font-label-md">All Packs</button>
+<button class="flex-shrink-0 bg-surface-container text-on-surface-variant px-lg py-sm rounded-full font-label-md hover:bg-surface-container-high transition-colors">Survival</button>
+<button class="flex-shrink-0 bg-surface-container text-on-surface-variant px-lg py-sm rounded-full font-label-md hover:bg-surface-container-high transition-colors">Business</button>
+<button class="flex-shrink-0 bg-surface-container text-on-surface-variant px-lg py-sm rounded-full font-label-md hover:bg-surface-container-high transition-colors">Travel</button>
+<button class="flex-shrink-0 bg-surface-container text-on-surface-variant px-lg py-sm rounded-full font-label-md hover:bg-surface-container-high transition-colors">Food &amp; Dining</button>
+<button class="flex-shrink-0 bg-surface-container text-on-surface-variant px-lg py-sm rounded-full font-label-md hover:bg-surface-container-high transition-colors">Anime Vocab</button>
+</div>
+<!-- Vocab Pack Grid - Bento Style -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Featured Large Card -->
+<div class="md:col-span-8 group relative overflow-hidden bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 md:h-64 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="scenic view of a traditional Japanese street in Kyoto with lanterns and wooden architecture at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOMiU00L3wedSsYvEZIlZe_iDUr9r3PTcIbRTFg3fVwPKsKhbzrfX3CLs-L9P4zBTsDiul3mkr-xp0rTCgiiqBcRqW5ZSY1DFkRKadB0XXn0bPPefS9yoJs04l6LqIJ05vNTDLhWYXxsRHcho3uSvwVUEU7GLHQIiK4z6FmjFhw7LJYVxka9P_vPPkhdV0PKo3IlwyevQvyxJAFK866xlhJyN4Pt9nY9DlXamQrxR2s_5p0hSJ4YBXBqp6JJd5ECXatmKmXIg1Hwoo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<div class="flex items-center gap-sm mb-xs">
+<span class="bg-tertiary-container text-on-tertiary-container px-sm py-base rounded-lg text-caption font-label-md">BEST SELLER</span>
+<div class="flex text-yellow-400">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h3 class="font-h3 text-white">Kyoto Survival Essentials</h3>
+</div>
+</div>
+<div class="p-lg flex justify-between items-end">
+<div class="flex-1">
+<p class="font-body-md text-on-surface-variant mb-md">500 essential phrases for navigating old Japan with ease.</p>
+<div class="flex gap-md">
+<div class="flex items-center gap-xs text-outline text-caption">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+                                500 Cards
+                            </div>
+<div class="flex items-center gap-xs text-outline text-caption">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+                                Native Audio
+                            </div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-h2 text-primary mb-xs">$19.99</span>
+<button class="bg-primary-container text-white px-lg py-sm rounded-xl font-label-md hover:brightness-105 transition-all">Add to Cart</button>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-all p-lg flex flex-col">
+<div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center text-cyan-600 mb-lg">
+<span class="material-symbols-outlined text-3xl">business_center</span>
+</div>
+<h3 class="font-h3 text-h3 mb-sm">Business N3</h3>
+<p class="font-body-md text-on-surface-variant flex-1 mb-lg">Professional vocabulary for the modern Tokyo office environment.</p>
+<div class="border-t border-slate-50 pt-md mt-auto">
+<div class="flex justify-between items-center">
+<span class="font-h3 text-on-surface">$12.50</span>
+<button class="p-sm text-primary hover:bg-cyan-50 rounded-lg transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-all p-lg flex flex-col">
+<div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-lg">
+<span class="material-symbols-outlined text-3xl">restaurant</span>
+</div>
+<h3 class="font-h3 text-h3 mb-sm">Izakaya Master</h3>
+<p class="font-body-md text-on-surface-variant flex-1 mb-lg">Order like a local. 200 cards covering every food category.</p>
+<div class="border-t border-slate-50 pt-md mt-auto">
+<div class="flex justify-between items-center">
+<span class="font-h3 text-on-surface">$8.99</span>
+<button class="p-sm text-primary hover:bg-cyan-50 rounded-lg transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Small Card 3 -->
+<div class="md:col-span-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-all p-lg flex flex-col">
+<div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-lg">
+<span class="material-symbols-outlined text-3xl">auto_awesome</span>
+</div>
+<h3 class="font-h3 text-h3 mb-sm">Anime Slang</h3>
+<p class="font-body-md text-on-surface-variant flex-1 mb-lg">Understand your favorite shows without subtitles.</p>
+<div class="border-t border-slate-50 pt-md mt-auto">
+<div class="flex justify-between items-center">
+<span class="font-h3 text-on-surface">$14.99</span>
+<button class="p-sm text-primary hover:bg-cyan-50 rounded-lg transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Small Card 4 -->
+<div class="md:col-span-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-all p-lg flex flex-col">
+<div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-lg">
+<span class="material-symbols-outlined text-3xl">commute</span>
+</div>
+<h3 class="font-h3 text-h3 mb-sm">Transit Guide</h3>
+<p class="font-body-md text-on-surface-variant flex-1 mb-lg">Master the complex world of Japanese trains and tickets.</p>
+<div class="border-t border-slate-50 pt-md mt-auto">
+<div class="flex justify-between items-center">
+<span class="font-h3 text-on-surface">$5.99</span>
+<button class="p-sm text-primary hover:bg-cyan-50 rounded-lg transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Membership Upsell -->
+<section class="mt-xxl p-xl bg-surface-container-low rounded-xl border-2 border-dashed border-cyan-200 text-center">
+<h3 class="font-h2 text-primary mb-sm">The Language Collector</h3>
+<p class="font-body-lg text-on-surface-variant mb-lg max-w-2xl mx-auto">Subscribe for $9.99/mo and get access to every single vocab pack we release, plus exclusive monthly drops.</p>
+<div class="flex flex-col sm:flex-row gap-md justify-center">
+<button class="bg-primary text-white px-xl py-md rounded-xl font-label-md shadow-md">Subscribe &amp; Save</button>
+<button class="bg-white border border-outline-variant text-on-surface-variant px-xl py-md rounded-xl font-label-md">Learn More</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 mb-safe bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg border-t border-slate-100 dark:border-slate-800">
+<a class="transition-transform duration-300 ease-out active:scale-90 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="transition-transform duration-300 ease-out active:scale-90 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Snap</span>
+</a>
+<a class="transition-transform duration-300 ease-out active:scale-90 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Review</span>
+</a>
+<a class="transition-transform duration-300 ease-out active:scale-90 flex flex-col items-center justify-center text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Shop</span>
+</a>
+<a class="transition-transform duration-300 ease-out active:scale-90 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Me</span>
+</a>
+</nav>
+</body></html>

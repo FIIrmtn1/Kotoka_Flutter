@@ -43,8 +43,8 @@ class _ReviewConversationScreenState
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: KColors.brand50,
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Column(
@@ -59,11 +59,11 @@ class _ReviewConversationScreenState
                     child: Text(
                       l10n.reviewProgressOf(_currentCard, _totalCards), //MOCKDATA
                       style: KTypography.getStyle(KTextStyle.h4, locale)
-                          .copyWith(color: KColors.neutral900),
+                          .copyWith(color: theme.colorScheme.onSurface),
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close, color: KColors.neutral600),
+                    icon: Icon(Icons.close, color: theme.colorScheme.onSurfaceVariant),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ],
@@ -102,7 +102,7 @@ class _ReviewConversationScreenState
                     // User response text field
                     Container(
                       decoration: BoxDecoration(
-                        color: KColors.neutral0,
+                        color: theme.cardColor,
                         borderRadius: KRadius.md,
                         border: Border.all(color: KColors.borderDefault),
                         boxShadow: KElevation.shadow1,

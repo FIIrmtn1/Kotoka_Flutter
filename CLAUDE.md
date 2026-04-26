@@ -11,6 +11,9 @@
 
 ### i18n
 Every page and widget MUST support all 6 languages: Thai (th), English (en), Mandarin (zh), Spanish (es), Vietnamese (vi), Lao (lo). Use `flutter_localizations` + ARB files. No hardcoded strings.
+- Users MUST be able to change the display language **at any time** from within the app (Profile screen → Language setting), not only during onboarding.
+- Language change MUST update all visible strings immediately via Riverpod `localeProvider`.
+- Selected locale MUST be persisted to local storage and restored on cold start.
 
 ### Animation
 Use `@Kokoanimation` package ONLY. NEVER use Lottie or rive for Koko character animations. Import: `package:kokoanimation/kokoanimation.dart`
@@ -19,10 +22,31 @@ Use `@Kokoanimation` package ONLY. NEVER use Lottie or rive for Koko character a
 Docker Compose provides local Firestore emulator + Redis cache. Run `docker-compose up` before dev. All local data goes through emulator.
 
 ### Emojis / Images
-Use outsourced assets only (Flutter Icons, Material Symbols, or documented CDN sources). No AI-generated images.
+- Every emoji rendered in the app MUST use **Twitter Emoji (Twemoji)** PNG assets bundled **locally** from `assets/twemoji/`. NEVER load from CDN. No system/platform emoji.
+- Other customer-approved sources: Flutter Icons, Material Symbols.
+- Use `KokoEmoji` for general emoji. Use `KokoFlag` for all national flag emoji — it applies `ClipRRect(borderRadius: BorderRadius.circular(radius))` for rounded corners.
+- NEVER render flag emoji as raw Unicode text — always use `KokoFlag` widget.
+- No AI-generated images.
 
 ### UI/UX
 Apply /ui-ux-pro-max principles. Design tokens from `lib/core/theme/tokens.dart`. No hardcoded colors, sizes, or spacing. All values from token system.
+
+### Navigation Bar (Theme Awareness)
+- The bottom nav bar MUST use `theme.colorScheme.surface` for background (NOT `KColors.surfacePrimary` which is hardcoded white).
+- Nav bar border MUST use `theme.colorScheme.outline`.
+- Inactive icon/label color MUST use `theme.colorScheme.onSurfaceVariant`.
+- This ensures the nav bar turns dark grey in dark mode and white in light mode automatically.
+
+### Color Contrast on Colored Backgrounds
+- NEVER use `KColors.brand400` (bright cyan #0cf6fc) as text on a `KColors.brand500` (teal) card — contrast ratio is too low.
+- On teal (`KColors.brand500`) card backgrounds, use `KColors.neutral0` (white) for price/headline text.
+- Always verify text contrast ratio ≥ 4.5:1 (WCAG AA) on any colored surface.
+
+### 30-Persona Test Observation Rules
+- In every 30-persona test, evaluate ALL visible elements: every button, every interactive widget, dropdown open states, picker sheets, text contrast, font size, and tap-target size.
+- Specifically check: price text on colored cards, nav bar theme in dark mode, flag emoji rendering in picker sheets (open state), checkmark visibility on selected items.
+- Report specific UI element names and colors (e.g. "฿299/month: white on teal, readable") — not general impressions only.
+- Score threshold: avg ≥ 85 to pass.
 
 ### Gemini Output
 All text returned from Gemini 2.5 Flash API MUST be formatted with `**bold**` markers in display widgets.
@@ -50,6 +74,12 @@ Every mock data value MUST be commented with `//MOCKDATA` on the same line.
 - Warning: #ffdfa2 (Pale Yellow/Tan)
 - Typography: IBM Plex Sans (Latin), Sarabun (Thai), Noto Sans SC (ZH), Noto Sans Lao (LO)
 - Theme MUST match DESIGN.md at all times
+
+### Background Color Rules (mandatory)
+- **Light mode page background:** `#FFFFFF` (pure white) — token: `KColors.neutral0`
+- **Dark mode page background:** `#444444` (dark gray) — token: `KColorsDark.bgPage`
+- **Highlights / accents:** Kotoka main palette ONLY — `#682069` (CTA), `#00c8cc` (Accent), `#0cf6fc` (Highlight)
+- All background and accent values MUST come from `lib/core/theme/tokens.dart` — no hardcoded hex in screens
 
 ## Agent Workflow Rules
 - Token budget: every agent statement ≤ 30 words

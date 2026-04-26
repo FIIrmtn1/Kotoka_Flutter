@@ -569,4 +569,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get langSelectPair => 'Select this pair';
+
+  @override
+  String get reviewTipsHeading => 'Today\'s tips';
+
+  @override
+  String get reviewTip1 =>
+      'Reviewing today locks in words before you forget them.';
+
+  @override
+  String get reviewTip2 =>
+      'Short sessions (10 min) beat long ones — done daily.';
+
+  @override
+  String get reviewTip3 => 'Your accuracy improves each time you review.';
+
+  @override
+  String get profileMapEmptyDesc =>
+      'Snap words at cafés, offices, and places you visit — they\'ll appear here.';
+
+  @override
+  String get profileMapEmptyCta => 'Take your first Snap →';
+
+  @override
+  String get reviewIncludesSpeaking => 'Includes speaking practice';
 }

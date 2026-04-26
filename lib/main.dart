@@ -16,6 +16,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/api/api_client.dart';
+import 'core/providers/locale_provider.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'firebase_options.dart';
@@ -23,9 +24,6 @@ import 'l10n/app_localizations.dart';
 
 /// Controls whether the app uses light or dark theme.
 final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.light);
-
-/// Controls the app display language. null = follow system locale. //MOCKDATA
-final localeProvider = StateProvider<Locale?>((ref) => null); //MOCKDATA
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

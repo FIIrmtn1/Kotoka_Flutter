@@ -74,6 +74,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/twemoji/
     - Kokoanimation/koko-idle.webp
     - Kokoanimation/koko-celebrate.webp
     - Kokoanimation/koko-thinking.webp

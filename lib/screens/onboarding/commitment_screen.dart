@@ -11,7 +11,6 @@ class CommitmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KColors.brand50,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

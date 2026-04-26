@@ -567,4 +567,26 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String get langSelectPair => 'ເລືອກຄູ່ນີ້';
+
+  @override
+  String get reviewTipsHeading => 'ຄໍາແນະນໍາມື້ນີ້';
+
+  @override
+  String get reviewTip1 => 'ການທົບທວນມື້ນີ້ຊ່ວຍຈົດຈໍາຄໍາສັບກ່ອນທີ່ຈະລືມ.';
+
+  @override
+  String get reviewTip2 => 'ຮຽນສັ້ນ (10 ນາທີ) ດີກວ່າຮຽນຍາວ — ເຮັດທຸກວັນ.';
+
+  @override
+  String get reviewTip3 => 'ຄວາມຖືກຕ້ອງຂອງທ່ານດີຂຶ້ນທຸກຄັ້ງທີ່ທົບທວນ.';
+
+  @override
+  String get profileMapEmptyDesc =>
+      'ສແນັບຄຳສັບທີ່ຮ້ານກາເຟ, ຫ້ອງການ ແລະ ສະຖານທີ່ທ່ານໄປ — ມັນຈະປາກົດຢູ່ໃນແຜນທີ່ຂອງທ່ານ.';
+
+  @override
+  String get profileMapEmptyCta => 'ສແນັບຄັ້ງທຳອິດ →';
+
+  @override
+  String get reviewIncludesSpeaking => 'ລວມມີການຝຶກເວົ້າ';
 }

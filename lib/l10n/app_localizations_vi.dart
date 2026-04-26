@@ -573,4 +573,28 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get langSelectPair => 'Chọn cặp này';
+
+  @override
+  String get reviewTipsHeading => 'Mẹo hôm nay';
+
+  @override
+  String get reviewTip1 =>
+      'Ôn tập hôm nay giúp ghi nhớ từ vựng trước khi quên.';
+
+  @override
+  String get reviewTip2 =>
+      'Buổi học ngắn (10 phút) hiệu quả hơn buổi dài — làm mỗi ngày.';
+
+  @override
+  String get reviewTip3 => 'Độ chính xác của bạn cải thiện mỗi lần ôn tập.';
+
+  @override
+  String get profileMapEmptyDesc =>
+      'Chụp từ vựng ở quán cà phê, văn phòng và những nơi bạn ghé — chúng sẽ hiện trên bản đồ của bạn.';
+
+  @override
+  String get profileMapEmptyCta => 'Snap lần đầu tiên →';
+
+  @override
+  String get reviewIncludesSpeaking => 'Bao gồm luyện nói';
 }

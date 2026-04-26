@@ -1,6 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
+import 'package:kotoka_app/core/widgets/koko_emoji.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 
 // ---------------------------------------------------------------------------
@@ -38,16 +39,15 @@ class ShopScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: KColors.brand50,
       appBar: AppBar(
-        backgroundColor: KColors.surfacePrimary,
         elevation: KElevation.elevation1,
         title: Text(
           l10n.shopTitle,
-          style: const TextStyle(
-            color: KColors.textPrimary,
+          style: TextStyle(
+            color: theme.colorScheme.onSurface,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -65,8 +65,8 @@ class ShopScreen extends ConsumerWidget {
                 const SizedBox(width: KSpacing.sp4),
                 Text(
                   '$_mockXp XP', //MOCKDATA
-                  style: const TextStyle(
-                    color: KColors.textPrimary,
+                  style: TextStyle(
+                    color: theme.colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -85,10 +85,10 @@ class ShopScreen extends ConsumerWidget {
             const SizedBox(height: KSpacing.sp24),
             Text(
               l10n.shopVocabPacks,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: KColors.textPrimary,
+                color: theme.colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: KSpacing.sp12),
@@ -130,13 +130,19 @@ class _PremiumCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              '⭐ ${l10n.shopPremiumTitle}',
-              style: const TextStyle(
-                color: KColors.neutral0,
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-              ),
+            Row(
+              children: [
+                const KokoEmoji(emoji: '⭐', size: 20),
+                const SizedBox(width: KSpacing.sp8),
+                Text(
+                  l10n.shopPremiumTitle,
+                  style: const TextStyle(
+                    color: KColors.neutral0,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: KSpacing.sp8),
             Text(
@@ -150,7 +156,7 @@ class _PremiumCard extends StatelessWidget {
             Text(
               _mockPrice, //MOCKDATA
               style: const TextStyle(
-                color: KColors.brand400,
+                color: KColors.neutral0,
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
               ),
@@ -194,9 +200,9 @@ class _PackCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Card(
-      color: KColors.surfacePrimary,
       shape: RoundedRectangleBorder(borderRadius: KRadius.md),
       elevation: KElevation.elevation2,
       child: Padding(
@@ -204,22 +210,22 @@ class _PackCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(pack.emoji, style: const TextStyle(fontSize: 28)),
+            KokoEmoji(emoji: pack.emoji, size: 28),
             const SizedBox(height: KSpacing.sp8),
             Text(
               pack.title,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: KColors.textPrimary,
+                color: theme.colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: KSpacing.sp4),
             Text(
               '${pack.wordCount} words', //MOCKDATA
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 12,
-                color: KColors.textSecondary,
+                color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
             const Spacer(),
@@ -233,10 +239,10 @@ class _PackCard extends StatelessWidget {
                 const SizedBox(width: KSpacing.sp4),
                 Text(
                   '${pack.xpPrice} XP', //MOCKDATA
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: KColors.textPrimary,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
               ],

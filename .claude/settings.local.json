@@ -21,7 +21,16 @@
       "Bash(flutter build *)",
       "Bash(adb -s emulator-5554 install -r \"C:\\\\Users\\\\FIIrm\\\\OneDrive\\\\Desktop\\\\Kotoka_appv3\\\\build\\\\app\\\\outputs\\\\flutter-apk\\\\app-debug.apk\")",
       "Bash(adb -s emulator-5554 shell am start -n com.example.kotoka_app/.MainActivity)",
-      "mcp__android__swipe"
+      "mcp__android__swipe",
+      "Bash(flutter analyze *)",
+      "mcp__android__launch_app",
+      "mcp__android__press_key",
+      "Bash(adb -s emulator-5554 shell pm list packages)",
+      "Bash(adb -s emulator-5554 install -r \"build\\\\app\\\\outputs\\\\flutter-apk\\\\app-debug.apk\")",
+      "mcp__android__scroll_to_element",
+      "Bash(adb install *)",
+      "Bash(adb shell *)",
+      "mcp__android__install_apk"
     ]
   },
   "enableAllProjectMcpServers": true,

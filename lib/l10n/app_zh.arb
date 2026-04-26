@@ -189,5 +189,13 @@
   "langCustomPair": "自定义语言对",
   "langISpeak": "我会说…",
   "langILearn": "我想学…",
-  "langSelectPair": "选择此语言对"
+  "langSelectPair": "选择此语言对",
+  "reviewTipsHeading": "今日小贴士",
+  "reviewTip1": "今天复习，在遗忘前巩固词汇。",
+  "reviewTip2": "短时练习（10分钟）胜过长时间——每天坚持。",
+  "reviewTip3": "每次复习都能提高你的准确率。",
+
+  "profileMapEmptyDesc": "在咖啡馆、办公室和您去过的地方拍下单词 — 它们将显示在您的地图上。",
+  "profileMapEmptyCta": "开始第一次拍摄 →",
+  "reviewIncludesSpeaking": "包含口语练习"
 }

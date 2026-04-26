@@ -48,16 +48,15 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
 
     final kokoState = _hasName ? KokoState.celebrating : KokoState.idle;
 
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: KColors.brand50,
       appBar: AppBar(
-        backgroundColor: KColors.brand50,
         elevation: KElevation.elevation0,
         leading: BackButton(color: KColors.brand500),
         title: Text(
           l10n.profileSetupTitle,
           style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: KColors.neutral900),
+              .copyWith(color: theme.colorScheme.onSurface),
         ),
       ),
       body: SafeArea(
@@ -106,7 +105,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                 child: Text(
                   l10n.profileNameLabel,
                   style: KTypography.getStyle(KTextStyle.label, locale)
-                      .copyWith(color: KColors.neutral700),
+                      .copyWith(color: theme.colorScheme.onSurfaceVariant),
                 ),
               ),
               const SizedBox(height: KSpacing.sp8),

@@ -99,10 +99,10 @@ class KColors {
 class KColorsDark {
   KColorsDark._();
 
-  static const Color bgPage = Color(0xFF0F172A);
-  static const Color bgCard = Color(0xFF1F2937);
-  static const Color bgSurface = Color(0xFF111827);
-  static const Color bgAppBar = Color(0xFF0C1A3A);
+  static const Color bgPage = Color(0xFF444444);
+  static const Color bgCard = Color(0xFF525252);
+  static const Color bgSurface = Color(0xFF3A3A3A);
+  static const Color bgAppBar = Color(0xFF3C3C3C);
   static const Color textPrimary = Color(0xFFF9FAFB);
   static const Color textSecondary = Color(0xFFD1D5DB);
   static const Color textCaption = Color(0xFF9CA3AF);

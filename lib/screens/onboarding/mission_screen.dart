@@ -16,8 +16,8 @@ class MissionScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: KColors.brand50,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: KSpacing.sp24),
@@ -36,7 +36,7 @@ class MissionScreen extends ConsumerWidget {
               Text(
                 l10n.onbMissionBody, //MOCKDATA
                 style: KTypography.getStyle(KTextStyle.body, locale)
-                    .copyWith(color: KColors.textSecondary),
+                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
                 textAlign: TextAlign.center,
               ),
               const Spacer(flex: 3),

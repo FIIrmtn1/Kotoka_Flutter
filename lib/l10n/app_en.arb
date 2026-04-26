@@ -656,5 +656,21 @@
   "langILearn": "I want to learn…",
   "@langILearn": { "description": "Target language dropdown hint" },
   "langSelectPair": "Select this pair",
-  "@langSelectPair": { "description": "Confirm custom pair button" }
+  "@langSelectPair": { "description": "Confirm custom pair button" },
+  "reviewTipsHeading": "Today's tips",
+  "@reviewTipsHeading": { "description": "Heading for review tips card" },
+  "reviewTip1": "Reviewing today locks in words before you forget them.",
+  "@reviewTip1": { "description": "Spaced repetition tip 1" },
+  "reviewTip2": "Short sessions (10 min) beat long ones — done daily.",
+  "@reviewTip2": { "description": "Daily habit tip 2" },
+  "reviewTip3": "Your accuracy improves each time you review.",
+  "@reviewTip3": { "description": "Motivation tip 3" },
+
+  "profileMapEmptyDesc": "Snap words at cafés, offices, and places you visit — they'll appear here.",
+  "@profileMapEmptyDesc": { "description": "Explanation text under memory map empty state" },
+  "profileMapEmptyCta": "Take your first Snap →",
+  "@profileMapEmptyCta": { "description": "CTA button in memory map empty state" },
+
+  "reviewIncludesSpeaking": "Includes speaking practice",
+  "@reviewIncludesSpeaking": { "description": "Chip shown on review session card to surface audio practice" }
 }

@@ -1137,6 +1137,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select this pair'**
   String get langSelectPair;
+
+  /// Heading for review tips card
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s tips'**
+  String get reviewTipsHeading;
+
+  /// Spaced repetition tip 1
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewing today locks in words before you forget them.'**
+  String get reviewTip1;
+
+  /// Daily habit tip 2
+  ///
+  /// In en, this message translates to:
+  /// **'Short sessions (10 min) beat long ones — done daily.'**
+  String get reviewTip2;
+
+  /// Motivation tip 3
+  ///
+  /// In en, this message translates to:
+  /// **'Your accuracy improves each time you review.'**
+  String get reviewTip3;
+
+  /// Explanation text under memory map empty state
+  ///
+  /// In en, this message translates to:
+  /// **'Snap words at cafés, offices, and places you visit — they\'ll appear here.'**
+  String get profileMapEmptyDesc;
+
+  /// CTA button in memory map empty state
+  ///
+  /// In en, this message translates to:
+  /// **'Take your first Snap →'**
+  String get profileMapEmptyCta;
+
+  /// Chip shown on review session card to surface audio practice
+  ///
+  /// In en, this message translates to:
+  /// **'Includes speaking practice'**
+  String get reviewIncludesSpeaking;
 }
 
 class _AppLocalizationsDelegate

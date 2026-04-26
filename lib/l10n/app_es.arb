@@ -189,5 +189,13 @@
   "langCustomPair": "Par personalizado",
   "langISpeak": "Hablo…",
   "langILearn": "Quiero aprender…",
-  "langSelectPair": "Seleccionar este par"
+  "langSelectPair": "Seleccionar este par",
+  "reviewTipsHeading": "Consejos de hoy",
+  "reviewTip1": "Repasar hoy fija las palabras antes de que las olvides.",
+  "reviewTip2": "Sesiones cortas (10 min) superan a las largas — hazlo a diario.",
+  "reviewTip3": "Tu precisión mejora cada vez que repasas.",
+
+  "profileMapEmptyDesc": "Captura palabras en cafés, oficinas y lugares que visitas — aparecerán aquí en tu mapa.",
+  "profileMapEmptyCta": "Haz tu primer Snap →",
+  "reviewIncludesSpeaking": "Incluye práctica oral"
 }

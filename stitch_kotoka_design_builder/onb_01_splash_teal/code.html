@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kotoka - Memory Companion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#6b7a7a",
+                      "surface-container-high": "#dce9ff",
+                      "on-primary-fixed": "#002021",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-variant": "#d3e4fe",
+                      "on-error-container": "#93000a",
+                      "secondary": "#565e74",
+                      "secondary-fixed": "#dae2fd",
+                      "on-tertiary-container": "#703600",
+                      "on-secondary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#954a00",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "on-primary-container": "#004e50",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "tertiary-fixed-dim": "#ffb785",
+                      "surface-container-low": "#eff4ff",
+                      "secondary-container": "#dae2fd",
+                      "on-surface": "#0b1c30",
+                      "surface-bright": "#f8f9ff",
+                      "on-primary-fixed-variant": "#004f51",
+                      "inverse-primary": "#37dbdf",
+                      "on-background": "#0b1c30",
+                      "inverse-surface": "#213145",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#5c647a",
+                      "primary-fixed-dim": "#37dbdf",
+                      "on-surface-variant": "#3c4949",
+                      "primary-container": "#00c8cc",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#5ff8fb",
+                      "surface-tint": "#00696c",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary-container": "#ff9c51",
+                      "on-primary": "#ffffff",
+                      "primary": "#00696c",
+                      "tertiary-fixed": "#ffdcc6",
+                      "on-secondary-fixed": "#131b2e",
+                      "surface": "#f8f9ff",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "outline-variant": "#bac9c9",
+                      "surface-dim": "#cbdbf5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xxl": "48px",
+                      "xxxl": "64px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-md": ["IBM Plex Sans"],
+                      "h3": ["IBM Plex Sans"],
+                      "body-lg": ["IBM Plex Sans"],
+                      "h1": ["IBM Plex Sans"],
+                      "caption": ["IBM Plex Sans"],
+                      "label-md": ["IBM Plex Sans"],
+                      "h2": ["IBM Plex Sans"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "h2": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-between overflow-hidden">
+<!-- Splash Screen Hero Section -->
+<main class="relative w-full max-w-7xl mx-auto flex flex-col items-center justify-center flex-grow px-lg py-xxxl">
+<!-- Animated Background Ornament (Subtle) -->
+<div class="absolute inset-0 -z-10 pointer-events-none">
+<div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary-container/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-secondary-container/20 blur-[100px] rounded-full"></div>
+</div>
+<div class="flex flex-col items-center text-center space-y-xl max-w-2xl">
+<!-- Brand Logo Mark -->
+<div class="relative mb-lg group">
+<div class="w-32 h-32 bg-primary-container rounded-[40px] flex items-center justify-center shadow-xl shadow-primary-container/20 transition-transform duration-500 group-hover:scale-105">
+<span class="material-symbols-outlined text-white text-[64px]" data-icon="psychology" data-weight="fill" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+</div>
+<!-- Value Proposition -->
+<div class="space-y-md">
+<h1 class="font-h1 text-h1 text-on-surface tracking-tight leading-none">
+                    Kotoka
+                </h1>
+<p class="font-body-lg text-body-lg text-outline max-w-md mx-auto">
+                    Your serene memory companion. Capture, organize, and relive your most precious moments with lucid minimalism.
+                </p>
+</div>
+<!-- Primary Action -->
+<div class="w-full max-w-sm pt-xl">
+<button class="w-full py-md px-xl bg-primary-container text-on-primary font-label-md text-label-md rounded-xl shadow-lg shadow-primary-container/30 hover:opacity-90 active:scale-95 transition-all duration-300">
+                    Get Started
+                </button>
+<div class="mt-lg">
+<button class="font-label-md text-label-md text-primary hover:text-on-primary-container transition-colors">
+                        Sign in to your account
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Visual Anchor / Image Content -->
+<section class="w-full relative h-[397px] lg:h-[442px] overflow-hidden rounded-t-[48px] shadow-2xl">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+<img alt="Kotoka Hero" class="w-full h-full object-cover object-center" data-alt="Modern minimalist workspace with a single clean desk, a soft blue lamp, and sunlight streaming through a large window, peaceful atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7lrsFKy-iCYdSoyH8GF4I4_mxsSBsckRf6RCabOHETCCWH66QrJff9DmrLJYZU1AikZhcd6LHq_DDt6X3sWp6tlBHup_siFPIaMb_Hc8xiR_oHhONeLvMdzHXEMF1hlFAdWw0YcI6GM4diheOkpDP0ov3BItaGvd6qSPBTAg3dkSD2j_mNrovJ-zhVZxakPzjNYSk97C4kgfsnTEGVg53vDGe99VYchaliiA7Jzj6nRmWsUo-dov6BLYOQkrFHcsPfDvEgQMbrUv1"/>
+<!-- Floating Glass Feature Cards (Asymmetric) -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-4xl px-lg grid grid-cols-1 md:grid-cols-3 gap-lg z-20">
+<div class="bg-white/70 backdrop-blur-xl p-md rounded-xl border border-white/40 shadow-xl hidden md:block">
+<div class="flex items-center gap-md">
+<div class="bg-primary/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="photo_camera">photo_camera</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Snap Memories</p>
+<p class="font-caption text-caption text-outline">Capture every detail</p>
+</div>
+</div>
+</div>
+<div class="bg-white/80 backdrop-blur-xl p-md rounded-xl border border-white/40 shadow-xl mt-xl">
+<div class="flex items-center gap-md">
+<div class="bg-tertiary/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Smart Insights</p>
+<p class="font-caption text-caption text-outline">AI-powered recall</p>
+</div>
+</div>
+</div>
+<div class="bg-white/70 backdrop-blur-xl p-md rounded-xl border border-white/40 shadow-xl hidden md:block">
+<div class="flex items-center gap-md">
+<div class="bg-secondary/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="lock">lock</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Secure Vault</p>
+<p class="font-caption text-caption text-outline">Privacy by design</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Suppressed Navigation: Onboarding screens prioritize focus as per the UX goal. -->
+</body></html>

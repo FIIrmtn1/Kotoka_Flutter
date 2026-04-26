@@ -41,16 +41,16 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: KColors.brand50,
       appBar: AppBar(
-        backgroundColor: KColors.brand50,
         elevation: KElevation.elevation0,
-        leading: BackButton(color: KColors.brand500),
+        leading: BackButton(color: isDark ? KColorsDark.brand500 : KColors.brand500),
         title: Text(
           l10n.scheduleTitle,
           style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: KColors.neutral900),
+              .copyWith(color: theme.colorScheme.onSurface),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
@@ -74,7 +74,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
               Text(
                 l10n.scheduleSubtitle,
                 style: KTypography.getStyle(KTextStyle.body, locale)
-                    .copyWith(color: KColors.neutral700),
+                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: KSpacing.sp32),
@@ -103,14 +103,14 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     ? Container(
                         padding: const EdgeInsets.all(KSpacing.sp16),
                         decoration: BoxDecoration(
-                          color: KColors.brand100,
+                          color: isDark ? KColorsDark.bgCard : KColors.brand100,
                           borderRadius: KRadius.md,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.bolt,
-                                color: KColors.brand600,
+                                color: isDark ? KColorsDark.brand500 : KColors.brand600,
                                 size: KSpacing.sp20),
                             const SizedBox(width: KSpacing.sp8),
                             Text(
@@ -118,7 +118,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   _wordsPerDay(_selectedMinutes!)),
                               style: KTypography.getStyle(
                                       KTextStyle.body, locale)
-                                  .copyWith(color: KColors.brand500),
+                                  .copyWith(color: isDark ? KColorsDark.brand500 : KColors.brand500),
                             ),
                           ],
                         ),
@@ -157,6 +157,7 @@ class _TimeChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GestureDetector(
       onTap: onTap,
@@ -167,17 +168,23 @@ class _TimeChip extends StatelessWidget {
           horizontal: KSpacing.sp24,
         ),
         decoration: BoxDecoration(
-          color: isSelected ? KColors.brand500 : KColors.neutral0,
+          color: isSelected
+              ? KColors.brand500
+              : (isDark ? KColorsDark.bgCard : KColors.neutral0),
           borderRadius: KRadius.full,
           border: Border.all(
-            color: isSelected ? KColors.brand500 : KColors.neutral300,
+            color: isSelected
+                ? KColors.brand500
+                : (isDark ? KColorsDark.border : KColors.neutral300),
           ),
           boxShadow: isSelected ? KElevation.shadow2 : KElevation.shadow1,
         ),
         child: Text(
           label,
           style: KTypography.getStyle(KTextStyle.button, locale).copyWith(
-            color: isSelected ? KColors.neutral0 : KColors.neutral700,
+            color: isSelected
+                ? KColors.neutral0
+                : (isDark ? KColorsDark.textPrimary : KColors.neutral700),
           ),
         ),
       ),

@@ -42,8 +42,8 @@ class _ReviewFillBlankScreenState
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: KColors.brand50,
       body: SafeArea(
         child: Column(
           children: [
@@ -57,11 +57,11 @@ class _ReviewFillBlankScreenState
                     child: Text(
                       l10n.reviewProgressOf(_currentCard, _totalCards), //MOCKDATA
                       style: KTypography.getStyle(KTextStyle.h4, locale)
-                          .copyWith(color: KColors.neutral900),
+                          .copyWith(color: theme.colorScheme.onSurface),
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close, color: KColors.neutral600),
+                    icon: Icon(Icons.close, color: theme.colorScheme.onSurfaceVariant),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ],
@@ -87,7 +87,7 @@ class _ReviewFillBlankScreenState
               child: Text(
                 l10n.reviewFillBlankTitle,
                 style: KTypography.getStyle(KTextStyle.h4, locale)
-                    .copyWith(color: KColors.neutral600),
+                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
             ),
             const SizedBox(height: KSpacing.sp16),
@@ -99,7 +99,7 @@ class _ReviewFillBlankScreenState
                 width: double.infinity,
                 padding: const EdgeInsets.all(KSpacing.sp24),
                 decoration: BoxDecoration(
-                  color: KColors.neutral0,
+                  color: theme.cardColor,
                   borderRadius: KRadius.lg,
                   boxShadow: KElevation.shadow2,
                 ),
@@ -179,9 +179,9 @@ class _OptionChip extends StatelessWidget {
         text = KColors.error700;
         break;
       case _ChipState.idle:
-        bg = KColors.neutral0;
+        bg = Theme.of(context).cardColor;
         border = KColors.borderDefault;
-        text = KColors.neutral900;
+        text = Theme.of(context).colorScheme.onSurface;
     }
 
     return GestureDetector(

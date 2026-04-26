@@ -160,11 +160,11 @@ The token system is the single source of truth for all visual values. No hardcod
 ║  ──────────────────────────────────────────────────────────────────  ║
 ║  brand-900    #000000   Black — app bar, primary header text         ║
 ║  brand-800    #4a1549   Dark purple shade — tab bar active state     ║
-║  brand-700    #682069   Deep purple — primary buttons, CTA           ║
+║  brand-700    #682069   Deep purple — primary buttons, CTA  -> 3 rd       ║
 ║  brand-600    #8c6792   Dark purple — links, selection borders       ║
-║  brand-500    #00c8cc   Teal/Cyan — accent, progress bars, rings     ║
-║  brand-400    #0cf6fc   Bright Cyan — highlights, selected state     ║
-║  brand-300    #ffb6cb   Pink — disabled-active elements, tag pills   ║
+║  brand-500    #00c8cc   Teal/Cyan — accent, progress bars, rings -> 1 st    ║
+║  brand-400    #0cf6fc   Bright Cyan — highlights, selected state -> 2 nd    ║
+║  brand-300    #ffb6cb   Pink — disabled-active elements, tag pills -> 4 th  ║
 ║  brand-200    #ffe1df   Light Peach — card background tints          ║
 ║  brand-100    #ffe1df   Light Peach — surface light, onboarding bg   ║
 ║  brand-50     #e8e1f0   Very Light Lavender — page background        ║

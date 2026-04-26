@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kotoka - Proficiency Assessment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#6b7a7a",
+            "surface-container-high": "#dce9ff",
+            "on-primary-fixed": "#002021",
+            "on-tertiary-fixed": "#301400",
+            "surface-container-highest": "#d3e4fe",
+            "surface-variant": "#d3e4fe",
+            "on-error-container": "#93000a",
+            "secondary": "#565e74",
+            "secondary-fixed": "#dae2fd",
+            "on-tertiary-container": "#703600",
+            "on-secondary": "#ffffff",
+            "background": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "tertiary": "#954a00",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#e5eeff",
+            "on-primary-container": "#004e50",
+            "error": "#ba1a1a",
+            "secondary-fixed-dim": "#bec6e0",
+            "on-tertiary-fixed-variant": "#713700",
+            "tertiary-fixed-dim": "#ffb785",
+            "surface-container-low": "#eff4ff",
+            "secondary-container": "#dae2fd",
+            "on-surface": "#0b1c30",
+            "surface-bright": "#f8f9ff",
+            "on-primary-fixed-variant": "#004f51",
+            "inverse-primary": "#37dbdf",
+            "on-background": "#0b1c30",
+            "inverse-surface": "#213145",
+            "on-error": "#ffffff",
+            "on-secondary-container": "#5c647a",
+            "primary-fixed-dim": "#37dbdf",
+            "on-surface-variant": "#3c4949",
+            "primary-container": "#00c8cc",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#5ff8fb",
+            "surface-tint": "#00696c",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-container": "#ff9c51",
+            "on-primary": "#ffffff",
+            "primary": "#00696c",
+            "tertiary-fixed": "#ffdcc6",
+            "on-secondary-fixed": "#131b2e",
+            "surface": "#f8f9ff",
+            "on-secondary-fixed-variant": "#3f465c",
+            "outline-variant": "#bac9c9",
+            "surface-dim": "#cbdbf5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xxl": "48px",
+            "xxxl": "64px",
+            "xl": "32px",
+            "sm": "8px",
+            "md": "16px",
+            "xs": "4px",
+            "lg": "24px",
+            "base": "4px"
+          },
+          "fontFamily": {
+            "body-md": ["IBM Plex Sans"],
+            "h3": ["IBM Plex Sans"],
+            "body-lg": ["IBM Plex Sans"],
+            "h1": ["IBM Plex Sans"],
+            "caption": ["IBM Plex Sans"],
+            "label-md": ["IBM Plex Sans"],
+            "h2": ["IBM Plex Sans"]
+          },
+          "fontSize": {
+            "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+            "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "h2": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #f8f9ff;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Component (Rendered as header for identity, nav suppressed per intent rules) -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-4 py-2 w-full bg-white dark:bg-slate-900 shadow-sm border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-md">
+<button class="transition-all duration-200 active:scale-95 text-cyan-500 p-2 rounded-full hover:bg-slate-50">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-2xl font-bold text-cyan-500 dark:text-cyan-400 font-sans tracking-tight">Kotoka</h1>
+</div>
+<div class="flex items-center gap-sm">
+<span class="text-label-md font-label-md text-outline">Step 2 of 4</span>
+</div>
+</header>
+<main class="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center p-lg md:p-xxxl max-w-7xl mx-auto">
+<!-- Hero Section / Context -->
+<div class="text-center mb-xxl max-w-2xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-md">Tailor your journey</h2>
+<p class="font-body-lg text-body-lg text-secondary mb-xl">Select your current proficiency level to help Kotoka organize your digital memories and learning path.</p>
+</div>
+<!-- CEFR Level Cards (Asymmetric Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg w-full">
+<!-- Card: A1 -->
+<div class="group bg-white border border-outline-variant rounded-xl p-lg shadow-sm hover:border-primary-container hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-lg">
+<span class="bg-surface-container-low text-primary font-bold px-md py-xs rounded-lg text-h3 font-h3">A1</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">early_on</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">Beginner</h3>
+<p class="font-body-md text-body-md text-secondary">Can understand and use familiar everyday expressions and very basic phrases.</p>
+</div>
+<div class="mt-xl flex items-center gap-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-label-md font-label-md">Select this level</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+<!-- Card: A2 -->
+<div class="group bg-white border border-outline-variant rounded-xl p-lg shadow-sm hover:border-primary-container hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between lg:mt-md">
+<div>
+<div class="flex justify-between items-start mb-lg">
+<span class="bg-surface-container-low text-primary font-bold px-md py-xs rounded-lg text-h3 font-h3">A2</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chat_bubble</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">Elementary</h3>
+<p class="font-body-md text-body-md text-secondary">Can communicate in simple and routine tasks requiring a simple and direct exchange of information.</p>
+</div>
+<div class="mt-xl flex items-center gap-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-label-md font-label-md">Select this level</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+<!-- Card: B1 -->
+<div class="group bg-white border border-outline-variant rounded-xl p-lg shadow-sm hover:border-primary-container hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-lg">
+<span class="bg-surface-container-low text-primary font-bold px-md py-xs rounded-lg text-h3 font-h3">B1</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">travel_explore</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">Intermediate</h3>
+<p class="font-body-md text-body-md text-secondary">Can deal with most situations likely to arise while travelling in an area where the language is spoken.</p>
+</div>
+<div class="mt-xl flex items-center gap-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-label-md font-label-md">Select this level</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+<!-- Card: B2 -->
+<div class="group bg-white border border-outline-variant rounded-xl p-lg shadow-sm hover:border-primary-container hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-lg">
+<span class="bg-surface-container-low text-primary font-bold px-md py-xs rounded-lg text-h3 font-h3">B2</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">forum</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">Upper Intermediate</h3>
+<p class="font-body-md text-body-md text-secondary">Can interact with a degree of fluency and spontaneity that makes regular interaction with native speakers quite possible.</p>
+</div>
+<div class="mt-xl flex items-center gap-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-label-md font-label-md">Select this level</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+<!-- Card: C1 (Active State Example) -->
+<div class="group bg-surface-container-low border-2 border-primary-container rounded-xl p-lg shadow-lg transition-all duration-300 cursor-pointer flex flex-col justify-between lg:-mt-md ring-4 ring-primary-container/10">
+<div>
+<div class="flex justify-between items-start mb-lg">
+<span class="bg-primary-container text-white font-bold px-md py-xs rounded-lg text-h3 font-h3 shadow-sm">C1</span>
+<span class="material-symbols-outlined text-primary font-variation-settings: 'FILL' 1;" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">Advanced</h3>
+<p class="font-body-md text-body-md text-secondary">Can express ideas fluently and spontaneously without much obvious searching for expressions.</p>
+</div>
+<div class="mt-xl flex items-center gap-xs text-primary font-bold">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="text-label-md font-label-md">Current Selection</span>
+</div>
+</div>
+<!-- Card: C2 -->
+<div class="group bg-white border border-outline-variant rounded-xl p-lg shadow-sm hover:border-primary-container hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-lg">
+<span class="bg-surface-container-low text-primary font-bold px-md py-xs rounded-lg text-h3 font-h3">C2</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">auto_awesome</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">Proficient</h3>
+<p class="font-body-md text-body-md text-secondary">Can understand with ease virtually everything heard or read and summarize information from different sources.</p>
+</div>
+<div class="mt-xl flex items-center gap-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-label-md font-label-md">Select this level</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Actions Section -->
+<div class="mt-xxl w-full max-w-md flex flex-col gap-md">
+<button class="bg-primary-container text-on-primary font-bold py-md px-xxl rounded-full shadow-lg hover:brightness-110 active:scale-95 transition-all text-center">
+        Continue
+      </button>
+<button class="bg-transparent text-primary font-medium py-sm px-xl rounded-full hover:bg-cyan-50 transition-all text-center text-label-md font-label-md">
+        I'm not sure, take a quick test
+      </button>
+</div>
+<!-- Visual Anchor / Background Decoration -->
+<div class="fixed top-0 right-0 -z-10 w-1/3 h-1/2 opacity-20 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-bl from-primary-container to-transparent blur-3xl rounded-full"></div>
+</div>
+<div class="fixed bottom-0 left-0 -z-10 w-1/4 h-1/3 opacity-10 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-tr from-secondary-container to-transparent blur-3xl rounded-full"></div>
+</div>
+</main>
+<!-- Side Illustration Content (Bento Style) -->
+<aside class="hidden xl:fixed right-xl top-1/2 -translate-y-1/2 w-64 space-y-md">
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant">
+<img alt="Icon" class="mb-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6tcs-1-zOvQjV82gFEptXZQhJp4fMvKtPs2jsbW0MJzIJ66LF1f9xGgljEs9ynpbBCSXrNo8A2w7U0ikB0hKvMy5T24rJh3VJ-TH7chHCXhB0CqJXV90Zn1k2puKGcXVg_swOSLdekPtNMOQwSARoMqNHQU8K1CebQbVTAR5Dax1KtKtl6HExxML9gwEhLaR4gE7RA4w-t-A1E6OG5IpWHhPSfRukh_eBjC8jtME4WLeqqDj5ZcccgqkIrBKVeWxyfgF5Z8TjpHLF"/>
+<p class="text-caption font-caption text-secondary">Changing levels later won't lose your progress. Kotoka adapts in real-time.</p>
+</div>
+<div class="bg-primary-container text-white p-md rounded-xl shadow-md">
+<p class="text-label-md font-label-md mb-xs">Pro Tip</p>
+<p class="text-caption font-caption opacity-90">Most professional users start at B2 for business communication.</p>
+</div>
+</aside>
+<!-- Progress Anchor (Visual) -->
+<div class="fixed bottom-lg left-1/2 -translate-x-1/2 flex items-center gap-sm bg-white px-lg py-sm rounded-full shadow-lg border border-outline-variant z-40">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-6 h-2 rounded-full bg-primary-container"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+</body></html>

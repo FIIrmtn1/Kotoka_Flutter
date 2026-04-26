@@ -75,16 +75,16 @@ class _PdpaConsentScreenState extends State<PdpaConsentScreen> {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: KColors.brand50,
       appBar: AppBar(
-        backgroundColor: KColors.brand50,
         elevation: KElevation.elevation0,
         leading: BackButton(color: KColors.brand500),
         title: Text(
           l10n.pdpaTitle,
           style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: KColors.neutral900),
+              .copyWith(color: theme.colorScheme.onSurface),
         ),
       ),
       body: SafeArea(
@@ -97,20 +97,20 @@ class _PdpaConsentScreenState extends State<PdpaConsentScreen> {
               Container(
                 padding: const EdgeInsets.all(KSpacing.sp16),
                 decoration: BoxDecoration(
-                  color: KColors.brand100,
+                  color: isDark ? theme.colorScheme.surface : KColors.brand100,
                   borderRadius: KRadius.md,
                 ),
                 child: Text(
                   l10n.pdpaExplanation,
                   style: KTypography.getStyle(KTextStyle.body, locale)
-                      .copyWith(color: KColors.neutral700),
+                      .copyWith(color: theme.colorScheme.onSurfaceVariant),
                 ),
               ),
               const SizedBox(height: KSpacing.sp24),
               Text(
                 l10n.pdpaRequiredAll,
                 style: KTypography.getStyle(KTextStyle.label, locale)
-                    .copyWith(color: KColors.neutral700),
+                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
               const SizedBox(height: KSpacing.sp12),
               // Permission checkboxes
@@ -176,7 +176,7 @@ class _PermissionTile extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: KSpacing.sp12),
       decoration: BoxDecoration(
-        color: KColors.neutral0,
+        color: Theme.of(context).cardColor,
         borderRadius: KRadius.md,
         border: Border.all(
           color: isChecked ? KColors.brand400 : KColors.neutral200,
@@ -215,7 +215,7 @@ class _PermissionTile extends StatelessWidget {
                     child: Text(
                       title,
                       style: KTypography.getStyle(KTextStyle.body, locale)
-                          .copyWith(color: KColors.neutral900),
+                          .copyWith(color: Theme.of(context).colorScheme.onSurface),
                     ),
                   ),
                   Checkbox(

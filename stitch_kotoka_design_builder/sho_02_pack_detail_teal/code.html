@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kotoka - Pack Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#6b7a7a",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed": "#002021",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-variant": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "secondary": "#565e74",
+                        "secondary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#703600",
+                        "on-secondary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#954a00",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "on-primary-container": "#004e50",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "tertiary-fixed-dim": "#ffb785",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-container": "#dae2fd",
+                        "on-surface": "#0b1c30",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed-variant": "#004f51",
+                        "inverse-primary": "#37dbdf",
+                        "on-background": "#0b1c30",
+                        "inverse-surface": "#213145",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#5c647a",
+                        "primary-fixed-dim": "#37dbdf",
+                        "on-surface-variant": "#3c4949",
+                        "primary-container": "#00c8cc",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#5ff8fb",
+                        "surface-tint": "#00696c",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#ff9c51",
+                        "on-primary": "#ffffff",
+                        "primary": "#00696c",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-secondary-fixed": "#131b2e",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "outline-variant": "#bac9c9",
+                        "surface-dim": "#cbdbf5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "xxxl": "64px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["IBM Plex Sans"],
+                        "h3": ["IBM Plex Sans"],
+                        "body-lg": ["IBM Plex Sans"],
+                        "h1": ["IBM Plex Sans"],
+                        "caption": ["IBM Plex Sans"],
+                        "label-md": ["IBM Plex Sans"],
+                        "h2": ["IBM Plex Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "h2": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8f9ff;
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: #0b1c30;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-4 py-2 w-full bg-white dark:bg-slate-900 shadow-sm border-b border-slate-100 dark:border-slate-800 transition-all duration-200">
+<div class="flex items-center gap-sm">
+<button class="p-2 transition-all duration-200 active:scale-95 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">menu</span>
+</button>
+<h1 class="text-2xl font-bold text-cyan-500 dark:text-cyan-400 font-sans tracking-tight">Kotoka</h1>
+</div>
+<div class="flex items-center">
+<button class="p-2 transition-all duration-200 active:scale-95 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-md py-lg">
+<!-- Pack Header Detail - SHO-02 Layout Pattern -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+<!-- Left: High-end Visual Display -->
+<div class="lg:col-span-7 space-y-md">
+<div class="relative overflow-hidden rounded-xxl aspect-[4/3] shadow-lg group">
+<img alt="Modern office interior" class="w-full h-full object-cover" data-alt="Modern minimalist office space with large windows, natural sunlight, sleek desks, and soft teal architectural accents in professional atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrvkk7tU-a4WApAa9_7snEEarqHGMglU8e9bjbC_EXWrPsfmVKpuD6_SfDUW31CyFpaV3yrm2ctyXMnN6uahRdgjn6D_lQ7oqaOHMwjC8FmrMFhL7PfeoY_UT_LySoSgcTdwZ8S4LveDzxZUOE16FEaxyfvylTu7IFlq81u4HJGax3rfvJrG-9eDSkgVcDrZxiKWfPvMqKgsXTsRiwQrIQiv1UNfjjOzwC6R5iHKbZvUoM2hpfppCKrPHtCnX37MmDy5ejZuwkx0rY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex flex-col justify-end p-xl">
+<div class="flex items-center gap-sm mb-sm">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-label-md font-label-md">Professional Series</span>
+<span class="bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-label-md font-label-md">Premium</span>
+</div>
+<h2 class="text-white font-h1 text-h1 tracking-tight mb-xs">Office Master Pack</h2>
+<p class="text-cyan-50 font-body-lg text-body-lg max-w-md">The ultimate collection for corporate clarity and workspace efficiency.</p>
+</div>
+</div>
+<!-- Bento Grid Style Sub-visuals -->
+<div class="grid grid-cols-3 gap-md">
+<div class="rounded-xl overflow-hidden aspect-square border border-outline-variant">
+<img alt="Corporate Building" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500" data-alt="Abstract upward view of modern glass office skyscraper with reflection of blue sky and subtle cyan tint" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTIu240u1ISY9joSHGIWKGdQ2v5dtEpogSroha6TgCRXVD6aTyCIVmEdtZqv-5uNz_VhAledb67Kng9PzxIZWYnF8-nMOVPQpXe2Tq2MZDGi_ewNgFXOdoMxPF3uBSo_S2_J3nYe9KLgQLdM0qi3FReP6Bnx0t1Jg6uCya-5EyWZXXRpC-nQ3OwZveo9X49Zasy8SGpQ1mJuXDKaf-UtWjY58kpb4-QTwML4Tx0zXEuVJPsHKd1VEaZN5ITQ0K4kzMdpCX00btLit1"/>
+</div>
+<div class="rounded-xl overflow-hidden aspect-square border border-outline-variant">
+<img alt="Professional Workshop" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500" data-alt="Close up of a professional planning session with sticky notes and modern stationary on a white desk with teal lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhYHEPN2NefqHPagqwvTZ_Ui8MYhdudH9OJM6dfy-dUqXeZwkyFmJzKkbtdZXqooS2HmRWX2k2vDsS0XAlPWBkxY4SU9l3knWivxyluUoJdPpM9shGv46laz6enq6Yb7moHOAVYjwGWPMGBcSrf8BjuTpraE5RK_MPnxW2sqzO7jwLLGk6GxGhPDhkwFyBocu9rYQMVx2TcxN2ye1kmA5C19MiyIrw4klI3vbYyyM-Qi1KHH1bpfq-baP8axlMkjRNPwUJlJf7aSrp"/>
+</div>
+<div class="rounded-xl overflow-hidden aspect-square border border-outline-variant flex items-center justify-center bg-surface-container-low">
+<span class="text-primary font-h3 text-h3">+12</span>
+</div>
+</div>
+</div>
+<!-- Right: Content & Unlock -->
+<div class="lg:col-span-5 flex flex-col gap-lg">
+<!-- Info Card -->
+<section class="bg-white rounded-xxl p-xl border border-outline-variant shadow-sm space-y-lg">
+<div>
+<div class="flex justify-between items-start mb-md">
+<h3 class="font-h3 text-h3 text-on-surface">Pack Overview</h3>
+<div class="flex items-center gap-xs text-primary font-semibold">
+<span class="material-symbols-outlined text-[20px]">star</span>
+<span class="text-body-md font-body-md">4.9</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                            Elevate your cognitive workspace with high-resolution memory modules designed for the modern professional. This pack contains structured themes, cognitive anchors, and workflow triggers.
+                        </p>
+</div>
+<!-- Office Pack Topics -->
+<div class="space-y-md">
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-outline">Included Topics</h4>
+<div class="flex flex-wrap gap-sm">
+<div class="flex items-center gap-sm bg-surface-container-low px-md py-sm rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<span class="font-body-md text-body-md text-on-surface">Strategic Planning</span>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-low px-md py-sm rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary">groups</span>
+<span class="font-body-md text-body-md text-on-surface">Team Synergy</span>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-low px-md py-sm rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="font-body-md text-body-md text-on-surface">Deep Work Flows</span>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-low px-md py-sm rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary">chat_bubble</span>
+<span class="font-body-md text-body-md text-on-surface">Executive Comms</span>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-low px-md py-sm rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary">architecture</span>
+<span class="font-body-md text-body-md text-on-surface">Agile Design</span>
+</div>
+</div>
+</div>
+<!-- Pricing & Unlock -->
+<div class="pt-lg border-t border-outline-variant flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<div>
+<span class="text-caption font-caption text-outline">Full access lifetime</span>
+<div class="flex items-baseline gap-xs">
+<span class="text-h2 font-h2 text-on-surface">$24.99</span>
+<span class="text-body-md font-body-md text-outline line-through">$49.99</span>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-tertiary-container text-on-tertiary-fixed px-2 py-1 rounded text-caption font-semibold">SAVE 50%</span>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-h3 text-h3 py-lg rounded-xxl shadow-lg shadow-primary-container/20 hover:brightness-105 transition-all active:scale-[0.98] flex justify-center items-center gap-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock_open</span>
+                            Unlock Office Pack
+                        </button>
+<p class="text-center text-caption font-caption text-outline">Secure encrypted checkout. Immediate access upon purchase.</p>
+</div>
+</section>
+<!-- User Testimonial Glass Card -->
+<div class="glass-effect rounded-xxl p-lg border border-white/50 shadow-sm flex items-start gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Headshot of a professional woman smiling in a bright office environment, high-quality corporate portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBPak2lVNIrBOqQCaXMnkT9QdI1_kIRgtKyiuYCrwghlcAdUoDIlL7Kd7F6_zQbfIozRFbtVAF9hSRYnEuPgI13mmbkuj9tQQr19ixv34cvNd8Jk8LOilnHoFkgW7FDNjirHgCyaJqqDRtXD9KvtRggQlu6x2Nqznt5ILBjK4VeWPF8JJvn2wl_bXKHxzdJsLjOWqWZzjge6lzD--91vb9Kpas8kWccTzyaQVHjcOOWPMgL2T7gnnl2m8dy6uxSh9yWkZ7sPhU8AiT"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed">
+                            "The Office Master Pack has completely streamlined how I recall project dependencies during meetings."
+                        </p>
+<p class="mt-sm font-label-md text-label-md text-primary">— Sarah J., Product Director</p>
+</div>
+</div>
+</div>
+</div>
+<!-- More Like This Section -->
+<section class="mt-xxxl">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h3 class="font-h2 text-h2 text-on-surface">Explore More Packs</h3>
+<p class="font-body-md text-body-md text-outline">Handpicked for your professional journey</p>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-xs hover:underline">
+                    View Gallery <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Related Card 1 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-md transition-all group cursor-pointer">
+<div class="h-32 bg-slate-100 overflow-hidden relative">
+<img alt="Team collaboration" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Blurred background of students or professionals collaborating at a long table with laptops and coffee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8KZqJBCbAsttPeBT08rjcalbCd8ktZxdeXPw21GJZc2YCBccPHEY3I6COOJomqpcAvyhZGz1uPPuNbdcSZ-rXgCCRu5cVcRJ7hCxzMdiSsU2guf_MMkI-awqPpfmR3PokYCPv00k7PdkPEc0b8SkMEkEkURkeBKq_DgaABX28-0W8M3RLJ5DjJztxqvdkn1MnyDke1JhAely-qinOfN3D5Cv4M4ogZtySNzRD7ObsXdDeEJ-u2AZ4zOdDq4ReeBGE4oXVVin_YFQi"/>
+<div class="absolute top-2 right-2 bg-white/80 backdrop-blur px-2 py-0.5 rounded text-caption font-bold text-primary">NEW</div>
+</div>
+<div class="p-md">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Creativity Boost</h4>
+<div class="flex justify-between items-center">
+<span class="text-caption text-outline">18 Topics</span>
+<span class="text-primary font-bold text-label-md">$14.99</span>
+</div>
+</div>
+</div>
+<!-- Related Card 2 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-md transition-all group cursor-pointer">
+<div class="h-32 bg-slate-100 overflow-hidden">
+<img alt="Data analysis" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Abstract data visualization on a screen with soft teal and blue lighting in a high-tech office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSWvRx6ra094D-yz3FFu-6Vv_nbr22QxvMtxC3kN9nYo4p_NJrc7cpPyjCZkqNckCDzilzJ63hfiuCaDWSr3yC_tdNDu_-w5ygPAYtjdMb7_G_H-0s684HIg4VSsyiwOUwXEakRLKonHao1iq5Mz-KVjR1CLwiGS4SNXBOoqhHownF1lHpYZ-0SUFbwsnZDUyOAATom8OcYgAdHDDZV0CpBn8yxNlmTaY2ADUpip5cNju1RcczGzzSDyQZP0hrwb6JUEVDg342uL0A"/>
+</div>
+<div class="p-md">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Data Logic</h4>
+<div class="flex justify-between items-center">
+<span class="text-caption text-outline">12 Topics</span>
+<span class="text-primary font-bold text-label-md">$19.99</span>
+</div>
+</div>
+</div>
+<!-- Related Card 3 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-md transition-all group cursor-pointer">
+<div class="h-32 bg-slate-100 overflow-hidden">
+<img alt="Social Interaction" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Two people having a friendly professional conversation in a sunlit atrium with plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqRCB6uhUoCsysDj_iS_OLOLO1C0ZW_eKuwbw2gkoTF-DPdQVCdrD_2dX0gZHNag_Vn16aiYMYpqSGoTWRH4sAoK2k6K9oU-FR41_g1YKOLLS-SrMuBxzGa-onmFgKn7trHPFNi1O0yBThxJt6n6Fr7zvqJLYHtltRnXH8Hd29IuDYEixj5so40qJGJkwWsMVL2AsTdgik1ICLVv8z17BCAx5AA9lqndtd4D_YnSI3qqa0H9nnVHpRoR2INdyNLR6yzEgSG7aHKqm7"/>
+</div>
+<div class="p-md">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Social Mastery</h4>
+<div class="flex justify-between items-center">
+<span class="text-caption text-outline">24 Topics</span>
+<span class="text-primary font-bold text-label-md">$29.99</span>
+</div>
+</div>
+</div>
+<!-- Related Card 4 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-md transition-all group cursor-pointer">
+<div class="h-32 bg-slate-100 overflow-hidden">
+<img alt="Wellness" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Minimalist scene with a single green plant and a glass of water on a clean white desk, serene morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWBkap2hWN4n2_mwlf1yxPNIuCTA8YDRB8kLsUT26l8siMbeKYK-lXIHa-5ZcuLcL6JqUhSt_oUgiS-4pTh9S6BJcNpgym6emmIT45S3aR_McuQL08SLiOTFN0cCQOyxQ9oJ8aW-ocWkvFRTtlCoS7RVWrKDpZRC4kjqUaSipHMHJnGSxzfvse3ZlJJl5T6l20h_kWb8zHSYW4iqsIdx5Tr8EiMin1jl6btaR6dSDEK2IM27pRtrWpvU6IdiOZvTjMIR6ELZSsUjjc"/>
+</div>
+<div class="p-md">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Focus &amp; Wellness</h4>
+<div class="flex justify-between items-center">
+<span class="text-caption text-outline">9 Topics</span>
+<span class="text-primary font-bold text-label-md">$9.99</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 mb-safe bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 shadow-lg">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 transition-transform duration-300 ease-out active:scale-90 hover:text-cyan-500" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 transition-transform duration-300 ease-out active:scale-90 hover:text-cyan-500" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Snap</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 transition-transform duration-300 ease-out active:scale-90 hover:text-cyan-500" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Review</span>
+</a>
+<!-- Active Tab: Shop -->
+<a class="flex flex-col items-center justify-center text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl px-3 py-1 transition-transform duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 transition-transform duration-300 ease-out active:scale-90 hover:text-cyan-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Me</span>
+</a>
+</nav>
+</body></html>

@@ -44,11 +44,12 @@ class KBottomTabBar extends StatelessWidget {
       ),
     ];
 
+    final theme = Theme.of(context);
     return Container(
-      decoration: const BoxDecoration(
-        color: KColors.surfacePrimary,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
         border: Border(
-          top: BorderSide(color: KColors.borderDefault, width: 1),
+          top: BorderSide(color: theme.colorScheme.outline, width: 1),
         ),
         boxShadow: KElevation.shadow2,
       ),
@@ -84,7 +85,7 @@ class _TabButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isActive ? KColors.brand500 : KColors.neutral500;
+    final color = isActive ? KColors.brand500 : Theme.of(context).colorScheme.onSurfaceVariant;
 
     return Expanded(
       child: Semantics(

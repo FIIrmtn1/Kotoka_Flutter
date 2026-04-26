@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kotoka - Memory Companion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#6b7a7a",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed": "#002021",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-variant": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "secondary": "#565e74",
+                        "secondary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#703600",
+                        "on-secondary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#954a00",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "on-primary-container": "#004e50",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "tertiary-fixed-dim": "#ffb785",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-container": "#dae2fd",
+                        "on-surface": "#0b1c30",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed-variant": "#004f51",
+                        "inverse-primary": "#37dbdf",
+                        "on-background": "#0b1c30",
+                        "inverse-surface": "#213145",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#5c647a",
+                        "primary-fixed-dim": "#37dbdf",
+                        "on-surface-variant": "#3c4949",
+                        "primary-container": "#00c8cc",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#5ff8fb",
+                        "surface-tint": "#00696c",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#ff9c51",
+                        "on-primary": "#ffffff",
+                        "primary": "#00696c",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-secondary-fixed": "#131b2e",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "outline-variant": "#bac9c9",
+                        "surface-dim": "#cbdbf5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "xxxl": "64px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["IBM Plex Sans"],
+                        "h3": ["IBM Plex Sans"],
+                        "body-lg": ["IBM Plex Sans"],
+                        "h1": ["IBM Plex Sans"],
+                        "caption": ["IBM Plex Sans"],
+                        "label-md": ["IBM Plex Sans"],
+                        "h2": ["IBM Plex Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "h2": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-glass {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-4 py-2 w-full bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-200">
+<button class="p-2 transition-all duration-200 active:scale-95 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined text-cyan-500 dark:text-cyan-400">menu</span>
+</button>
+<h1 class="text-2xl font-bold text-cyan-500 dark:text-cyan-400 font-sans tracking-tight">Kotoka</h1>
+<button class="p-2 transition-all duration-200 active:scale-95 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined text-cyan-500 dark:text-cyan-400">notifications</span>
+</button>
+</header>
+<main class="max-w-7xl mx-auto px-4 md:px-xl py-lg space-y-xl">
+<!-- Streak Header Section -->
+<section class="relative overflow-hidden bg-primary-container text-on-primary-container rounded-xl p-xl shadow-lg border border-primary-container">
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="space-y-sm text-center md:text-left">
+<div class="inline-flex items-center gap-xs px-md py-xs bg-white/20 rounded-full">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-md text-label-md">12 DAY STREAK</span>
+</div>
+<h2 class="font-h1 text-h2 md:text-h1 leading-tight">Keep the fire burning, <br/>Aiden.</h2>
+<p class="font-body-lg text-body-lg opacity-90 max-w-md">Your memory lucidity is at an all-time high this week. Ready to capture today?</p>
+</div>
+<div class="flex items-center gap-md">
+<!-- Progress Ring -->
+<div class="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle cx="50%" cy="50%" fill="transparent" r="45%" stroke="rgba(255,255,255,0.2)" stroke-width="8"></circle>
+<circle class="text-white" cx="50%" cy="50%" fill="transparent" r="45%" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="40" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-h3 text-h3 text-white">85%</span>
+<span class="font-caption text-caption text-white/80">Daily Goal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Grain/Gradient -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-xxxl rounded-full -mr-32 -mt-32"></div>
+</section>
+<!-- Mission Cards Bento Grid -->
+<section class="space-y-lg">
+<div class="flex items-center justify-between">
+<h3 class="font-h3 text-h3 text-on-surface">Daily Missions</h3>
+<button class="text-primary font-label-md flex items-center gap-xs hover:underline">
+                    View All <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Mission 1: Main -->
+<div class="md:col-span-2 bg-white rounded-xl border border-outline-variant p-lg flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="space-y-md">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<h4 class="font-h3 text-h3">Visual Anchor</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Capture a moment of tranquility from your surroundings today. Focus on textures and light.</p>
+</div>
+<div class="mt-xl flex items-center justify-between border-t border-slate-50 pt-md">
+<div class="flex -space-x-sm">
+<img alt="Aiden" class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a young woman with a friendly smile, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHNYrkFStMhsTB56VrrQWxzxOWqJbrMgDgwppkr5FPrH3mRlPBIj6ifTCaTrLfWRRV21oBF5p586CnmCBueof6mr2p88gpAvFCKfqfJ2ZRnGzGbi1yTwtCXJpkcBUNxpN-iw6JZJZIl3ZAvYwvAmzgrEG1vpT75hn5VCr4nSVIbbDcj9m8JbS8B7hh0tbe3GMiMkWDGGGCNgEoSj_wsrQ6gpU7u7HQp_scXtm6n1830ArirgmBrPRV0ymqeoBHm_B4Ds0sGuzs2xeB"/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container flex items-center justify-center text-caption font-caption text-on-surface">+12</div>
+</div>
+<button class="bg-primary text-white px-xl py-md rounded-xl font-label-md transition-transform active:scale-95">Complete Mission</button>
+</div>
+</div>
+<!-- Mission 2: Secondary -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant p-lg flex flex-col gap-md shadow-sm">
+<div class="h-40 w-full rounded-lg overflow-hidden relative">
+<img alt="Review" class="w-full h-full object-cover" data-alt="close-up of artisan sourdough bread on dark marble countertop with dramatic side lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9gYbfunBn0LsGIfzhIvQerCy3rVO4C6Dhn_XsZuXeYu2Og4opBjrngc02Nsb9hYV5cGS8WmBiHlGr9Z8ZH_I0PVM2iHF8YCnkITWcxMr5i3JNxAYz2WI2Y741hn6k8pYF8qkuowcam42cL3-XCGjGc1WxB86rW_EVyME74xHOxIY1bsC1zjB88xiT7NhPt2MmN2gghZnlaRNWe1ueLUs1X4_EpTRB40WBIF6wdhLUqVsu2FcsSCxMsPKy4RV0VyUBfpQHYrnZsgE_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<span class="absolute bottom-md left-md text-white font-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">history_edu</span> Review Draft
+                        </span>
+</div>
+<div class="space-y-xs">
+<h4 class="font-label-md text-on-surface font-bold">Gratitude Log</h4>
+<p class="font-caption text-caption text-on-surface-variant">Summarize 3 things that made you smile today.</p>
+</div>
+<button class="mt-auto border border-primary text-primary w-full py-md rounded-xl font-label-md hover:bg-primary-container/10 transition-colors">Resume</button>
+</div>
+</div>
+</section>
+<!-- Memory Map Section -->
+<section class="space-y-lg">
+<div class="flex items-center justify-between">
+<div class="space-y-xs">
+<h3 class="font-h3 text-h3 text-on-surface">Spatial Archive</h3>
+<p class="font-caption text-caption text-on-surface-variant">Memories anchored to your physical journey</p>
+</div>
+<div class="flex gap-sm">
+<button class="p-md bg-white border border-outline-variant rounded-xl hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+<button class="p-md bg-white border border-outline-variant rounded-xl hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">my_location</span>
+</button>
+</div>
+</div>
+<div class="relative w-full h-[400px] bg-slate-200 rounded-xl overflow-hidden border border-outline-variant shadow-inner">
+<img alt="Map of Tokyo" class="w-full h-full object-cover opacity-80" data-location="Tokyo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiulLVHl1XTjrpKLzy6OTvGyQ-6ZSmjjX3OIk9-_Mes2NkbAthyiLvMwje5vMd6i0GfqmPQFLTySFty9FI7krq4WWm-x7mk3AZD7Z-PJJnDzzDUDCy3Izhl3JKree_lmysMRKOna1k_7ZfGpl54SZziBjK24mgUKitehMEa1MvhP2FFO6U5TDWaECqmag6JTSejLnchrk5omx74waiteFpeHih2cHP9B_L8-y-d195OS2hbWLutosntD6M46BAnyKh-AprJTiJkMSB"/>
+<!-- Map UI Elements -->
+<div class="absolute inset-0 p-lg pointer-events-none">
+<!-- Marker 1 -->
+<div class="absolute top-[20%] left-[30%] pointer-events-auto cursor-pointer group">
+<div class="relative flex flex-col items-center">
+<div class="bg-primary text-white p-xs rounded-full shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="bg-white px-md py-sm rounded-lg shadow-xl mt-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+<p class="font-label-md text-on-surface">Morning Espresso</p>
+</div>
+</div>
+</div>
+<!-- Marker 2 -->
+<div class="absolute top-[50%] right-[25%] pointer-events-auto cursor-pointer group">
+<div class="relative flex flex-col items-center">
+<div class="bg-tertiary text-white p-xs rounded-full shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">landscape</span>
+</div>
+<div class="bg-white px-md py-sm rounded-lg shadow-xl mt-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+<p class="font-label-md text-on-surface">Park Walk</p>
+</div>
+</div>
+</div>
+<!-- Floating Card on Map -->
+<div class="absolute bottom-lg right-lg w-64 bg-white/90 backdrop-blur-md p-md rounded-xl shadow-xl pointer-events-auto border border-white/40">
+<div class="flex gap-md">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+<img alt="Location Preview" class="w-full h-full object-cover" data-alt="scenic mountain lake view at sunset with warm orange and teal reflection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkfnfNENo8UmoXBzBk1DoAk1nU1nrH76st0G_-ZfJu2pLXENqCKFjXCTYsdlEPnbXLXIKEe3jwa9VmqmlNXg_1HiKj-r3FanXjjf0rRZSGKnFmO68NO-LHmUPOg6osP2E9gopX6_ucWCY9Ig6w0p1CVbS-W6JYfbpWVP-lvBEI9zLclipY7ssij6dEYQR7c3tQaS_Mc45zlp_B4D1pKwC-wy7rtYGPbqgeDPuFe18txz1mi1vhCsfXRkRj4rzoc8udg1722m1vsazZ"/>
+</div>
+<div class="space-y-xs overflow-hidden">
+<p class="font-label-md text-on-surface truncate">Chidorigafuchi Park</p>
+<p class="font-caption text-caption text-on-surface-variant">2 memories nearby</p>
+<div class="flex gap-xs mt-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary/30"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights Summary -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-lg">
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm text-center">
+<span class="font-caption text-caption text-on-surface-variant block mb-xs uppercase tracking-widest">Memories</span>
+<span class="font-h2 text-h2 text-primary">1,284</span>
+</div>
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm text-center">
+<span class="font-caption text-caption text-on-surface-variant block mb-xs uppercase tracking-widest">Focus Level</span>
+<span class="font-h2 text-h2 text-primary">92%</span>
+</div>
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm text-center">
+<span class="font-caption text-caption text-on-surface-variant block mb-xs uppercase tracking-widest">Cities</span>
+<span class="font-h2 text-h2 text-primary">14</span>
+</div>
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm text-center">
+<span class="font-caption text-caption text-on-surface-variant block mb-xs uppercase tracking-widest">Connections</span>
+<span class="font-h2 text-h2 text-primary">42</span>
+</div>
+</section>
+</main>
+<!-- FAB for quick snap -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center transition-transform active:scale-90 z-40 hover:bg-primary/90">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 mb-safe bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 shadow-lg">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl px-3 py-1 transition-transform duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<!-- Snap -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 transition-transform duration-300 ease-out active:scale-90 hover:text-cyan-500 dark:hover:text-cyan-300" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Snap</span>
+</a>
+<!-- Review -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 transition-transform duration-300 ease-out active:scale-90 hover:text-cyan-500 dark:hover:text-cyan-300" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Review</span>
+</a>
+<!-- Shop -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 transition-transform duration-300 ease-out active:scale-90 hover:text-cyan-500 dark:hover:text-cyan-300" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Shop</span>
+</a>
+<!-- Me -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 transition-transform duration-300 ease-out active:scale-90 hover:text-cyan-500 dark:hover:text-cyan-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Me</span>
+</a>
+</nav>
+</body></html>

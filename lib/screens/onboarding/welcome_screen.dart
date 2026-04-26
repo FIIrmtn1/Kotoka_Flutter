@@ -22,8 +22,10 @@ class WelcomeScreen extends StatelessWidget { // ONB-02
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: KColors.brand100,
+      backgroundColor: isDark ? theme.scaffoldBackgroundColor : KColors.brand100,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: KSpacing.sp24),
@@ -50,7 +52,7 @@ class WelcomeScreen extends StatelessWidget { // ONB-02
               Text(
                 l10n.tagline,
                 style: KTypography.getStyle(KTextStyle.body, locale)
-                    .copyWith(color: KColors.neutral700),
+                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
                 textAlign: TextAlign.center,
               ),
               const Spacer(flex: 3),

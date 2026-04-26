@@ -1,0 +1,553 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1777149579385,
+  "projectRoot": "C:\\Users\\FIIrm\\OneDrive\\Desktop\\Kotoka_appv3",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "assets",
+      "lib",
+      "test"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "android": {
+      "path": "android",
+      "purpose": null,
+      "fileCount": 8,
+      "lastAccessed": 1777149579361,
+      "keyFiles": [
+        "build.gradle.kts",
+        "gradle.properties",
+        "gradlew",
+        "gradlew.bat",
+        "kotoka_app_android.iml"
+      ]
+    },
+    "assets": {
+      "path": "assets",
+      "purpose": "Static assets",
+      "fileCount": 0,
+      "lastAccessed": 1777149579367,
+      "keyFiles": []
+    },
+    "build": {
+      "path": "build",
+      "purpose": "Build output",
+      "fileCount": 1,
+      "lastAccessed": 1777149579367,
+      "keyFiles": []
+    },
+    "checklist": {
+      "path": "checklist",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1777149579368,
+      "keyFiles": [
+        "phase1.md",
+        "phase1_1.md",
+        "phase1_2.md",
+        "qa_verdict.md",
+        "qa_verdict_1_2.md"
+      ]
+    },
+    "feedback": {
+      "path": "feedback",
+      "purpose": null,
+      "fileCount": 9,
+      "lastAccessed": 1777149579368,
+      "keyFiles": [
+        "capture_screens.js",
+        "customer_vote.js",
+        "customer_vote_v2.js",
+        "form.html",
+        "run_capture.js"
+      ]
+    },
+    "feedback_form": {
+      "path": "feedback_form",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1777149579368,
+      "keyFiles": [
+        "phase1_form.md",
+        "vote_results_phase1_1.md",
+        "vote_results_phase1_2.md"
+      ]
+    },
+    "graphify-out": {
+      "path": "graphify-out",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1777149579368,
+      "keyFiles": [
+        "graph.html",
+        "graph.json",
+        "GRAPH_REPORT.md"
+      ]
+    },
+    "Kokoanimation": {
+      "path": "Kokoanimation",
+      "purpose": null,
+      "fileCount": 6,
+      "lastAccessed": 1777149579369,
+      "keyFiles": [
+        "koko-celebrate.webp",
+        "koko-encourage.webp",
+        "koko-excited.webp",
+        "koko-idle.webp",
+        "koko-thinking.webp"
+      ]
+    },
+    "lib": {
+      "path": "lib",
+      "purpose": "Library code",
+      "fileCount": 2,
+      "lastAccessed": 1777149579369,
+      "keyFiles": [
+        "firebase_options.dart",
+        "main.dart"
+      ]
+    },
+    "Main_resources": {
+      "path": "Main_resources",
+      "purpose": null,
+      "fileCount": 6,
+      "lastAccessed": 1777149579370,
+      "keyFiles": [
+        "BMC.md",
+        "DESIGN.md",
+        "kotoka-master-prompt.md",
+        "kotoka_signature.md",
+        "kotoka_system_architecture.md"
+      ]
+    },
+    "packages": {
+      "path": "packages",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1777149579370,
+      "keyFiles": []
+    },
+    "personality": {
+      "path": "personality",
+      "purpose": null,
+      "fileCount": 39,
+      "lastAccessed": 1777149579370,
+      "keyFiles": [
+        "customer_aisha_kl.md",
+        "customer_alex_sg.md",
+        "customer_ana_manila.md",
+        "customer_arif_jakarta.md",
+        "customer_arm_silom.md"
+      ]
+    },
+    "plan": {
+      "path": "plan",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1777149579371,
+      "keyFiles": [
+        "phase1.md",
+        "phase1_1.md",
+        "phase1_2.md",
+        "phase2.md"
+      ]
+    },
+    "screenshots": {
+      "path": "screenshots",
+      "purpose": null,
+      "fileCount": 15,
+      "lastAccessed": 1777149579371,
+      "keyFiles": [
+        "01_splash.png",
+        "02_welcome.png",
+        "home.png",
+        "home_tab.png",
+        "onb01_lang.png"
+      ]
+    },
+    "skills": {
+      "path": "skills",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1777149579371,
+      "keyFiles": [
+        "phase.md"
+      ]
+    },
+    "test": {
+      "path": "test",
+      "purpose": "Test files",
+      "fileCount": 1,
+      "lastAccessed": 1777149579372,
+      "keyFiles": [
+        "widget_test.dart"
+      ]
+    },
+    "web": {
+      "path": "web",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1777149579372,
+      "keyFiles": [
+        "favicon.png",
+        "index.html",
+        "manifest.json"
+      ]
+    },
+    "windows": {
+      "path": "windows",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1777149579372,
+      "keyFiles": [
+        "CMakeLists.txt"
+      ]
+    },
+    "android\\app": {
+      "path": "android\\app",
+      "purpose": "Application code",
+      "fileCount": 2,
+      "lastAccessed": 1777149579373,
+      "keyFiles": [
+        "build.gradle.kts",
+        "google-services.json"
+      ]
+    },
+    "build\\app": {
+      "path": "build\\app",
+      "purpose": "Application code",
+      "fileCount": 1,
+      "lastAccessed": 1777149579374,
+      "keyFiles": [
+        "deeplink.json"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "lib\\screens\\onboarding\\language_select_screen.dart",
+      "accessCount": 21,
+      "lastAccessed": 1777193788113,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\profile\\profile_screen.dart",
+      "accessCount": 17,
+      "lastAccessed": 1777188993976,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\home\\home_screen.dart",
+      "accessCount": 16,
+      "lastAccessed": 1777189867401,
+      "type": "file"
+    },
+    {
+      "path": "checklist_UXUI.md",
+      "accessCount": 14,
+      "lastAccessed": 1777193134282,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\shop\\shop_screen.dart",
+      "accessCount": 13,
+      "lastAccessed": 1777193542280,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\theme\\app_theme.dart",
+      "accessCount": 13,
+      "lastAccessed": 1777193832050,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_screen.dart",
+      "accessCount": 11,
+      "lastAccessed": 1777189352833,
+      "type": "file"
+    },
+    {
+      "path": "lib\\l10n\\app_en.arb",
+      "accessCount": 10,
+      "lastAccessed": 1777189341017,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\theme\\tokens.dart",
+      "accessCount": 10,
+      "lastAccessed": 1777193475259,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\widgets\\language_picker_sheet.dart",
+      "accessCount": 7,
+      "lastAccessed": 1777193806178,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 7,
+      "lastAccessed": 1777194676726,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\schedule_screen.dart",
+      "accessCount": 6,
+      "lastAccessed": 1777181913483,
+      "type": "file"
+    },
+    {
+      "path": "lib\\l10n\\app_th.arb",
+      "accessCount": 6,
+      "lastAccessed": 1777189314057,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\widgets\\koko_emoji.dart",
+      "accessCount": 6,
+      "lastAccessed": 1777193715823,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\pdpa_consent_screen.dart",
+      "accessCount": 5,
+      "lastAccessed": 1777181828030,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 5,
+      "lastAccessed": 1777187542437,
+      "type": "directory"
+    },
+    {
+      "path": "personality\\customer_pam_bangkok.md",
+      "accessCount": 5,
+      "lastAccessed": 1777188654291,
+      "type": "file"
+    },
+    {
+      "path": "lib\\main.dart",
+      "accessCount": 4,
+      "lastAccessed": 1777181371159,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_flashcard_screen.dart",
+      "accessCount": 4,
+      "lastAccessed": 1777181703551,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_fillblank_screen.dart",
+      "accessCount": 4,
+      "lastAccessed": 1777181722744,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_complete_screen.dart",
+      "accessCount": 4,
+      "lastAccessed": 1777181739517,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_arm_silom.md",
+      "accessCount": 4,
+      "lastAccessed": 1777188654637,
+      "type": "file"
+    },
+    {
+      "path": "pubspec.yaml",
+      "accessCount": 4,
+      "lastAccessed": 1777193697800,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_text_screen.dart",
+      "accessCount": 3,
+      "lastAccessed": 1777181631591,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_processing_screen.dart",
+      "accessCount": 3,
+      "lastAccessed": 1777181639878,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_results_screen.dart",
+      "accessCount": 3,
+      "lastAccessed": 1777181659977,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_conversation_screen.dart",
+      "accessCount": 3,
+      "lastAccessed": 1777181686059,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\welcome_screen.dart",
+      "accessCount": 3,
+      "lastAccessed": 1777181752065,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\goal_select_screen.dart",
+      "accessCount": 3,
+      "lastAccessed": 1777181771910,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\level_select_screen.dart",
+      "accessCount": 3,
+      "lastAccessed": 1777181787593,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\profile_setup_screen.dart",
+      "accessCount": 3,
+      "lastAccessed": 1777181840902,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_mint_sukhumvit.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188655028,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_nam_chatuchak.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188655413,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_nong_latkrabang.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188655801,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_oak_bangna.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188656192,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_top_asoke.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188656666,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_fah_ari.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188657436,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_lisa_kl.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188664767,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_raj_kl.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188664865,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_alex_sg.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188665382,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_james_sg.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188666237,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_priya_sg.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188666441,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_ana_manila.md",
+      "accessCount": 3,
+      "lastAccessed": 1777188666802,
+      "type": "file"
+    },
+    {
+      "path": "lib",
+      "accessCount": 3,
+      "lastAccessed": 1777193817394,
+      "type": "directory"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\commitment_screen.dart",
+      "accessCount": 2,
+      "lastAccessed": 1777181790996,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\mission_screen.dart",
+      "accessCount": 2,
+      "lastAccessed": 1777181800693,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\providers\\locale_provider.dart",
+      "accessCount": 2,
+      "lastAccessed": 1777184082347,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\widgets\\sensory_tag_bar.dart",
+      "accessCount": 1,
+      "lastAccessed": 1777180388247,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\widgets\\theme_toggle_button.dart",
+      "accessCount": 1,
+      "lastAccessed": 1777180395192,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_screen.dart",
+      "accessCount": 1,
+      "lastAccessed": 1777181502219,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

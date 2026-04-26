@@ -35,8 +35,8 @@ class _ReviewFlashcardScreenState
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: KColors.brand50,
       body: SafeArea(
         child: Column(
           children: [
@@ -52,11 +52,11 @@ class _ReviewFlashcardScreenState
                     child: Text(
                       l10n.reviewProgressOf(_currentCard, _totalCards), //MOCKDATA
                       style: KTypography.getStyle(KTextStyle.h4, locale)
-                          .copyWith(color: KColors.neutral900),
+                          .copyWith(color: theme.colorScheme.onSurface),
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close, color: KColors.neutral600),
+                    icon: Icon(Icons.close, color: theme.colorScheme.onSurfaceVariant),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ],
@@ -167,7 +167,7 @@ class _CardFront extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: KColors.neutral0,
+        color: Theme.of(context).cardColor,
         borderRadius: KRadius.xl,
         boxShadow: KElevation.shadow2,
       ),
@@ -199,11 +199,13 @@ class _CardBack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(KSpacing.sp24),
       decoration: BoxDecoration(
-        color: KColors.brand50,
+        color: isDark ? theme.cardColor : KColors.brand50,
         borderRadius: KRadius.xl,
         boxShadow: KElevation.shadow2,
         border: Border.all(color: KColors.brand500.withOpacity(0.3)),

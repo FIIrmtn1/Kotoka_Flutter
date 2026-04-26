@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kotoka Premium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#6b7a7a",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-fixed": "#002021",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-variant": "#d3e4fe",
+                    "on-error-container": "#93000a",
+                    "secondary": "#565e74",
+                    "secondary-fixed": "#dae2fd",
+                    "on-tertiary-container": "#703600",
+                    "on-secondary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#954a00",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "on-primary-container": "#004e50",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "tertiary-fixed-dim": "#ffb785",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-container": "#dae2fd",
+                    "on-surface": "#0b1c30",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed-variant": "#004f51",
+                    "inverse-primary": "#37dbdf",
+                    "on-background": "#0b1c30",
+                    "inverse-surface": "#213145",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#5c647a",
+                    "primary-fixed-dim": "#37dbdf",
+                    "on-surface-variant": "#3c4949",
+                    "primary-container": "#00c8cc",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#5ff8fb",
+                    "surface-tint": "#00696c",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-container": "#ff9c51",
+                    "on-primary": "#ffffff",
+                    "primary": "#00696c",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "outline-variant": "#bac9c9",
+                    "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "xxxl": "64px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["IBM Plex Sans"],
+                    "h3": ["IBM Plex Sans"],
+                    "body-lg": ["IBM Plex Sans"],
+                    "h1": ["IBM Plex Sans"],
+                    "caption": ["IBM Plex Sans"],
+                    "label-md": ["IBM Plex Sans"],
+                    "h2": ["IBM Plex Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["32px", {"lineHeight": "1.25", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-4 py-2 w-full bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-md">
+<button class="transition-all duration-200 active:scale-95 text-cyan-500">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<span class="text-2xl font-bold text-cyan-500 dark:text-cyan-400 font-sans tracking-tight">Kotoka</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-label-md text-label-md text-slate-500">Restore</span>
+</div>
+</header>
+<main class="min-h-screen pb-xxxl">
+<!-- Hero Section -->
+<section class="relative h-[353px] w-full overflow-hidden flex items-end justify-center px-lg">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Abstract ethereal digital light patterns in teal and cyan flowing smoothly with soft bokeh highlights and professional tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD994jBteL8w7Hz0F-pJynBwHMJ0CvongcTR03mkJ3og94wFEQ8cwLNcON-KD_bof3MLIo1N2UKjO37ScQuBUHn0M8Vn83BUMdMf3M_dRcgg4P7Evfj5oPJER-5U40xif7Rktcrltu_sj0SrNPZOmHwe6zcJQr0EVQoRMi12ms5BJRRm3OoZj8Am6K1OibTDN-vAQA8guJ0CrYdKwXe8YHGqMXR2W5yag2oRpTKUbOkto33sQTHLU08YNP7o1aGFaYJs4jjuCgV4jUk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 text-center mb-xl">
+<div class="inline-flex items-center bg-primary-container/20 px-md py-xs rounded-full mb-md border border-primary-container/30">
+<span class="material-symbols-outlined text-primary text-[18px] mr-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-primary tracking-wide">UPGRADE TO PREMIUM</span>
+</div>
+<h1 class="font-h1 text-h1 text-on-surface mb-sm leading-tight">Unlock Your Full Memory</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-md mx-auto">Experience Kotoka without limits and elevate your digital intelligence.</p>
+</div>
+</section>
+<!-- Bento Grid Benefits -->
+<section class="px-lg max-w-4xl mx-auto -mt-lg relative z-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Large Card -->
+<div class="md:col-span-2 bg-white rounded-xl p-lg shadow-sm border border-slate-100 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-cyan-500 text-[28px]" data-icon="memory">memory</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Unlimited Storage</h3>
+<p class="font-body-md text-body-md text-secondary">Never worry about space again. Capture every moment, document, and thought in high resolution without restrictions.</p>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="bg-white rounded-xl p-lg shadow-sm border border-slate-100">
+<div class="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-cyan-500 text-[28px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="font-label-md text-body-lg font-bold text-on-surface mb-xs">AI Insights</h3>
+<p class="font-caption text-caption text-secondary">Deep neural analysis of your patterns and cognitive habits.</p>
+</div>
+<!-- Small Card 2 -->
+<div class="bg-white rounded-xl p-lg shadow-sm border border-slate-100">
+<div class="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-cyan-500 text-[28px]" data-icon="security">security</span>
+</div>
+<h3 class="font-label-md text-body-lg font-bold text-on-surface mb-xs">Vault Secure</h3>
+<p class="font-caption text-caption text-secondary">Quantum-resistant encryption for your most private memories.</p>
+</div>
+<!-- Wide Feature Card -->
+<div class="md:col-span-2 bg-gradient-to-br from-primary-container to-cyan-600 rounded-xl p-lg shadow-lg border border-primary text-white">
+<div class="flex flex-col md:flex-row items-center gap-lg">
+<div class="flex-1">
+<h3 class="font-h3 text-h3 mb-xs">Priority Sync</h3>
+<p class="opacity-90 font-body-md">Real-time synchronization across all your devices with 0.1s latency. Your mind, everywhere.</p>
+</div>
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-[64px] opacity-20" data-icon="sync">sync</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing / Selection Section -->
+<section class="px-lg py-xxl max-w-4xl mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-h2 text-h2 text-on-surface">Choose Your Plan</h2>
+</div>
+<div class="space-y-md">
+<!-- Plan Option 1 -->
+<label class="relative flex items-center p-lg bg-white border border-slate-200 rounded-xl cursor-pointer hover:border-primary-container transition-colors group">
+<input class="hidden peer" name="plan" type="radio"/>
+<div class="flex-grow">
+<div class="flex items-center gap-sm">
+<span class="font-h3 text-h3 text-on-surface">Monthly</span>
+<span class="font-label-md text-label-md bg-slate-100 px-sm py-1 rounded text-slate-500">Flexible</span>
+</div>
+<p class="font-body-md text-body-md text-secondary">Full access to all features</p>
+</div>
+<div class="text-right">
+<div class="font-h3 text-h3 text-on-surface">$9.99</div>
+<div class="font-caption text-caption text-secondary">per month</div>
+</div>
+<div class="absolute inset-0 border-2 border-transparent peer-checked:border-primary-container rounded-xl pointer-events-none"></div>
+<div class="absolute top-4 right-4 hidden peer-checked:block">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<!-- Plan Option 2 (Featured) -->
+<label class="relative flex items-center p-lg bg-surface-container-low border-2 border-primary-container rounded-xl cursor-pointer group">
+<input checked="" class="hidden peer" name="plan" type="radio"/>
+<div class="flex-grow">
+<div class="flex items-center gap-sm">
+<span class="font-h3 text-h3 text-on-surface">Yearly</span>
+<span class="font-label-md text-label-md bg-primary-container text-white px-sm py-1 rounded">SAVE 40%</span>
+</div>
+<p class="font-body-md text-body-md text-secondary">Our most popular memory companion plan</p>
+</div>
+<div class="text-right">
+<div class="font-h3 text-h3 text-on-surface">$69.99</div>
+<div class="font-caption text-caption text-secondary">per year</div>
+</div>
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+</div>
+</section>
+</main>
+<!-- Fixed Action Bottom Shell -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md px-lg py-lg border-t border-slate-100">
+<div class="max-w-md mx-auto">
+<button class="w-full bg-primary-container text-on-primary py-md rounded-xl font-h3 text-h3 shadow-lg shadow-cyan-200 active:scale-95 transition-transform">
+                Start 7-Day Free Trial
+            </button>
+<p class="text-center mt-sm font-caption text-caption text-slate-400">
+                Recurring billing. Cancel anytime in App Store.
+            </p>
+</div>
+</div>
+</body></html>

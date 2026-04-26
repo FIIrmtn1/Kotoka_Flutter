@@ -16,8 +16,8 @@ class ReviewCompleteScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: KColors.brand50,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
@@ -50,7 +50,7 @@ class ReviewCompleteScreen extends ConsumerWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(KSpacing.sp16),
                 decoration: BoxDecoration(
-                  color: KColors.neutral0,
+                  color: theme.cardColor,
                   borderRadius: KRadius.md,
                   border: Border.all(color: KColors.borderDefault),
                 ),
@@ -200,7 +200,7 @@ class _ResultRow extends StatelessWidget {
         Text(
           label,
           style: KTypography.getStyle(KTextStyle.body, locale)
-              .copyWith(color: KColors.neutral700),
+              .copyWith(color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
     );
