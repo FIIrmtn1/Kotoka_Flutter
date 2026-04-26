@@ -6,33 +6,36 @@ import 'package:kotoka_app/core/providers/tooltip_seen_provider.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 import 'package:kotoka_app/core/widgets/koko_animation.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
 import 'package:kotoka_app/core/widgets/offline_banner.dart';
-import 'package:kotoka_app/main.dart';
+import 'package:kotoka_app/core/widgets/k_progress_ring.dart';
+import 'package:kotoka_app/core/widgets/k_section_header.dart';
+import 'package:kotoka_app/core/widgets/k_card.dart';
 
 // ---------------------------------------------------------------------------
 // Mock data — all lines tagged //MOCKDATA
 // ---------------------------------------------------------------------------
-const int _mockLives    = 5;    //MOCKDATA
-const int _mockStreak   = 7;    //MOCKDATA
-const int _mockCoins    = 120;  //MOCKDATA
-const int _mockWords    = 248;  //MOCKDATA
+const int _mockStreak  = 12;   //MOCKDATA
+// ignore: unused_element
+const int _mockCoins   = 120;  //MOCKDATA
+const int _mockWords   = 1284; //MOCKDATA
+const int _mockFocus   = 92;   //MOCKDATA
+const int _mockCities  = 14;   //MOCKDATA
+const int _mockConns   = 42;   //MOCKDATA
+const double _mockDailyPct = 0.85; //MOCKDATA
 
-class _MockDeck { //MOCKDATA
-  const _MockDeck({required this.name, required this.wordCount, required this.progress}); //MOCKDATA
-  final String name;       //MOCKDATA
-  final int wordCount;     //MOCKDATA
-  final double progress;   //MOCKDATA
+class _MockMission { //MOCKDATA
+  const _MockMission({required this.icon, required this.title, required this.sub, required this.done}); //MOCKDATA
+  final String icon;    //MOCKDATA
+  final String title;   //MOCKDATA
+  final String sub;     //MOCKDATA
+  final bool done;      //MOCKDATA
 } //MOCKDATA
 
-const List<_MockDeck> _mockDecks = [ //MOCKDATA
-  _MockDeck(name: 'Office Thai',      wordCount: 24, progress: 0.60), //MOCKDATA
-  _MockDeck(name: 'Travel English',   wordCount: 18, progress: 0.35), //MOCKDATA
+const List<_MockMission> _mockMissions = [ //MOCKDATA
+  _MockMission(icon: '📷', title: 'Visual Anchor', sub: 'Snap 1 memory', done: false), //MOCKDATA
+  _MockMission(icon: '🙏', title: 'Gratitude Log', sub: "Resume today's entry", done: true), //MOCKDATA
 ]; //MOCKDATA
-
-// Forgetting curve: retention fraction per day (Mon→Sun)
-const List<double> _mockRetention = [0.82, 0.65, 0.45, 0.78, 0.30, 0.91, 0.58]; //MOCKDATA
-const List<String> _mockDayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];        //MOCKDATA
 
 // ---------------------------------------------------------------------------
 // HomeScreen
@@ -81,172 +84,592 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n   = AppLocalizations.of(context)!;
-    final locale = Localizations.localeOf(context);
+    final l10n        = AppLocalizations.of(context)!;
     final kokoVisible = ref.watch(kokoVisibleProvider);
 
-    return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            // ── App Bar ──────────────────────────────────────────────────────
-            SliverAppBar(
-              elevation: KElevation.elevation0,
-              floating: true,
-              snap: true,
-              titleSpacing: KSpacing.sp16,
-              title: Row(
+    return KStitchScaffold(
+      floatingActionButton: _CyanFab(onTap: () => context.go('/snap')),
+      body: Column(
+        children: [
+          // ── Sticky header ────────────────────────────────────────────────
+          _HomeHeader(
+            kokoVisible: kokoVisible,
+            onToggleKoko: () => ref.read(kokoVisibleProvider.notifier).toggle(),
+          ),
+          const OfflineBanner(),
+
+          // ── Scrollable body ──────────────────────────────────────────────
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(
+                KSpacing.sp16, KSpacing.sp16, KSpacing.sp16, KSpacing.sp96),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Kotoka',
-                    style: KTypography.getStyle(KTextStyle.h3, locale)
-                        .copyWith(color: KColors.brand500),
+                  // Streak hero card
+                  _StreakHeroCard(
+                    l10n: l10n,
+                    streak: _mockStreak, //MOCKDATA
+                    dailyPct: _mockDailyPct, //MOCKDATA
+                    kokoVisible: kokoVisible,
                   ),
-                  const Spacer(),
-                  _AppBarChip(icon: '❤️', value: '$_mockLives'),   //MOCKDATA
-                  const SizedBox(width: KSpacing.sp8),
-                  _AppBarChip(icon: '🔥', value: '$_mockStreak'),  //MOCKDATA
-                  const SizedBox(width: KSpacing.sp8),
-                  _AppBarChip(icon: '🪙', value: '$_mockCoins'),   //MOCKDATA
-                  const SizedBox(width: KSpacing.sp4),
-                  Consumer(
-                    builder: (context, ref, _) {
-                      final kokoVisible = ref.watch(kokoVisibleProvider);
-                      return IconButton(
-                        icon: Icon(
-                          kokoVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                          color: kokoVisible ? KColors.brand500 : KColors.neutral400,
-                          size: 20,
-                        ),
-                        onPressed: () => ref.read(kokoVisibleProvider.notifier).toggle(),
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(),
-                        tooltip: kokoVisible ? 'Focus mode' : 'Show Koko',
-                      );
-                    },
+                  const SizedBox(height: KSpacing.sp24),
+
+                  // Daily Missions
+                  KSectionHeader(
+                    title: l10n.homeRecentDecks,
+                    actionLabel: 'View',
+                    onAction: () {},
                   ),
-                  const SizedBox(width: KSpacing.sp4),
-                  Consumer(
-                    builder: (context, ref, _) {
-                      final isDark = Theme.of(context).brightness == Brightness.dark;
-                      return IconButton(
-                        icon: Icon(
-                          isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
-                          color: KColors.brand500,
-                          size: 20,
-                        ),
-                        onPressed: () {
-                          ref.read(themeModeProvider.notifier).state =
-                              isDark ? ThemeMode.light : ThemeMode.dark;
-                        },
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(),
-                      );
-                    },
+                  const SizedBox(height: KSpacing.sp12),
+                  const _MissionsBento(missions: _mockMissions), //MOCKDATA
+                  const SizedBox(height: KSpacing.sp24),
+
+                  // Spatial Archive
+                  const KSectionHeader(title: 'Spatial Archive'),
+                  const SizedBox(height: KSpacing.sp4),
+                  const Text(
+                    "Memories anchored to places you've been.",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: KColors.neutral500,
+                      fontFamily: 'IBMPlexSans',
+                    ),
+                  ),
+                  const SizedBox(height: KSpacing.sp12),
+                  const _MapPlaceholderCard(),
+                  const SizedBox(height: KSpacing.sp24),
+
+                  // 4-tile stat row
+                  const _StatTilesRow(
+                    words: _mockWords,   //MOCKDATA
+                    focus: _mockFocus,   //MOCKDATA
+                    cities: _mockCities, //MOCKDATA
+                    conns: _mockConns,   //MOCKDATA
                   ),
                 ],
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-            // ── Offline Banner ───────────────────────────────────────────────
-            const SliverToBoxAdapter(child: OfflineBanner()),
+// ---------------------------------------------------------------------------
+// _HomeHeader
+// ---------------------------------------------------------------------------
+class _HomeHeader extends StatelessWidget {
+  const _HomeHeader({
+    required this.kokoVisible,
+    required this.onToggleKoko,
+  });
+  final bool kokoVisible;
+  final VoidCallback onToggleKoko;
 
-            // ── Body ─────────────────────────────────────────────────────────
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: KSpacing.sp20),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate([
-                  const SizedBox(height: KSpacing.sp8),
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: KColors.pageBg,
+      padding: const EdgeInsets.symmetric(
+        horizontal: KSpacing.sp16, vertical: KSpacing.sp12),
+      child: Row(
+        children: [
+          const Icon(Icons.menu_rounded, color: KColors.brand400, size: 24),
+          const SizedBox(width: KSpacing.sp12),
+          const Expanded(
+            child: Text(
+              'Kotoka',
+              style: TextStyle(
+                fontFamily: 'IBMPlexSans',
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: KColors.brand400,
+                letterSpacing: -0.5,
+              ),
+            ),
+          ),
+          IconButton(
+            icon: Icon(
+              kokoVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: kokoVisible ? KColors.brand400 : KColors.neutral400,
+              size: 20,
+            ),
+            onPressed: onToggleKoko,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
+            tooltip: kokoVisible ? 'Focus mode' : 'Show Koko',
+          ),
+          const SizedBox(width: KSpacing.sp12),
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              const Icon(Icons.notifications_outlined, color: KColors.brand400, size: 24),
+              Positioned(
+                top: -2, right: -2,
+                child: Container(
+                  width: 8, height: 8,
+                  decoration: const BoxDecoration(
+                    color: KColors.error500, shape: BoxShape.circle),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-                  // Koko mascot (hidden in focus mode)
-                  if (kokoVisible) ...[
-                    const Center(
-                      child: KokoAnimation(state: KokoState.celebrating, size: 120),
+// ---------------------------------------------------------------------------
+// _StreakHeroCard — STITCH HOM-01 hero banner
+// ---------------------------------------------------------------------------
+class _StreakHeroCard extends StatelessWidget {
+  const _StreakHeroCard({
+    required this.l10n,
+    required this.streak,
+    required this.dailyPct,
+    required this.kokoVisible,
+  });
+  final AppLocalizations l10n;
+  final int streak;
+  final double dailyPct;
+  final bool kokoVisible;
+
+  @override
+  Widget build(BuildContext context) {
+    return KTintedCard(
+      padding: const EdgeInsets.all(KSpacing.sp24),
+      gradient: const LinearGradient(
+        colors: [KColors.brand700, KColors.brand800],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      child: Stack(
+        children: [
+          // Koko mascot (top-right, hidden in focus mode)
+          if (kokoVisible)
+            const Positioned(
+              top: 0,
+              right: 0,
+              child: KokoAnimation(state: KokoState.idle, size: 72),
+            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Streak badge
+              Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: KSpacing.sp12, vertical: KSpacing.sp4),
+                decoration: BoxDecoration(
+                  color: KColors.brand400.withValues(alpha: 0.20),
+                  borderRadius: BorderRadius.circular(KRadius.radiusFull),
+                  border: Border.all(
+                      color: KColors.brand400.withValues(alpha: 0.40)),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text('🔥', style: TextStyle(fontSize: 14)),
+                    const SizedBox(width: KSpacing.sp4),
+                    Text(
+                      '$streak DAY STREAK',
+                      style: const TextStyle(
+                        fontFamily: 'IBMPlexSans',
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: KColors.brand400,
+                        letterSpacing: 1,
+                      ),
                     ),
-                    const SizedBox(height: KSpacing.sp12),
                   ],
+                ),
+              ),
+              const SizedBox(height: KSpacing.sp16),
 
-                  // Greeting
-                  Text(
-                    l10n.homeGreeting('Kai'), //MOCKDATA
-                    style: KTypography.getStyle(KTextStyle.h2, locale)
-                        .copyWith(color: Theme.of(context).colorScheme.onSurface),
-                    textAlign: TextAlign.center,
+              // Greeting
+              Text(
+                l10n.homeGreeting('Kai'), //MOCKDATA
+                style: const TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: KColors.neutral0,
+                  height: 1.25,
+                ),
+              ),
+              const SizedBox(height: KSpacing.sp4),
+              Text(
+                l10n.homeSubtitle,
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: KColors.neutral0.withValues(alpha: 0.80),
+                ),
+              ),
+              const SizedBox(height: KSpacing.sp20),
+
+              // Progress ring row
+              Row(
+                children: [
+                  KProgressRing(
+                    value: dailyPct,
+                    size: 80,
+                    trackColor: KColors.neutral0.withValues(alpha: 0.20),
+                    strokeWidth: 8.0,
                   ),
-                  const SizedBox(height: KSpacing.sp4),
-
-                  // Subtitle
-                  Text(
-                    l10n.homeSubtitle,
-                    style: KTypography.getStyle(KTextStyle.body, locale)
-                        .copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: KSpacing.sp24),
-
-                  // Snap & Learn CTA
-                  KotokaButton(
-                    label: l10n.homeSnapLearnBtn,
-                    onPressed: () => context.go('/snap'),
-                    variant: KotokaButtonVariant.primary,
-                  ),
-                  const SizedBox(height: KSpacing.sp20),
-
-                  // Stat cards row
-                  Row(
+                  const SizedBox(width: KSpacing.sp16),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: _StatCard(
-                          value: '$_mockWords', //MOCKDATA
-                          label: l10n.homeWordsLearned,
-                          icon: '📚',
+                      Text(
+                        '${(dailyPct * 100).toInt()}%',
+                        style: const TextStyle(
+                          fontFamily: 'IBMPlexSans',
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: KColors.neutral0,
                         ),
                       ),
-                      const SizedBox(width: KSpacing.sp12),
-                      Expanded(
-                        child: _StatCard(
-                          value: '$_mockStreak', //MOCKDATA
-                          label: l10n.homeDaysStreak,
-                          icon: '🔥',
+                      Text(
+                        'Daily Goal',
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexSans',
+                          fontSize: 13,
+                          color: KColors.neutral0.withValues(alpha: 0.75),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: KSpacing.sp16),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-                  // Achievement banner (hidden in focus mode)
-                  if (kokoVisible) ...[
-                    _AchievementBanner(l10n: l10n, locale: locale),
-                    const SizedBox(height: KSpacing.sp24),
-                  ],
+// ---------------------------------------------------------------------------
+// _MissionsBento — 2-col bento grid for daily missions
+// ---------------------------------------------------------------------------
+class _MissionsBento extends StatelessWidget {
+  const _MissionsBento({required this.missions});
+  final List<_MockMission> missions;
 
-                  // Recent Decks
-                  _SectionHeader(title: l10n.homeRecentDecks, locale: locale),
-                  const SizedBox(height: KSpacing.sp12),
-                  ..._mockDecks.map(
-                    (deck) => Padding(
-                      padding: const EdgeInsets.only(bottom: KSpacing.sp8),
-                      child: _DeckCard(deck: deck, l10n: l10n, locale: locale),
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (missions.isNotEmpty)
+          Expanded(flex: 2, child: _MissionCard(mission: missions[0])),
+        if (missions.length > 1) ...[
+          const SizedBox(width: KSpacing.sp12),
+          Expanded(child: _MissionCard(mission: missions[1])),
+        ],
+      ],
+    );
+  }
+}
+
+class _MissionCard extends StatelessWidget {
+  const _MissionCard({required this.mission});
+  final _MockMission mission;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(KSpacing.sp16),
+      decoration: BoxDecoration(
+        color: KColors.neutral0,
+        borderRadius: BorderRadius.circular(KRadius.radiusMd),
+        border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
+        boxShadow: KElevation.shadow1,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: KColors.brand400.withValues(alpha: 0.10),
+              borderRadius: BorderRadius.circular(KRadius.radiusSm),
+              border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
+            ),
+            child: Center(
+              child: Text(mission.icon, style: const TextStyle(fontSize: 18)),
+            ),
+          ),
+          const SizedBox(height: KSpacing.sp12),
+          Text(
+            mission.title,
+            style: const TextStyle(
+              fontFamily: 'IBMPlexSans',
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: KColors.neutral900,
+            ),
+          ),
+          const SizedBox(height: KSpacing.sp4),
+          Text(
+            mission.sub,
+            style: const TextStyle(
+              fontFamily: 'IBMPlexSans',
+              fontSize: 12,
+              color: KColors.neutral500,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: KSpacing.sp12),
+          // CTA row
+          Row(
+            children: [
+              if (mission.done)
+                const Icon(Icons.check_circle, color: KColors.brand400, size: 16)
+              else
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: KSpacing.sp12, vertical: KSpacing.sp4),
+                  decoration: BoxDecoration(
+                    color: KColors.brand400,
+                    borderRadius: BorderRadius.circular(KRadius.radiusFull),
+                    boxShadow: [
+                      BoxShadow(
+                        color: KColors.brand400.withValues(alpha: 0.30),
+                        blurRadius: 8,
+                      ),
+                    ],
+                  ),
+                  child: const Text(
+                    'Complete',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: KColors.neutral1000,
                     ),
                   ),
-                  const SizedBox(height: KSpacing.sp24),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-                  // Weekly Story
-                  _WeeklyStoryCard(l10n: l10n, locale: locale),
-                  const SizedBox(height: KSpacing.sp24),
+// ---------------------------------------------------------------------------
+// _MapPlaceholderCard — Spatial Archive section
+// ---------------------------------------------------------------------------
+class _MapPlaceholderCard extends StatelessWidget {
+  const _MapPlaceholderCard();
 
-                  // Forgetting Curve
-                  _SectionHeader(title: l10n.homeForgettingCurve, locale: locale),
-                  const SizedBox(height: KSpacing.sp12),
-                  _ForgettingCurveChart(
-                    retention: _mockRetention,
-                    dayLabels: _mockDayLabels,
-                    urgentLabel: l10n.homeUrgentLabel,
-                    locale: locale,
-                  ),
-                  const SizedBox(height: KSpacing.sp40),
-                ]),
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 280,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: KColors.brand50,
+        borderRadius: BorderRadius.circular(KRadius.radiusMd),
+        border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
+        boxShadow: KElevation.shadow1,
+      ),
+      child: Stack(
+        children: [
+          // Map tint overlay
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(KRadius.radiusMd),
+              gradient: LinearGradient(
+                colors: [
+                  KColors.sky100.withValues(alpha: 0.60),
+                  KColors.brand50.withValues(alpha: 0.40),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
+            ),
+          ),
+          // Location pins
+          const Positioned(
+            top: 80, left: 120,
+            child: _MapPin(color: KColors.brand400),
+          ),
+          const Positioned(
+            top: 140, right: 80,
+            child: _MapPin(color: KColors.brand600),
+          ),
+          // Floating glass card
+          Positioned(
+            bottom: KSpacing.sp16,
+            right: KSpacing.sp16,
+            child: _MapGlassCard(),
+          ),
+          // Map label
+          Positioned(
+            top: KSpacing.sp16,
+            left: KSpacing.sp16,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: KSpacing.sp12, vertical: KSpacing.sp4),
+              decoration: BoxDecoration(
+                color: KColors.neutral0.withValues(alpha: 0.90),
+                borderRadius: BorderRadius.circular(KRadius.radiusFull),
+                border: Border.all(color: KColors.brand400.withValues(alpha: 0.30)),
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.location_on, color: KColors.brand400, size: 14),
+                  SizedBox(width: 4),
+                  Text(
+                    'Nearby memories',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: KColors.neutral900,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MapPin extends StatelessWidget {
+  const _MapPin({required this.color});
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 24, height: 24,
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(color: color.withValues(alpha: 0.40), blurRadius: 8),
+        ],
+      ),
+      child: const Icon(Icons.place, color: KColors.neutral0, size: 14),
+    );
+  }
+}
+
+class _MapGlassCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(KSpacing.sp12),
+      decoration: BoxDecoration(
+        color: KColors.neutral0.withValues(alpha: 0.90),
+        borderRadius: BorderRadius.circular(KRadius.radiusMd),
+        border: Border.all(color: KColors.neutral0.withValues(alpha: 0.50)),
+        boxShadow: KElevation.shadow2,
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.photo_camera, color: KColors.brand400, size: 16),
+          SizedBox(width: KSpacing.sp8),
+          Text(
+            '2 nearby',
+            style: TextStyle(
+              fontFamily: 'IBMPlexSans',
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: KColors.neutral900,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _StatTilesRow — 4 metric chips
+// ---------------------------------------------------------------------------
+class _StatTilesRow extends StatelessWidget {
+  const _StatTilesRow({
+    required this.words,
+    required this.focus,
+    required this.cities,
+    required this.conns,
+  });
+  final int words;
+  final int focus;
+  final int cities;
+  final int conns;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        _StatTile(value: _fmt(words), label: 'Mem.'),
+        const SizedBox(width: KSpacing.sp8),
+        _StatTile(value: '$focus%', label: 'Focus'),
+        const SizedBox(width: KSpacing.sp8),
+        _StatTile(value: '$cities', label: 'Cities'),
+        const SizedBox(width: KSpacing.sp8),
+        _StatTile(value: '$conns', label: 'Conn.'),
+      ],
+    );
+  }
+
+  String _fmt(int n) => n >= 1000 ? '${(n / 1000).toStringAsFixed(1)}k' : '$n';
+}
+
+class _StatTile extends StatelessWidget {
+  const _StatTile({required this.value, required this.label});
+  final String value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+            horizontal: KSpacing.sp8, vertical: KSpacing.sp12),
+        decoration: BoxDecoration(
+          color: KColors.neutral0,
+          borderRadius: BorderRadius.circular(KRadius.radiusSm),
+          border: Border.all(color: KColors.brand400.withValues(alpha: 0.15)),
+          boxShadow: KElevation.shadow1,
+        ),
+        child: Column(
+          children: [
+            Text(
+              value,
+              style: const TextStyle(
+                fontFamily: 'IBMPlexSans',
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: KColors.brand400,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: KSpacing.sp2),
+            Text(
+              label,
+              style: const TextStyle(
+                fontFamily: 'IBMPlexSans',
+                fontSize: 10,
+                fontWeight: FontWeight.w500,
+                color: KColors.neutral500,
+              ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
@@ -256,426 +679,32 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 }
 
 // ---------------------------------------------------------------------------
-// _AppBarChip — small stat pill in the top bar
+// _CyanFab — floating action button
 // ---------------------------------------------------------------------------
-class _AppBarChip extends StatelessWidget {
-  const _AppBarChip({required this.icon, required this.value});
-  final String icon;
-  final String value;
+class _CyanFab extends StatelessWidget {
+  const _CyanFab({required this.onTap});
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    return Container(
-      padding: const EdgeInsets.symmetric(
-          horizontal: KSpacing.sp8, vertical: KSpacing.sp4),
-      decoration: BoxDecoration(
-        color: isDark ? KColorsDark.bgCard : KColors.neutral100,
-        borderRadius: KRadius.full,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(icon, style: const TextStyle(fontSize: 14)),
-          const SizedBox(width: KSpacing.sp4),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: theme.colorScheme.onSurface,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 56,
+        height: 56,
+        decoration: BoxDecoration(
+          color: KColors.brand400,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: KColors.brand400.withValues(alpha: 0.40),
+              blurRadius: 16,
+              offset: const Offset(0, 4),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _StatCard — single metric tile
-// ---------------------------------------------------------------------------
-class _StatCard extends StatelessWidget {
-  const _StatCard({
-    required this.value,
-    required this.label,
-    required this.icon,
-  });
-  final String value;
-  final String label;
-  final String icon;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.all(KSpacing.sp16),
-      decoration: BoxDecoration(
-        color: theme.cardColor,
-        borderRadius: KRadius.md,
-        border: Border.all(color: theme.colorScheme.outline),
-        boxShadow: KElevation.shadow1,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(icon, style: const TextStyle(fontSize: 24)),
-          const SizedBox(height: KSpacing.sp8),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
-              color: theme.colorScheme.onSurface,
-            ),
-          ),
-          const SizedBox(height: KSpacing.sp2),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _AchievementBanner
-// ---------------------------------------------------------------------------
-class _AchievementBanner extends StatelessWidget {
-  const _AchievementBanner({required this.l10n, required this.locale});
-  final AppLocalizations l10n;
-  final Locale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Container(
-      padding: const EdgeInsets.symmetric(
-          horizontal: KSpacing.sp16, vertical: KSpacing.sp12),
-      decoration: BoxDecoration(
-        color: isDark ? KColorsDark.bgCard : const Color(0xFFE6FAF8),
-        borderRadius: KRadius.md,
-        border: Border.all(color: KColors.brand500, width: 1.5),
-      ),
-      child: Row(
-        children: [
-          const Text('🏆', style: TextStyle(fontSize: 22)),
-          const SizedBox(width: KSpacing.sp12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  l10n.homeAchievementBanner('3-Day Streak'), //MOCKDATA
-                  style: KTypography.getStyle(KTextStyle.label, locale)
-                      .copyWith(
-                          color: KColors.brand500,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0),
-                ),
-                const SizedBox(height: KSpacing.sp2),
-                Text(
-                  l10n.homeAchievementCta,
-                  style: KTypography.getStyle(KTextStyle.caption, locale)
-                      .copyWith(color: isDark ? KColors.neutral400 : KColors.neutral700),
-                ),
-              ],
-            ),
-          ),
-          Icon(Icons.chevron_right, color: KColors.brand500, size: KSpacing.sp20),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _SectionHeader
-// ---------------------------------------------------------------------------
-class _SectionHeader extends StatelessWidget {
-  const _SectionHeader({required this.title, required this.locale});
-  final String title;
-  final Locale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: KTypography.getStyle(KTextStyle.h4, locale)
-          .copyWith(color: Theme.of(context).colorScheme.onSurface),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _DeckCard — recent deck with progress and Review button
-// ---------------------------------------------------------------------------
-class _DeckCard extends StatelessWidget {
-  const _DeckCard({
-    required this.deck,
-    required this.l10n,
-    required this.locale,
-  });
-  final _MockDeck deck;
-  final AppLocalizations l10n;
-  final Locale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.all(KSpacing.sp16),
-      decoration: BoxDecoration(
-        color: theme.cardColor,
-        borderRadius: KRadius.md,
-        border: Border.all(color: theme.colorScheme.outline),
-        boxShadow: KElevation.shadow1,
-      ),
-      child: Row(
-        children: [
-          // Deck icon
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: KColors.brand500.withOpacity(0.12),
-              borderRadius: KRadius.sm,
-            ),
-            child: const Center(
-              child: Text('📖', style: TextStyle(fontSize: 20)),
-            ),
-          ),
-          const SizedBox(width: KSpacing.sp12),
-          // Name + progress
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  deck.name,
-                  style: KTypography.getStyle(KTextStyle.h4, locale)
-                      .copyWith(color: theme.colorScheme.onSurface, fontSize: 14),
-                ),
-                const SizedBox(height: KSpacing.sp4),
-                ClipRRect(
-                  borderRadius: KRadius.full,
-                  child: LinearProgressIndicator(
-                    value: deck.progress,
-                    minHeight: 5,
-                    backgroundColor: KColors.neutral200,
-                    valueColor:
-                        const AlwaysStoppedAnimation<Color>(KColors.brand500),
-                  ),
-                ),
-                const SizedBox(height: KSpacing.sp4),
-                Text(
-                  '${deck.wordCount} words', //MOCKDATA
-                  style: KTypography.getStyle(KTextStyle.caption, locale),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: KSpacing.sp12),
-          // Review button
-          OutlinedButton(
-            onPressed: () {},
-            style: OutlinedButton.styleFrom(
-              foregroundColor: KColors.brand500,
-              side: const BorderSide(color: KColors.brand500),
-              shape: RoundedRectangleBorder(borderRadius: KRadius.sm),
-              padding: const EdgeInsets.symmetric(
-                  horizontal: KSpacing.sp12, vertical: KSpacing.sp4),
-              minimumSize: Size.zero,
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            ),
-            child: Text(
-              l10n.homeDeckReviewBtn,
-              style: const TextStyle(
-                  fontSize: 12, fontWeight: FontWeight.w600),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _WeeklyStoryCard
-// ---------------------------------------------------------------------------
-class _WeeklyStoryCard extends StatelessWidget {
-  const _WeeklyStoryCard({required this.l10n, required this.locale});
-  final AppLocalizations l10n;
-  final Locale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    return Container(
-      padding: const EdgeInsets.all(KSpacing.sp16),
-      decoration: BoxDecoration(
-        color: isDark ? KColorsDark.bgCard : KColors.brand50,
-        borderRadius: KRadius.md,
-        border: Border.all(color: theme.colorScheme.outline),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Text('📖', style: TextStyle(fontSize: 18)),
-              const SizedBox(width: KSpacing.sp8),
-              Text(
-                l10n.homeWeeklyStory,
-                style: KTypography.getStyle(KTextStyle.h4, locale)
-                    .copyWith(color: theme.colorScheme.onSurface),
-              ),
-            ],
-          ),
-          const SizedBox(height: KSpacing.sp8),
-          Text(
-            'A morning at the market — 12 new words inside.', //MOCKDATA
-            style: KTypography.getStyle(KTextStyle.body, locale)
-                .copyWith(color: theme.colorScheme.onSurfaceVariant),
-          ),
-          const SizedBox(height: KSpacing.sp12),
-          GestureDetector(
-            onTap: () {},
-            child: Text(
-              l10n.homeReadStory,
-              style: KTypography.getStyle(KTextStyle.label, locale).copyWith(
-                color: KColors.brand500,
-                letterSpacing: 0,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _ForgettingCurveChart — bar chart showing daily retention
-// ---------------------------------------------------------------------------
-class _ForgettingCurveChart extends StatelessWidget {
-  const _ForgettingCurveChart({
-    required this.retention,
-    required this.dayLabels,
-    required this.urgentLabel,
-    required this.locale,
-  });
-  final List<double> retention;
-  final List<String> dayLabels;
-  final String urgentLabel;
-  final Locale locale;
-
-  Color _barColor(double r) {
-    if (r >= 0.70) return KColors.brand500;
-    if (r >= 0.45) return KColors.warning300;
-    return KColors.error500;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    const maxBarHeight = 72.0;
-
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.all(KSpacing.sp16),
-      decoration: BoxDecoration(
-        color: theme.cardColor,
-        borderRadius: KRadius.md,
-        border: Border.all(color: theme.colorScheme.outline),
-        boxShadow: KElevation.shadow1,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Legend row
-          Row(
-            children: [
-              _LegendDot(color: KColors.brand500, label: '≥ 70%'),
-              const SizedBox(width: KSpacing.sp12),
-              _LegendDot(color: KColors.warning300, label: '45–70%'),
-              const SizedBox(width: KSpacing.sp12),
-              _LegendDot(
-                  color: KColors.error500, label: urgentLabel),
-            ],
-          ),
-          const SizedBox(height: KSpacing.sp16),
-          // Bars
-          SizedBox(
-            height: maxBarHeight + 24,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: List.generate(retention.length, (i) {
-                final r = retention[i];
-                final barH = (r * maxBarHeight).clamp(8.0, maxBarHeight);
-                return Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 3),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        AnimatedContainer(
-                          duration: KMotion.normal,
-                          height: barH,
-                          decoration: BoxDecoration(
-                            color: _barColor(r),
-                            borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(4)),
-                          ),
-                        ),
-                        const SizedBox(height: KSpacing.sp4),
-                        Text(
-                          dayLabels[i],
-                          style: const TextStyle(
-                              fontSize: 11,
-                              color: KColors.neutral500,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _LegendDot extends StatelessWidget {
-  const _LegendDot({required this.color, required this.label});
-  final Color color;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: 10,
-          height: 10,
-          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+          ],
         ),
-        const SizedBox(width: 4),
-        Text(label,
-            style: const TextStyle(fontSize: 11, color: KColors.neutral600)),
-      ],
+        child: const Icon(Icons.add_rounded, color: KColors.neutral1000, size: 28),
+      ),
     );
   }
 }

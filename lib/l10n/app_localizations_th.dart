@@ -12,7 +12,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get appName => 'โคโตกะ';
 
   @override
-  String get tagline => 'เรียนรู้คำศัพท์จากชีวิตจริงของคุณ';
+  String get tagline => 'สแนปโลกของคุณ พูดได้ทุกภาษา';
 
   @override
   String get getStarted => 'เริ่มต้น';
@@ -108,7 +108,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get pdpaCamera => 'กล้อง';
 
   @override
-  String get pdpaCameraReason => 'ถ่ายภาพเพื่อระบุและเรียนรู้คำศัพท์ในบริบท';
+  String get pdpaCameraReason => 'เพื่อสแนปและเรียนรู้คำใหม่จากโลกรอบตัวคุณ';
 
   @override
   String get pdpaGPS => 'ตำแหน่งที่ตั้ง';
@@ -272,7 +272,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get pdpaMicrophoneReason =>
-      'ใช้สำหรับแบบฝึกหัดเสียงและข้อเสนอแนะการออกเสียงระหว่างการทบทวน';
+      'เพื่อให้ Kotoka ได้ยินการออกเสียงของคุณและแนะนำคุณ';
 
   @override
   String get pdpaWhatWeUse => 'เราใช้สิ่งนี้เพื่ออะไร';
@@ -358,6 +358,24 @@ class AppLocalizationsTh extends AppLocalizations {
       'แตะคำศัพท์จากโลกของคุณ โคโคจะช่วยให้คุณจำไปตลอด';
 
   @override
+  String get onbSummaryTitle => 'พร้อมแล้ว!';
+
+  @override
+  String get onbSummaryBody => 'นี่คือการตั้งค่าการเรียนของคุณ:';
+
+  @override
+  String get onbSummaryLanguagePair => 'ภาษา';
+
+  @override
+  String get onbSummaryLevel => 'ระดับ';
+
+  @override
+  String get onbSummaryDailyGoal => 'เป้าหมายรายวัน';
+
+  @override
+  String get onbSummaryStart => 'เริ่มเรียนได้เลย';
+
+  @override
   String get homeTooltipSensoryTag =>
       'แท็กแสดงความรู้สึกของคำ — เสียง การมองเห็น การกระทำ แตะเพื่อสำรวจ';
 
@@ -440,13 +458,16 @@ class AppLocalizationsTh extends AppLocalizations {
   String get reviewTapToFlip => 'แตะเพื่อพลิก';
 
   @override
-  String get reviewRateHard => 'ยาก';
+  String get reviewRateAgain => 'พลาดแล้ว';
 
   @override
-  String get reviewRateOk => 'โอเค';
+  String get reviewRateHard => 'เกือบได้';
 
   @override
-  String get reviewRateEasy => 'ง่าย';
+  String get reviewRateGood => 'ได้เลย!';
+
+  @override
+  String get reviewRateEasy => 'ง่ายเกินไป';
 
   @override
   String get reviewFillBlankTitle => 'เติมช่องว่าง';
@@ -480,6 +501,18 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get shopGetPack => 'รับ';
+
+  @override
+  String get shopBetaFreeTitle => 'เบต้า — เข้าใช้ฟรี';
+
+  @override
+  String get shopBetaFreeBody => 'แพ็กและฟีเจอร์พรีเมียมทั้งหมดฟรีระหว่างเบต้า';
+
+  @override
+  String get shopBetaFree => 'ฟรีในเบต้า';
+
+  @override
+  String get shopBetaUnlocked => 'ปลดล็อกแล้ว — ใช้ได้เลยระหว่างเบต้า';
 
   @override
   String get profileTitle => 'โปรไฟล์';

@@ -12,7 +12,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get appName => 'Kotoka';
 
   @override
-  String get tagline => 'Học từ vựng từ cuộc sống của bạn';
+  String get tagline => 'Chụp thế giới của bạn, nói bất kỳ ngôn ngữ nào';
 
   @override
   String get getStarted => 'Bắt đầu';
@@ -111,7 +111,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get pdpaCameraReason =>
-      'Chụp ảnh để nhận dạng và học từ vựng trong ngữ cảnh';
+      'để chụp và học từ mới từ thế giới xung quanh bạn';
 
   @override
   String get pdpaGPS => 'Vị trí';
@@ -275,7 +275,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get pdpaMicrophoneReason =>
-      'Dùng cho bài tập nói và phản hồi phát âm trong các buổi ôn tập.';
+      'để Kotoka có thể nghe phát âm của bạn và hướng dẫn bạn';
 
   @override
   String get pdpaWhatWeUse => 'Chúng tôi dùng điều này để làm gì';
@@ -364,6 +364,24 @@ class AppLocalizationsVi extends AppLocalizations {
       'Chụp một từ từ thế giới của bạn. Koko sẽ giúp bạn nhớ mãi mãi.';
 
   @override
+  String get onbSummaryTitle => 'Tất cả đã sẵn sàng!';
+
+  @override
+  String get onbSummaryBody => 'Đây là thiết lập học tập của bạn:';
+
+  @override
+  String get onbSummaryLanguagePair => 'Ngôn ngữ';
+
+  @override
+  String get onbSummaryLevel => 'Cấp độ';
+
+  @override
+  String get onbSummaryDailyGoal => 'Mục tiêu hàng ngày';
+
+  @override
+  String get onbSummaryStart => 'Bắt đầu học';
+
+  @override
   String get homeTooltipSensoryTag =>
       'Thẻ cho thấy cảm giác của từ — âm thanh, hình ảnh, hành động. Nhấn để khám phá.';
 
@@ -446,13 +464,16 @@ class AppLocalizationsVi extends AppLocalizations {
   String get reviewTapToFlip => 'Nhấn để lật';
 
   @override
-  String get reviewRateHard => 'Khó';
+  String get reviewRateAgain => 'Chưa nhớ';
 
   @override
-  String get reviewRateOk => 'Được';
+  String get reviewRateHard => 'Gần đúng';
 
   @override
-  String get reviewRateEasy => 'Dễ';
+  String get reviewRateGood => 'Nhớ rồi!';
+
+  @override
+  String get reviewRateEasy => 'Quá dễ';
 
   @override
   String get reviewFillBlankTitle => 'Điền vào chỗ trống';
@@ -487,6 +508,19 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get shopGetPack => 'Lấy';
+
+  @override
+  String get shopBetaFreeTitle => 'Beta — Truy cập miễn phí';
+
+  @override
+  String get shopBetaFreeBody =>
+      'Tất cả gói và tính năng Cao cấp đều miễn phí trong giai đoạn beta.';
+
+  @override
+  String get shopBetaFree => 'Miễn phí trong beta';
+
+  @override
+  String get shopBetaUnlocked => 'Đã mở khóa — miễn phí trong giai đoạn beta';
 
   @override
   String get profileTitle => 'Hồ sơ';

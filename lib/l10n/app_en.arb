@@ -6,7 +6,7 @@
     "description": "The name of the application"
   },
 
-  "tagline": "Learn vocabulary from your real life",
+  "tagline": "Snap your world, speak any languages",
   "@tagline": {
     "description": "App tagline shown on onboarding splash"
   },
@@ -167,7 +167,7 @@
     "description": "Camera permission label"
   },
 
-  "pdpaCameraReason": "Snap photos to identify and learn vocabulary in context",
+  "pdpaCameraReason": "to snap & learn new words from the world around you",
   "@pdpaCameraReason": {
     "description": "Reason for camera permission"
   },
@@ -406,7 +406,7 @@
   "pdpaLocationReason": "Used to detect the places you visit and suggest relevant vocabulary for each location.",
   "@pdpaLocationReason": { "description": "Reason for location permission" },
 
-  "pdpaMicrophoneReason": "Used for voice exercises and pronunciation feedback during review sessions.",
+  "pdpaMicrophoneReason": "so Kotoka can hear your pronunciation and guide you",
   "@pdpaMicrophoneReason": { "description": "Reason for microphone permission" },
 
   "pdpaWhatWeUse": "What we use this for",
@@ -494,6 +494,18 @@
   "@onbMissionTitle": { "description": "ONB-06 mission intro headline" },
   "onbMissionBody": "Snap a word from your world. Koko will help you remember it forever.",
   "@onbMissionBody": { "description": "ONB-06 mission intro body copy" },
+  "onbSummaryTitle": "You're all set!",
+  "@onbSummaryTitle": { "description": "ONB-07 summary screen headline" },
+  "onbSummaryBody": "Here's your learning setup:",
+  "@onbSummaryBody": { "description": "ONB-07 summary screen subtitle" },
+  "onbSummaryLanguagePair": "Languages",
+  "@onbSummaryLanguagePair": { "description": "ONB-07 summary row label for language pair" },
+  "onbSummaryLevel": "Level",
+  "@onbSummaryLevel": { "description": "ONB-07 summary row label for proficiency level" },
+  "onbSummaryDailyGoal": "Daily goal",
+  "@onbSummaryDailyGoal": { "description": "ONB-07 summary row label for daily study goal" },
+  "onbSummaryStart": "Start learning",
+  "@onbSummaryStart": { "description": "ONB-07 summary screen CTA button" },
 
   "homeTooltipSensoryTag": "Tags show how a word feels — sound, sight, action. Tap to explore.",
   "@homeTooltipSensoryTag": { "description": "First-use tooltip for sensory tag bar on home screen" },
@@ -565,11 +577,13 @@
   },
   "reviewTapToFlip": "Tap to flip",
   "@reviewTapToFlip": { "description": "Hint label on flashcard front" },
-  "reviewRateHard": "Hard",
+  "reviewRateAgain": "Missed it",
+  "@reviewRateAgain": { "description": "Again rating button label" },
+  "reviewRateHard": "Almost",
   "@reviewRateHard": { "description": "Hard rating button label" },
-  "reviewRateOk": "OK",
-  "@reviewRateOk": { "description": "OK rating button label" },
-  "reviewRateEasy": "Easy",
+  "reviewRateGood": "Got it!",
+  "@reviewRateGood": { "description": "Good rating button label" },
+  "reviewRateEasy": "Too easy",
   "@reviewRateEasy": { "description": "Easy rating button label" },
   "reviewFillBlankTitle": "Fill in the blank",
   "@reviewFillBlankTitle": { "description": "Title for fill-in-the-blank exercise" },
@@ -594,6 +608,14 @@
   "@shopVocabPacks": { "description": "Section heading for vocab packs grid" },
   "shopGetPack": "Get",
   "@shopGetPack": { "description": "Button label on each pack card" },
+  "shopBetaFreeTitle": "Beta — Free Access",
+  "@shopBetaFreeTitle": { "description": "Beta banner title on premium card" },
+  "shopBetaFreeBody": "All packs and Premium features are free during beta.",
+  "@shopBetaFreeBody": { "description": "Beta banner body text on premium card" },
+  "shopBetaFree": "Free in beta",
+  "@shopBetaFree": { "description": "Button label on pack cards during beta" },
+  "shopBetaUnlocked": "Unlocked — already yours during beta",
+  "@shopBetaUnlocked": { "description": "Snackbar shown when user taps a pack card during beta" },
 
   "profileTitle": "Profile",
   "@profileTitle": { "description": "Profile screen app bar title" },

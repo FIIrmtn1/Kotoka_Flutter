@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
+import 'package:kotoka_app/core/widgets/k_card.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/screens/review/review_flashcard_screen.dart';
 
@@ -16,29 +18,33 @@ class ReviewScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final theme = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        elevation: KElevation.elevation0,
-        title: Text(
-          l10n.reviewTitle,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: theme.colorScheme.onSurface),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.arrow_forward, color: theme.colorScheme.onSurfaceVariant),
-            onPressed: () => Navigator.of(context).pop(),
-            tooltip: 'Skip',
-          ),
-        ],
-      ),
+    return KStitchScaffold(
       body: SafeArea(
+        bottom: false,
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Title row with skip button
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      l10n.reviewTitle,
+                      style: KTypography.getStyle(KTextStyle.h3, locale)
+                          .copyWith(color: KColors.neutral900),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_forward, color: KColors.neutral400),
+                    onPressed: () => Navigator.of(context).pop(),
+                    tooltip: 'Skip',
+                  ),
+                ],
+              ),
+              const SizedBox(height: KSpacing.sp16),
+
               // Session card
               _SessionCard(l10n: l10n, locale: locale),
               const SizedBox(height: KSpacing.sp24),
@@ -46,12 +52,12 @@ class ReviewScreen extends ConsumerWidget {
               // Progress indicator 0/8
               ClipRRect(
                 borderRadius: KRadius.full,
-                child: LinearProgressIndicator(
+                child: const LinearProgressIndicator(
                   value: 0.0, //MOCKDATA
                   minHeight: KSpacing.sp8,
                   backgroundColor: KColors.neutral200,
                   valueColor:
-                      const AlwaysStoppedAnimation<Color>(KColors.brand500),
+                      AlwaysStoppedAnimation<Color>(KColors.brand400),
                 ),
               ),
               const SizedBox(height: KSpacing.sp8),
@@ -67,7 +73,7 @@ class ReviewScreen extends ConsumerWidget {
 
               const Spacer(),
 
-              KotokaButton(
+              KCtaButton(
                 label: l10n.reviewStartSession,
                 onPressed: () {
                   Navigator.of(context).push(
@@ -75,13 +81,11 @@ class ReviewScreen extends ConsumerWidget {
                         builder: (_) => const ReviewFlashcardScreen()),
                   );
                 },
-                variant: KotokaButtonVariant.primary,
               ),
               const SizedBox(height: KSpacing.sp12),
-              KotokaButton(
+              KGhostButton(
                 label: l10n.reviewQuickMode, //MOCKDATA
                 onPressed: () {},
-                variant: KotokaButtonVariant.ghost,
               ),
 
               SizedBox(
@@ -103,31 +107,25 @@ class _SessionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
+    return KCard(
       padding: const EdgeInsets.all(KSpacing.sp16),
-      decoration: BoxDecoration(
-        color: theme.cardColor,
-        borderRadius: KRadius.lg,
-        boxShadow: KElevation.shadow2,
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             l10n.reviewWordsDue(8, 10), //MOCKDATA
             style: KTypography.getStyle(KTextStyle.h4, locale)
-                .copyWith(color: theme.colorScheme.onSurface),
+                .copyWith(color: KColors.neutral900),
           ),
           const SizedBox(height: KSpacing.sp16),
           const Divider(color: KColors.neutral200, height: 1),
           const SizedBox(height: KSpacing.sp12),
-          _LocationRow(
+          const _LocationRow(
               icon: Icons.location_on_outlined,
               label: 'Silom Office', //MOCKDATA
               count: 5), //MOCKDATA
           const SizedBox(height: KSpacing.sp8),
-          _LocationRow(
+          const _LocationRow(
               icon: Icons.location_on_outlined,
               label: 'Café Amazon', //MOCKDATA
               count: 3), //MOCKDATA
@@ -138,7 +136,7 @@ class _SessionCard extends StatelessWidget {
               vertical: KSpacing.sp4,
             ),
             decoration: BoxDecoration(
-              color: KColors.brand500.withOpacity(0.10),
+              color: KColors.brand500.withValues(alpha: 0.10),
               borderRadius: KRadius.full,
             ),
             child: Row(
@@ -171,19 +169,13 @@ class _ReviewTipsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
     final tips = [
       ('🧠', l10n.reviewTip1),
       ('⏱️', l10n.reviewTip2),
       ('📈', l10n.reviewTip3),
     ];
-    return Container(
+    return KCard(
       padding: const EdgeInsets.all(KSpacing.sp16),
-      decoration: BoxDecoration(
-        color: isDark ? KColorsDark.bgCard : KColors.brand50,
-        borderRadius: KRadius.md,
-        border: Border.all(color: theme.colorScheme.outline),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -250,7 +242,7 @@ class _LocationRow extends StatelessWidget {
             vertical: KSpacing.sp2,
           ),
           decoration: BoxDecoration(
-            color: KColors.brand500.withOpacity(0.12),
+            color: KColors.brand500.withValues(alpha: 0.12),
             borderRadius: KRadius.full,
           ),
           child: Text(

@@ -3,14 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/koko_emoji.dart' show KokoEmoji, KokoFlag;
+import 'package:kotoka_app/core/widgets/koko_emoji.dart' show KokoFlag;
 import 'package:kotoka_app/core/providers/locale_provider.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
-import 'package:kotoka_app/main.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 
-// ---------------------------------------------------------------------------
-// Supported display languages (UI locale picker)
-// ---------------------------------------------------------------------------
 const List<_UILang> _kUILangs = [
   _UILang(locale: Locale('en'), flag: '🇬🇧', name: 'English'),
   _UILang(locale: Locale('th'), flag: '🇹🇭', name: 'ภาษาไทย'),
@@ -27,9 +24,6 @@ class _UILang {
   final String name;
 }
 
-// ---------------------------------------------------------------------------
-// App-supported learnable languages (6 pairs)
-// ---------------------------------------------------------------------------
 const List<_Lang> _kLangs = [
   _Lang(flag: '🇹🇭', name: 'Thai',       code: 'th'),
   _Lang(flag: '🇬🇧', name: 'English',    code: 'en'),
@@ -46,9 +40,6 @@ class _Lang {
   final String code;
 }
 
-// ---------------------------------------------------------------------------
-// Screen
-// ---------------------------------------------------------------------------
 class LanguageSelectScreen extends ConsumerStatefulWidget {
   const LanguageSelectScreen({super.key});
 
@@ -70,46 +61,32 @@ class _LanguageSelectScreenState extends ConsumerState<LanguageSelectScreen> {
   Widget build(BuildContext context) {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
-    final theme  = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(color: KColors.brand500),
-        title: Text(
-          l10n.selectLanguage,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: theme.colorScheme.onSurface),
-        ),
-        actions: [
-          // Dark mode toggle
-          IconButton(
-            icon: Icon(
-              isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
-              color: KColors.brand500,
-            ),
-            onPressed: () {
-              ref.read(themeModeProvider.notifier).state =
-                  isDark ? ThemeMode.light : ThemeMode.dark;
-            },
-          ),
-        ],
+    return KStitchScaffold(
+      stickyHeader: KOnboardingHeader(
+        onBack: () => Navigator.of(context).pop(),
+        stepCurrent: 1,
+        stepTotal: 8,
       ),
       body: SafeArea(
+        top: false,
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── Display language picker ─────────────────────────────────
+              Text(
+                l10n.selectLanguage,
+                style: KTypography.getStyle(KTextStyle.h3, locale)
+                    .copyWith(color: KColors.neutral900),
+              ),
+              const SizedBox(height: KSpacing.sp16),
               _DisplayLanguageRow(l10n: l10n, locale: locale),
               const SizedBox(height: KSpacing.sp32),
-
-              // ── Native language ─────────────────────────────────────────
               Text(
                 l10n.langISpeak,
                 style: KTypography.getStyle(KTextStyle.h4, locale)
-                    .copyWith(color: theme.colorScheme.onSurface),
+                    .copyWith(color: KColors.neutral900),
               ),
               const SizedBox(height: KSpacing.sp12),
               _LangDropdown(
@@ -119,12 +96,10 @@ class _LanguageSelectScreenState extends ConsumerState<LanguageSelectScreen> {
                 onChanged: (v) => setState(() => _native = v),
               ),
               const SizedBox(height: KSpacing.sp24),
-
-              // ── Target language ─────────────────────────────────────────
               Text(
                 l10n.langILearn,
                 style: KTypography.getStyle(KTextStyle.h4, locale)
-                    .copyWith(color: theme.colorScheme.onSurface),
+                    .copyWith(color: KColors.neutral900),
               ),
               const SizedBox(height: KSpacing.sp12),
               _LangDropdown(
@@ -133,17 +108,15 @@ class _LanguageSelectScreenState extends ConsumerState<LanguageSelectScreen> {
                 exclude: _native,
                 onChanged: (v) => setState(() => _target = v),
               ),
-
               const Spacer(),
-
-              // ── Continue ────────────────────────────────────────────────
-              KotokaButton(
+              KCtaButton(
                 label: l10n.continueButton,
                 onPressed: _canContinue
                     ? () => context.go('/onboarding/welcome')
                     : null,
-                variant: KotokaButtonVariant.primary,
               ),
+              SizedBox(
+                  height: MediaQuery.of(context).padding.bottom + KSpacing.sp16),
             ],
           ),
         ),
@@ -152,9 +125,6 @@ class _LanguageSelectScreenState extends ConsumerState<LanguageSelectScreen> {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Display language row
-// ---------------------------------------------------------------------------
 class _DisplayLanguageRow extends ConsumerWidget {
   const _DisplayLanguageRow({required this.l10n, required this.locale});
   final AppLocalizations l10n;
@@ -163,25 +133,24 @@ class _DisplayLanguageRow extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentLocale = ref.watch(localeProvider);
-    final theme = Theme.of(context);
 
     return Container(
       padding: const EdgeInsets.symmetric(
           horizontal: KSpacing.sp16, vertical: KSpacing.sp8),
       decoration: BoxDecoration(
-        color: theme.cardColor,
+        color: KColors.neutral0,
         borderRadius: KRadius.md,
-        border: Border.all(color: KColors.neutral200),
+        border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
         boxShadow: KElevation.shadow1,
       ),
       child: Row(
         children: [
-          Icon(Icons.language_rounded, color: KColors.brand500, size: 20),
+          const Icon(Icons.language_rounded, color: KColors.brand400, size: 20),
           const SizedBox(width: KSpacing.sp8),
           Text(
             l10n.langDisplayLanguage,
             style: KTypography.getStyle(KTextStyle.label, locale).copyWith(
-                color: theme.colorScheme.onSurface, letterSpacing: 0),
+                color: KColors.neutral900, letterSpacing: 0),
           ),
           const Spacer(),
           DropdownButtonHideUnderline(
@@ -189,7 +158,7 @@ class _DisplayLanguageRow extends ConsumerWidget {
               value: currentLocale ?? const Locale('en'),
               isDense: true,
               borderRadius: KRadius.md,
-              dropdownColor: theme.cardColor,
+              dropdownColor: KColors.neutral0,
               items: _kUILangs
                   .map((lang) => DropdownMenuItem(
                         value: lang.locale,
@@ -221,7 +190,7 @@ class _DisplayLanguageRow extends ConsumerWidget {
                               lang.name,
                               style: KTypography.getStyle(KTextStyle.label, locale)
                                   .copyWith(
-                                      color: KColors.brand500, letterSpacing: 0),
+                                      color: KColors.brand400, letterSpacing: 0),
                             ),
                           ],
                         ),
@@ -235,9 +204,6 @@ class _DisplayLanguageRow extends ConsumerWidget {
   }
 }
 
-// ---------------------------------------------------------------------------
-// _LangDropdown
-// ---------------------------------------------------------------------------
 class _LangDropdown extends StatelessWidget {
   const _LangDropdown({
     required this.hint,
@@ -252,7 +218,6 @@ class _LangDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final items = _kLangs
         .where((l) => exclude == null || l.code != exclude!.code)
         .toList();
@@ -261,10 +226,14 @@ class _LangDropdown extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: KSpacing.sp16, vertical: KSpacing.sp4),
       decoration: BoxDecoration(
-        color: theme.cardColor,
+        color: value != null
+            ? KColors.brand400.withValues(alpha: 0.05)
+            : KColors.neutral0,
         borderRadius: KRadius.md,
         border: Border.all(
-          color: value != null ? KColors.brand500 : KColors.neutral300,
+          color: value != null
+              ? KColors.brand400
+              : KColors.brand400.withValues(alpha: 0.20),
           width: value != null ? 2 : 1,
         ),
         boxShadow: KElevation.shadow1,
@@ -273,10 +242,11 @@ class _LangDropdown extends StatelessWidget {
         child: DropdownButton<_Lang>(
           isExpanded: true,
           value: value,
-          dropdownColor: theme.cardColor,
+          dropdownColor: KColors.neutral0,
           hint: Text(hint,
-              style: TextStyle(
-                  fontSize: 15, color: theme.colorScheme.onSurface.withOpacity(0.4))),
+              style: const TextStyle(
+                  fontSize: 15,
+                  color: KColors.neutral500)),
           borderRadius: KRadius.md,
           items: items
               .map((lang) => DropdownMenuItem(
@@ -307,7 +277,7 @@ class _LangDropdown extends StatelessWidget {
                           style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w600,
-                              color: KColors.brand500),
+                              color: KColors.brand400),
                         ),
                       ],
                     ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 import 'package:kotoka_app/core/widgets/koko_animation.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_card.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/screens/review/review_complete_screen.dart';
 
@@ -23,7 +25,9 @@ class ReviewConversationScreen extends ConsumerStatefulWidget {
 class _ReviewConversationScreenState
     extends ConsumerState<ReviewConversationScreen> {
   final _controller = TextEditingController();
+  // ignore: prefer_final_fields
   int _currentCard = 5; //MOCKDATA
+  // ignore: prefer_final_fields
   int _totalCards = 8; //MOCKDATA
 
   @override
@@ -43,9 +47,8 @@ class _ReviewConversationScreenState
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final theme = Theme.of(context);
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
+    return KStitchScaffold(
+      backgroundColor: KColors.pageBg,
       body: SafeArea(
         child: Column(
           children: [
@@ -59,11 +62,11 @@ class _ReviewConversationScreenState
                     child: Text(
                       l10n.reviewProgressOf(_currentCard, _totalCards), //MOCKDATA
                       style: KTypography.getStyle(KTextStyle.h4, locale)
-                          .copyWith(color: theme.colorScheme.onSurface),
+                          .copyWith(color: KColors.neutral900),
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.close, color: theme.colorScheme.onSurfaceVariant),
+                    icon: const Icon(Icons.close, color: KColors.neutral400),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ],
@@ -87,38 +90,38 @@ class _ReviewConversationScreenState
                       width: double.infinity,
                       padding: const EdgeInsets.all(KSpacing.sp16),
                       decoration: BoxDecoration(
-                        color: KColors.brand500,
+                        color: KColors.brand400,
                         borderRadius: KRadius.lg,
+                        boxShadow: [
+                          BoxShadow(
+                            color: KColors.brand400.withValues(alpha: 0.25),
+                            blurRadius: 12,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
                       child: Text(
                         _mockKokoPrompt, //MOCKDATA
                         style: KTypography.getStyle(KTextStyle.body, locale)
-                            .copyWith(color: KColors.neutral0),
+                            .copyWith(color: KColors.neutral1000),
                         textAlign: TextAlign.center,
                       ),
                     ),
                     const SizedBox(height: KSpacing.sp24),
 
                     // User response text field
-                    Container(
-                      decoration: BoxDecoration(
-                        color: theme.cardColor,
-                        borderRadius: KRadius.md,
-                        border: Border.all(color: KColors.borderDefault),
-                        boxShadow: KElevation.shadow1,
-                      ),
+                    KCard(
+                      padding: EdgeInsets.zero,
                       child: TextField(
                         controller: _controller,
                         maxLines: 4,
                         decoration: InputDecoration(
                           labelText: l10n.reviewConversationPrompt,
-                          labelStyle: KTypography.getStyle(
-                              KTextStyle.label, locale),
+                          labelStyle: KTypography.getStyle(KTextStyle.label, locale),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(KSpacing.sp16),
                           suffixIcon: IconButton(
-                            icon: const Icon(Icons.mic_outlined,
-                                color: KColors.brand500),
+                            icon: const Icon(Icons.mic_outlined, color: KColors.brand400),
                             onPressed: () {}, // mic placeholder
                           ),
                         ),
@@ -140,22 +143,19 @@ class _ReviewConversationScreenState
                             setState(() {});
                           },
                           child: Container(
-                            constraints: const BoxConstraints(
-                                minHeight: KSpacing.sp48),
+                            constraints: const BoxConstraints(minHeight: KSpacing.sp48),
                             padding: const EdgeInsets.symmetric(
                               horizontal: KSpacing.sp16,
                               vertical: KSpacing.sp8,
                             ),
                             decoration: BoxDecoration(
-                              color: KColors.brand500.withOpacity(0.1),
+                              color: KColors.brand400.withValues(alpha: 0.08),
                               borderRadius: KRadius.full,
-                              border: Border.all(
-                                  color: KColors.brand500.withOpacity(0.4)),
+                              border: Border.all(color: KColors.brand400.withValues(alpha: 0.35)),
                             ),
                             child: Text(
                               chip,
-                              style: KTypography.getStyle(
-                                      KTextStyle.label, locale)
+                              style: KTypography.getStyle(KTextStyle.label, locale)
                                   .copyWith(color: KColors.brand500),
                             ),
                           ),
@@ -182,9 +182,9 @@ class _ReviewConversationScreenState
                   onPressed:
                       _controller.text.trim().isEmpty ? null : _submit,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: KColors.brand500,
-                    disabledBackgroundColor: KColors.brand300,
-                    foregroundColor: KColors.neutral0,
+                    backgroundColor: KColors.brand400,
+                    disabledBackgroundColor: KColors.brand400.withValues(alpha: 0.40),
+                    foregroundColor: KColors.neutral1000,
                     minimumSize: const Size(double.infinity, KSpacing.sp48),
                     shape: RoundedRectangleBorder(borderRadius: KRadius.full),
                     elevation: KElevation.elevation0,
@@ -192,7 +192,7 @@ class _ReviewConversationScreenState
                   child: Text(
                     'Submit',
                     style: KTypography.getStyle(KTextStyle.button, locale)
-                        .copyWith(color: KColors.neutral0),
+                        .copyWith(color: KColors.neutral1000),
                   ),
                 ),
               ),

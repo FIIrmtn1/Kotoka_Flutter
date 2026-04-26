@@ -12,7 +12,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appName => '科托卡';
 
   @override
-  String get tagline => '从真实生活中学习词汇';
+  String get tagline => '拍下你的世界，说任何语言';
 
   @override
   String get getStarted => '开始';
@@ -107,7 +107,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get pdpaCamera => '相机';
 
   @override
-  String get pdpaCameraReason => '拍照识别并在语境中学习词汇';
+  String get pdpaCameraReason => '拍下周围世界，学习新单词';
 
   @override
   String get pdpaGPS => '位置';
@@ -267,7 +267,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get pdpaLocationReason => '用于检测您访问的地点并推荐相关词汇。';
 
   @override
-  String get pdpaMicrophoneReason => '用于语音练习和复习期间的发音反馈。';
+  String get pdpaMicrophoneReason => '让 Kotoka 听到你的发音并为你指导';
 
   @override
   String get pdpaWhatWeUse => '我们如何使用这项权限';
@@ -351,6 +351,24 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onbMissionBody => '拍下你生活中的一个词，Koko 会帮你永远记住它。';
 
   @override
+  String get onbSummaryTitle => '一切就绪！';
+
+  @override
+  String get onbSummaryBody => '这是您的学习设置：';
+
+  @override
+  String get onbSummaryLanguagePair => '语言';
+
+  @override
+  String get onbSummaryLevel => '级别';
+
+  @override
+  String get onbSummaryDailyGoal => '每日目标';
+
+  @override
+  String get onbSummaryStart => '开始学习';
+
+  @override
   String get homeTooltipSensoryTag => '标签展示词语的感觉——声音、视觉、动作。点击探索。';
 
   @override
@@ -431,13 +449,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get reviewTapToFlip => '点击翻转';
 
   @override
-  String get reviewRateHard => '难';
+  String get reviewRateAgain => '没记住';
 
   @override
-  String get reviewRateOk => '一般';
+  String get reviewRateHard => '差不多';
 
   @override
-  String get reviewRateEasy => '简单';
+  String get reviewRateGood => '记住了！';
+
+  @override
+  String get reviewRateEasy => '太简单';
 
   @override
   String get reviewFillBlankTitle => '填空练习';
@@ -471,6 +492,18 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get shopGetPack => '获取';
+
+  @override
+  String get shopBetaFreeTitle => 'Beta — 免费使用';
+
+  @override
+  String get shopBetaFreeBody => '所有词包和高级功能在Beta期间均免费。';
+
+  @override
+  String get shopBetaFree => 'Beta期间免费';
+
+  @override
+  String get shopBetaUnlocked => '已解锁 — Beta期间免费使用';
 
   @override
   String get profileTitle => '个人资料';

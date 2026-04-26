@@ -115,7 +115,7 @@ abstract class AppLocalizations {
   /// App tagline shown on onboarding splash
   ///
   /// In en, this message translates to:
-  /// **'Learn vocabulary from your real life'**
+  /// **'Snap your world, speak any languages'**
   String get tagline;
 
   /// Primary CTA button on splash screen
@@ -301,7 +301,7 @@ abstract class AppLocalizations {
   /// Reason for camera permission
   ///
   /// In en, this message translates to:
-  /// **'Snap photos to identify and learn vocabulary in context'**
+  /// **'to snap & learn new words from the world around you'**
   String get pdpaCameraReason;
 
   /// GPS permission label
@@ -595,7 +595,7 @@ abstract class AppLocalizations {
   /// Reason for microphone permission
   ///
   /// In en, this message translates to:
-  /// **'Used for voice exercises and pronunciation feedback during review sessions.'**
+  /// **'so Kotoka can hear your pronunciation and guide you'**
   String get pdpaMicrophoneReason;
 
   /// Expandable label for permission detail
@@ -748,6 +748,42 @@ abstract class AppLocalizations {
   /// **'Snap a word from your world. Koko will help you remember it forever.'**
   String get onbMissionBody;
 
+  /// ONB-07 summary screen headline
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re all set!'**
+  String get onbSummaryTitle;
+
+  /// ONB-07 summary screen subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s your learning setup:'**
+  String get onbSummaryBody;
+
+  /// ONB-07 summary row label for language pair
+  ///
+  /// In en, this message translates to:
+  /// **'Languages'**
+  String get onbSummaryLanguagePair;
+
+  /// ONB-07 summary row label for proficiency level
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get onbSummaryLevel;
+
+  /// ONB-07 summary row label for daily study goal
+  ///
+  /// In en, this message translates to:
+  /// **'Daily goal'**
+  String get onbSummaryDailyGoal;
+
+  /// ONB-07 summary screen CTA button
+  ///
+  /// In en, this message translates to:
+  /// **'Start learning'**
+  String get onbSummaryStart;
+
   /// First-use tooltip for sensory tag bar on home screen
   ///
   /// In en, this message translates to:
@@ -892,22 +928,28 @@ abstract class AppLocalizations {
   /// **'Tap to flip'**
   String get reviewTapToFlip;
 
+  /// Again rating button label
+  ///
+  /// In en, this message translates to:
+  /// **'Missed it'**
+  String get reviewRateAgain;
+
   /// Hard rating button label
   ///
   /// In en, this message translates to:
-  /// **'Hard'**
+  /// **'Almost'**
   String get reviewRateHard;
 
-  /// OK rating button label
+  /// Good rating button label
   ///
   /// In en, this message translates to:
-  /// **'OK'**
-  String get reviewRateOk;
+  /// **'Got it!'**
+  String get reviewRateGood;
 
   /// Easy rating button label
   ///
   /// In en, this message translates to:
-  /// **'Easy'**
+  /// **'Too easy'**
   String get reviewRateEasy;
 
   /// Title for fill-in-the-blank exercise
@@ -975,6 +1017,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Get'**
   String get shopGetPack;
+
+  /// Beta banner title on premium card
+  ///
+  /// In en, this message translates to:
+  /// **'Beta — Free Access'**
+  String get shopBetaFreeTitle;
+
+  /// Beta banner body text on premium card
+  ///
+  /// In en, this message translates to:
+  /// **'All packs and Premium features are free during beta.'**
+  String get shopBetaFreeBody;
+
+  /// Button label on pack cards during beta
+  ///
+  /// In en, this message translates to:
+  /// **'Free in beta'**
+  String get shopBetaFree;
+
+  /// Snackbar shown when user taps a pack card during beta
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocked — already yours during beta'**
+  String get shopBetaUnlocked;
 
   /// Profile screen app bar title
   ///

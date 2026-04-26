@@ -21,10 +21,13 @@ class CommitmentCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    return Card(
-      color: KColors.brand50,
-      elevation: KElevation.elevation2,
-      shape: RoundedRectangleBorder(borderRadius: KRadius.xl),
+    return Container(
+      decoration: BoxDecoration(
+        color: KColors.neutral0,
+        borderRadius: KRadius.xl,
+        border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
+        boxShadow: KElevation.shadow2,
+      ),
       child: Padding(
         padding: const EdgeInsets.all(KSpacing.sp24),
         child: Column(

@@ -249,22 +249,94 @@
   },
   "hotPaths": [
     {
+      "path": "lib\\screens\\home\\home_screen.dart",
+      "accessCount": 61,
+      "lastAccessed": 1777216592429,
+      "type": "file"
+    },
+    {
       "path": "lib\\screens\\onboarding\\language_select_screen.dart",
-      "accessCount": 21,
-      "lastAccessed": 1777193788113,
+      "accessCount": 43,
+      "lastAccessed": 1777219436893,
       "type": "file"
     },
     {
       "path": "lib\\screens\\profile\\profile_screen.dart",
-      "accessCount": 17,
-      "lastAccessed": 1777188993976,
+      "accessCount": 38,
+      "lastAccessed": 1777219862175,
       "type": "file"
     },
     {
-      "path": "lib\\screens\\home\\home_screen.dart",
-      "accessCount": 16,
-      "lastAccessed": 1777189867401,
+      "path": "lib\\screens\\review\\review_screen.dart",
+      "accessCount": 36,
+      "lastAccessed": 1777219804993,
       "type": "file"
+    },
+    {
+      "path": "lib\\core\\theme\\tokens.dart",
+      "accessCount": 31,
+      "lastAccessed": 1777219741613,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_flashcard_screen.dart",
+      "accessCount": 28,
+      "lastAccessed": 1777216629148,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\theme\\app_theme.dart",
+      "accessCount": 26,
+      "lastAccessed": 1777216028122,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\shop\\shop_screen.dart",
+      "accessCount": 26,
+      "lastAccessed": 1777216737690,
+      "type": "file"
+    },
+    {
+      "path": "lib\\l10n\\app_en.arb",
+      "accessCount": 22,
+      "lastAccessed": 1777208954229,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\schedule_screen.dart",
+      "accessCount": 22,
+      "lastAccessed": 1777219484305,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\pdpa_consent_screen.dart",
+      "accessCount": 19,
+      "lastAccessed": 1777219426035,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_processing_screen.dart",
+      "accessCount": 17,
+      "lastAccessed": 1777219851760,
+      "type": "file"
+    },
+    {
+      "path": "lib",
+      "accessCount": 16,
+      "lastAccessed": 1777213144285,
+      "type": "directory"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\level_select_screen.dart",
+      "accessCount": 16,
+      "lastAccessed": 1777219420847,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 15,
+      "lastAccessed": 1777219710388,
+      "type": "directory"
     },
     {
       "path": "checklist_UXUI.md",
@@ -273,33 +345,75 @@
       "type": "file"
     },
     {
-      "path": "lib\\screens\\shop\\shop_screen.dart",
-      "accessCount": 13,
-      "lastAccessed": 1777193542280,
+      "path": "lib\\l10n\\app_th.arb",
+      "accessCount": 14,
+      "lastAccessed": 1777208967664,
       "type": "file"
     },
     {
-      "path": "lib\\core\\theme\\app_theme.dart",
-      "accessCount": 13,
-      "lastAccessed": 1777193832050,
+      "path": "lib\\screens\\onboarding\\welcome_screen.dart",
+      "accessCount": 14,
+      "lastAccessed": 1777219326747,
       "type": "file"
     },
     {
-      "path": "lib\\screens\\review\\review_screen.dart",
+      "path": "lib\\screens\\review\\review_complete_screen.dart",
+      "accessCount": 14,
+      "lastAccessed": 1777219726652,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\mission_screen.dart",
+      "accessCount": 13,
+      "lastAccessed": 1777219335235,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\goal_select_screen.dart",
+      "accessCount": 13,
+      "lastAccessed": 1777219424300,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_screen.dart",
+      "accessCount": 12,
+      "lastAccessed": 1777216780336,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_fillblank_screen.dart",
+      "accessCount": 12,
+      "lastAccessed": 1777219718185,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_conversation_screen.dart",
+      "accessCount": 12,
+      "lastAccessed": 1777219753504,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_text_screen.dart",
+      "accessCount": 12,
+      "lastAccessed": 1777219796719,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_results_screen.dart",
+      "accessCount": 12,
+      "lastAccessed": 1777219821960,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\profile_setup_screen.dart",
       "accessCount": 11,
-      "lastAccessed": 1777189352833,
+      "lastAccessed": 1777219485373,
       "type": "file"
     },
     {
-      "path": "lib\\l10n\\app_en.arb",
-      "accessCount": 10,
-      "lastAccessed": 1777189341017,
-      "type": "file"
-    },
-    {
-      "path": "lib\\core\\theme\\tokens.dart",
-      "accessCount": 10,
-      "lastAccessed": 1777193475259,
+      "path": "lib\\main.dart",
+      "accessCount": 8,
+      "lastAccessed": 1777214703922,
       "type": "file"
     },
     {
@@ -315,15 +429,9 @@
       "type": "file"
     },
     {
-      "path": "lib\\screens\\onboarding\\schedule_screen.dart",
-      "accessCount": 6,
-      "lastAccessed": 1777181913483,
-      "type": "file"
-    },
-    {
-      "path": "lib\\l10n\\app_th.arb",
-      "accessCount": 6,
-      "lastAccessed": 1777189314057,
+      "path": "lib\\screens\\onboarding\\commitment_screen.dart",
+      "accessCount": 7,
+      "lastAccessed": 1777213978281,
       "type": "file"
     },
     {
@@ -333,45 +441,9 @@
       "type": "file"
     },
     {
-      "path": "lib\\screens\\onboarding\\pdpa_consent_screen.dart",
-      "accessCount": 5,
-      "lastAccessed": 1777181828030,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 5,
-      "lastAccessed": 1777187542437,
-      "type": "directory"
-    },
-    {
       "path": "personality\\customer_pam_bangkok.md",
       "accessCount": 5,
       "lastAccessed": 1777188654291,
-      "type": "file"
-    },
-    {
-      "path": "lib\\main.dart",
-      "accessCount": 4,
-      "lastAccessed": 1777181371159,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_flashcard_screen.dart",
-      "accessCount": 4,
-      "lastAccessed": 1777181703551,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_fillblank_screen.dart",
-      "accessCount": 4,
-      "lastAccessed": 1777181722744,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_complete_screen.dart",
-      "accessCount": 4,
-      "lastAccessed": 1777181739517,
       "type": "file"
     },
     {
@@ -387,57 +459,21 @@
       "type": "file"
     },
     {
-      "path": "lib\\screens\\snap\\snap_text_screen.dart",
-      "accessCount": 3,
-      "lastAccessed": 1777181631591,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\snap\\snap_processing_screen.dart",
-      "accessCount": 3,
-      "lastAccessed": 1777181639878,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\snap\\snap_results_screen.dart",
-      "accessCount": 3,
-      "lastAccessed": 1777181659977,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_conversation_screen.dart",
-      "accessCount": 3,
-      "lastAccessed": 1777181686059,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\welcome_screen.dart",
-      "accessCount": 3,
-      "lastAccessed": 1777181752065,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\goal_select_screen.dart",
-      "accessCount": 3,
-      "lastAccessed": 1777181771910,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\level_select_screen.dart",
-      "accessCount": 3,
-      "lastAccessed": 1777181787593,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\profile_setup_screen.dart",
-      "accessCount": 3,
-      "lastAccessed": 1777181840902,
-      "type": "file"
-    },
-    {
       "path": "personality\\customer_mint_sukhumvit.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188655028,
+      "accessCount": 4,
+      "lastAccessed": 1777206639024,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_raj_kl.md",
+      "accessCount": 4,
+      "lastAccessed": 1777206639842,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_alex_sg.md",
+      "accessCount": 4,
+      "lastAccessed": 1777206640686,
       "type": "file"
     },
     {
@@ -477,18 +513,6 @@
       "type": "file"
     },
     {
-      "path": "personality\\customer_raj_kl.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188664865,
-      "type": "file"
-    },
-    {
-      "path": "personality\\customer_alex_sg.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188665382,
-      "type": "file"
-    },
-    {
       "path": "personality\\customer_james_sg.md",
       "accessCount": 3,
       "lastAccessed": 1777188666237,
@@ -507,21 +531,9 @@
       "type": "file"
     },
     {
-      "path": "lib",
+      "path": "lib\\core\\widgets\\theme_toggle_button.dart",
       "accessCount": 3,
-      "lastAccessed": 1777193817394,
-      "type": "directory"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\commitment_screen.dart",
-      "accessCount": 2,
-      "lastAccessed": 1777181790996,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\mission_screen.dart",
-      "accessCount": 2,
-      "lastAccessed": 1777181800693,
+      "lastAccessed": 1777211193467,
       "type": "file"
     },
     {
@@ -534,18 +546,6 @@
       "path": "lib\\core\\widgets\\sensory_tag_bar.dart",
       "accessCount": 1,
       "lastAccessed": 1777180388247,
-      "type": "file"
-    },
-    {
-      "path": "lib\\core\\widgets\\theme_toggle_button.dart",
-      "accessCount": 1,
-      "lastAccessed": 1777180395192,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\snap\\snap_screen.dart",
-      "accessCount": 1,
-      "lastAccessed": 1777181502219,
       "type": "file"
     }
   ],

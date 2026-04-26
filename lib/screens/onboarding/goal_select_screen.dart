@@ -2,21 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
-
-// =============================================================================
-// GoalSelectScreen — 6 goal chips in 2-column grid, single selection.
-// No hardcoded colors/sizes. All strings from AppLocalizations.
-// =============================================================================
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 
 enum GoalSelectionGoal { travel, workMeeting, emailWriting, presentation, study, culture }
 
 class _Goal {
-  const _Goal({
-    required this.emoji,
-    required this.goal,
-  });
-
+  const _Goal({required this.emoji, required this.goal});
   final String emoji;
   final GoalSelectionGoal goal;
 }
@@ -56,27 +48,29 @@ class _GoalSelectScreenState extends State<GoalSelectScreen> {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final theme = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        elevation: KElevation.elevation0,
-        leading: BackButton(color: KColors.brand500),
-        title: Text(
-          l10n.goalSelectTitle,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: theme.colorScheme.onSurface),
-        ),
+    return KStitchScaffold(
+      stickyHeader: KOnboardingHeader(
+        onBack: () => Navigator.of(context).pop(),
+        stepCurrent: 2,
+        stepTotal: 8,
       ),
       body: SafeArea(
+        top: false,
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
+                l10n.goalSelectTitle,
+                style: KTypography.getStyle(KTextStyle.h3, locale)
+                    .copyWith(color: KColors.neutral900),
+              ),
+              const SizedBox(height: KSpacing.sp8),
+              Text(
                 l10n.goalSelectSubtitle,
                 style: KTypography.getStyle(KTextStyle.body, locale)
-                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    .copyWith(color: KColors.neutral700),
               ),
               const SizedBox(height: KSpacing.sp24),
               Expanded(
@@ -101,13 +95,14 @@ class _GoalSelectScreenState extends State<GoalSelectScreen> {
                 ),
               ),
               const SizedBox(height: KSpacing.sp24),
-              KotokaButton(
+              KCtaButton(
                 label: l10n.continueButton,
                 onPressed: _selected != null
                     ? () => context.go('/onboarding/level')
                     : null,
-                variant: KotokaButtonVariant.primary,
               ),
+              SizedBox(
+                  height: MediaQuery.of(context).padding.bottom + KSpacing.sp16),
             ],
           ),
         ),
@@ -142,13 +137,17 @@ class _GoalChip extends StatelessWidget {
           vertical: KSpacing.sp8,
         ),
         decoration: BoxDecoration(
-          color: isSelected ? KColors.brand100 : Theme.of(context).cardColor,
+          color: isSelected
+              ? KColors.brand400.withValues(alpha: 0.05)
+              : KColors.neutral0,
           borderRadius: KRadius.md,
           border: Border.all(
-            color: isSelected ? KColors.brand500 : KColors.neutral200,
+            color: isSelected
+                ? KColors.brand400
+                : KColors.brand400.withValues(alpha: 0.20),
             width: isSelected ? 2 : 1,
           ),
-          boxShadow: isSelected ? KElevation.shadow2 : KElevation.shadow1,
+          boxShadow: KElevation.shadow1,
         ),
         child: Row(
           children: [
@@ -158,7 +157,7 @@ class _GoalChip extends StatelessWidget {
               child: Text(
                 label,
                 style: KTypography.getStyle(KTextStyle.label, locale).copyWith(
-                  color: isSelected ? KColors.brand500 : Theme.of(context).colorScheme.onSurface,
+                  color: isSelected ? KColors.brand400 : KColors.neutral800,
                   fontWeight: FontWeight.w600,
                 ),
                 maxLines: 2,
@@ -166,7 +165,7 @@ class _GoalChip extends StatelessWidget {
               ),
             ),
             if (isSelected)
-              Icon(Icons.check_circle, color: KColors.brand500, size: KSpacing.sp16),
+              const Icon(Icons.check_circle, color: KColors.brand400, size: KSpacing.sp16),
           ],
         ),
       ),

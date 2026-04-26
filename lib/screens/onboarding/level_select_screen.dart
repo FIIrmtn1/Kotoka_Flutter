@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kotoka_app/core/providers/onboarding_providers.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
-import 'package:kotoka_app/core/widgets/progress_ring.dart';
-
-// =============================================================================
-// LevelSelectScreen — Beginner / Intermediate / Advanced.
-// Progress bar visualization per level.
-// No hardcoded colors/sizes. All strings from AppLocalizations.
-// =============================================================================
+import 'package:kotoka_app/core/widgets/k_progress_ring.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 
 class _Level {
-  const _Level({
-    required this.key,
-    required this.progress,
-  });
+  const _Level({required this.key, required this.progress});
   final String key;
   final double progress;
 }
@@ -26,14 +20,14 @@ const List<_Level> _kLevels = [
   _Level(key: 'advanced',     progress: 0.90),
 ];
 
-class LevelSelectScreen extends StatefulWidget {
+class LevelSelectScreen extends ConsumerStatefulWidget {
   const LevelSelectScreen({super.key});
 
   @override
-  State<LevelSelectScreen> createState() => _LevelSelectScreenState();
+  ConsumerState<LevelSelectScreen> createState() => _LevelSelectScreenState();
 }
 
-class _LevelSelectScreenState extends State<LevelSelectScreen> {
+class _LevelSelectScreenState extends ConsumerState<LevelSelectScreen> {
   String? _selectedKey;
 
   String _titleFor(String key, AppLocalizations l10n) {
@@ -54,32 +48,53 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
     }
   }
 
+  String _emojiFor(String key) {
+    switch (key) {
+      case 'beginner':     return '👶';
+      case 'intermediate': return '📘';
+      case 'advanced':     return '🎓';
+      default:             return '';
+    }
+  }
+
+  void _selectLevel(String key) {
+    setState(() => _selectedKey = key);
+    ref.read(selectedLevelProvider.notifier).state = key;
+    if (key == 'beginner' || key == 'advanced') {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) context.go('/onboarding/commitment');
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final theme = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        elevation: KElevation.elevation0,
-        leading: BackButton(color: KColors.brand500),
-        title: Text(
-          l10n.levelSelectTitle,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: theme.colorScheme.onSurface),
-        ),
+    return KStitchScaffold(
+      stickyHeader: KOnboardingHeader(
+        onBack: () => Navigator.of(context).pop(),
+        stepCurrent: 3,
+        stepTotal: 8,
       ),
       body: SafeArea(
+        top: false,
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
+                l10n.levelSelectTitle,
+                style: KTypography.getStyle(KTextStyle.h3, locale)
+                    .copyWith(color: KColors.neutral900),
+              ),
+              const SizedBox(height: KSpacing.sp8),
+              Text(
                 l10n.levelSelectSubtitle,
                 style: KTypography.getStyle(KTextStyle.body, locale)
-                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    .copyWith(color: KColors.neutral700),
               ),
               const SizedBox(height: KSpacing.sp24),
               Expanded(
@@ -91,24 +106,25 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
                     final level = _kLevels[index];
                     final isSelected = _selectedKey == level.key;
                     return _LevelCard(
+                      emoji: _emojiFor(level.key),
                       title: _titleFor(level.key, l10n),
                       description: _descFor(level.key, l10n),
                       progress: level.progress,
                       isSelected: isSelected,
-                      onTap: () =>
-                          setState(() => _selectedKey = level.key),
+                      onTap: () => _selectLevel(level.key),
                     );
                   },
                 ),
               ),
               const SizedBox(height: KSpacing.sp24),
-              KotokaButton(
+              KCtaButton(
                 label: l10n.continueButton,
-                onPressed: _selectedKey != null
+                onPressed: _selectedKey == 'intermediate'
                     ? () => context.go('/onboarding/commitment')
                     : null,
-                variant: KotokaButtonVariant.primary,
               ),
+              SizedBox(
+                  height: MediaQuery.of(context).padding.bottom + KSpacing.sp16),
             ],
           ),
         ),
@@ -119,6 +135,7 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
 
 class _LevelCard extends StatelessWidget {
   const _LevelCard({
+    required this.emoji,
     required this.title,
     required this.description,
     required this.progress,
@@ -126,6 +143,7 @@ class _LevelCard extends StatelessWidget {
     required this.onTap,
   });
 
+  final String emoji;
   final String title;
   final String description;
   final double progress;
@@ -142,20 +160,30 @@ class _LevelCard extends StatelessWidget {
         duration: KMotion.fast,
         padding: const EdgeInsets.all(KSpacing.sp16),
         decoration: BoxDecoration(
-          color: isSelected ? KColors.brand100 : Theme.of(context).cardColor,
+          color: isSelected
+              ? KColors.brand400.withValues(alpha: 0.05)
+              : KColors.neutral0,
           borderRadius: KRadius.md,
           border: Border.all(
-            color: isSelected ? KColors.brand500 : KColors.neutral200,
+            color: isSelected
+                ? KColors.brand400
+                : KColors.brand400.withValues(alpha: 0.20),
             width: isSelected ? 2 : 1,
           ),
-          boxShadow: isSelected ? KElevation.shadow2 : KElevation.shadow1,
+          boxShadow: KElevation.shadow1,
         ),
         child: Row(
           children: [
-            ProgressRing(
-              progress: progress,
-              size: 52,
-              color: isSelected ? KColors.brand500 : KColors.brand400,
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                KProgressRing(
+                  value: progress,
+                  size: 52,
+                  fillColor: KColors.brand400,
+                ),
+                Text(emoji, style: const TextStyle(fontSize: 20)),
+              ],
             ),
             const SizedBox(width: KSpacing.sp16),
             Expanded(
@@ -167,8 +195,8 @@ class _LevelCard extends StatelessWidget {
                     style: KTypography.getStyle(KTextStyle.h4, locale)
                         .copyWith(
                             color: isSelected
-                                ? KColors.brand500
-                                : Theme.of(context).colorScheme.onSurface),
+                                ? KColors.brand400
+                                : KColors.neutral900),
                   ),
                   const SizedBox(height: KSpacing.sp4),
                   Text(
@@ -179,8 +207,8 @@ class _LevelCard extends StatelessWidget {
               ),
             ),
             if (isSelected)
-              Icon(Icons.check_circle,
-                  color: KColors.brand500, size: KSpacing.sp24),
+              const Icon(Icons.check_circle,
+                  color: KColors.brand400, size: KSpacing.sp24),
           ],
         ),
       ),

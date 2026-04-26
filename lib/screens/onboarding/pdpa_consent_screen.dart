@@ -2,15 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
-
-// =============================================================================
-// PdpaConsentScreen — Thai PDPA compliant consent.
-// 3 checkboxes: Camera & Photos, GPS Location, Voice/Microphone.
-// All 3 required — continue disabled until all checked.
-// Expandable "what we use this for" per permission.
-// No hardcoded colors/sizes. All strings from AppLocalizations.
-// =============================================================================
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 
 class _Permission {
   const _Permission({required this.key, required this.icon});
@@ -19,9 +12,9 @@ class _Permission {
 }
 
 const List<_Permission> _kPermissions = [
-  _Permission(key: 'camera',    icon: Icons.camera_alt_outlined),
-  _Permission(key: 'location',  icon: Icons.location_on_outlined),
-  _Permission(key: 'microphone',icon: Icons.mic_outlined),
+  _Permission(key: 'camera',     icon: Icons.camera_alt_outlined),
+  _Permission(key: 'location',   icon: Icons.location_on_outlined),
+  _Permission(key: 'microphone', icon: Icons.mic_outlined),
 ];
 
 class PdpaConsentScreen extends StatefulWidget {
@@ -37,7 +30,7 @@ class _PdpaConsentScreenState extends State<PdpaConsentScreen> {
     'location':   false,
     'microphone': false,
   };
-  final Set<String> _expanded = {};
+  final Set<String> _expanded = {'camera', 'location', 'microphone'};
 
   bool get _allChecked => _checked.values.every((v) => v);
 
@@ -75,45 +68,47 @@ class _PdpaConsentScreenState extends State<PdpaConsentScreen> {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    return Scaffold(
-      appBar: AppBar(
-        elevation: KElevation.elevation0,
-        leading: BackButton(color: KColors.brand500),
-        title: Text(
-          l10n.pdpaTitle,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: theme.colorScheme.onSurface),
-        ),
+    return KStitchScaffold(
+      stickyHeader: KOnboardingHeader(
+        onBack: () => Navigator.of(context).pop(),
+        stepCurrent: 6,
+        stepTotal: 8,
       ),
       body: SafeArea(
+        top: false,
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // PDPA explanation
+              Text(
+                l10n.pdpaTitle,
+                style: KTypography.getStyle(KTextStyle.h3, locale)
+                    .copyWith(color: KColors.neutral900),
+              ),
+              const SizedBox(height: KSpacing.sp16),
               Container(
                 padding: const EdgeInsets.all(KSpacing.sp16),
                 decoration: BoxDecoration(
-                  color: isDark ? theme.colorScheme.surface : KColors.brand100,
-                  borderRadius: KRadius.md,
+                  color: KColors.neutral0,
+                  borderRadius: BorderRadius.circular(KRadius.radiusMd),
+                  border: Border.all(
+                      color: KColors.brand400.withValues(alpha: 0.20)),
+                  boxShadow: KElevation.shadow1,
                 ),
                 child: Text(
                   l10n.pdpaExplanation,
                   style: KTypography.getStyle(KTextStyle.body, locale)
-                      .copyWith(color: theme.colorScheme.onSurfaceVariant),
+                      .copyWith(color: KColors.neutral700),
                 ),
               ),
-              const SizedBox(height: KSpacing.sp24),
+              const SizedBox(height: KSpacing.sp16),
               Text(
                 l10n.pdpaRequiredAll,
                 style: KTypography.getStyle(KTextStyle.label, locale)
-                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    .copyWith(color: KColors.neutral600),
               ),
               const SizedBox(height: KSpacing.sp12),
-              // Permission checkboxes
               Expanded(
                 child: ListView(
                   children: _kPermissions.map((perm) {
@@ -132,14 +127,16 @@ class _PdpaConsentScreenState extends State<PdpaConsentScreen> {
                   }).toList(),
                 ),
               ),
-              const SizedBox(height: KSpacing.sp24),
-              KotokaButton(
+              const SizedBox(height: KSpacing.sp16),
+              KCtaButton(
                 label: l10n.continueButton,
                 onPressed: _allChecked
                     ? () => context.go('/onboarding/profile')
                     : null,
-                variant: KotokaButtonVariant.primary,
               ),
+              SizedBox(
+                  height: MediaQuery.of(context).padding.bottom +
+                      KSpacing.sp16),
             ],
           ),
         ),
@@ -176,16 +173,20 @@ class _PermissionTile extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: KSpacing.sp12),
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: isChecked
+            ? KColors.brand400.withValues(alpha: 0.05)
+            : KColors.neutral0,
         borderRadius: KRadius.md,
         border: Border.all(
-          color: isChecked ? KColors.brand400 : KColors.neutral200,
+          color: isChecked
+              ? KColors.brand400
+              : KColors.brand400.withValues(alpha: 0.20),
+          width: isChecked ? 2 : 1,
         ),
         boxShadow: KElevation.shadow1,
       ),
       child: Column(
         children: [
-          // Main row
           InkWell(
             onTap: onToggle,
             borderRadius: KRadius.md,
@@ -198,14 +199,14 @@ class _PermissionTile extends StatelessWidget {
                     height: KSpacing.sp40,
                     decoration: BoxDecoration(
                       color: isChecked
-                          ? KColors.brand100
+                          ? KColors.brand400.withValues(alpha: 0.10)
                           : KColors.neutral100,
                       borderRadius: KRadius.sm,
                     ),
                     child: Icon(
                       icon,
                       color: isChecked
-                          ? KColors.brand600
+                          ? KColors.brand400
                           : KColors.neutral500,
                       size: KSpacing.sp20,
                     ),
@@ -215,13 +216,13 @@ class _PermissionTile extends StatelessWidget {
                     child: Text(
                       title,
                       style: KTypography.getStyle(KTextStyle.body, locale)
-                          .copyWith(color: Theme.of(context).colorScheme.onSurface),
+                          .copyWith(color: KColors.neutral900),
                     ),
                   ),
                   Checkbox(
                     value: isChecked,
                     onChanged: (_) => onToggle(),
-                    activeColor: KColors.brand600,
+                    activeColor: KColors.brand400,
                     shape: RoundedRectangleBorder(
                       borderRadius:
                           BorderRadius.circular(KRadius.radiusXs),
@@ -231,7 +232,6 @@ class _PermissionTile extends StatelessWidget {
               ),
             ),
           ),
-          // Expandable reason
           InkWell(
             onTap: onExpand,
             borderRadius: const BorderRadius.only(
@@ -250,9 +250,8 @@ class _PermissionTile extends StatelessWidget {
                     children: [
                       Text(
                         expandLabel,
-                        style:
-                            KTypography.getStyle(KTextStyle.label, locale)
-                                .copyWith(color: KColors.brand600),
+                        style: KTypography.getStyle(KTextStyle.label, locale)
+                            .copyWith(color: KColors.brand600),
                       ),
                       const SizedBox(width: KSpacing.sp4),
                       Icon(
@@ -273,8 +272,7 @@ class _PermissionTile extends StatelessWidget {
                       padding: const EdgeInsets.only(top: KSpacing.sp8),
                       child: Text(
                         reason,
-                        style: KTypography.getStyle(
-                                KTextStyle.caption, locale)
+                        style: KTypography.getStyle(KTextStyle.caption, locale)
                             .copyWith(color: KColors.neutral600),
                       ),
                     ),

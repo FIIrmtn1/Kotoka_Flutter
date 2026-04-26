@@ -4,46 +4,25 @@ import 'tokens.dart';
 
 /// Creates the [ThemeData] for the Kotoka app using Material 3
 /// and KColors / KTypography tokens exclusively — no hardcoded values.
+/// Light mode only for beta.
 class AppTheme {
   AppTheme._();
 
-  // ------------------------------------------------------------------
-  // Light theme
-  // ------------------------------------------------------------------
-  static ThemeData get light => _build(brightness: Brightness.light);
-  static ThemeData lightTheme() => _build(brightness: Brightness.light);
+  static ThemeData get light => _build();
+  static ThemeData lightTheme() => _build();
 
-  // ------------------------------------------------------------------
-  // Dark theme
-  // ------------------------------------------------------------------
-  static ThemeData get dark => _build(brightness: Brightness.dark);
-  static ThemeData darkTheme() => _build(brightness: Brightness.dark);
-
-  // ------------------------------------------------------------------
-  // Internal builder
-  // ------------------------------------------------------------------
-  static ThemeData _build({required Brightness brightness}) {
-    final isDark = brightness == Brightness.dark;
-
-    final colorScheme = isDark ? _darkColorScheme : _lightColorScheme;
-
+  static ThemeData _build() {
     return ThemeData(
       useMaterial3: true,
-      brightness: brightness,
-      colorScheme: colorScheme,
+      brightness: Brightness.light,
+      colorScheme: _lightColorScheme,
       fontFamily: 'IBMPlexSans',
 
-      // ----------------------------------------------------------------
-      // Scaffold / background
-      // ----------------------------------------------------------------
-      scaffoldBackgroundColor: isDark ? KColorsDark.bgPage : KColors.surfacePrimary,
+      scaffoldBackgroundColor: KColors.pageBg,
 
-      // ----------------------------------------------------------------
-      // AppBar
-      // ----------------------------------------------------------------
-      appBarTheme: AppBarTheme(
-        backgroundColor: isDark ? KColorsDark.bgAppBar : KColors.surfacePrimary,
-        foregroundColor: isDark ? KColors.textInverse : KColors.textPrimary,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: KColors.surfacePrimary,
+        foregroundColor: KColors.textPrimary,
         elevation: KElevation.elevation0,
         scrolledUnderElevation: KElevation.elevation1,
         centerTitle: false,
@@ -51,18 +30,12 @@ class AppTheme {
           fontFamily: 'IBMPlexSans',
           fontSize: 18.0,
           fontWeight: FontWeight.w600,
-          color: isDark ? KColors.textInverse : KColors.textPrimary,
+          color: KColors.textPrimary,
         ),
       ),
 
-      // ----------------------------------------------------------------
-      // Text theme — all styles use IBMPlexSans tokens
-      // ----------------------------------------------------------------
-      textTheme: _buildTextTheme(isDark: isDark),
+      textTheme: _buildTextTheme(),
 
-      // ----------------------------------------------------------------
-      // Elevated button
-      // ----------------------------------------------------------------
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: KColors.interactivePrimary,
@@ -87,9 +60,6 @@ class AppTheme {
         ),
       ),
 
-      // ----------------------------------------------------------------
-      // Outlined button
-      // ----------------------------------------------------------------
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: KColors.interactivePrimary,
@@ -111,9 +81,6 @@ class AppTheme {
         ),
       ),
 
-      // ----------------------------------------------------------------
-      // Text button
-      // ----------------------------------------------------------------
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: KColors.interactivePrimary,
@@ -134,95 +101,83 @@ class AppTheme {
         ),
       ),
 
-      // ----------------------------------------------------------------
-      // Input decoration
-      // ----------------------------------------------------------------
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: isDark ? KColorsDark.inputBg : KColors.neutral50,
-        contentPadding: const EdgeInsets.symmetric(
+        fillColor: KColors.neutral50,
+        contentPadding: EdgeInsets.symmetric(
           horizontal: KSpacing.sp16,
           vertical: KSpacing.sp12,
         ),
         border: OutlineInputBorder(
           borderRadius: KRadius.md,
-          borderSide: const BorderSide(color: KColors.borderDefault),
+          borderSide: BorderSide(color: KColors.borderDefault),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: KRadius.md,
-          borderSide: const BorderSide(color: KColors.borderDefault),
+          borderSide: BorderSide(color: KColors.borderDefault),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: KRadius.md,
-          borderSide: const BorderSide(color: KColors.borderBrand, width: 2.0),
+          borderSide: BorderSide(color: KColors.borderBrand, width: 2.0),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: KRadius.md,
-          borderSide: const BorderSide(color: KColors.error500),
+          borderSide: BorderSide(color: KColors.error500),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: KRadius.md,
-          borderSide: const BorderSide(color: KColors.error500, width: 2.0),
+          borderSide: BorderSide(color: KColors.error500, width: 2.0),
         ),
         hintStyle: TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 15.0,
           color: KColors.textDisabled,
         ),
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 15.0,
           color: KColors.textSecondary,
         ),
-        errorStyle: const TextStyle(
+        errorStyle: TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 12.0,
           color: KColors.error500,
         ),
       ),
 
-      // ----------------------------------------------------------------
-      // Card
-      // ----------------------------------------------------------------
       cardTheme: CardThemeData(
-        color: isDark ? KColorsDark.bgCard : KColors.surfacePrimary,
+        color: KColors.surfacePrimary,
         elevation: KElevation.elevation1,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: KRadius.lg,
+          borderRadius: KRadius.md,
           side: BorderSide(
-            color: isDark ? KColorsDark.border : KColors.borderDefault,
+            color: KColors.brand400.withValues(alpha: 0.20),
             width: 1.0,
           ),
         ),
       ),
 
-      // ----------------------------------------------------------------
-      // Bottom navigation bar
-      // ----------------------------------------------------------------
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: isDark ? KColorsDark.bgPage : KColors.surfacePrimary,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: KColors.surfacePrimary,
         selectedItemColor: KColors.brand600,
         unselectedItemColor: KColors.neutral500,
         elevation: KElevation.elevation2,
         type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: const TextStyle(
+        selectedLabelStyle: TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 11.0,
           fontWeight: FontWeight.w600,
         ),
-        unselectedLabelStyle: const TextStyle(
+        unselectedLabelStyle: TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 11.0,
           fontWeight: FontWeight.w400,
         ),
       ),
 
-      // ----------------------------------------------------------------
-      // Navigation bar (Material 3)
-      // ----------------------------------------------------------------
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: isDark ? KColorsDark.bgAppBar : KColors.surfacePrimary,
+        backgroundColor: KColors.surfacePrimary,
         indicatorColor: KColors.brand100,
         iconTheme: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
@@ -250,19 +205,16 @@ class AppTheme {
         height: 64.0,
       ),
 
-      // ----------------------------------------------------------------
-      // Chip
-      // ----------------------------------------------------------------
       chipTheme: ChipThemeData(
-        backgroundColor: isDark ? KColorsDark.bgCard : KColors.neutral100,
+        backgroundColor: KColors.neutral100,
         selectedColor: KColors.brand100,
         disabledColor: KColors.neutral200,
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 13.0,
           fontWeight: FontWeight.w500,
         ),
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: KSpacing.sp12,
           vertical: KSpacing.sp4,
         ),
@@ -272,28 +224,19 @@ class AppTheme {
         side: BorderSide.none,
       ),
 
-      // ----------------------------------------------------------------
-      // Divider
-      // ----------------------------------------------------------------
       dividerTheme: const DividerThemeData(
         color: KColors.borderDefault,
         thickness: 1.0,
         space: 1.0,
       ),
 
-      // ----------------------------------------------------------------
-      // Icon
-      // ----------------------------------------------------------------
-      iconTheme: IconThemeData(
-        color: isDark ? KColors.textInverse : KColors.textPrimary,
+      iconTheme: const IconThemeData(
+        color: KColors.textPrimary,
         size: 24.0,
       ),
 
-      // ----------------------------------------------------------------
-      // Snack bar
-      // ----------------------------------------------------------------
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: isDark ? KColorsDark.bgCard : KColors.neutral900,
+        backgroundColor: KColors.neutral900,
         contentTextStyle: const TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 14.0,
@@ -303,35 +246,29 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: KRadius.md),
       ),
 
-      // ----------------------------------------------------------------
-      // Dialog
-      // ----------------------------------------------------------------
       dialogTheme: DialogThemeData(
-        backgroundColor: isDark ? KColorsDark.bgCard : KColors.surfacePrimary,
+        backgroundColor: KColors.surfacePrimary,
         elevation: KElevation.elevation4,
         shape: RoundedRectangleBorder(borderRadius: KRadius.xl),
         titleTextStyle: TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 20.0,
           fontWeight: FontWeight.w700,
-          color: isDark ? KColors.textInverse : KColors.textPrimary,
+          color: KColors.textPrimary,
         ),
         contentTextStyle: TextStyle(
           fontFamily: 'IBMPlexSans',
           fontSize: 15.0,
-          color: isDark ? KColors.neutral300 : KColors.textSecondary,
+          color: KColors.textSecondary,
         ),
       ),
     );
   }
 
-  // ------------------------------------------------------------------
-  // Color schemes
-  // ------------------------------------------------------------------
   static const ColorScheme _lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: KColors.brand500,       // teal — primary interactive
-    onPrimary: KColors.neutral900,   // dark text on teal
+    primary: KColors.brand500,
+    onPrimary: KColors.neutral900,
     primaryContainer: KColors.brand100,
     onPrimaryContainer: KColors.neutral900,
     secondary: KColors.brand400,
@@ -359,45 +296,11 @@ class AppTheme {
     inversePrimary: KColors.brand200,
   );
 
-  static const ColorScheme _darkColorScheme = ColorScheme(
-    brightness: Brightness.dark,
-    primary: KColors.brand500,       // teal — same primary as light
-    onPrimary: KColors.neutral900,   // dark text on teal
-    primaryContainer: KColors.brand600,
-    onPrimaryContainer: KColors.neutral0,
-    secondary: KColors.brand400,     // bright cyan accent
-    onSecondary: KColors.neutral900,
-    secondaryContainer: KColorsDark.bgCard,
-    onSecondaryContainer: KColors.brand400,
-    tertiary: KColors.info300,
-    onTertiary: KColors.neutral900,
-    tertiaryContainer: KColors.info700,
-    onTertiaryContainer: KColors.info100,
-    error: KColors.error400,
-    onError: KColors.neutral900,
-    errorContainer: KColors.error700,
-    onErrorContainer: KColors.error100,
-    surface: KColorsDark.bgPage,
-    onSurface: KColors.neutral50,
-    surfaceContainerHighest: KColorsDark.bgCard,
-    onSurfaceVariant: KColors.neutral400,
-    outline: KColors.neutral700,
-    outlineVariant: KColors.neutral800,
-    shadow: KColors.neutral1000,
-    scrim: KColors.neutral1000,
-    inverseSurface: KColors.neutral100,
-    onInverseSurface: KColors.neutral900,
-    inversePrimary: KColors.brand500,
-  );
+  static TextTheme _buildTextTheme() {
+    const base = KColors.textPrimary;
+    const subtle = KColors.textSecondary;
 
-  // ------------------------------------------------------------------
-  // Text theme builder
-  // ------------------------------------------------------------------
-  static TextTheme _buildTextTheme({required bool isDark}) {
-    final base = isDark ? KColorsDark.textPrimary : KColors.textPrimary;
-    final subtle = isDark ? KColorsDark.textSecondary : KColors.textSecondary;
-
-    return TextTheme(
+    return const TextTheme(
       displayLarge: TextStyle(
         fontFamily: 'IBMPlexSans',
         fontSize: 57.0,

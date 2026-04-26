@@ -24,6 +24,7 @@ import 'package:kotoka_app/screens/onboarding/goal_select_screen.dart';
 import 'package:kotoka_app/screens/onboarding/level_select_screen.dart';
 import 'package:kotoka_app/screens/onboarding/commitment_screen.dart';
 import 'package:kotoka_app/screens/onboarding/mission_screen.dart';
+import 'package:kotoka_app/screens/onboarding/summary_screen.dart';
 import 'package:kotoka_app/screens/snap/snap_screen.dart';
 import 'package:kotoka_app/screens/review/review_screen.dart';
 import 'package:kotoka_app/screens/shop/shop_screen.dart';
@@ -153,6 +154,12 @@ GoRouter appRouter(AppRouterRef ref) {
             path: 'mission',
             pageBuilder: (context, state) => const MaterialPage(
               child: MissionScreen(),
+            ),
+          ),
+          GoRoute(
+            path: 'summary',
+            pageBuilder: (context, state) => const MaterialPage(
+              child: SummaryScreen(),
             ),
           ),
         ],

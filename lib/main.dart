@@ -22,8 +22,7 @@ import 'core/theme/app_theme.dart';
 import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
 
-/// Controls whether the app uses light or dark theme.
-final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.light);
+// Dark mode removed — light only for beta.
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -90,8 +89,7 @@ class KotokaApp extends ConsumerWidget {
       // Theme
       // ------------------------------------------------------------------
       theme: AppTheme.lightTheme(),
-      darkTheme: AppTheme.darkTheme(),
-      themeMode: ref.watch(themeModeProvider),
+      themeMode: ThemeMode.light,
 
       // ------------------------------------------------------------------
       // Router

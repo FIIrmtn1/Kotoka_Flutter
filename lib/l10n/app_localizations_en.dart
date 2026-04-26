@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'Kotoka';
 
   @override
-  String get tagline => 'Learn vocabulary from your real life';
+  String get tagline => 'Snap your world, speak any languages';
 
   @override
   String get getStarted => 'Get Started';
@@ -110,7 +110,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pdpaCameraReason =>
-      'Snap photos to identify and learn vocabulary in context';
+      'to snap & learn new words from the world around you';
 
   @override
   String get pdpaGPS => 'Location';
@@ -276,7 +276,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pdpaMicrophoneReason =>
-      'Used for voice exercises and pronunciation feedback during review sessions.';
+      'so Kotoka can hear your pronunciation and guide you';
 
   @override
   String get pdpaWhatWeUse => 'What we use this for';
@@ -362,6 +362,24 @@ class AppLocalizationsEn extends AppLocalizations {
       'Snap a word from your world. Koko will help you remember it forever.';
 
   @override
+  String get onbSummaryTitle => 'You\'re all set!';
+
+  @override
+  String get onbSummaryBody => 'Here\'s your learning setup:';
+
+  @override
+  String get onbSummaryLanguagePair => 'Languages';
+
+  @override
+  String get onbSummaryLevel => 'Level';
+
+  @override
+  String get onbSummaryDailyGoal => 'Daily goal';
+
+  @override
+  String get onbSummaryStart => 'Start learning';
+
+  @override
   String get homeTooltipSensoryTag =>
       'Tags show how a word feels — sound, sight, action. Tap to explore.';
 
@@ -444,13 +462,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewTapToFlip => 'Tap to flip';
 
   @override
-  String get reviewRateHard => 'Hard';
+  String get reviewRateAgain => 'Missed it';
 
   @override
-  String get reviewRateOk => 'OK';
+  String get reviewRateHard => 'Almost';
 
   @override
-  String get reviewRateEasy => 'Easy';
+  String get reviewRateGood => 'Got it!';
+
+  @override
+  String get reviewRateEasy => 'Too easy';
 
   @override
   String get reviewFillBlankTitle => 'Fill in the blank';
@@ -484,6 +505,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shopGetPack => 'Get';
+
+  @override
+  String get shopBetaFreeTitle => 'Beta — Free Access';
+
+  @override
+  String get shopBetaFreeBody =>
+      'All packs and Premium features are free during beta.';
+
+  @override
+  String get shopBetaFree => 'Free in beta';
+
+  @override
+  String get shopBetaUnlocked => 'Unlocked — already yours during beta';
 
   @override
   String get profileTitle => 'Profile';

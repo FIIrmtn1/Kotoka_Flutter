@@ -12,7 +12,7 @@ class AppLocalizationsLo extends AppLocalizations {
   String get appName => 'ໂຄໂຕກາ';
 
   @override
-  String get tagline => 'ຮຽນຮູ້ຄຳສັບຈາກຊີວິດຈິງຂອງທ່ານ';
+  String get tagline => 'ສະແນັບໂລກຂອງທ່ານ ເວົ້າໄດ້ທຸກພາສາ';
 
   @override
   String get getStarted => 'ເລີ່ມຕົ້ນ';
@@ -109,7 +109,7 @@ class AppLocalizationsLo extends AppLocalizations {
   String get pdpaCamera => 'ກ້ອງຖ່າຍຮູບ';
 
   @override
-  String get pdpaCameraReason => 'ຖ່າຍຮູບເພື່ອລະບຸ ແລະ ຮຽນຮູ້ຄຳສັບໃນບໍລິບົດ';
+  String get pdpaCameraReason => 'ເພື່ອສະແນັບ ແລະ ຮຽນຄຳໃໝ່ຈາກໂລກອ້ອມຂ້າງທ່ານ';
 
   @override
   String get pdpaGPS => 'ສະຖານທີ່';
@@ -273,7 +273,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String get pdpaMicrophoneReason =>
-      'ໃຊ້ສຳລັບແບບຝຶກຫັດສຽງ ແລະ ຄຳຄຶດຄຳຄ່ອນການອອກສຽງ.';
+      'ເພື່ອໃຫ້ Kotoka ໄດ້ຍິນການອອກສຽງຂອງທ່ານ ແລະ ນຳພາທ່ານ';
 
   @override
   String get pdpaWhatWeUse => 'ເຮົາໃຊ້ສິ່ງນີ້ເພື່ອຫຍັງ';
@@ -359,6 +359,24 @@ class AppLocalizationsLo extends AppLocalizations {
       'ຖ່າຍຮູບຄຳສັບຈາກໂລກຂອງທ່ານ. ໂຄໂຄຈະຊ່ວຍໃຫ້ທ່ານຈຳໄດ້ຕະຫຼອດ.';
 
   @override
+  String get onbSummaryTitle => 'ພ້ອມແລ້ວ!';
+
+  @override
+  String get onbSummaryBody => 'ນີ້ຄືການຕັ້ງຄ່າການຮຽນຂອງທ່ານ:';
+
+  @override
+  String get onbSummaryLanguagePair => 'ພາສາ';
+
+  @override
+  String get onbSummaryLevel => 'ລະດັບ';
+
+  @override
+  String get onbSummaryDailyGoal => 'ເປົ້າໝາຍປະຈຳວັນ';
+
+  @override
+  String get onbSummaryStart => 'ເລີ່ມຮຽນໄດ້ເລີຍ';
+
+  @override
   String get homeTooltipSensoryTag =>
       'ປ້າຍສະແດງຄວາມຮູ້ສຶກຂອງຄຳ — ສຽງ ການເບິ່ງ ການກະທຳ. ແຕະເພື່ອສຳຫຼວດ.';
 
@@ -441,13 +459,16 @@ class AppLocalizationsLo extends AppLocalizations {
   String get reviewTapToFlip => 'ແຕະເພື່ອພິ້ວ';
 
   @override
-  String get reviewRateHard => 'ຍາກ';
+  String get reviewRateAgain => 'ຈຳບໍ່ໄດ້';
 
   @override
-  String get reviewRateOk => 'ໂອເຄ';
+  String get reviewRateHard => 'ເກືອບໄດ້';
 
   @override
-  String get reviewRateEasy => 'ງ່າຍ';
+  String get reviewRateGood => 'ໄດ້ແລ້ວ!';
+
+  @override
+  String get reviewRateEasy => 'ງ່າຍເກີນໄປ';
 
   @override
   String get reviewFillBlankTitle => 'ຕື່ມຊ່ອງຫວ່າງ';
@@ -482,6 +503,18 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String get shopGetPack => 'ຮັບ';
+
+  @override
+  String get shopBetaFreeTitle => 'ເບຕ້າ — ໃຊ້ຟຣີ';
+
+  @override
+  String get shopBetaFreeBody => 'ທຸກແພັກ ແລະຟີເຈີ Premium ໃຊ້ຟຣີໃນຊ່ວງເບຕ້າ';
+
+  @override
+  String get shopBetaFree => 'ຟຣີໃນເບຕ້າ';
+
+  @override
+  String get shopBetaUnlocked => 'ປົດລັອກແລ້ວ — ໃຊ້ຟຣີໃນຊ່ວງເບຕ້າ';
 
   @override
   String get profileTitle => 'ໂປຣໄຟລ໌';

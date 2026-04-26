@@ -58,6 +58,10 @@ class KColors {
   static const Color info500 = Color(0xFF228BE6);
   static const Color info700 = Color(0xFF1864AB);
 
+  // Sky tints — light blue info borders/chips
+  static const Color sky100 = Color(0xFFE0F2FE);
+  static const Color sky300 = Color(0xFF7DD3FC);
+
   // Mood tints (used for sensory anchoring)
   static const Color moodCalm = Color(0xFFE8E1F0);
   static const Color moodEnergy = Color(0xFFFFE1DF);
@@ -91,6 +95,9 @@ class KColors {
   static const Color interactiveSecondary = neutral100;
   static const Color interactiveSecondaryHover = neutral200;
   static const Color interactiveDestructive = error500;
+
+  // STITCH page background — #F8F9FF (do NOT alias to neutral50 which is #F8F9FA)
+  static const Color pageBg = Color(0xFFF8F9FF);
 }
 
 // ---------------------------------------------------------------------------

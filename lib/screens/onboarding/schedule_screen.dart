@@ -3,19 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 import 'package:kotoka_app/core/widgets/koko_animation.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
-
-// =============================================================================
-// ScheduleScreen — daily time commitment selector.
-// Options: 5, 10, 15, 30 min.
-// KokoAnimation reacts: thinking → celebrating when user selects.
-// Shows expected words/day at selected time.
-// No hardcoded colors/sizes. All strings from AppLocalizations.
-// =============================================================================
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 
 const List<int> _kMinuteOptions = [5, 10, 15, 30];
 
-/// Maps minutes to approximate words/day.
 int _wordsPerDay(int minutes) {
   if (minutes <= 5)  return 3;
   if (minutes <= 10) return 7;
@@ -41,44 +33,43 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     final l10n   = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    return Scaffold(
-      appBar: AppBar(
-        elevation: KElevation.elevation0,
-        leading: BackButton(color: isDark ? KColorsDark.brand500 : KColors.brand500),
-        title: Text(
-          l10n.scheduleTitle,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: theme.colorScheme.onSurface),
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-        ),
-        toolbarHeight: 72,
+    return KStitchScaffold(
+      stickyHeader: KOnboardingHeader(
+        onBack: () => Navigator.of(context).pop(),
+        stepCurrent: 5,
+        stepTotal: 8,
       ),
       body: SafeArea(
+        top: false,
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Koko reacts to selection
-              AnimatedSwitcher(
-                duration: KMotion.normal,
-                child: KokoAnimation(
-                  key: ValueKey(_kokoState),
-                  state: _kokoState,
-                  size: 120,
+              Text(
+                l10n.scheduleTitle,
+                style: KTypography.getStyle(KTextStyle.h3, locale)
+                    .copyWith(color: KColors.neutral900),
+              ),
+              const SizedBox(height: KSpacing.sp16),
+              Center(
+                child: AnimatedSwitcher(
+                  duration: KMotion.normal,
+                  child: KokoAnimation(
+                    key: ValueKey(_kokoState),
+                    state: _kokoState,
+                    size: 120,
+                  ),
                 ),
               ),
               const SizedBox(height: KSpacing.sp16),
               Text(
                 l10n.scheduleSubtitle,
                 style: KTypography.getStyle(KTextStyle.body, locale)
-                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    .copyWith(color: KColors.neutral700),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: KSpacing.sp32),
-              // Time option chips
               Wrap(
                 spacing: KSpacing.sp12,
                 runSpacing: KSpacing.sp12,
@@ -89,13 +80,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     minutes: mins,
                     isSelected: isSelected,
                     label: l10n.scheduleMinutes(mins),
-                    onTap: () =>
-                        setState(() => _selectedMinutes = mins),
+                    onTap: () => setState(() => _selectedMinutes = mins),
                   );
                 }).toList(),
               ),
               const SizedBox(height: KSpacing.sp32),
-              // Words per day estimate
               AnimatedOpacity(
                 duration: KMotion.normal,
                 opacity: _selectedMinutes != null ? 1.0 : 0.0,
@@ -103,14 +92,17 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     ? Container(
                         padding: const EdgeInsets.all(KSpacing.sp16),
                         decoration: BoxDecoration(
-                          color: isDark ? KColorsDark.bgCard : KColors.brand100,
-                          borderRadius: KRadius.md,
+                          color: KColors.brand400.withValues(alpha: 0.05),
+                          borderRadius:
+                              BorderRadius.circular(KRadius.radiusMd),
+                          border: Border.all(
+                              color: KColors.brand400.withValues(alpha: 0.20)),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.bolt,
-                                color: isDark ? KColorsDark.brand500 : KColors.brand600,
+                            const Icon(Icons.bolt,
+                                color: KColors.brand400,
                                 size: KSpacing.sp20),
                             const SizedBox(width: KSpacing.sp8),
                             Text(
@@ -118,7 +110,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   _wordsPerDay(_selectedMinutes!)),
                               style: KTypography.getStyle(
                                       KTextStyle.body, locale)
-                                  .copyWith(color: isDark ? KColorsDark.brand500 : KColors.brand500),
+                                  .copyWith(color: KColors.brand500),
                             ),
                           ],
                         ),
@@ -126,13 +118,15 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     : const SizedBox.shrink(),
               ),
               const Spacer(),
-              KotokaButton(
+              KCtaButton(
                 label: l10n.continueButton,
                 onPressed: _selectedMinutes != null
                     ? () => context.go('/onboarding/pdpa')
                     : null,
-                variant: KotokaButtonVariant.primary,
               ),
+              SizedBox(
+                  height: MediaQuery.of(context).padding.bottom +
+                      KSpacing.sp16),
             ],
           ),
         ),
@@ -157,7 +151,6 @@ class _TimeChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GestureDetector(
       onTap: onTap,
@@ -169,22 +162,21 @@ class _TimeChip extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: isSelected
-              ? KColors.brand500
-              : (isDark ? KColorsDark.bgCard : KColors.neutral0),
+              ? KColors.brand400.withValues(alpha: 0.05)
+              : KColors.neutral0,
           borderRadius: KRadius.full,
           border: Border.all(
             color: isSelected
-                ? KColors.brand500
-                : (isDark ? KColorsDark.border : KColors.neutral300),
+                ? KColors.brand400
+                : KColors.brand400.withValues(alpha: 0.20),
+            width: isSelected ? 2 : 1,
           ),
-          boxShadow: isSelected ? KElevation.shadow2 : KElevation.shadow1,
+          boxShadow: KElevation.shadow1,
         ),
         child: Text(
           label,
           style: KTypography.getStyle(KTextStyle.button, locale).copyWith(
-            color: isSelected
-                ? KColors.neutral0
-                : (isDark ? KColorsDark.textPrimary : KColors.neutral700),
+            color: isSelected ? KColors.brand400 : KColors.neutral700,
           ),
         ),
       ),

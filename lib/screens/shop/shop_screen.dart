@@ -1,15 +1,15 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 import 'package:kotoka_app/core/widgets/koko_emoji.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_card.dart';
+import 'package:kotoka_app/core/widgets/k_section_header.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 
 // ---------------------------------------------------------------------------
 // Mock data
 // ---------------------------------------------------------------------------
-const int _mockXp = 240; //MOCKDATA
-const String _mockPrice = '฿299/month'; //MOCKDATA
-
 class _PackData {
   const _PackData({
     required this.emoji,
@@ -39,36 +39,103 @@ class ShopScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        elevation: KElevation.elevation1,
-        title: Text(
-          l10n.shopTitle,
-          style: TextStyle(
-            color: theme.colorScheme.onSurface,
-            fontWeight: FontWeight.w600,
+    return KStitchScaffold(
+      body: Column(
+        children: [
+          _ShopHeader(title: l10n.shopTitle),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(
+                KSpacing.sp16,
+                KSpacing.sp16,
+                KSpacing.sp16,
+                KSpacing.sp96,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _BetaBanner(l10n: l10n),
+                  const SizedBox(height: KSpacing.sp24),
+                  KSectionHeader(title: l10n.shopVocabPacks),
+                  const SizedBox(height: KSpacing.sp12),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: KSpacing.sp12,
+                      mainAxisSpacing: KSpacing.sp12,
+                      childAspectRatio: 0.85,
+                    ),
+                    itemCount: _mockPacks.length, //MOCKDATA
+                    itemBuilder: (_, i) =>
+                        _PackCard(pack: _mockPacks[i], l10n: l10n),
+                  ),
+                  const SizedBox(height: KSpacing.sp32),
+                ],
+              ),
+            ),
           ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: KSpacing.sp16),
-            child: Row(
+        ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _ShopHeader — sticky header
+// ---------------------------------------------------------------------------
+class _ShopHeader extends StatelessWidget {
+  const _ShopHeader({required this.title});
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: KColors.pageBg,
+      padding: const EdgeInsets.symmetric(
+        horizontal: KSpacing.sp16,
+        vertical: KSpacing.sp12,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontFamily: 'IBMPlexSans',
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: KColors.neutral900,
+              ),
+            ),
+          ),
+          // Coin chip
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: KSpacing.sp8,
+              vertical: KSpacing.sp4,
+            ),
+            decoration: BoxDecoration(
+              color: KColors.brand50,
+              border: Border.all(
+                color: KColors.brand400.withValues(alpha: 0.10),
+              ),
+              borderRadius: BorderRadius.circular(KRadius.radiusFull),
+            ),
+            child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
-                  Icons.monetization_on,
-                  color: KColors.warning300,
-                  size: 20,
-                ),
-                const SizedBox(width: KSpacing.sp4),
+                Icon(Icons.monetization_on, color: KColors.brand400, size: 14),
+                SizedBox(width: KSpacing.sp4),
                 Text(
-                  '$_mockXp XP', //MOCKDATA
+                  '∞ XP', //MOCKDATA
                   style: TextStyle(
-                    color: theme.colorScheme.onSurface,
+                    fontSize: 12,
                     fontWeight: FontWeight.w600,
-                    fontSize: 14,
+                    color: KColors.brand400,
                   ),
                 ),
               ],
@@ -76,115 +143,49 @@ class ShopScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(KSpacing.sp16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _PremiumCard(l10n: l10n),
-            const SizedBox(height: KSpacing.sp24),
-            Text(
-              l10n.shopVocabPacks,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: theme.colorScheme.onSurface,
-              ),
-            ),
-            const SizedBox(height: KSpacing.sp12),
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: KSpacing.sp12,
-                mainAxisSpacing: KSpacing.sp12,
-                childAspectRatio: 0.85,
-              ),
-              itemCount: _mockPacks.length, //MOCKDATA
-              itemBuilder: (context, index) =>
-                  _PackCard(pack: _mockPacks[index]),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
 
 // ---------------------------------------------------------------------------
-// _PremiumCard
+// _BetaBanner — Beta free notice (SHO-03: all free during beta)
 // ---------------------------------------------------------------------------
-class _PremiumCard extends StatelessWidget {
-  const _PremiumCard({required this.l10n});
+class _BetaBanner extends StatelessWidget {
+  const _BetaBanner({required this.l10n});
   final AppLocalizations l10n;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: KColors.brand500,
-      shape: RoundedRectangleBorder(borderRadius: KRadius.lg),
-      elevation: KElevation.elevation3,
-      child: Padding(
-        padding: const EdgeInsets.all(KSpacing.sp20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const KokoEmoji(emoji: '⭐', size: 20),
-                const SizedBox(width: KSpacing.sp8),
-                Text(
-                  l10n.shopPremiumTitle,
-                  style: const TextStyle(
-                    color: KColors.neutral0,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: KSpacing.sp8),
-            Text(
-              l10n.shopPremiumDesc,
-              style: const TextStyle(
-                color: KColors.brand100,
-                fontSize: 14,
-              ),
-            ),
-            const SizedBox(height: KSpacing.sp8),
-            Text(
-              _mockPrice, //MOCKDATA
-              style: const TextStyle(
-                color: KColors.neutral0,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(height: KSpacing.sp16),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: KColors.brand500,
-                  foregroundColor: KColors.neutral0,
-                  shape: RoundedRectangleBorder(borderRadius: KRadius.md),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: KSpacing.sp12,
-                  ),
-                ),
-                onPressed: () {},
-                child: Text(
-                  l10n.shopStartTrial,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15,
-                  ),
+    return KTintedCard(
+      color: KColors.brand400,
+      padding: const EdgeInsets.all(KSpacing.sp20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const KokoEmoji(emoji: '🎉', size: 20),
+              const SizedBox(width: KSpacing.sp8),
+              Text(
+                l10n.shopBetaFreeTitle,
+                style: const TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: KColors.neutral900,
                 ),
               ),
+            ],
+          ),
+          const SizedBox(height: KSpacing.sp8),
+          Text(
+            l10n.shopBetaFreeBody,
+            style: const TextStyle(
+              fontSize: 14,
+              color: KColors.neutral800,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -194,81 +195,75 @@ class _PremiumCard extends StatelessWidget {
 // _PackCard
 // ---------------------------------------------------------------------------
 class _PackCard extends StatelessWidget {
-  const _PackCard({required this.pack});
+  const _PackCard({required this.pack, required this.l10n});
   final _PackData pack;
+  final AppLocalizations l10n;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
-
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: KRadius.md),
-      elevation: KElevation.elevation2,
-      child: Padding(
-        padding: const EdgeInsets.all(KSpacing.sp16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            KokoEmoji(emoji: pack.emoji, size: 28),
-            const SizedBox(height: KSpacing.sp8),
-            Text(
-              pack.title,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: theme.colorScheme.onSurface,
+    return KCard(
+      padding: const EdgeInsets.all(KSpacing.sp16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          KokoEmoji(emoji: pack.emoji, size: 28),
+          const SizedBox(height: KSpacing.sp8),
+          Text(
+            pack.title,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              color: KColors.neutral900,
+            ),
+          ),
+          const SizedBox(height: KSpacing.sp4),
+          Text(
+            '${pack.wordCount} words', //MOCKDATA
+            style: const TextStyle(fontSize: 12, color: KColors.neutral500),
+          ),
+          const Spacer(),
+          Row(
+            children: [
+              const Icon(
+                Icons.monetization_on,
+                color: KColors.warning300,
+                size: 14,
               ),
-            ),
-            const SizedBox(height: KSpacing.sp4),
-            Text(
-              '${pack.wordCount} words', //MOCKDATA
-              style: TextStyle(
-                fontSize: 12,
-                color: theme.colorScheme.onSurfaceVariant,
+              const SizedBox(width: KSpacing.sp4),
+              Text(
+                '${pack.xpPrice} XP', //MOCKDATA
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: KColors.neutral700,
+                ),
               ),
-            ),
-            const Spacer(),
-            Row(
-              children: [
-                const Icon(
-                  Icons.monetization_on,
-                  color: KColors.warning300,
-                  size: 14,
+            ],
+          ),
+          const SizedBox(height: KSpacing.sp8),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: KColors.brand400,
+                foregroundColor: KColors.neutral1000,
+                shape: RoundedRectangleBorder(borderRadius: KRadius.sm),
+                padding:
+                    const EdgeInsets.symmetric(vertical: KSpacing.sp8),
+                textStyle: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
                 ),
-                const SizedBox(width: KSpacing.sp4),
-                Text(
-                  '${pack.xpPrice} XP', //MOCKDATA
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: theme.colorScheme.onSurface,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: KSpacing.sp8),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: KColors.brand500,
-                  foregroundColor: KColors.neutral0,
-                  shape: RoundedRectangleBorder(borderRadius: KRadius.sm),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: KSpacing.sp8,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                onPressed: () {},
-                child: Text(l10n.shopGetPack),
               ),
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(l10n.shopBetaUnlocked)),
+                );
+              },
+              child: Text(l10n.shopBetaFree),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

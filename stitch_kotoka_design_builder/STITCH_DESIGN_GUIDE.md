@@ -13,42 +13,46 @@
 
 ## 2. Color System
 
-Kotoka uses a **Teal-Purple** brand palette. Three role families: **Primary** (teal/cyan), **Secondary** (purple), **Tertiary** (peach/pink surfaces).
+Kotoka uses a **Cyan-dominant** palette. `#0cf6fc` is the **single dominant brand color** — used for nav active, streaks, CTAs, and all primary accents. Purple/pink are supporting tones. Light blue (`#7dd3fc`) is the calm secondary.
 
 ---
 
-### Primary — Teal / Cyan
+### Primary — Bright Cyan *(dominant brand color)*
 
 | Token | Preview | Hex | Role |
 |---|---|---|---|
-| `primary` / `brand-500` | <span style="display:inline-block;width:20px;height:20px;background:#00c8cc;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#00c8cc` | Main brand color — nav active state, streaks, accent icons |
-| `primary-highlight` / `brand-400` | <span style="display:inline-block;width:20px;height:20px;background:#0cf6fc;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#0cf6fc` | Bright cyan — glows, highlights, selected ring |
-| `on-primary` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | Text / icons on teal backgrounds |
+| `primary` / `brand-400` | <span style="display:inline-block;width:20px;height:20px;background:#0cf6fc;border-radius:4px;border:1px solid #00d0d4;vertical-align:middle"></span> | `#0cf6fc` | **THE main color** — nav active, streak badges, CTAs, icon tints, glows |
+| `primary-dim` / `brand-500` | <span style="display:inline-block;width:20px;height:20px;background:#00c8cc;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#00c8cc` | Darker teal — progress fill, hover darken on primary |
+| `on-primary` | <span style="display:inline-block;width:20px;height:20px;background:#000000;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#000000` | Dark text on bright cyan (ensures contrast) |
 
-<span style="display:inline-block;width:64px;height:64px;background:#0cf6fc;border-radius:10px;margin:3px" title="brand-400 #0cf6fc highlight"></span><span style="display:inline-block;width:64px;height:64px;background:#00c8cc;border-radius:10px;margin:3px" title="brand-500 #00c8cc primary"></span>
+<span style="display:inline-block;width:96px;height:64px;background:#0cf6fc;border-radius:10px;margin:3px;border:2px solid #00d0d4" title="PRIMARY #0cf6fc — dominant brand color"></span><span style="display:inline-block;width:64px;height:64px;background:#00c8cc;border-radius:10px;margin:3px" title="primary-dim #00c8cc"></span>
+
+> **Rule:** Every screen must have at least one prominent `#0cf6fc` element. This is the color users associate with Kotoka.
 
 ---
 
-### Secondary — Purple
+### Secondary — Light Blue *(supporting, calm)*
 
 | Token | Preview | Hex | Role |
 |---|---|---|---|
-| `secondary` / `brand-600` | <span style="display:inline-block;width:20px;height:20px;background:#8c6792;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#8c6792` | Dark purple — section headings, secondary actions, tags |
-| `secondary-cta` / `brand-700` | <span style="display:inline-block;width:20px;height:20px;background:#682069;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#682069` | Deep purple — **primary CTA buttons**, key interactive elements |
-| `on-secondary` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | Text / icons on purple backgrounds |
+| `secondary` / `sky-300` | <span style="display:inline-block;width:20px;height:20px;background:#7dd3fc;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#7dd3fc` | Light blue — info badges, secondary borders, chip backgrounds |
+| `secondary-light` / `sky-100` | <span style="display:inline-block;width:20px;height:20px;background:#e0f2fe;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#e0f2fe` | Very light blue — container tints, hover bg |
+| `on-secondary` | <span style="display:inline-block;width:20px;height:20px;background:#0c4a6e;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#0c4a6e` | Deep navy — text on light blue surfaces |
 
-<span style="display:inline-block;width:64px;height:64px;background:#682069;border-radius:10px;margin:3px" title="brand-700 #682069 CTA / deep purple"></span><span style="display:inline-block;width:64px;height:64px;background:#8c6792;border-radius:10px;margin:3px" title="brand-600 #8c6792 secondary"></span>
+<span style="display:inline-block;width:64px;height:64px;background:#7dd3fc;border-radius:10px;margin:3px;border:1px solid #ccc" title="secondary #7dd3fc light blue"></span><span style="display:inline-block;width:64px;height:64px;background:#e0f2fe;border-radius:10px;margin:3px;border:1px solid #ccc" title="secondary-light #e0f2fe"></span>
 
 ---
 
-### Tertiary — Peach / Pink Surfaces
+### Purple / Pink — Buttons, Headings, Accents
 
 | Token | Preview | Hex | Role |
 |---|---|---|---|
-| `tertiary` / `brand-100` | <span style="display:inline-block;width:20px;height:20px;background:#ffe1df;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffe1df` | Light peach — card surfaces, modal backgrounds |
-| `tertiary-pink` | <span style="display:inline-block;width:20px;height:20px;background:#ffb6cb;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffb6cb` | Pink — accent containers, soft badges, hover tints |
+| `cta` / `brand-700` | <span style="display:inline-block;width:20px;height:20px;background:#682069;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#682069` | Deep purple — **primary action buttons** on white surfaces |
+| `heading` / `brand-600` | <span style="display:inline-block;width:20px;height:20px;background:#8c6792;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#8c6792` | Dark purple — section headings, labels, tags |
+| `accent-pink` | <span style="display:inline-block;width:20px;height:20px;background:#ffb6cb;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffb6cb` | Pink — soft badges, card tints, hover tints |
+| `on-cta` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | White — text on purple buttons |
 
-<span style="display:inline-block;width:64px;height:64px;background:#ffe1df;border-radius:10px;margin:3px;border:1px solid #e0c8c5" title="brand-100 #ffe1df tertiary surface"></span><span style="display:inline-block;width:64px;height:64px;background:#ffb6cb;border-radius:10px;margin:3px;border:1px solid #e0a0b8" title="#ffb6cb pink accent"></span>
+<span style="display:inline-block;width:64px;height:64px;background:#682069;border-radius:10px;margin:3px" title="CTA #682069"></span><span style="display:inline-block;width:64px;height:64px;background:#8c6792;border-radius:10px;margin:3px" title="heading #8c6792"></span><span style="display:inline-block;width:64px;height:64px;background:#ffb6cb;border-radius:10px;margin:3px;border:1px solid #e0a0b8" title="accent-pink #ffb6cb"></span>
 
 ---
 
@@ -57,10 +61,10 @@ Kotoka uses a **Teal-Purple** brand palette. Three role families: **Primary** (t
 | Token | Preview | Hex | Role |
 |---|---|---|---|
 | `background` / `brand-50` | <span style="display:inline-block;width:20px;height:20px;background:#e8e1f0;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#e8e1f0` | Page background — Very Light Lavender |
-| `surface` / `white` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | Card / panel surface |
-| `surface-peach` | <span style="display:inline-block;width:20px;height:20px;background:#ffe1df;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffe1df` | Warm surface variant (same as tertiary) |
+| `surface` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | Card / panel surface |
+| `surface-peach` | <span style="display:inline-block;width:20px;height:20px;background:#ffe1df;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffe1df` | Warm card variant — tertiary surfaces |
 
-<span style="display:inline-block;width:64px;height:64px;background:#e8e1f0;border-radius:10px;margin:3px;border:1px solid #ccc" title="brand-50 #e8e1f0 background"></span><span style="display:inline-block;width:64px;height:64px;background:#ffffff;border-radius:10px;margin:3px;border:1px solid #ccc" title="#ffffff surface/white"></span><span style="display:inline-block;width:64px;height:64px;background:#ffe1df;border-radius:10px;margin:3px;border:1px solid #e0c8c5" title="#ffe1df surface-peach"></span>
+<span style="display:inline-block;width:64px;height:64px;background:#e8e1f0;border-radius:10px;margin:3px;border:1px solid #ccc" title="#e8e1f0 background"></span><span style="display:inline-block;width:64px;height:64px;background:#ffffff;border-radius:10px;margin:3px;border:1px solid #ccc" title="#ffffff surface"></span><span style="display:inline-block;width:64px;height:64px;background:#ffe1df;border-radius:10px;margin:3px;border:1px solid #e0c8c5" title="#ffe1df surface-peach"></span>
 
 ---
 
@@ -68,18 +72,18 @@ Kotoka uses a **Teal-Purple** brand palette. Three role families: **Primary** (t
 
 | Token | Preview | Hex | Role |
 |---|---|---|---|
-| `error` | <span style="display:inline-block;width:20px;height:20px;background:#d8566a;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#d8566a` | Error / destructive — Red/Pink (non-alarming tone) |
+| `error` | <span style="display:inline-block;width:20px;height:20px;background:#d8566a;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#d8566a` | Error — Red/Pink (non-alarming tone) |
 | `warning` | <span style="display:inline-block;width:20px;height:20px;background:#ffdfa2;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffdfa2` | Warning — Pale Yellow/Tan |
-| `on-surface` / black | <span style="display:inline-block;width:20px;height:20px;background:#000000;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#000000` | Primary body text |
-| `on-primary` / white | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | Text on colored backgrounds |
+| `on-surface` | <span style="display:inline-block;width:20px;height:20px;background:#000000;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#000000` | Primary body text |
+| `on-colored` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | Text on dark colored backgrounds |
 
-<span style="display:inline-block;width:64px;height:64px;background:#d8566a;border-radius:10px;margin:3px" title="#d8566a error"></span><span style="display:inline-block;width:64px;height:64px;background:#ffdfa2;border-radius:10px;margin:3px;border:1px solid #e0d080" title="#ffdfa2 warning"></span><span style="display:inline-block;width:64px;height:64px;background:#000000;border-radius:10px;margin:3px" title="#000000 on-surface"></span><span style="display:inline-block;width:64px;height:64px;background:#ffffff;border-radius:10px;margin:3px;border:1px solid #ccc" title="#ffffff white"></span>
+<span style="display:inline-block;width:64px;height:64px;background:#d8566a;border-radius:10px;margin:3px" title="#d8566a error"></span><span style="display:inline-block;width:64px;height:64px;background:#ffdfa2;border-radius:10px;margin:3px;border:1px solid #e0d080" title="#ffdfa2 warning"></span><span style="display:inline-block;width:64px;height:64px;background:#000000;border-radius:10px;margin:3px" title="#000000 text"></span><span style="display:inline-block;width:64px;height:64px;background:#ffffff;border-radius:10px;margin:3px;border:1px solid #ccc" title="#ffffff white"></span>
 
 ---
 
 ### Full Palette at a Glance
 
-<span style="display:inline-block;width:48px;height:48px;background:#0cf6fc;border-radius:8px;margin:2px" title="#0cf6fc highlight"></span><span style="display:inline-block;width:48px;height:48px;background:#00c8cc;border-radius:8px;margin:2px" title="#00c8cc primary"></span><span style="display:inline-block;width:48px;height:48px;background:#8c6792;border-radius:8px;margin:2px" title="#8c6792 secondary"></span><span style="display:inline-block;width:48px;height:48px;background:#682069;border-radius:8px;margin:2px" title="#682069 CTA deep purple"></span><span style="display:inline-block;width:48px;height:48px;background:#e8e1f0;border-radius:8px;margin:2px;border:1px solid #ccc" title="#e8e1f0 background lavender"></span><span style="display:inline-block;width:48px;height:48px;background:#ffe1df;border-radius:8px;margin:2px;border:1px solid #e0c8c5" title="#ffe1df surface peach"></span><span style="display:inline-block;width:48px;height:48px;background:#ffb6cb;border-radius:8px;margin:2px;border:1px solid #e0a0b8" title="#ffb6cb pink accent"></span><span style="display:inline-block;width:48px;height:48px;background:#ffdfa2;border-radius:8px;margin:2px;border:1px solid #e0c880" title="#ffdfa2 warning"></span><span style="display:inline-block;width:48px;height:48px;background:#d8566a;border-radius:8px;margin:2px" title="#d8566a error"></span><span style="display:inline-block;width:48px;height:48px;background:#000000;border-radius:8px;margin:2px" title="#000000 black text"></span><span style="display:inline-block;width:48px;height:48px;background:#ffffff;border-radius:8px;margin:2px;border:1px solid #ccc" title="#ffffff white"></span>
+<span style="display:inline-block;width:56px;height:56px;background:#0cf6fc;border-radius:8px;margin:2px;border:2px solid #00d0d4" title="#0cf6fc PRIMARY"></span><span style="display:inline-block;width:48px;height:48px;background:#00c8cc;border-radius:8px;margin:2px" title="#00c8cc primary-dim"></span><span style="display:inline-block;width:48px;height:48px;background:#7dd3fc;border-radius:8px;margin:2px;border:1px solid #ccc" title="#7dd3fc secondary light blue"></span><span style="display:inline-block;width:48px;height:48px;background:#e0f2fe;border-radius:8px;margin:2px;border:1px solid #ccc" title="#e0f2fe secondary-light"></span><span style="display:inline-block;width:48px;height:48px;background:#682069;border-radius:8px;margin:2px" title="#682069 CTA purple"></span><span style="display:inline-block;width:48px;height:48px;background:#8c6792;border-radius:8px;margin:2px" title="#8c6792 heading purple"></span><span style="display:inline-block;width:48px;height:48px;background:#ffb6cb;border-radius:8px;margin:2px;border:1px solid #e0a0b8" title="#ffb6cb accent pink"></span><span style="display:inline-block;width:48px;height:48px;background:#e8e1f0;border-radius:8px;margin:2px;border:1px solid #ccc" title="#e8e1f0 background"></span><span style="display:inline-block;width:48px;height:48px;background:#ffe1df;border-radius:8px;margin:2px;border:1px solid #e0c8c5" title="#ffe1df surface-peach"></span><span style="display:inline-block;width:48px;height:48px;background:#ffdfa2;border-radius:8px;margin:2px;border:1px solid #e0c880" title="#ffdfa2 warning"></span><span style="display:inline-block;width:48px;height:48px;background:#d8566a;border-radius:8px;margin:2px" title="#d8566a error"></span><span style="display:inline-block;width:48px;height:48px;background:#000000;border-radius:8px;margin:2px" title="#000000 text"></span><span style="display:inline-block;width:48px;height:48px;background:#ffffff;border-radius:8px;margin:2px;border:1px solid #ccc" title="#ffffff white"></span>
 
 ---
 
@@ -87,18 +91,20 @@ Kotoka uses a **Teal-Purple** brand palette. Three role families: **Primary** (t
 
 | Situation | Color to use |
 |---|---|
-| Primary CTA button background | `#682069` (Deep Purple / brand-700) |
-| Active nav tab, streak badge, accent icon | `#00c8cc` (Teal / brand-500) |
-| Highlight glow, selected ring, bright accent | `#0cf6fc` (Bright Cyan / brand-400) |
-| Section heading, secondary button | `#8c6792` (Dark Purple / brand-600) |
-| Page background | `#e8e1f0` (Very Light Lavender / brand-50) |
-| Card / modal surface | `#ffffff` or `#ffe1df` (peach warm variant) |
-| Pink hover tint / soft badge | `#ffb6cb` |
-| Error / destructive | `#d8566a` |
-| Warning / caution | `#ffdfa2` |
+| **Nav active, streak, accent icons, glows** | `#0cf6fc` **(PRIMARY — use most, users must see it everywhere)** |
+| Progress fill, hover darken | `#00c8cc` (primary-dim) |
+| Primary CTA button | `#682069` (deep purple) |
+| Section headings, labels, tags | `#8c6792` (heading purple) |
+| Info chips, secondary borders | `#7dd3fc` (light blue) |
+| Subtle container tint, hover bg | `#e0f2fe` (secondary-light) |
+| Soft badge, card accent | `#ffb6cb` (accent pink) |
+| Page background | `#f8f9ff` |
+| Card / modal surface | `#ffffff` or `#ffe1df` |
+| Error | `#d8566a` |
+| Warning | `#ffdfa2` |
 | Body text | `#000000` |
-| Text on any colored button | `#ffffff` |
-| **NEVER** | Bright cyan `#0cf6fc` text on teal `#00c8cc` bg — contrast too low |
+| Text on purple/dark buttons | `#ffffff` |
+| **NEVER** | `#0cf6fc` text on `#00c8cc` bg — contrast ratio < 4.5:1 |
 
 ---
 
@@ -226,57 +232,61 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 
 ## 8. Component Library
 
+> **Color rule:** All interactive and branded components use `#0cf6fc` as the primary color. Use Tailwind arbitrary value `[#0cf6fc]` or map to `primary` token.
+
 ### 8.1 Buttons
 
 **Primary CTA:**
 ```html
-<button class="w-full py-md px-xl bg-primary-container text-on-primary
+<button class="w-full py-md px-xl bg-[#0cf6fc] text-black
                font-label-md text-label-md rounded-xl shadow-lg
-               hover:brightness-105 active:scale-95 transition-all duration-300">
+               shadow-[#0cf6fc]/30 hover:brightness-105
+               active:scale-95 transition-all duration-300">
 ```
 
 **Primary CTA (pill variant):**
 ```html
-<button class="py-md px-xxl bg-primary-container text-on-primary
-               font-label-md rounded-full shadow-lg
+<button class="py-md px-xxl bg-[#0cf6fc] text-black
+               font-label-md rounded-full shadow-lg shadow-[#0cf6fc]/30
                hover:brightness-110 active:scale-95 transition-all">
 ```
 
 **Secondary / Ghost:**
 ```html
-<button class="w-full py-md bg-transparent text-primary
-               font-label-md rounded-xl hover:bg-primary-container/5">
+<button class="w-full py-md bg-transparent text-[#0cf6fc]
+               font-label-md rounded-xl border border-[#0cf6fc]/40
+               hover:bg-[#0cf6fc]/5 transition-colors">
 ```
 
 **Outlined:**
 ```html
-<button class="border border-primary text-primary w-full py-md
-               rounded-xl font-label-md hover:bg-primary-container/10">
+<button class="border-2 border-[#0cf6fc] text-[#0cf6fc] w-full py-md
+               rounded-xl font-label-md hover:bg-[#0cf6fc]/10 transition-colors">
 ```
 
 ### 8.2 Cards
 
 **Standard card:**
 ```html
-<div class="bg-white border border-outline-variant rounded-xl p-lg shadow-sm
-            hover:shadow-md transition-shadow">
+<div class="bg-white border border-[#0cf6fc]/20 rounded-xl p-lg shadow-sm
+            hover:border-[#0cf6fc]/60 hover:shadow-md transition-all">
 ```
 
 **Active/selected card:**
 ```html
-<div class="bg-surface-container-low border-2 border-primary-container
-            rounded-xl p-lg shadow-lg ring-4 ring-primary-container/10">
+<div class="bg-[#0cf6fc]/5 border-2 border-[#0cf6fc]
+            rounded-xl p-lg shadow-lg ring-4 ring-[#0cf6fc]/10">
 ```
 
 **Glass card:**
 ```html
 <div class="bg-white/70 backdrop-blur-xl p-md rounded-xl
-            border border-white/40 shadow-xl">
+            border border-[#0cf6fc]/20 shadow-xl">
 ```
 
 **Bento info card (tinted):**
 ```html
-<div class="bg-surface-container-low border border-outline-variant
+<div class="bg-[#0cf6fc]/5 border border-[#0cf6fc]/20
             rounded-xl p-md flex gap-md items-start">
 ```
 
@@ -285,25 +295,25 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 **Active:**
 ```html
 <button class="flex items-center gap-sm px-lg py-md rounded-xl
-               bg-primary-container text-on-primary-container
-               font-label-md shadow-md">
+               bg-[#0cf6fc] text-black font-label-md shadow-md
+               shadow-[#0cf6fc]/30">
 ```
 
 **Inactive:**
 ```html
 <button class="flex items-center gap-sm px-lg py-md rounded-xl
-               bg-surface-container-low text-on-surface-variant
-               hover:bg-surface-container-high border border-transparent
-               hover:border-primary/20 font-label-md transition-all">
+               bg-white text-on-surface-variant border border-[#0cf6fc]/20
+               hover:bg-[#0cf6fc]/5 hover:border-[#0cf6fc]/50
+               font-label-md transition-all">
 ```
 
 **Category filter (pill):**
 ```html
-<button class="flex-shrink-0 bg-primary-container text-white
+<button class="flex-shrink-0 bg-[#0cf6fc] text-black
                px-lg py-sm rounded-full font-label-md"> <!-- active -->
-<button class="flex-shrink-0 bg-surface-container text-on-surface-variant
-               px-lg py-sm rounded-full font-label-md
-               hover:bg-surface-container-high"> <!-- inactive -->
+<button class="flex-shrink-0 bg-white text-on-surface-variant
+               border border-[#0cf6fc]/20 px-lg py-sm rounded-full
+               font-label-md hover:bg-[#0cf6fc]/5"> <!-- inactive -->
 ```
 
 ### 8.4 Toggle Switch (CSS-only)
@@ -311,8 +321,8 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 ```html
 <label class="relative inline-flex items-center cursor-pointer">
   <input type="checkbox" class="sr-only peer" checked />
-  <div class="w-11 h-6 bg-secondary-container rounded-full peer
-              peer-checked:bg-primary-container
+  <div class="w-11 h-6 bg-slate-200 rounded-full peer
+              peer-checked:bg-[#0cf6fc]
               after:content-[''] after:absolute after:top-[2px] after:start-[2px]
               after:bg-white after:border after:rounded-full
               after:h-5 after:w-5 after:transition-all
@@ -326,9 +336,11 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 ```html
 <label class="relative cursor-pointer group">
   <input type="radio" name="time" class="peer sr-only" />
-  <div class="p-lg bg-white border border-outline-variant rounded-xl
-              transition-all peer-checked:border-primary peer-checked:ring-1
-              peer-checked:ring-primary shadow-sm hover:shadow-md">
+  <div class="p-lg bg-white border border-slate-200 rounded-xl
+              transition-all shadow-sm hover:shadow-md
+              peer-checked:border-[#0cf6fc] peer-checked:border-2
+              peer-checked:ring-2 peer-checked:ring-[#0cf6fc]/20
+              peer-checked:bg-[#0cf6fc]/5">
     <!-- content -->
   </div>
 </label>
@@ -337,8 +349,9 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 ### 8.6 Progress Bar
 
 ```html
-<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
-  <div class="h-full bg-primary-container w-[35%] rounded-full"></div>
+<div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+  <div class="h-full bg-[#0cf6fc] w-[35%] rounded-full
+              shadow-[0_0_6px_#0cf6fc]"></div>
 </div>
 ```
 
@@ -347,11 +360,11 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 ```html
 <svg class="w-full h-full -rotate-90">
   <circle cx="50%" cy="50%" r="45%" fill="transparent"
-          stroke="rgba(255,255,255,0.2)" stroke-width="8"/>
+          stroke="rgba(12,246,252,0.2)" stroke-width="8"/>
   <circle cx="50%" cy="50%" r="45%" fill="transparent"
-          stroke="currentColor" stroke-dasharray="283"
+          stroke="#0cf6fc" stroke-dasharray="283"
           stroke-dashoffset="40" stroke-width="8"
-          class="text-white"/>
+          style="filter: drop-shadow(0 0 4px #0cf6fc)"/>
 </svg>
 ```
 Center overlay: `absolute flex flex-col items-center` with `font-h3` number and `font-caption` label.
@@ -359,9 +372,11 @@ Center overlay: `absolute flex flex-col items-center` with `font-h3` number and 
 ### 8.8 Floating Action Button (FAB)
 
 ```html
-<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white
-               rounded-full shadow-2xl flex items-center justify-center
-               transition-transform active:scale-90 z-40 hover:bg-primary/90">
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-[#0cf6fc] text-black
+               rounded-full shadow-2xl shadow-[#0cf6fc]/40
+               flex items-center justify-center
+               transition-transform active:scale-90 z-40
+               hover:brightness-110">
   <span class="material-symbols-outlined text-[28px]">add</span>
 </button>
 ```
@@ -371,19 +386,21 @@ Center overlay: `absolute flex flex-col items-center` with `font-h3` number and 
 **Dot style (bottom):**
 ```html
 <div class="fixed bottom-lg left-1/2 -translate-x-1/2 flex items-center gap-sm
-            bg-white px-lg py-sm rounded-full shadow-lg border border-outline-variant z-40">
-  <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
-  <div class="w-6 h-2 rounded-full bg-primary-container"></div> <!-- active = wider -->
-  <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
-  <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+            bg-white px-lg py-sm rounded-full shadow-lg
+            border border-[#0cf6fc]/20 z-40">
+  <div class="w-2 h-2 rounded-full bg-slate-200"></div>
+  <div class="w-6 h-2 rounded-full bg-[#0cf6fc]
+              shadow-[0_0_4px_#0cf6fc]"></div> <!-- active = wider + glow -->
+  <div class="w-2 h-2 rounded-full bg-slate-200"></div>
+  <div class="w-2 h-2 rounded-full bg-slate-200"></div>
 </div>
 ```
 
 **Bar style (header):**
 ```html
 <div class="flex gap-xs">
-  <div class="h-1.5 w-8 rounded-full bg-primary"></div> <!-- completed -->
-  <div class="h-1.5 w-8 rounded-full bg-outline-variant"></div> <!-- pending -->
+  <div class="h-1.5 w-8 rounded-full bg-[#0cf6fc]"></div> <!-- completed -->
+  <div class="h-1.5 w-8 rounded-full bg-slate-200"></div> <!-- pending -->
 </div>
 ```
 
@@ -391,18 +408,19 @@ Center overlay: `absolute flex flex-col items-center` with `font-h3` number and 
 
 ```html
 <!-- Small square -->
-<div class="p-sm bg-surface-container rounded-lg">
-  <span class="material-symbols-outlined text-primary">photo_camera</span>
+<div class="p-sm bg-[#0cf6fc]/10 rounded-lg border border-[#0cf6fc]/20">
+  <span class="material-symbols-outlined text-[#0cf6fc]">photo_camera</span>
 </div>
 
 <!-- Medium rounded -->
-<div class="w-12 h-12 bg-secondary-container text-on-secondary-container
+<div class="w-12 h-12 bg-[#0cf6fc]/10 border border-[#0cf6fc]/30
             rounded-xl flex items-center justify-center">
-  <span class="material-symbols-outlined">photo_camera</span>
+  <span class="material-symbols-outlined text-[#0cf6fc]">photo_camera</span>
 </div>
 
 <!-- Tinted for feature cards -->
-<div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center text-cyan-600">
+<div class="w-12 h-12 bg-[#0cf6fc]/15 rounded-xl
+            flex items-center justify-center text-[#0cf6fc]">
   <span class="material-symbols-outlined text-3xl">business_center</span>
 </div>
 ```
@@ -411,11 +429,36 @@ Center overlay: `absolute flex flex-col items-center` with `font-h3` number and 
 
 ```html
 <div class="fixed bottom-lg right-lg bg-white rounded-lg px-md py-sm
-            flex items-center gap-sm border-l-4 border-primary shadow-xl">
-  <span class="material-symbols-outlined text-primary"
+            flex items-center gap-sm border-l-4 border-[#0cf6fc] shadow-xl">
+  <span class="material-symbols-outlined text-[#0cf6fc]"
         style="font-variation-settings: 'FILL' 1;">check_circle</span>
   <span class="font-label-md text-label-md text-on-surface">Setup Complete</span>
 </div>
+```
+
+### 8.12 Input Fields
+
+```html
+<input class="w-full px-lg py-md rounded-xl border border-slate-200
+              focus:border-[#0cf6fc] focus:ring-2 focus:ring-[#0cf6fc]/20
+              outline-none transition-all duration-200
+              font-body-md text-body-md placeholder:text-slate-400"/>
+```
+
+### 8.13 Badges / Status Pills
+
+```html
+<!-- Primary badge -->
+<span class="bg-[#0cf6fc] text-black text-xs font-bold
+             px-sm py-xs rounded-full uppercase tracking-wider">
+  Active
+</span>
+
+<!-- Outline badge -->
+<span class="border border-[#0cf6fc] text-[#0cf6fc] text-xs font-bold
+             px-sm py-xs rounded-full uppercase tracking-wider">
+  New
+</span>
 ```
 
 ---
@@ -430,41 +473,43 @@ Fixed, glass-morphic. Present on all post-onboarding screens. Suppressed during 
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center
             px-2 py-3 mb-safe
             bg-white/90 backdrop-blur-md
-            border-t border-slate-100 shadow-lg">
+            border-t border-[#0cf6fc]/20 shadow-lg">
 ```
 
 **5 tabs:** Home · Snap · Review · Shop · Me
 
 **Active tab:**
 ```html
-<a class="flex flex-col items-center text-cyan-600
-          bg-cyan-50 rounded-xl px-3 py-1
-          transition-transform active:scale-90">
+<a class="flex flex-col items-center text-[#0cf6fc]
+          bg-[#0cf6fc]/10 rounded-xl px-3 py-1
+          transition-transform active:scale-90
+          border border-[#0cf6fc]/20">
   <span class="material-symbols-outlined"
         style="font-variation-settings: 'FILL' 1;">home</span>
-  <span class="text-[10px] font-medium uppercase tracking-wider">Home</span>
+  <span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
 </a>
 ```
 
 **Inactive tab:**
 ```html
 <a class="flex flex-col items-center text-slate-400 px-3 py-1
-          transition-transform active:scale-90 hover:text-cyan-500">
+          transition-transform active:scale-90 hover:text-[#0cf6fc]">
   <span class="material-symbols-outlined">photo_camera</span>
   <span class="text-[10px] font-medium uppercase tracking-wider">Snap</span>
 </a>
 ```
 
-Note: Active indicator is a `bg-cyan-50 rounded-xl` capsule behind the icon+label, not an underline dot.
+Note: Active indicator is a `bg-[#0cf6fc]/10 border border-[#0cf6fc]/20 rounded-xl` capsule. Icon and label both switch to `text-[#0cf6fc]`.
 
 ### Top App Bar (Sticky Header)
 
 ```html
 <header class="sticky top-0 z-50 flex justify-between items-center px-4 py-2
-               w-full bg-white shadow-sm border-b border-slate-100">
+               w-full bg-white shadow-sm border-b border-[#0cf6fc]/15">
 ```
 
-- Brand wordmark: `text-2xl font-bold text-cyan-500 tracking-tight`
+- Brand wordmark: `text-2xl font-bold text-[#0cf6fc] tracking-tight`
+- Back arrow: `text-[#0cf6fc]`
 - Nav suppression rule: During onboarding (linear journey), bottom nav is hidden. Header kept for brand anchor + back arrow.
 
 ---
@@ -504,7 +549,7 @@ Note: Active indicator is a `bg-cyan-50 rounded-xl` capsule behind the icon+labe
 │  │Snap  │ │AI  │ │Vault││
 │  └──────┘ └────┘ └─────┘│
 │                         │
-│     [Hero image]        │  ← rounded-t-[48px], object-cover
+│                         │  
 └─────────────────────────┘
   No bottom nav (onboarding)
 ```
@@ -653,55 +698,76 @@ Note: Active indicator is a `bg-cyan-50 rounded-xl` capsule behind the icon+labe
 
 ---
 
-### ONB-05 — Proficiency (CEFR)
+### ONB-05 — Proficiency / Choose Your Path
+
+> **Template reference:** `stitch_kotoka_design_builder/image.png` (Duolingo-style 2-card path selector)  
+> **Assets:** `kotoka_logo/child_koko_nobg.png` (beginner) · `kotoka_logo/graduate_koko_nobg.png` (experienced)  
+> Remove background via `stitch_kotoka_design_builder/remove_bg.py` before use.
 
 ```
 ┌─────────────────────────┐
-│ ◀  Kotoka    Step 2 of 4│
-├─────────────────────────┤
+│ ◀  Kotoka    Step 2 of 4│  ← sticky header, bg-white, shadow-sm
+├─────────────────────────┤  ← bar-style step progress below header
+│ ████████████░░░░░░░░░░░ │     h-1.5, bg-primary (#0cf6fc) fill 50%
 │                         │
-│  Tailor your journey    │  ← h2, text-on-surface
-│  Select your current    │  ← body-lg, text-secondary
-│  proficiency level…     │
+│   Choose your path      │  ← h1, text-on-surface, text-center, tracking-tight
+│  How familiar are you   │  ← body-md, text-heading (#8c6792), text-center
+│  with this language?    │
 │                         │
-│  ┌──────────┐┌──────────┐│  ← 3-col on lg, 2-col on md, 1-col mobile
-│  │ A1       ││ A2       ││     cards stagger: lg:mt-md on A2, B2
-│  │ Beginner ││ Elem.    ││
-│  └──────────┘└──────────┘│
-│  ┌──────────┐┌──────────┐│
-│  │ B1       ││ B2 Upper ││
-│  │ Interm.  ││ Interm.  ││
-│  └──────────┘└──────────┘│
-│  ┌══════════════════════╗│
-│  ║ ★ C1  Advanced    ✓ ║│  ← ACTIVE: border-2, ring-4, bg-surface-container-low
-│  ║    Current Selection ║│     badge: bg-primary-container text-white
-│  ╚══════════════════════╝│
-│  ┌──────────────────────┐│
-│  │ C2  Proficient       ││
-│  └──────────────────────┘│
+│ ┌───────────────────────┐│  ← Card 1: bg-white, border-outline-variant
+│ │                       ││     rounded-xl, p-lg, shadow-sm
+│ │   ┌───────────────┐   ││     hover: border-2 border-primary shadow-md
+│ │   │  child_koko   │   ││  ← child_koko_nobg.png, w-32 h-32, object-contain
+│ │   │   _nobg.png   │   ││     mx-auto mb-md
+│ │   └───────────────┘   ││
+│ │  Learning for the     ││  ← label-md font-bold, text-on-surface, text-center
+│ │  first time?          ││
+│ │  Start from scratch!  ││  ← caption, text-outline, text-center
+│ └───────────────────────┘│
 │                          │
-│  ┌──────────────────────┐│
-│  │       Continue       ││  ← pill CTA
-│  └──────────────────────┘│
-│  Not sure? Take a test   │  ← ghost, text-primary
+│ ┌───────────────────────┐│  ← Card 2: same style
+│ │                       ││
+│ │  ┌───────────────┐    ││
+│ │  │ graduate_koko │    ││  ← graduate_koko_nobg.png, w-32 h-32, object-contain
+│ │  │  _nobg.png    │    ││
+│ │  └───────────────┘    ││
+│ │  Already know some?   ││  ← label-md font-bold, text-on-surface, text-center
+│ │  Check your level!    ││  ← caption, text-outline, text-center
+│ └───────────────────────┘│
 │                          │
-│     ○  ━━  ○  ○          │  ← step dots (fixed bottom, rounded-full)
+│     ○  ━━  ○  ○          │  ← step dots, fixed bottom
 └──────────────────────────┘
-  Aside (xl only, fixed right):
-  ┌──────────────┐
-  │ [img]        │  ← bento info card (white)
-  │ Level change │
-  │ won't lose   │
-  │ progress.    │
-  └──────────────┘
-  ┌──────────────┐
-  │ Pro Tip      │  ← bg-primary-container text-white
-  │ Most pros    │
-  │ start at B2  │
-  └──────────────┘
+  Selected state (either card):
+    border-2 border-primary (#0cf6fc)
+    bg-primary/5 (#0cf6fc at 5% opacity)
+    ring-2 ring-primary/20
+    shadow-lg
+  No bottom nav (onboarding)
 ```
 
-**KokoAnimation** → `koko-thinking` in the xl aside card — Koko looks pensive while user evaluates their level.
+**Flutter implementation notes:**
+```dart
+// Two-card layout
+Row(children: [
+  // OR Column on mobile (use LayoutBuilder for breakpoint)
+  _PathCard(
+    image: 'stitch_kotoka_design_builder/kotoka_logo/child_koko_nobg.png',
+    title: 'Learning for the first time?',
+    subtitle: 'Start from scratch!',
+    isSelected: _selected == PathType.beginner,
+    onTap: () => setState(() => _selected = PathType.beginner),
+  ),
+  _PathCard(
+    image: 'stitch_kotoka_design_builder/kotoka_logo/graduate_koko_nobg.png',
+    title: 'Already know some?',
+    subtitle: 'Check your level here!',
+    isSelected: _selected == PathType.experienced,
+    onTap: () => setState(() => _selected = PathType.experienced),
+  ),
+])
+```
+
+**KokoAnimation** → No KokoAnimation on this screen — the Koko character images ARE the mascot content here. Adding koko-thinking on top would create visual conflict.
 
 ---
 
@@ -1236,3 +1302,63 @@ Icon library: **Material Symbols Outlined** (variable font, FILL 0–1, wght 100
 | `rev` | Review |
 | `sho` | Shop |
 | `sna` | Snap (Camera) |
+
+---
+
+## 17. UX Friendliness Review
+
+The screens below have potential usability concerns. **Please review each one and share your preference.**
+
+---
+
+### REV-02 — Flashcard Review ⚠️ Complexity concern
+
+**Issue:** The 4-button spaced-repetition rating system (Again · Hard · Good · Easy with intervals "1m / 2d / 4d / 7d") is borrowed from Anki-style SRS apps. Most casual users won't understand what "2d" or "4d" means or why they're rating cards with 4 options.
+
+**Current:**
+```
+[Again 1m]  [Hard 2d]  [Good 4d]  [Easy 7d]
+```
+
+**Suggested alternatives:**
+- **Option A — 2-button simple:** `[Still learning]` · `[Got it!]` — friendlier, hides SRS complexity
+- **Option B — 3-button:** `[Again]` · `[Almost]` · `[Got it!]` — slight granularity without jargon
+- **Option C — Keep 4 but hide intervals** until user has reviewed 10+ cards (progressive disclosure)
+
+> **What do you prefer for the rating system?**
+
+---
+
+### HOM-01 — Home Screen ⚠️ Information density concern
+
+**Issue:** The home screen shows all of these at once on first open: streak hero banner + progress ring + daily missions grid + spatial map (full height) + 4 stat tiles. This may feel overwhelming for new users or users returning after a break.
+
+**Suggested alternatives:**
+- **Option A — Progressive sections:** Show streak + missions first, map and stats only after scroll (current behavior is fine, just confirm this is intentional)
+- **Option B — Simplified first-time view:** On first 3 opens, hide the map and stats — show only streak + today's missions
+- **Option C — Keep as-is** if the density is intentional (power-user dashboard feel)
+
+> **Is the current density intentional, or should first-time / returning users see a simpler home?**
+
+---
+
+### SNA-01 — Camera Screen ⚠️ Technical complexity concern
+
+**Issue:** The camera UI exposes ISO controls, shutter speed (1/250), neural sync panel, AI object detection labels, sensor strip (temperature/wind/coordinates), and a zoom slider — all visible simultaneously. This feels like a professional camera app, not a casual memory companion.
+
+**Suggested alternatives:**
+- **Option A — Progressive disclosure:** Show only shutter + flip + gallery by default. Swipe up to reveal AI/sensor overlays
+- **Option B — Two modes:** "Simple Snap" (minimal) vs "Detailed Capture" (current full UI) — toggle in settings
+- **Option C — Keep full UI** if the target user is expected to be tech-savvy / enthusiast
+
+> **Should the camera default to a minimal UI, or is the full overlay intended?**
+
+---
+
+### ONB-04 — Language Selection ⚠️ Minor clarity concern
+
+**Issue:** The swap icon (⇄) between "Primary language" and "Learning language" sections may not be intuitive to all users — it's unclear whether it swaps the two selected languages or opens a different view.
+
+**Suggested fix:** Replace swap icon with explicit label: **"Switch languages"** as a text button, or add a tooltip on first visit.
+
+> **Is the swap mechanic obvious enough, or should it have a label?**

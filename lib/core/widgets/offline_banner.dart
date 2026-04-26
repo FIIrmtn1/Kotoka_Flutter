@@ -12,9 +12,8 @@ class OfflineBanner extends ConsumerWidget {
     final visible = ref.watch(offlineBannerVisibleProvider);
     if (!visible) return const SizedBox.shrink();
 
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg   = isDark ? KColorsDark.bgCard : KColors.warning500.withOpacity(0.15);
-    final fg   = isDark ? KColorsDark.tagText : KColors.warning700;
+    final bg   = KColors.warning500.withOpacity(0.15);
+    final fg   = KColors.warning700;
 
     return SizedBox(
       height: 32,

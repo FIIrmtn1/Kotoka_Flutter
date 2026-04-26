@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_card.dart';
 import 'package:kotoka_app/core/widgets/sensory_tag_bar.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/screens/review/review_conversation_screen.dart';
@@ -23,7 +25,9 @@ class ReviewFillBlankScreen extends ConsumerStatefulWidget {
 class _ReviewFillBlankScreenState
     extends ConsumerState<ReviewFillBlankScreen> {
   int? _selectedIndex;
+  // ignore: prefer_final_fields
   int _currentCard = 4; //MOCKDATA
+  // ignore: prefer_final_fields
   int _totalCards = 8; //MOCKDATA
 
   void _onTap(int index) {
@@ -42,8 +46,7 @@ class _ReviewFillBlankScreenState
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final theme = Theme.of(context);
-    return Scaffold(
+    return KStitchScaffold(
       body: SafeArea(
         child: Column(
           children: [
@@ -57,11 +60,11 @@ class _ReviewFillBlankScreenState
                     child: Text(
                       l10n.reviewProgressOf(_currentCard, _totalCards), //MOCKDATA
                       style: KTypography.getStyle(KTextStyle.h4, locale)
-                          .copyWith(color: theme.colorScheme.onSurface),
+                          .copyWith(color: KColors.neutral900),
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.close, color: theme.colorScheme.onSurfaceVariant),
+                    icon: const Icon(Icons.close, color: KColors.neutral400),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ],
@@ -87,7 +90,7 @@ class _ReviewFillBlankScreenState
               child: Text(
                 l10n.reviewFillBlankTitle,
                 style: KTypography.getStyle(KTextStyle.h4, locale)
-                    .copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    .copyWith(color: KColors.neutral500),
               ),
             ),
             const SizedBox(height: KSpacing.sp16),
@@ -95,19 +98,16 @@ class _ReviewFillBlankScreenState
             // Sentence card
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: KSpacing.sp16),
-              child: Container(
-                width: double.infinity,
+              child: KCard(
                 padding: const EdgeInsets.all(KSpacing.sp24),
-                decoration: BoxDecoration(
-                  color: theme.cardColor,
-                  borderRadius: KRadius.lg,
-                  boxShadow: KElevation.shadow2,
-                ),
-                child: Text(
-                  _mockSentence, //MOCKDATA
-                  style: KTypography.getStyle(KTextStyle.body, locale)
-                      .copyWith(fontSize: 18),
-                  textAlign: TextAlign.center,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Text(
+                    _mockSentence, //MOCKDATA
+                    style: KTypography.getStyle(KTextStyle.body, locale)
+                        .copyWith(fontSize: 18, color: KColors.neutral900),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ),
@@ -179,9 +179,9 @@ class _OptionChip extends StatelessWidget {
         text = KColors.error700;
         break;
       case _ChipState.idle:
-        bg = Theme.of(context).cardColor;
-        border = KColors.borderDefault;
-        text = Theme.of(context).colorScheme.onSurface;
+        bg = KColors.neutral0;
+        border = KColors.brand400.withValues(alpha: 0.30);
+        text = KColors.neutral900;
     }
 
     return GestureDetector(

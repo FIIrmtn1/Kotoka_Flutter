@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 import 'package:kotoka_app/core/widgets/koko_animation.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
+import 'package:kotoka_app/core/widgets/k_card.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 
 // REV-06 — Session Complete Screen
@@ -16,9 +18,9 @@ class ReviewCompleteScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final theme = Theme.of(context);
-    return Scaffold(
+    return KStitchScaffold(
       body: SafeArea(
+        bottom: false,
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
@@ -36,7 +38,7 @@ class ReviewCompleteScreen extends ConsumerWidget {
               Text(
                 l10n.reviewCompleteTitle,
                 style: KTypography.getStyle(KTextStyle.h1, locale)
-                    .copyWith(color: KColors.brand500),
+                    .copyWith(color: KColors.brand400),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: KSpacing.sp32),
@@ -46,14 +48,8 @@ class ReviewCompleteScreen extends ConsumerWidget {
               const SizedBox(height: KSpacing.sp24),
 
               // Strongest / needs work
-              Container(
-                width: double.infinity,
+              KCard(
                 padding: const EdgeInsets.all(KSpacing.sp16),
-                decoration: BoxDecoration(
-                  color: theme.cardColor,
-                  borderRadius: KRadius.md,
-                  border: Border.all(color: KColors.borderDefault),
-                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -76,21 +72,19 @@ class ReviewCompleteScreen extends ConsumerWidget {
 
               const Spacer(),
 
-              KotokaButton(
+              KCtaButton(
                 label: l10n.reviewCompleteBackHome,
                 onPressed: () {
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 },
-                variant: KotokaButtonVariant.primary,
               ),
               const SizedBox(height: KSpacing.sp12),
-              KotokaButton(
+              KGhostButton(
                 label: l10n.reviewCompleteSnapAnother,
                 onPressed: () {
                   Navigator.of(context).popUntil((route) => route.isFirst);
                   // Nav to /snap handled by shell router
                 },
-                variant: KotokaButtonVariant.secondary,
               ),
 
               SizedBox(
@@ -117,12 +111,18 @@ class _ScoreResultCard extends StatelessWidget {
       padding: const EdgeInsets.all(KSpacing.sp24),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [KColors.brand500, KColors.brand600],
+          colors: [KColors.brand400, KColors.brand500],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: KRadius.lg,
-        boxShadow: KElevation.shadow2,
+        boxShadow: [
+          BoxShadow(
+            color: KColors.brand400.withValues(alpha: 0.30),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
+          ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -166,12 +166,12 @@ class _ScoreStat extends StatelessWidget {
         Text(
           value,
           style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: KColors.neutral0, fontWeight: FontWeight.w700),
+              .copyWith(color: KColors.neutral1000, fontWeight: FontWeight.w700),
         ),
         Text(
           label,
           style: KTypography.getStyle(KTextStyle.caption, locale)
-              .copyWith(color: KColors.brand200),
+              .copyWith(color: KColors.neutral900),
         ),
       ],
     );

@@ -1,0 +1,14 @@
+{
+  "active": false,
+  "current_phase": "handoff-ralplan",
+  "final_ambiguity": "0.161",
+  "spec_path": ".omc/specs/deep-interview-ui-redesign-stitch.md",
+  "execution_mode": "ralplan->autopilot->autoresearch",
+  "completed_at": "2026-04-26",
+  "_meta": {
+    "mode": "deep-interview",
+    "sessionId": null,
+    "updatedAt": "2026-04-26T15:00:27.917Z",
+    "updatedBy": "state_write_tool"
+  }
+}

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/screens/snap/snap_processing_screen.dart';
 
@@ -33,23 +34,23 @@ class _SnapTextScreenState extends ConsumerState<SnapTextScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
-    final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        elevation: KElevation.elevation0,
-        title: Text(
-          l10n.snapTitle,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: theme.colorScheme.onSurface),
-        ),
-      ),
+    return KStitchScaffold(
       body: SafeArea(
+        bottom: false,
         child: Padding(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Simple header
+              Text(
+                l10n.snapTitle,
+                style: KTypography.getStyle(KTextStyle.h3, locale)
+                    .copyWith(color: KColors.brand400),
+              ),
+              const SizedBox(height: KSpacing.sp16),
+
               // Tab row indicator
               _SnapTabIndicator(l10n: l10n, locale: locale),
               const SizedBox(height: KSpacing.sp24),
@@ -64,9 +65,10 @@ class _SnapTextScreenState extends ConsumerState<SnapTextScreen> {
               // Text field
               Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  borderRadius: KRadius.md,
-                  border: Border.all(color: KColors.borderDefault),
+                  color: KColors.neutral0,
+                  borderRadius: KRadius.lg,
+                  border: Border.all(
+                      color: KColors.brand400.withValues(alpha: 0.20)),
                   boxShadow: KElevation.shadow1,
                 ),
                 child: TextField(
@@ -79,7 +81,8 @@ class _SnapTextScreenState extends ConsumerState<SnapTextScreen> {
                         .copyWith(color: KColors.textDisabled),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.all(KSpacing.sp16),
-                    counterStyle: KTypography.getStyle(KTextStyle.caption, locale),
+                    counterStyle:
+                        KTypography.getStyle(KTextStyle.caption, locale),
                   ),
                   style: KTypography.getStyle(KTextStyle.body, locale),
                   onChanged: (_) => setState(() {}),
@@ -108,11 +111,14 @@ class _SnapTextScreenState extends ConsumerState<SnapTextScreen> {
 
               const Spacer(),
 
-              KotokaButton(
+              KCtaButton(
                 label: l10n.snapTextGenerate,
-                onPressed: _controller.text.trim().isEmpty ? null : _onGenerate,
-                variant: KotokaButtonVariant.primary,
+                onPressed:
+                    _controller.text.trim().isEmpty ? null : _onGenerate,
               ),
+              SizedBox(
+                  height:
+                      MediaQuery.of(context).padding.bottom + KSpacing.sp16),
             ],
           ),
         ),
@@ -160,13 +166,13 @@ class _TabChip extends StatelessWidget {
         vertical: KSpacing.sp8,
       ),
       decoration: BoxDecoration(
-        color: isActive ? KColors.brand500 : KColors.neutral100,
+        color: isActive ? KColors.brand400 : KColors.neutral100,
         borderRadius: KRadius.full,
       ),
       child: Text(
         label,
         style: KTypography.getStyle(KTextStyle.label, locale).copyWith(
-          color: isActive ? KColors.neutral0 : KColors.neutral600,
+          color: isActive ? KColors.neutral1000 : KColors.neutral600,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -188,11 +194,11 @@ class _GhostIconButton extends StatelessWidget {
         width: KSpacing.sp48,
         height: KSpacing.sp48,
         decoration: BoxDecoration(
-          color: Colors.transparent,
+          color: KColors.brand400.withValues(alpha: 0.08),
           borderRadius: KRadius.sm,
-          border: Border.all(color: KColors.borderDefault),
+          border: Border.all(color: KColors.brand400.withValues(alpha: 0.30)),
         ),
-        child: Icon(icon, color: KColors.brand500, size: KSpacing.sp20),
+        child: Icon(icon, color: KColors.brand400, size: KSpacing.sp20),
       ),
     );
   }

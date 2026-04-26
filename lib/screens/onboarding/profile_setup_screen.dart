@@ -4,16 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 import 'package:kotoka_app/core/widgets/koko_animation.dart';
-import 'package:kotoka_app/core/widgets/kotoka_button.dart';
+import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 import 'package:kotoka_app/core/widgets/kotoka_text_field.dart';
 import 'package:kotoka_app/core/router/app_router.dart';
-
-// =============================================================================
-// ProfileSetupScreen — display name + avatar placeholder.
-// KokoAnimation switches to celebrating once name is entered.
-// "Let's Go" primary button.
-// No hardcoded colors/sizes. All strings from AppLocalizations.
-// =============================================================================
 
 class ProfileSetupScreen extends ConsumerStatefulWidget {
   const ProfileSetupScreen({super.key});
@@ -48,24 +42,29 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
 
     final kokoState = _hasName ? KokoState.celebrating : KokoState.idle;
 
-    final theme = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        elevation: KElevation.elevation0,
-        leading: BackButton(color: KColors.brand500),
-        title: Text(
-          l10n.profileSetupTitle,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: theme.colorScheme.onSurface),
-        ),
+    return KStitchScaffold(
+      stickyHeader: KOnboardingHeader(
+        onBack: () => Navigator.of(context).pop(),
+        stepCurrent: 7,
+        stepTotal: 8,
       ),
       body: SafeArea(
+        top: false,
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(KSpacing.sp24),
           child: Column(
             children: [
+              const SizedBox(height: KSpacing.sp8),
+              Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  l10n.profileSetupTitle,
+
+                  style: KTypography.getStyle(KTextStyle.h3, locale)
+                      .copyWith(color: KColors.neutral900),
+                ),
+              ),
               const SizedBox(height: KSpacing.sp16),
-              // Koko reacts when name is entered
               AnimatedSwitcher(
                 duration: KMotion.normal,
                 child: KokoAnimation(
@@ -75,22 +74,21 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                 ),
               ),
               const SizedBox(height: KSpacing.sp32),
-              // Avatar placeholder
               Container(
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                  color: KColors.brand200,
+                  color: KColors.brand400.withValues(alpha: 0.10),
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: KColors.brand300,
+                    color: KColors.brand400.withValues(alpha: 0.30),
                     width: 2,
                   ),
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.person_outline,
                   size: KSpacing.sp40,
-                  color: KColors.brand600,
+                  color: KColors.brand400,
                 ),
               ),
               const SizedBox(height: KSpacing.sp8),
@@ -99,13 +97,12 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                 style: KTypography.getStyle(KTextStyle.caption, locale),
               ),
               const SizedBox(height: KSpacing.sp32),
-              // Display name field
               Align(
                 alignment: AlignmentDirectional.centerStart,
                 child: Text(
                   l10n.profileNameLabel,
                   style: KTypography.getStyle(KTextStyle.label, locale)
-                      .copyWith(color: theme.colorScheme.onSurfaceVariant),
+                      .copyWith(color: KColors.neutral700),
                 ),
               ),
               const SizedBox(height: KSpacing.sp8),
@@ -117,7 +114,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                 autofocus: true,
               ),
               const SizedBox(height: KSpacing.sp48),
-              KotokaButton(
+              KCtaButton(
                 label: l10n.profileLetsGo,
                 onPressed: _hasName
                     ? () {
@@ -125,8 +122,10 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                         context.go('/home');
                       }
                     : null,
-                variant: KotokaButtonVariant.primary,
               ),
+              SizedBox(
+                  height: MediaQuery.of(context).padding.bottom +
+                      KSpacing.sp16),
             ],
           ),
         ),
