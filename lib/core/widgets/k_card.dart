@@ -1,112 +1,58 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 
-/// Standard surface card — white bg, xl corners, shadow2, brand400 20% border.
+// =============================================================================
+// KCard — white card with brand400 border, selection animation.
+// Selected: brand400/5 bg, brand400 border 2px, 180ms animation.
+// =============================================================================
+
 class KCard extends StatelessWidget {
-  const KCard({required this.child, this.padding, super.key});
-  final Widget child;
-  final EdgeInsetsGeometry? padding;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: padding,
-      decoration: BoxDecoration(
-        color: KColors.neutral0,
-        borderRadius: BorderRadius.circular(KRadius.radiusXl),
-        border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
-        boxShadow: KElevation.shadow2,
-      ),
-      child: child,
-    );
-  }
-}
-
-/// Glassmorphism card — white 80% opacity + BackdropFilter blur, brand400 20% border.
-class KGlassCard extends StatelessWidget {
-  const KGlassCard({required this.child, this.padding, super.key});
-  final Widget child;
-  final EdgeInsetsGeometry? padding;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(KRadius.radiusXl),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-        child: Container(
-          padding: padding,
-          decoration: BoxDecoration(
-            color: KColors.neutral0.withValues(alpha: 0.80),
-            borderRadius: BorderRadius.circular(KRadius.radiusXl),
-            border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
-          ),
-          child: child,
-        ),
-      ),
-    );
-  }
-}
-
-/// Selected-state card — brand50 bg, brand400 30% border (2px), shadow2 + brand400 10% glow.
-class KSelectedCard extends StatelessWidget {
-  const KSelectedCard({required this.child, this.padding, super.key});
-  final Widget child;
-  final EdgeInsetsGeometry? padding;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: padding,
-      decoration: BoxDecoration(
-        color: KColors.brand50,
-        borderRadius: BorderRadius.circular(KRadius.radiusXl),
-        border: Border.all(
-          color: KColors.brand400.withValues(alpha: 0.30),
-          width: 2,
-        ),
-        boxShadow: [
-          ...KElevation.shadow2,
-          BoxShadow(
-            color: KColors.brand400.withValues(alpha: 0.10),
-            blurRadius: 20,
-          ),
-        ],
-      ),
-      child: child,
-    );
-  }
-}
-
-/// Tinted card — accepts gradient OR color; used for streak hero, etc.
-class KTintedCard extends StatelessWidget {
-  const KTintedCard({
-    required this.child,
-    this.gradient,
-    this.color,
-    this.padding,
-    this.borderRadius,
+  const KCard({
     super.key,
+    required this.child,
+    this.padding,
+    this.selected = false,
+    this.onTap,
   });
+
   final Widget child;
-  final Gradient? gradient;
-  final Color? color;
   final EdgeInsetsGeometry? padding;
-  final BorderRadius? borderRadius;
+  final bool selected;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    final radius = borderRadius ?? BorderRadius.circular(KRadius.radiusMd);
-    return Container(
-      width: double.infinity,
-      padding: padding,
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 180),
+      curve: KMotion.defaultCurve,
       decoration: BoxDecoration(
-        gradient: gradient,
-        color: gradient == null ? color : null,
-        borderRadius: radius,
+        color: selected
+            ? KColors.brand400.withValues(alpha: 0.05)
+            : KColors.neutral0,
+        borderRadius: KRadius.md,
+        border: Border.all(
+          color: selected
+              ? KColors.brand400
+              : KColors.brand400.withValues(alpha: 0.20),
+          width: selected ? 2.0 : 1.0,
+        ),
+        boxShadow: selected ? null : KElevation.shadow1,
       ),
-      child: child,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: KRadius.md,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: KRadius.md,
+          splashColor: KColors.brand400.withValues(alpha: 0.08),
+          highlightColor: KColors.brand400.withValues(alpha: 0.04),
+          child: Padding(
+            padding: padding ??
+                const EdgeInsets.all(KSpacing.sp16),
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 }

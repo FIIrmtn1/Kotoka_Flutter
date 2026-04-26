@@ -1,543 +1,259 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kotoka_app/core/providers/koko_visible_provider.dart';
-import 'package:kotoka_app/core/providers/tooltip_seen_provider.dart';
-import 'package:kotoka_app/l10n/app_localizations.dart';
+import 'package:kotoka_app/core/providers/due_cards_provider.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 import 'package:kotoka_app/core/widgets/koko_animation.dart';
-import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
-import 'package:kotoka_app/core/widgets/offline_banner.dart';
-import 'package:kotoka_app/core/widgets/k_progress_ring.dart';
-import 'package:kotoka_app/core/widgets/k_section_header.dart';
-import 'package:kotoka_app/core/widgets/k_card.dart';
+import 'package:kotoka_app/core/widgets/kotoka_button.dart';
+import 'package:kotoka_app/core/widgets/vocab_card.dart';
+import 'package:kotoka_app/core/widgets/sensory_tag_bar.dart';
+import 'package:kotoka_app/l10n/app_localizations.dart';
+import 'package:kotoka_app/core/router/app_router.dart';
 
-// ---------------------------------------------------------------------------
-// Mock data — all lines tagged //MOCKDATA
-// ---------------------------------------------------------------------------
-const int _mockStreak  = 12;   //MOCKDATA
-// ignore: unused_element
-const int _mockCoins   = 120;  //MOCKDATA
-const int _mockWords   = 1284; //MOCKDATA
-const int _mockFocus   = 92;   //MOCKDATA
-const int _mockCities  = 14;   //MOCKDATA
-const int _mockConns   = 42;   //MOCKDATA
-const double _mockDailyPct = 0.85; //MOCKDATA
+// =============================================================================
+// HomeScreen — HOM-01
+// - No missions section
+// - Header: greeting + KokoAnimation(idle) on right
+// - Streak badge (brand400 accent)
+// - Review CTA when dueCount > 0
+// - Recent Vocab section with 5 VocabCards (mock)
+// - CustomScrollView / SliverList
+// =============================================================================
 
-class _MockMission { //MOCKDATA
-  const _MockMission({required this.icon, required this.title, required this.sub, required this.done}); //MOCKDATA
-  final String icon;    //MOCKDATA
-  final String title;   //MOCKDATA
-  final String sub;     //MOCKDATA
-  final bool done;      //MOCKDATA
-} //MOCKDATA
+class _VocabItem {
+  const _VocabItem({
+    required this.word,
+    required this.romanization,
+    required this.translation,
+    required this.tags,
+    this.exampleSentence,
+  });
 
-const List<_MockMission> _mockMissions = [ //MOCKDATA
-  _MockMission(icon: '📷', title: 'Visual Anchor', sub: 'Snap 1 memory', done: false), //MOCKDATA
-  _MockMission(icon: '🙏', title: 'Gratitude Log', sub: "Resume today's entry", done: true), //MOCKDATA
-]; //MOCKDATA
+  final String word;
+  final String romanization;
+  final String translation;
+  final List<SensoryTag> tags;
+  final String? exampleSentence;
+}
 
-// ---------------------------------------------------------------------------
-// HomeScreen
-// ---------------------------------------------------------------------------
-class HomeScreen extends ConsumerStatefulWidget {
+// Mock vocab data — replace with Firestore query in production.
+final _mockVocab = <_VocabItem>[
+  _VocabItem( //MOCKDATA
+    word: 'สวัสดี',
+    romanization: 'sà-wàt-dii',
+    translation: 'Hello / Good day',
+    exampleSentence: 'สวัสดีครับ ยินดีที่ได้รู้จัก',
+    tags: [SensoryTags.mood('Joy'), SensoryTags.location('Office')],
+  ),
+  _VocabItem( //MOCKDATA
+    word: 'ขอบคุณ',
+    romanization: 'khàawp-khun',
+    translation: 'Thank you',
+    exampleSentence: 'ขอบคุณมากครับ',
+    tags: [SensoryTags.mood('Calm'), SensoryTags.time('Anytime')],
+  ),
+  _VocabItem( //MOCKDATA
+    word: 'อร่อย',
+    romanization: 'à-ròi',
+    translation: 'Delicious',
+    exampleSentence: 'อาหารนี้อร่อยมาก',
+    tags: [SensoryTags.mood('Joy'), SensoryTags.sound('Café')],
+  ),
+  _VocabItem( //MOCKDATA
+    word: 'เดินทาง',
+    romanization: 'dern-taang',
+    translation: 'To travel',
+    exampleSentence: 'ฉันชอบเดินทางไปต่างจังหวัด',
+    tags: [SensoryTags.energy('High'), SensoryTags.location('Airport')],
+  ),
+  _VocabItem( //MOCKDATA
+    word: 'ตลาด',
+    romanization: 'tà-làat',
+    translation: 'Market / Bazaar',
+    exampleSentence: 'ไปซื้อของที่ตลาดนัด',
+    tags: [SensoryTags.sound('Busy'), SensoryTags.weather('Sunny')],
+  ),
+];
+
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
-  @override
-  ConsumerState<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends ConsumerState<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _maybeShowTooltip());
+  String _greeting(AppLocalizations l10n) {
+    final hour = DateTime.now().hour;
+    const name = 'Nadia'; //MOCKDATA
+    if (hour < 12) return l10n.homeGreetingMorning(name);
+    if (hour < 17) return l10n.homeGreetingAfternoon(name);
+    return l10n.homeGreetingEvening(name);
   }
 
-  void _maybeShowTooltip() {
-    if (!mounted) return;
-    final seen = ref.read(tooltipSeenProvider);
-    if (seen) return;
-    final l10n   = AppLocalizations.of(context)!;
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: GestureDetector(
-          onTap: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            ref.read(tooltipSeenProvider.notifier).markSeen();
-          },
-          child: Text(
-            l10n.homeTooltipSensoryTag,
-            style: KTypography.getStyle(KTextStyle.bodySmall, locale)
-                .copyWith(color: KColors.neutral0),
-          ),
-        ),
-        backgroundColor: KColors.brand500,
-        behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 6),
-        shape: RoundedRectangleBorder(borderRadius: KRadius.md),
-      ),
-    );
-    ref.read(tooltipSeenProvider.notifier).markSeen();
-  }
+    final dueCount = ref.watch(dueCardsCountProvider);
 
-  @override
-  Widget build(BuildContext context) {
-    final l10n        = AppLocalizations.of(context)!;
-    final kokoVisible = ref.watch(kokoVisibleProvider);
-
-    return KStitchScaffold(
-      floatingActionButton: _CyanFab(onTap: () => context.go('/snap')),
-      body: Column(
-        children: [
-          // ── Sticky header ────────────────────────────────────────────────
-          _HomeHeader(
-            kokoVisible: kokoVisible,
-            onToggleKoko: () => ref.read(kokoVisibleProvider.notifier).toggle(),
-          ),
-          const OfflineBanner(),
-
-          // ── Scrollable body ──────────────────────────────────────────────
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
-                KSpacing.sp16, KSpacing.sp16, KSpacing.sp16, KSpacing.sp96),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Streak hero card
-                  _StreakHeroCard(
-                    l10n: l10n,
-                    streak: _mockStreak, //MOCKDATA
-                    dailyPct: _mockDailyPct, //MOCKDATA
-                    kokoVisible: kokoVisible,
-                  ),
-                  const SizedBox(height: KSpacing.sp24),
-
-                  // Daily Missions
-                  KSectionHeader(
-                    title: l10n.homeRecentDecks,
-                    actionLabel: 'View',
-                    onAction: () {},
-                  ),
-                  const SizedBox(height: KSpacing.sp12),
-                  const _MissionsBento(missions: _mockMissions), //MOCKDATA
-                  const SizedBox(height: KSpacing.sp24),
-
-                  // Spatial Archive
-                  const KSectionHeader(title: 'Spatial Archive'),
-                  const SizedBox(height: KSpacing.sp4),
-                  const Text(
-                    "Memories anchored to places you've been.",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: KColors.neutral500,
-                      fontFamily: 'IBMPlexSans',
-                    ),
-                  ),
-                  const SizedBox(height: KSpacing.sp12),
-                  const _MapPlaceholderCard(),
-                  const SizedBox(height: KSpacing.sp24),
-
-                  // 4-tile stat row
-                  const _StatTilesRow(
-                    words: _mockWords,   //MOCKDATA
-                    focus: _mockFocus,   //MOCKDATA
-                    cities: _mockCities, //MOCKDATA
-                    conns: _mockConns,   //MOCKDATA
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _HomeHeader
-// ---------------------------------------------------------------------------
-class _HomeHeader extends StatelessWidget {
-  const _HomeHeader({
-    required this.kokoVisible,
-    required this.onToggleKoko,
-  });
-  final bool kokoVisible;
-  final VoidCallback onToggleKoko;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: KColors.pageBg,
-      padding: const EdgeInsets.symmetric(
-        horizontal: KSpacing.sp16, vertical: KSpacing.sp12),
-      child: Row(
-        children: [
-          const Icon(Icons.menu_rounded, color: KColors.brand400, size: 24),
-          const SizedBox(width: KSpacing.sp12),
-          const Expanded(
-            child: Text(
-              'Kotoka',
-              style: TextStyle(
-                fontFamily: 'IBMPlexSans',
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: KColors.brand400,
-                letterSpacing: -0.5,
-              ),
-            ),
-          ),
-          IconButton(
-            icon: Icon(
-              kokoVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-              color: kokoVisible ? KColors.brand400 : KColors.neutral400,
-              size: 20,
-            ),
-            onPressed: onToggleKoko,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-            tooltip: kokoVisible ? 'Focus mode' : 'Show Koko',
-          ),
-          const SizedBox(width: KSpacing.sp12),
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              const Icon(Icons.notifications_outlined, color: KColors.brand400, size: 24),
-              Positioned(
-                top: -2, right: -2,
-                child: Container(
-                  width: 8, height: 8,
-                  decoration: const BoxDecoration(
-                    color: KColors.error500, shape: BoxShape.circle),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _StreakHeroCard — STITCH HOM-01 hero banner
-// ---------------------------------------------------------------------------
-class _StreakHeroCard extends StatelessWidget {
-  const _StreakHeroCard({
-    required this.l10n,
-    required this.streak,
-    required this.dailyPct,
-    required this.kokoVisible,
-  });
-  final AppLocalizations l10n;
-  final int streak;
-  final double dailyPct;
-  final bool kokoVisible;
-
-  @override
-  Widget build(BuildContext context) {
-    return KTintedCard(
-      padding: const EdgeInsets.all(KSpacing.sp24),
-      gradient: const LinearGradient(
-        colors: [KColors.brand700, KColors.brand800],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      ),
-      child: Stack(
-        children: [
-          // Koko mascot (top-right, hidden in focus mode)
-          if (kokoVisible)
-            const Positioned(
-              top: 0,
-              right: 0,
-              child: KokoAnimation(state: KokoState.idle, size: 72),
-            ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Streak badge
-              Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: KSpacing.sp12, vertical: KSpacing.sp4),
-                decoration: BoxDecoration(
-                  color: KColors.brand400.withValues(alpha: 0.20),
-                  borderRadius: BorderRadius.circular(KRadius.radiusFull),
-                  border: Border.all(
-                      color: KColors.brand400.withValues(alpha: 0.40)),
+    return Scaffold(
+      backgroundColor: KColors.brand50,
+      body: CustomScrollView(
+        slivers: [
+          // ----------------------------------------------------------------
+          // Header: greeting text + KokoAnimation on right
+          // ----------------------------------------------------------------
+          SliverToBoxAdapter(
+            child: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  KSpacing.sp24,
+                  KSpacing.sp16,
+                  KSpacing.sp16,
+                  KSpacing.sp8,
                 ),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('🔥', style: TextStyle(fontSize: 14)),
-                    const SizedBox(width: KSpacing.sp4),
-                    Text(
-                      '$streak DAY STREAK',
-                      style: const TextStyle(
-                        fontFamily: 'IBMPlexSans',
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        color: KColors.brand400,
-                        letterSpacing: 1,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: KSpacing.sp8),
+                          Text(
+                            _greeting(l10n),
+                            style: KTypography.getStyle(KTextStyle.h2, locale),
+                          ),
+                          const SizedBox(height: KSpacing.sp4),
+                          Text(
+                            l10n.homeSubtitle,
+                            style: KTypography.getStyle(
+                              KTextStyle.bodySmall,
+                              locale,
+                            ).copyWith(color: KColors.brand600),
+                          ),
+                          const SizedBox(height: KSpacing.sp12),
+                          // Streak badge — brand400 accent
+                          _StreakBadge(
+                            streakDays: 7, //MOCKDATA
+                            l10n: l10n,
+                            locale: locale,
+                          ),
+                        ],
                       ),
+                    ),
+                    KokoAnimation(
+                      state: KokoState.idle,
+                      size: 96,
+                      semanticsLabel: l10n.kokoMascotSemantics,
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: KSpacing.sp16),
+            ),
+          ),
 
-              // Greeting
-              Text(
-                l10n.homeGreeting('Kai'), //MOCKDATA
-                style: const TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: KColors.neutral0,
-                  height: 1.25,
+          // ----------------------------------------------------------------
+          // Review CTA — only when cards are due (full-width brand500 style)
+          // ----------------------------------------------------------------
+          if (dueCount > 0)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: KSpacing.sp24,
+                  vertical: KSpacing.sp8,
                 ),
-              ),
-              const SizedBox(height: KSpacing.sp4),
-              Text(
-                l10n.homeSubtitle,
-                style: TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: KColors.neutral0.withValues(alpha: 0.80),
-                ),
-              ),
-              const SizedBox(height: KSpacing.sp20),
-
-              // Progress ring row
-              Row(
-                children: [
-                  KProgressRing(
-                    value: dailyPct,
-                    size: 80,
-                    trackColor: KColors.neutral0.withValues(alpha: 0.20),
-                    strokeWidth: 8.0,
-                  ),
-                  const SizedBox(width: KSpacing.sp16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${(dailyPct * 100).toInt()}%',
-                        style: const TextStyle(
-                          fontFamily: 'IBMPlexSans',
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                          color: KColors.neutral0,
-                        ),
-                      ),
-                      Text(
-                        'Daily Goal',
-                        style: TextStyle(
-                          fontFamily: 'IBMPlexSans',
-                          fontSize: 13,
-                          color: KColors.neutral0.withValues(alpha: 0.75),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _MissionsBento — 2-col bento grid for daily missions
-// ---------------------------------------------------------------------------
-class _MissionsBento extends StatelessWidget {
-  const _MissionsBento({required this.missions});
-  final List<_MockMission> missions;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        if (missions.isNotEmpty)
-          Expanded(flex: 2, child: _MissionCard(mission: missions[0])),
-        if (missions.length > 1) ...[
-          const SizedBox(width: KSpacing.sp12),
-          Expanded(child: _MissionCard(mission: missions[1])),
-        ],
-      ],
-    );
-  }
-}
-
-class _MissionCard extends StatelessWidget {
-  const _MissionCard({required this.mission});
-  final _MockMission mission;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(KSpacing.sp16),
-      decoration: BoxDecoration(
-        color: KColors.neutral0,
-        borderRadius: BorderRadius.circular(KRadius.radiusMd),
-        border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
-        boxShadow: KElevation.shadow1,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: KColors.brand400.withValues(alpha: 0.10),
-              borderRadius: BorderRadius.circular(KRadius.radiusSm),
-              border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
-            ),
-            child: Center(
-              child: Text(mission.icon, style: const TextStyle(fontSize: 18)),
-            ),
-          ),
-          const SizedBox(height: KSpacing.sp12),
-          Text(
-            mission.title,
-            style: const TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: KColors.neutral900,
-            ),
-          ),
-          const SizedBox(height: KSpacing.sp4),
-          Text(
-            mission.sub,
-            style: const TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: 12,
-              color: KColors.neutral500,
-            ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: KSpacing.sp12),
-          // CTA row
-          Row(
-            children: [
-              if (mission.done)
-                const Icon(Icons.check_circle, color: KColors.brand400, size: 16)
-              else
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: KSpacing.sp12, vertical: KSpacing.sp4),
+                child: Container(
+                  width: double.infinity,
                   decoration: BoxDecoration(
-                    color: KColors.brand400,
-                    borderRadius: BorderRadius.circular(KRadius.radiusFull),
-                    boxShadow: [
-                      BoxShadow(
-                        color: KColors.brand400.withValues(alpha: 0.30),
-                        blurRadius: 8,
-                      ),
-                    ],
+                    color: KColors.brand500,
+                    borderRadius: KRadius.lg,
+                    boxShadow: KElevation.shadow2,
                   ),
-                  child: const Text(
-                    'Complete',
-                    style: TextStyle(
-                      fontFamily: 'IBMPlexSans',
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: KColors.neutral1000,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: KRadius.lg,
+                      onTap: () => context.go(AppRoutes.review),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: KSpacing.sp24,
+                          vertical: KSpacing.sp16,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.auto_stories_outlined,
+                              color: KColors.neutral0,
+                              size: KSpacing.sp20,
+                            ),
+                            const SizedBox(width: KSpacing.sp8),
+                            Text(
+                              '${l10n.homeStartReview} ($dueCount)',
+                              style: KTypography.getStyle(
+                                KTextStyle.button,
+                                locale,
+                              ).copyWith(
+                                color: KColors.neutral0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
+              ),
+            ),
 
-// ---------------------------------------------------------------------------
-// _MapPlaceholderCard — Spatial Archive section
-// ---------------------------------------------------------------------------
-class _MapPlaceholderCard extends StatelessWidget {
-  const _MapPlaceholderCard();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 280,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: KColors.brand50,
-        borderRadius: BorderRadius.circular(KRadius.radiusMd),
-        border: Border.all(color: KColors.brand400.withValues(alpha: 0.20)),
-        boxShadow: KElevation.shadow1,
-      ),
-      child: Stack(
-        children: [
-          // Map tint overlay
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(KRadius.radiusMd),
-              gradient: LinearGradient(
-                colors: [
-                  KColors.sky100.withValues(alpha: 0.60),
-                  KColors.brand50.withValues(alpha: 0.40),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+          // ----------------------------------------------------------------
+          // Recent Vocab section header — h3 size for prominence
+          // ----------------------------------------------------------------
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                KSpacing.sp24,
+                KSpacing.sp24,
+                KSpacing.sp24,
+                KSpacing.sp12,
+              ),
+              child: Text(
+                l10n.homeRecentWords,
+                style: KTypography.getStyle(KTextStyle.h3, locale)
+                    .copyWith(color: KColors.brand600),
               ),
             ),
           ),
-          // Location pins
-          const Positioned(
-            top: 80, left: 120,
-            child: _MapPin(color: KColors.brand400),
-          ),
-          const Positioned(
-            top: 140, right: 80,
-            child: _MapPin(color: KColors.brand600),
-          ),
-          // Floating glass card
-          Positioned(
-            bottom: KSpacing.sp16,
-            right: KSpacing.sp16,
-            child: _MapGlassCard(),
-          ),
-          // Map label
-          Positioned(
-            top: KSpacing.sp16,
-            left: KSpacing.sp16,
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: KSpacing.sp12, vertical: KSpacing.sp4),
-              decoration: BoxDecoration(
-                color: KColors.neutral0.withValues(alpha: 0.90),
-                borderRadius: BorderRadius.circular(KRadius.radiusFull),
-                border: Border.all(color: KColors.brand400.withValues(alpha: 0.30)),
-              ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.location_on, color: KColors.brand400, size: 14),
-                  SizedBox(width: 4),
-                  Text(
-                    'Nearby memories',
-                    style: TextStyle(
-                      fontFamily: 'IBMPlexSans',
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: KColors.neutral900,
+
+          // ----------------------------------------------------------------
+          // Vocab cards — 24px gap between sections
+          // ----------------------------------------------------------------
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(
+              KSpacing.sp24,
+              0,
+              KSpacing.sp24,
+              KSpacing.sp40,
+            ),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  final item = _mockVocab[index];
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      bottom: index < _mockVocab.length - 1
+                          ? KSpacing.sp24
+                          : 0,
                     ),
-                  ),
-                ],
+                    child: VocabCard(
+                      word: item.word,
+                      romanization: item.romanization,
+                      translation: item.translation,
+                      sensoryTags: item.tags,
+                      exampleSentence: item.exampleSentence,
+                    ),
+                  );
+                },
+                childCount: _mockVocab.length,
               ),
             ),
           ),
@@ -547,163 +263,49 @@ class _MapPlaceholderCard extends StatelessWidget {
   }
 }
 
-class _MapPin extends StatelessWidget {
-  const _MapPin({required this.color});
-  final Color color;
+// ---------------------------------------------------------------------------
+// _StreakBadge — brand400 accent pill
+// ---------------------------------------------------------------------------
+class _StreakBadge extends StatelessWidget {
+  const _StreakBadge({
+    required this.streakDays,
+    required this.l10n,
+    required this.locale,
+  });
+
+  final int streakDays;
+  final AppLocalizations l10n;
+  final Locale locale;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 24, height: 24,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(color: color.withValues(alpha: 0.40), blurRadius: 8),
-        ],
+      padding: const EdgeInsets.symmetric(
+        horizontal: KSpacing.sp12,
+        vertical: KSpacing.sp4,
       ),
-      child: const Icon(Icons.place, color: KColors.neutral0, size: 14),
-    );
-  }
-}
-
-class _MapGlassCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(KSpacing.sp12),
       decoration: BoxDecoration(
-        color: KColors.neutral0.withValues(alpha: 0.90),
-        borderRadius: BorderRadius.circular(KRadius.radiusMd),
-        border: Border.all(color: KColors.neutral0.withValues(alpha: 0.50)),
-        boxShadow: KElevation.shadow2,
+        color: KColors.brand400.withValues(alpha: 0.15),
+        borderRadius: KRadius.full,
+        border: Border.all(
+          color: KColors.brand400.withValues(alpha: 0.40),
+        ),
       ),
-      child: const Row(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.photo_camera, color: KColors.brand400, size: 16),
-          SizedBox(width: KSpacing.sp8),
+          const Icon(
+            Icons.local_fire_department,
+            size: KSpacing.sp16,
+            color: KColors.brand400,
+          ),
+          const SizedBox(width: KSpacing.sp4),
           Text(
-            '2 nearby',
-            style: TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: KColors.neutral900,
-            ),
+            l10n.homeStreakDays(streakDays),
+            style: KTypography.getStyle(KTextStyle.label, locale)
+                .copyWith(color: KColors.brand600),
           ),
         ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _StatTilesRow — 4 metric chips
-// ---------------------------------------------------------------------------
-class _StatTilesRow extends StatelessWidget {
-  const _StatTilesRow({
-    required this.words,
-    required this.focus,
-    required this.cities,
-    required this.conns,
-  });
-  final int words;
-  final int focus;
-  final int cities;
-  final int conns;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        _StatTile(value: _fmt(words), label: 'Mem.'),
-        const SizedBox(width: KSpacing.sp8),
-        _StatTile(value: '$focus%', label: 'Focus'),
-        const SizedBox(width: KSpacing.sp8),
-        _StatTile(value: '$cities', label: 'Cities'),
-        const SizedBox(width: KSpacing.sp8),
-        _StatTile(value: '$conns', label: 'Conn.'),
-      ],
-    );
-  }
-
-  String _fmt(int n) => n >= 1000 ? '${(n / 1000).toStringAsFixed(1)}k' : '$n';
-}
-
-class _StatTile extends StatelessWidget {
-  const _StatTile({required this.value, required this.label});
-  final String value;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-            horizontal: KSpacing.sp8, vertical: KSpacing.sp12),
-        decoration: BoxDecoration(
-          color: KColors.neutral0,
-          borderRadius: BorderRadius.circular(KRadius.radiusSm),
-          border: Border.all(color: KColors.brand400.withValues(alpha: 0.15)),
-          boxShadow: KElevation.shadow1,
-        ),
-        child: Column(
-          children: [
-            Text(
-              value,
-              style: const TextStyle(
-                fontFamily: 'IBMPlexSans',
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: KColors.brand400,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: KSpacing.sp2),
-            Text(
-              label,
-              style: const TextStyle(
-                fontFamily: 'IBMPlexSans',
-                fontSize: 10,
-                fontWeight: FontWeight.w500,
-                color: KColors.neutral500,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _CyanFab — floating action button
-// ---------------------------------------------------------------------------
-class _CyanFab extends StatelessWidget {
-  const _CyanFab({required this.onTap});
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 56,
-        height: 56,
-        decoration: BoxDecoration(
-          color: KColors.brand400,
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: KColors.brand400.withValues(alpha: 0.40),
-              blurRadius: 16,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: const Icon(Icons.add_rounded, color: KColors.neutral1000, size: 28),
       ),
     );
   }

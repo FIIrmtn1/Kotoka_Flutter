@@ -19,14 +19,27 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:kotoka_app/core/widgets/bottom_tab_bar.dart';
 import 'package:kotoka_app/screens/home/home_screen.dart';
 import 'package:kotoka_app/screens/onboarding/welcome_screen.dart';
+import 'package:kotoka_app/screens/onboarding/auth_screen.dart';
 import 'package:kotoka_app/screens/onboarding/language_select_screen.dart';
 import 'package:kotoka_app/screens/onboarding/goal_select_screen.dart';
+import 'package:kotoka_app/screens/onboarding/proficiency_assessment_screen.dart';
+import 'package:kotoka_app/screens/onboarding/goal_commitment_screen.dart';
 import 'package:kotoka_app/screens/onboarding/level_select_screen.dart';
+import 'package:kotoka_app/screens/onboarding/schedule_screen.dart';
 import 'package:kotoka_app/screens/onboarding/commitment_screen.dart';
+import 'package:kotoka_app/screens/onboarding/pdpa_consent_screen.dart';
+import 'package:kotoka_app/screens/onboarding/profile_setup_screen.dart';
 import 'package:kotoka_app/screens/onboarding/mission_screen.dart';
 import 'package:kotoka_app/screens/onboarding/summary_screen.dart';
 import 'package:kotoka_app/screens/snap/snap_screen.dart';
+import 'package:kotoka_app/screens/snap/snap_text_screen.dart';
+import 'package:kotoka_app/screens/snap/snap_processing_screen.dart';
+import 'package:kotoka_app/screens/snap/snap_results_screen.dart';
 import 'package:kotoka_app/screens/review/review_screen.dart';
+import 'package:kotoka_app/screens/review/review_flashcard_screen.dart';
+import 'package:kotoka_app/screens/review/review_fillblank_screen.dart';
+import 'package:kotoka_app/screens/review/review_conversation_screen.dart';
+import 'package:kotoka_app/screens/review/review_complete_screen.dart';
 import 'package:kotoka_app/screens/shop/shop_screen.dart';
 import 'package:kotoka_app/screens/profile/profile_screen.dart';
 
@@ -41,11 +54,24 @@ abstract class AppRoutes {
   static const String onboardingWelcome     = '/onboarding/welcome';
   static const String onboardingGoal        = '/onboarding/goal';
   static const String onboardingLevel       = '/onboarding/level';
+  static const String onboardingSchedule    = '/onboarding/schedule';
   static const String onboardingCommitment  = '/onboarding/commitment';
+  static const String onboardingAuth        = '/onboarding/auth';
+  static const String onboardingPdpa        = '/onboarding/pdpa';
+  static const String onboardingAssessment  = '/onboarding/assessment';
+  static const String onboardingGoalCommitment = '/onboarding/goal-commitment';
+  static const String onboardingProfile     = '/onboarding/profile';
   static const String onboardingMission     = '/onboarding/mission';
   static const String home    = '/home';
   static const String snap    = '/snap';
+  static const String snapText       = '/snap/text';
+  static const String snapProcessing = '/snap/processing';
+  static const String snapResults    = '/snap/results';
   static const String review  = '/review';
+  static const String reviewFlashcard    = '/review/flashcard';
+  static const String reviewFillBlank    = '/review/fillblank';
+  static const String reviewConversation = '/review/conversation';
+  static const String reviewComplete     = '/review/complete';
   static const String shop    = '/shop';
   static const String profile = '/profile';
 }
@@ -117,13 +143,31 @@ GoRouter appRouter(AppRouterRef ref) {
       GoRoute(
         path: AppRoutes.onboarding,
         pageBuilder: (context, state) => const NoTransitionPage(
-          child: LanguageSelectScreen(),
+          child: WelcomeScreen(),
         ),
         routes: [
+          GoRoute(
+            path: 'auth',
+            pageBuilder: (context, state) => const MaterialPage(
+              child: AuthScreen(),
+            ),
+          ),
           GoRoute(
             path: 'language',
             pageBuilder: (context, state) => const MaterialPage(
               child: LanguageSelectScreen(),
+            ),
+          ),
+          GoRoute(
+            path: 'assessment',
+            pageBuilder: (context, state) => const MaterialPage(
+              child: ProficiencyAssessmentScreen(),
+            ),
+          ),
+          GoRoute(
+            path: 'goal-commitment',
+            pageBuilder: (context, state) => const MaterialPage(
+              child: GoalCommitmentScreen(),
             ),
           ),
           GoRoute(
@@ -145,9 +189,27 @@ GoRouter appRouter(AppRouterRef ref) {
             ),
           ),
           GoRoute(
+            path: 'schedule',
+            pageBuilder: (context, state) => const MaterialPage(
+              child: ScheduleScreen(),
+            ),
+          ),
+          GoRoute(
             path: 'commitment',
             pageBuilder: (context, state) => const MaterialPage(
               child: CommitmentScreen(),
+            ),
+          ),
+          GoRoute(
+            path: 'pdpa',
+            pageBuilder: (context, state) => const MaterialPage(
+              child: PdpaConsentScreen(),
+            ),
+          ),
+          GoRoute(
+            path: 'profile',
+            pageBuilder: (context, state) => const MaterialPage(
+              child: ProfileSetupScreen(),
             ),
           ),
           GoRoute(
@@ -193,6 +255,26 @@ GoRouter appRouter(AppRouterRef ref) {
                   key: state.pageKey,
                   child: const SnapScreen(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: 'text',
+                    pageBuilder: (context, state) => const MaterialPage(
+                      child: SnapTextScreen(),
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'processing',
+                    pageBuilder: (context, state) => const MaterialPage(
+                      child: SnapProcessingScreen(),
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'results',
+                    pageBuilder: (context, state) => const MaterialPage(
+                      child: SnapResultsScreen(),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -205,6 +287,32 @@ GoRouter appRouter(AppRouterRef ref) {
                   key: state.pageKey,
                   child: const ReviewScreen(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: 'flashcard',
+                    pageBuilder: (context, state) => const MaterialPage(
+                      child: ReviewFlashcardScreen(),
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'fillblank',
+                    pageBuilder: (context, state) => const MaterialPage(
+                      child: ReviewFillBlankScreen(),
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'conversation',
+                    pageBuilder: (context, state) => const MaterialPage(
+                      child: ReviewConversationScreen(),
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'complete',
+                    pageBuilder: (context, state) => const MaterialPage(
+                      child: ReviewCompleteScreen(),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

@@ -1,54 +1,165 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kotoka_app/l10n/app_localizations.dart';
-import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/koko_animation.dart';
-import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
-import 'package:kotoka_app/core/widgets/k_cta_button.dart';
+import 'dart:ui';
 
-class WelcomeScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:kotoka_app/core/theme/tokens.dart';
+import 'package:kotoka_app/core/widgets/k_scaffold.dart';
+import 'package:kotoka_app/core/widgets/koko_animation.dart';
+import 'package:kotoka_app/core/widgets/kotoka_button.dart';
+import 'package:kotoka_app/l10n/app_localizations.dart';
+
+// =============================================================================
+// ONB-01 — Welcome screen
+// KokoAnimation wave, "Kotoka" title in brand400, tagline, CTA → /onboarding/auth
+// Three glass feature preview cards at bottom + "Sign in to account" ghost link
+// =============================================================================
+
+class WelcomeScreen extends ConsumerWidget {
   const WelcomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final l10n   = AppLocalizations.of(context)!;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    return KStitchScaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: KSpacing.sp24),
-        child: Column(
-          children: [
-            const Spacer(flex: 2),
-            const KokoAnimation(state: KokoState.waving, size: 160),
-            const SizedBox(height: KSpacing.sp24),
-            Text(
-              'Kotoka',
-              style: KTypography.getStyle(KTextStyle.h1, locale)
-                  .copyWith(color: KColors.brand400),
-              textAlign: TextAlign.center,
+    return KScaffold(
+      child: Stack(
+        children: [
+          // Main content
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: KSpacing.sp24),
+              child: Column(
+                children: [
+                  const Spacer(flex: 2),
+                  // Koko waving character
+                  KokoAnimation(
+                    state: KokoState.waving,
+                    size: 180,
+                    semanticsLabel: l10n.kokoWavingSemantics,
+                  ),
+                  const SizedBox(height: KSpacing.sp32),
+                  // "Kotoka" title in brand400 (bright cyan)
+                  Text(
+                    l10n.appName,
+                    style: KTypography.getStyle(KTextStyle.h1, locale).copyWith(
+                      color: KColors.brand400,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -1.0,
+                    ),
+                  ),
+                  const SizedBox(height: KSpacing.sp12),
+                  // Tagline
+                  Text(
+                    l10n.welcomeTagline,
+                    textAlign: TextAlign.center,
+                    style: KTypography.getStyle(KTextStyle.body, locale).copyWith(
+                      color: KColors.textSecondary,
+                    ),
+                  ),
+                  const Spacer(flex: 2),
+                  // Primary CTA → /onboarding/auth
+                  KotokaButton(
+                    label: l10n.welcomeGetStarted,
+                    onPressed: () => context.go('/onboarding/auth'),
+                  ),
+                  const SizedBox(height: KSpacing.sp12),
+                  // "Sign in to account" ghost link
+                  TextButton(
+                    onPressed: () => context.go('/onboarding/auth'),
+                    child: Text(
+                      l10n.welcomeSignIn,
+                      style: KTypography.getStyle(KTextStyle.body, locale)
+                          .copyWith(color: Colors.black54),
+                    ),
+                  ),
+                  const SizedBox(height: KSpacing.sp16),
+                  // Terms caption
+                  Text(
+                    l10n.welcomeTerms,
+                    textAlign: TextAlign.center,
+                    style: KTypography.getStyle(KTextStyle.caption, locale).copyWith(
+                      color: KColors.textDisabled,
+                    ),
+                  ),
+                  // Space for feature cards at bottom
+                  const SizedBox(height: KSpacing.sp96),
+                ],
+              ),
             ),
-            const SizedBox(height: KSpacing.sp12),
-            Text(
-              l10n.tagline,
-              style: KTypography.getStyle(KTextStyle.body, locale)
-                  .copyWith(color: KColors.neutral700),
-              textAlign: TextAlign.center,
+          ),
+
+          // Floating glass feature preview cards — above safe area bottom
+          Positioned(
+            left: KSpacing.sp24,
+            right: KSpacing.sp24,
+            bottom: KSpacing.sp32,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _FeatureCard(
+                  icon: Icons.camera_alt_outlined,
+                  label: l10n.featureSnap,
+                  locale: locale,
+                ),
+                _FeatureCard(
+                  icon: Icons.auto_awesome_outlined,
+                  label: l10n.featureAI,
+                  locale: locale,
+                ),
+                _FeatureCard(
+                  icon: Icons.lock_outlined,
+                  label: l10n.featureVault,
+                  locale: locale,
+                ),
+              ],
             ),
-            const Spacer(flex: 3),
-            KCtaButton(
-              label: l10n.getStarted,
-              onPressed: () => context.go('/onboarding/goal'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _FeatureCard extends StatelessWidget {
+  const _FeatureCard({
+    required this.icon,
+    required this.label,
+    required this.locale,
+  });
+
+  final IconData icon;
+  final String label;
+  final Locale locale;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: KRadius.lg,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        child: Container(
+          padding: const EdgeInsets.all(KSpacing.sp8),
+          decoration: BoxDecoration(
+            color: KColors.neutral0.withValues(alpha: 0.70),
+            borderRadius: KRadius.lg,
+            border: Border.all(
+              color: KColors.neutral0.withValues(alpha: 0.40),
             ),
-            const SizedBox(height: KSpacing.sp16),
-            Text(
-              l10n.welcomeTerms,
-              style: KTypography.getStyle(KTextStyle.caption, locale)
-                  .copyWith(color: KColors.neutral500),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: KSpacing.sp32),
-          ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: KSpacing.sp24, color: KColors.brand500),
+              const SizedBox(height: KSpacing.sp4),
+              Text(
+                label,
+                style: KTypography.getStyle(KTextStyle.label, locale)
+                    .copyWith(color: KColors.neutral900),
+              ),
+            ],
+          ),
         ),
       ),
     );

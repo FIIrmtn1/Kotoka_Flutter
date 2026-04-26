@@ -23,7 +23,7 @@ Kotoka uses a **Cyan-dominant** palette. `#0cf6fc` is the **single dominant bran
 |---|---|---|---|
 | `primary` / `brand-400` | <span style="display:inline-block;width:20px;height:20px;background:#0cf6fc;border-radius:4px;border:1px solid #00d0d4;vertical-align:middle"></span> | `#0cf6fc` | **THE main color** — nav active, streak badges, CTAs, icon tints, glows |
 | `primary-dim` / `brand-500` | <span style="display:inline-block;width:20px;height:20px;background:#00c8cc;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#00c8cc` | Darker teal — progress fill, hover darken on primary |
-| `on-primary` | <span style="display:inline-block;width:20px;height:20px;background:#000000;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#000000` | Dark text on bright cyan (ensures contrast) |
+| `on-primary` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | White text on teal (ensures contrast on #00c8cc) |
 
 <span style="display:inline-block;width:96px;height:64px;background:#0cf6fc;border-radius:10px;margin:3px;border:2px solid #00d0d4" title="PRIMARY #0cf6fc — dominant brand color"></span><span style="display:inline-block;width:64px;height:64px;background:#00c8cc;border-radius:10px;margin:3px" title="primary-dim #00c8cc"></span>
 
@@ -43,14 +43,14 @@ Kotoka uses a **Cyan-dominant** palette. `#0cf6fc` is the **single dominant bran
 
 ---
 
-### Purple / Pink — Buttons, Headings, Accents
+### Purple / Pink — Decorative Accents Only *(not for buttons or CTAs)*
 
 | Token | Preview | Hex | Role |
 |---|---|---|---|
-| `cta` / `brand-700` | <span style="display:inline-block;width:20px;height:20px;background:#682069;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#682069` | Deep purple — **primary action buttons** on white surfaces |
+| `brand-700` | <span style="display:inline-block;width:20px;height:20px;background:#682069;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#682069` | Deep purple — decorative accents, illustrations only — **never buttons** |
 | `heading` / `brand-600` | <span style="display:inline-block;width:20px;height:20px;background:#8c6792;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#8c6792` | Dark purple — section headings, labels, tags |
 | `accent-pink` | <span style="display:inline-block;width:20px;height:20px;background:#ffb6cb;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffb6cb` | Pink — soft badges, card tints, hover tints |
-| `on-cta` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | White — text on purple buttons |
+| `on-cta` | <span style="display:inline-block;width:20px;height:20px;background:#ffffff;border-radius:4px;border:1px solid #ccc;vertical-align:middle"></span> | `#ffffff` | White — text on cyan buttons |
 
 <span style="display:inline-block;width:64px;height:64px;background:#682069;border-radius:10px;margin:3px" title="CTA #682069"></span><span style="display:inline-block;width:64px;height:64px;background:#8c6792;border-radius:10px;margin:3px" title="heading #8c6792"></span><span style="display:inline-block;width:64px;height:64px;background:#ffb6cb;border-radius:10px;margin:3px;border:1px solid #e0a0b8" title="accent-pink #ffb6cb"></span>
 
@@ -93,7 +93,7 @@ Kotoka uses a **Cyan-dominant** palette. `#0cf6fc` is the **single dominant bran
 |---|---|
 | **Nav active, streak, accent icons, glows** | `#0cf6fc` **(PRIMARY — use most, users must see it everywhere)** |
 | Progress fill, hover darken | `#00c8cc` (primary-dim) |
-| Primary CTA button | `#682069` (deep purple) |
+| **Primary CTA button** | `#00c8cc` **(teal — all buttons use this, never purple)** |
 | Section headings, labels, tags | `#8c6792` (heading purple) |
 | Info chips, secondary borders | `#7dd3fc` (light blue) |
 | Subtle container tint, hover bg | `#e0f2fe` (secondary-light) |
@@ -232,36 +232,36 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 
 ## 8. Component Library
 
-> **Color rule:** All interactive and branded components use `#0cf6fc` as the primary color. Use Tailwind arbitrary value `[#0cf6fc]` or map to `primary` token.
+> **Color rule:** All buttons and interactive CTAs use `#00c8cc` (teal). Accent icons, nav active states, and glows use `#0cf6fc`. Never use purple (`#682069`) for any button or CTA.
 
 ### 8.1 Buttons
 
 **Primary CTA:**
 ```html
-<button class="w-full py-md px-xl bg-[#0cf6fc] text-black
+<button class="w-full py-md px-xl bg-[#00c8cc] text-white
                font-label-md text-label-md rounded-xl shadow-lg
-               shadow-[#0cf6fc]/30 hover:brightness-105
+               shadow-[#00c8cc]/30 hover:brightness-105
                active:scale-95 transition-all duration-300">
 ```
 
 **Primary CTA (pill variant):**
 ```html
-<button class="py-md px-xxl bg-[#0cf6fc] text-black
-               font-label-md rounded-full shadow-lg shadow-[#0cf6fc]/30
+<button class="py-md px-xxl bg-[#00c8cc] text-white
+               font-label-md rounded-full shadow-lg shadow-[#00c8cc]/30
                hover:brightness-110 active:scale-95 transition-all">
 ```
 
 **Secondary / Ghost:**
 ```html
-<button class="w-full py-md bg-transparent text-[#0cf6fc]
-               font-label-md rounded-xl border border-[#0cf6fc]/40
-               hover:bg-[#0cf6fc]/5 transition-colors">
+<button class="w-full py-md bg-transparent text-[#00c8cc]
+               font-label-md rounded-xl border border-[#00c8cc]/40
+               hover:bg-[#00c8cc]/5 transition-colors">
 ```
 
 **Outlined:**
 ```html
-<button class="border-2 border-[#0cf6fc] text-[#0cf6fc] w-full py-md
-               rounded-xl font-label-md hover:bg-[#0cf6fc]/10 transition-colors">
+<button class="border-2 border-[#00c8cc] text-[#00c8cc] w-full py-md
+               rounded-xl font-label-md hover:bg-[#00c8cc]/10 transition-colors">
 ```
 
 ### 8.2 Cards
@@ -295,8 +295,8 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 **Active:**
 ```html
 <button class="flex items-center gap-sm px-lg py-md rounded-xl
-               bg-[#0cf6fc] text-black font-label-md shadow-md
-               shadow-[#0cf6fc]/30">
+               bg-[#00c8cc] text-white font-label-md shadow-md
+               shadow-[#00c8cc]/30">
 ```
 
 **Inactive:**
@@ -309,7 +309,7 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 
 **Category filter (pill):**
 ```html
-<button class="flex-shrink-0 bg-[#0cf6fc] text-black
+<button class="flex-shrink-0 bg-[#00c8cc] text-white
                px-lg py-sm rounded-full font-label-md"> <!-- active -->
 <button class="flex-shrink-0 bg-white text-on-surface-variant
                border border-[#0cf6fc]/20 px-lg py-sm rounded-full
@@ -322,7 +322,7 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
 <label class="relative inline-flex items-center cursor-pointer">
   <input type="checkbox" class="sr-only peer" checked />
   <div class="w-11 h-6 bg-slate-200 rounded-full peer
-              peer-checked:bg-[#0cf6fc]
+              peer-checked:bg-[#00c8cc]
               after:content-[''] after:absolute after:top-[2px] after:start-[2px]
               after:bg-white after:border after:rounded-full
               after:h-5 after:w-5 after:transition-all
@@ -338,9 +338,9 @@ A 12-col split: `lg:col-span-5` + `lg:col-span-2` (separator) + `lg:col-span-5`.
   <input type="radio" name="time" class="peer sr-only" />
   <div class="p-lg bg-white border border-slate-200 rounded-xl
               transition-all shadow-sm hover:shadow-md
-              peer-checked:border-[#0cf6fc] peer-checked:border-2
-              peer-checked:ring-2 peer-checked:ring-[#0cf6fc]/20
-              peer-checked:bg-[#0cf6fc]/5">
+              peer-checked:border-[#00c8cc] peer-checked:border-2
+              peer-checked:ring-2 peer-checked:ring-[#00c8cc]/20
+              peer-checked:bg-[#00c8cc]/5">
     <!-- content -->
   </div>
 </label>
@@ -372,8 +372,8 @@ Center overlay: `absolute flex flex-col items-center` with `font-h3` number and 
 ### 8.8 Floating Action Button (FAB)
 
 ```html
-<button class="fixed bottom-24 right-6 w-14 h-14 bg-[#0cf6fc] text-black
-               rounded-full shadow-2xl shadow-[#0cf6fc]/40
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-[#00c8cc] text-white
+               rounded-full shadow-2xl shadow-[#00c8cc]/40
                flex items-center justify-center
                transition-transform active:scale-90 z-40
                hover:brightness-110">
@@ -449,13 +449,13 @@ Center overlay: `absolute flex flex-col items-center` with `font-h3` number and 
 
 ```html
 <!-- Primary badge -->
-<span class="bg-[#0cf6fc] text-black text-xs font-bold
+<span class="bg-[#00c8cc] text-white text-xs font-bold
              px-sm py-xs rounded-full uppercase tracking-wider">
   Active
 </span>
 
 <!-- Outline badge -->
-<span class="border border-[#0cf6fc] text-[#0cf6fc] text-xs font-bold
+<span class="border border-[#00c8cc] text-[#00c8cc] text-xs font-bold
              px-sm py-xs rounded-full uppercase tracking-wider">
   New
 </span>

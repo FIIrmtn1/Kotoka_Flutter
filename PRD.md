@@ -100,8 +100,13 @@ See **DESIGN.md** and **stitch_kotoka_design_builder/STITCH_DESIGN_GUIDE.md** fo
 Key rules:
 - No hardcoded colors, sizes, or spacing anywhere
 - Page background = `KColors.brand50` (#e8e1f0 lavender) on all screens
-- Primary CTA = `KColors.brand700` (#682069 deep purple) with white text
-- Accent / nav active = `KColors.brand400` (#0cf6fc bright cyan)
+- **Primary CTA buttons = `KColors.brand500` (#00c8cc teal) with white text — all buttons use this**
+- Nav active / streaks / glows / icon tints = `KColors.brand400` (#0cf6fc bright cyan)
+- `KColors.brand700` (#682069 purple) = decorative accents and illustrations **only — NEVER buttons**
+- `KColors.brand600` (#8c6792) = section headings, labels, tags
+- Secondary light blue = `#7dd3fc` (info badges), `#e0f2fe` (container tints)
+- Accent pink = `#ffb6cb` (soft badges, card tints)
+- NEVER use `brand400` (#0cf6fc) text on `brand500` (#00c8cc) bg — contrast < 4.5:1
 - Light mode only — no dark mode in production beta
 
 ---

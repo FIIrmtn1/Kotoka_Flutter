@@ -32,7 +32,8 @@
       "Bash(adb shell *)",
       "mcp__android__install_apk",
       "mcp__android__adb_shell",
-      "Bash(flutter install *)"
+      "Bash(flutter install *)",
+      "mcp__android__type_text"
     ]
   },
   "enableAllProjectMcpServers": true,

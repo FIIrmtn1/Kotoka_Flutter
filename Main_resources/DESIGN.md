@@ -970,28 +970,34 @@ Template: CardCenterStage (no navigation chrome)
 Entrance animation: Logo fades in over 600ms (duration-xslow), button slides up from +40px over 400ms after logo appears.
 
 ```
-┌─────────────────────────────────────────────┐
-│                                             │
-│                                             │
-│                                             │
-│              ╔═══════════════╗              │
-│              ║   KOTOKA      ║              │
-│              ║   [logo mark] ║              │
-│              ╚═══════════════╝              │
-│                                             │
-│       "Your life. Your language."           │
-│          (body, neutral-500)                │
-│                                             │
-│                                             │
-│                                             │
-│    ┌─────────────────────────────────────┐  │
-│    │        Get Started  (primary)       │  │
-│    └─────────────────────────────────────┘  │
-│                                             │
-│         Already have an account?            │
-│              Sign In  (ghost)               │
-│                                             │
-└─────────────────────────────────────────────┘
+┌─────────────────────────┐
+│                         │
+│                         │  ← ambient blur orb top-left (primary-container/10)
+│     ╔═══════════╗       │
+│     ║  [KOKO]   ║       │  ← KokoAnimation: koko-wave (128×128, rounded-[40px])
+│     ║  koko-wave║       │     bg-primary-container, shadow-xl
+│     ╚═══════════╝       │
+│                         │
+│        Kotoka           │  ← h1, text-on-surface, tracking-tight
+│                         │
+│  Your serene memory     │  ← body-lg, text-outline, max-w-md
+│  companion. Capture,    │
+│  organize, and relive…  │
+│                         │
+│  ┌─────────────────┐    │
+│  │   Get Started   │    │  ← bg-primary-container, rounded-xl, shadow-lg
+│  └─────────────────┘    │
+│                         │
+│    Sign in to account   │  ← ghost, text-primary, font-label-md
+│                         │
+├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┤  ← gradient-to-t from-background overlay
+│  ┌──────┐ ┌────┐ ┌─────┐│  ← 3 floating glass cards (bg-white/70 blur-xl)
+│  │📷    │ │⭐  │ │🔒   ││
+│  │Snap  │ │AI  │ │Vault││
+│  └──────┘ └────┘ └─────┘│
+│                         │
+│                         │  
+└─────────────────────────┘
 
 Screen bg: brand-50
 Logo color: brand-700
@@ -1005,27 +1011,46 @@ Template: CardCenterStage
 Back button: top-left, Button (icon), navigates to ONB-01
 
 ```
-┌─────────────────────────────────────────────┐
-│   ←                                         │
-│                                             │
-│   "Sign in to start learning"               │
-│   (h2, neutral-900)                         │
-│                                             │
-│   ┌─────────────────────────────────────┐   │
-│   │  [G]  Continue with Google          │   │  ← secondary button style
-│   └─────────────────────────────────────┘   │
-│                                             │
-│   ──────────────── or ────────────────      │
-│   (caption, neutral-300 lines)              │
-│                                             │
-│   ┌─────────────────────────────────────┐   │
-│   │  [🍎]  Continue with Apple           │   │  ← Apple Sign-In (iOS only)
-│   └─────────────────────────────────────┘   │
-│                                             │
-│   By continuing you agree to the            │
-│   Terms of Service and Privacy Policy.      │
-│   (caption, neutral-500, links: brand-600)  │
-└─────────────────────────────────────────────┘
+┌─────────────────────────┐  ← mobile: single column, bg-white
+│  ┌────┐                 │
+│  │[K] │  Kotoka         │  ← mobile only: icon + wordmark (hidden md:hidden)
+│  └────┘                 │     bg-primary-container rounded-xl w-16 h-16
+│                         │
+│  Welcome back           │  ← h2, text-on-surface
+│  Please enter details   │  ← body-md, text-outline
+│                         │
+│  ┌─────────────────────┐│
+│  │ [G]  Continue Google ││  ← outlined, border-outline-variant, rounded-xl
+│  └─────────────────────┘│
+│  ┌─────────────────────┐│
+│  │ [🍎] Continue Apple  ││  ← solid black bg, rounded-xl
+│  └─────────────────────┘│
+│                         │
+│  ─────  or sign in  ────│  ← caption, uppercase, tracking-widest
+│                         │
+│  Email address          │  ← label-md, text-on-surface-variant
+│  ┌─────────────────────┐│
+│  │  name@company.com   ││  ← rounded-xl, focus:ring-2 primary-container/20
+│  └─────────────────────┘│
+│                         │
+│  Password    Forgot? →  │
+│  ┌─────────────────────┐│
+│  │  ••••••••      [👁] ││  ← visibility toggle button absolute right
+│  └─────────────────────┘│
+│                         │
+│  ☑  Remember 30 days    │  ← checkbox, w-5 h-5
+│                         │
+│  ┌─────────────────────┐│
+│  │  Sign in to Kotoka  ││  ← bg-primary-container, font-bold, rounded-xl
+│  └─────────────────────┘│
+│                         │
+│  No account? Sign up →  │  ← body-md, text-primary font-bold
+│                         │
+│  Privacy · Terms        │  ← caption, text-outline, opacity-60
+└─────────────────────────┘
+  Desktop: left half = bg-primary brand panel with blur orbs
+           right half = this form (w-2/5, bg-white)
+  No bottom nav (onboarding)
 
 Note: Apple Sign-In required on iOS for App Store compliance.
 Android: Google only (hide Apple button entirely, not disable).
@@ -1037,35 +1062,43 @@ Template: FullScreenScrollable
 This screen must complete before any Firebase writes occur. `FirebaseFirestore.disableNetwork()` is active until the user taps Accept.
 
 ```
-┌─────────────────────────────────────────────┐
-│   "Before we begin"  (h1)                   │
-│                                             │
-│   Kotoka needs your permission to           │
-│   personalize your learning.                │
-│   (body, neutral-700)                       │
-│                                             │
-│   ┌─────────────────────────────────────┐   │
-│   │  [✓]  Camera & Photos              │   │  ← required, pre-checked, locked
-│   │       To snap your surroundings    │   │
-│   ├─────────────────────────────────────┤   │
-│   │  [✓]  Location                     │   │  ← required, pre-checked, locked
-│   │       For memory map & review      │   │
-│   ├─────────────────────────────────────┤   │
-│   │  [ ]  Microphone                   │   │  ← optional, user-toggleable
-│   │       For pronunciation check      │   │
-│   ├─────────────────────────────────────┤   │
-│   │  [ ]  Analytics                    │   │  ← optional
-│   │       Help us improve Kotoka       │   │
-│   └─────────────────────────────────────┘   │
-│                                             │
-│   Camera and Location are required.         │
-│   Others are optional.                      │
-│   (caption, neutral-500)                    │
-│                                             │
-│   ┌─────────────────────────────────────┐   │
-│   │   Accept & Continue  (primary)      │   │
-│   └─────────────────────────────────────┘   │
-└─────────────────────────────────────────────┘
+┌─────────────────────────┐
+│                         │  ← ambient orbs fixed top-right & bottom-left
+│     ┌───────────┐       │
+│     │  🛡 icon  │       │  ← w-xl h-xl, bg-primary-container/10, rounded-full
+│     └───────────┘       │     icon text-h1 size, text-primary-container
+│                         │
+│   Help Kotoka learn     │  ← h2, text-on-surface, tracking-tight
+│  To provide a seamless  │  ← body-md, text-on-surface-variant, max-w-sm
+│  experience we need a   │
+│  few permissions…       │
+│                         │
+│ ┌───────────────────────┐│
+│ │ ┌──┐ Camera    ••• [●]││  ← white card, border-outline-variant
+│ │ └──┘ Snap memories    ││     toggle ON = peer-checked:bg-primary-container
+│ └───────────────────────┘│
+│ ┌───────────────────────┐│
+│ │ ┌──┐ Location   ••[○] ││  ← toggle OFF
+│ │ └──┘ Geo-tag memories ││
+│ └───────────────────────┘│
+│ ┌───────────────────────┐│
+│ │ ┌──┐ Microphone ••[●] ││
+│ │ └──┘ Voice notes, AI  ││
+│ └───────────────────────┘│
+│ ┌───────────────────────┐│
+│ │ ┌──┐ Notifications [●]││
+│ │ └──┘ Smart reminders  ││
+│ └───────────────────────┘│
+│                          │
+│  ┌──────────────────────┐│
+│  │  Allow Selected      ││  ← primary CTA
+│  └──────────────────────┘│
+│      Maybe Later         │  ← ghost, text-primary
+│                          │
+│  Change anytime in       │  ← caption, text-on-surface-variant
+│  Device Settings →       │
+└──────────────────────────┘
+  No bottom nav (onboarding)
 
 ConsentRecord written to Firestore on tap:
   { version, timestamp, scope[], ip_hash (SHA-256) }
@@ -1094,15 +1127,15 @@ Template: CardCenterStage
 │   └─────────────────────────────────────┘   │
 │                                             │
 │   I want to learn:                          │
-│   ┌───────────┐  ┌────────────┐             │
-│   │  English  │  │  Mandarin  │             │
-│   └───────────┘  └────────────┘             │
-│   ┌───────────┐  ┌────────────┐             │
-│   │  Spanish  │  │ Vietnamese │             │
-│   └───────────┘  └────────────┘             │
-│   ┌───────────┐  ┌────────────┐             │
-│   │    Lao    │  │    Thai    │             │
-│   └───────────┘  └────────────┘             │
+│    ┌─────────────────────────────────────┐  │
+│    │  Thai  (pre-selected from OS lang) ▾│  │  ← LanguagePairBadge dropdown
+│    └─────────────────────────────────────┘  │
+│                                             │
+│                                             │
+│                                             │
+│                                             │
+│                                             │
+│                                             │
 │                                             │
 │   ┌─────────────────────────────────────┐   │
 │   │   Continue  (primary, disabled      │   │
@@ -1121,72 +1154,99 @@ Same-pair (e.g. Thai → Thai) automatically excluded from grid
 Template: FullScreenScrollable
 
 ```
-┌─────────────────────────────────────────────┐
-│   "Your English level"  (h1)                │
-│                                             │
-│   Tap the highest sentence you              │
-│   understand:  (body, neutral-700)          │
-│                                             │
-│   ┌─────────────────────────────────────┐   │
-│   │  A1  Hello. My name is Pam.        │   │
-│   └─────────────────────────────────────┘   │
-│   ┌─────────────────────────────────────┐   │
-│   │  A2  I work at a company.          │   │
-│   └─────────────────────────────────────┘   │
-│   ┌─────────────────────────────────────┐   │  ← selected state: brand-600 border
-│   │  B1  The meeting was rescheduled.  │   │     brand-100 bg fill
-│   └─────────────────────────────────────┘   │
-│   ┌─────────────────────────────────────┐   │
-│   │  B2  Please circulate the agenda   │   │
-│   │      beforehand.                   │   │
-│   └─────────────────────────────────────┘   │
-│   ┌─────────────────────────────────────┐   │
-│   │  C1  The KPIs need to be           │   │
-│   │      benchmarked Q1.               │   │
-│   └─────────────────────────────────────┘   │
-│                                             │
-│   ┌─────────────────────────────────────┐   │
-│   │   This looks right  (primary)       │   │
-│   └─────────────────────────────────────┘   │
-└─────────────────────────────────────────────┘
+> **Template reference:** `stitch_kotoka_design_builder/image.png` (Duolingo-style 2-card path selector)  
+> **Assets:** `kotoka_logo/child_koko_nobg.png` (beginner) · `kotoka_logo/graduate_koko_nobg.png` (experienced)  
 
-Selection clears previous selection (single-select)
-Selected propagates to Gemini system prompt as proficiency hint
+┌─────────────────────────┐
+│ ◀  Kotoka    Step 2 of 4│  ← sticky header, bg-white, shadow-sm
+├─────────────────────────┤  ← bar-style step progress below header
+│ ████████████░░░░░░░░░░░ │     h-1.5, bg-primary (#0cf6fc) fill 50%
+│                         │
+│   Choose your path      │  ← h1, text-on-surface, text-center, tracking-tight
+│  How familiar are you   │  ← body-md, text-heading (#8c6792), text-center
+│  with this language?    │
+│                         │
+│ ┌───────────────────────┐│  ← Card 1: bg-white, border-outline-variant
+│ │                       ││     rounded-xl, p-lg, shadow-sm
+│ │   ┌───────────────┐   ││     hover: border-2 border-primary shadow-md
+│ │   │  child_koko   │   ││  ← child_koko_nobg.png, w-32 h-32, object-contain
+│ │   │   _nobg.png   │   ││     mx-auto mb-md
+│ │   └───────────────┘   ││
+│ │  Learning for the     ││  ← label-md font-bold, text-on-surface, text-center
+│ │  first time?          ││
+│ │  Start from scratch!  ││  ← caption, text-outline, text-center
+│ └───────────────────────┘│
+│                          │
+│ ┌───────────────────────┐│  ← Card 2: same style
+│ │                       ││
+│ │  ┌───────────────┐    ││
+│ │  │ graduate_koko │    ││  ← graduate_koko_nobg.png, w-32 h-32, object-contain
+│ │  │  _nobg.png    │    ││
+│ │  └───────────────┘    ││
+│ │  Already know some?   ││  ← label-md font-bold, text-on-surface, text-center
+│ │  Check your level!    ││  ← caption, text-outline, text-center
+│ └───────────────────────┘│
+│                          │
+│     ○  ━━  ○  ○          │  ← step dots, fixed bottom
+└──────────────────────────┘
+  Selected state (either card):
+    border-2 border-primary (#0cf6fc)
+    bg-primary/5 (#0cf6fc at 5% opacity)
+    ring-2 ring-primary/20
+    shadow-lg
+  No bottom nav (onboarding)
 ```
 
 ### ONB-06: Goal & Time Commitment
 
-Template: CardCenterStage
-
+┌─────────────────────────┐
+│ ◀  Kotoka  ━━━━━━━○     │  ← header + bar-style step progress (3/4 filled)
+├─────────────────────────┤
+│                         │
+│  What's your focus?     │  ← h1, text-on-surface
+│  Set your personalized  │  ← body-lg, text-on-surface-variant
+│  goals and daily rhythm │
+│                         │
+│  Select Goals  Step 1/2 │  ← h2 + badge pill
+│ ┌───────────────────────┐│
+│ │ [🧠 Mental Clarity ✓] ││  ← ACTIVE chip: bg-primary-container
+│ │ [📖 Daily Journaling]  ││  ← inactive: bg-surface-container-low
+│ │ [📷 Visual Memory]     ││
+│ │ [📅 Routine Build ✓]   ││  ← ACTIVE chip
+│ │ [⏳ Past Review]       ││
+│ │ [⚡ Focus Sprints]     ││
+│ └───────────────────────┘│
+│                          │
+│  ┌──────────┐┌──────────┐│  ← 2-col bento insight row
+│  │ 💡       ││ [image]  ││
+│  │ Lucid    ││ Inspiring││
+│  │ Thinking ││ Spaces   ││
+│  └──────────┘└──────────┘│
+│                          │
+│  Commitment    Step 2/2  │  ← h2 + badge pill
+│                          │
+│  ╔═══════════════════════╗│
+│  ║  ╔════╗               ║│  ← KokoAnimation: koko-encourage (small, right)
+│  ║  ║KOKO║  Breezy  ●   ║│     positioned top-right of commitment section
+│  ║  ╚════╝  5-10m/day   ║│
+│  ╚═══════════════════════╝│  ← radio SELECTED: peer-checked:border-primary
+│ ┌───────────────────────┐ │
+│ │  🕐  Steady  15-20m ○ │ │  ← radio inactive
+│ └───────────────────────┘ │
+│ ┌───────────────────────┐ │
+│ │  🏋  Deep Dive 30m+ ○ │ │
+│ └───────────────────────┘ │
+│                           │
+│  ┌─────────────────────┐  │
+│  │  Confirm Selection →│  │  ← bg-primary, rounded-xl
+│  └─────────────────────┘  │
+│  Change goals in settings │  ← caption, text-outline
+└───────────────────────────┘
+  No bottom nav (onboarding)
 ```
-┌─────────────────────────────────────────────┐
-│   "What's your goal?"  (h1)                 │
-│                                             │
-│   [Career / Work]  [Travel]                 │
-│   [Relocation]     [Personal]               │
-│   [Relationship]   [Academic]               │
-│   (TagPill grid, multi-select allowed)      │
-│                                             │
-│   ─────────────────────────────────────     │
-│                                             │
-│   "How much time per day?"  (h2)            │
-│                                             │
-│    5 min     10 min    15 min               │
-│   ┌──────┐  ┌──────┐  ┌──────┐             │
-│   │      │  │  ●   │  │      │             │  ← selection dot inside option
-│   └──────┘  └──────┘  └──────┘             │
-│    20 min    30 min    30+ min              │
-│   ┌──────┐  ┌──────┐  ┌──────┐             │
-│   │      │  │      │  │      │             │
-│   └──────┘  └──────┘  └──────┘             │
-│                                             │
-│   ┌─────────────────────────────────────┐   │
-│   │   Let's start  (primary)            │   │
-│   └─────────────────────────────────────┘   │
-└─────────────────────────────────────────────┘
 
-Goal tags: brand-100 bg by default, brand-700 bg when selected
-Time options: same pattern as proficiency assessment (secondary button, single-select)
+**KokoAnimation** → `koko-encourage` small widget beside the commitment section title — motivates the user to commit to a daily habit.
+
 ```
 
 ### ONB-07: First Snap Prompt
@@ -1195,24 +1255,43 @@ Template: CardCenterStage
 Koko animation: koko-waving.json, size lg (120pt), centered above copy
 
 ```
-┌─────────────────────────────────────────────┐
-│                                             │
-│   "You're all set, {name}."  (h1)           │
-│                                             │
-│   [koko-waving.json — 120pt, lg size]       │
-│                                             │
-│   Now capture your first place.             │
-│   Point your camera anywhere you            │
-│   want to learn words for.                  │
-│   (body, neutral-700, centered)             │
-│                                             │
-│   ┌─────────────────────────────────────┐   │
-│   │  📷  Snap my first place (primary)  │   │
-│   └─────────────────────────────────────┘   │
-│                                             │
-│        or explore the app first             │
-│        (ghost button → navigates to Home)   │
-└─────────────────────────────────────────────┘
+┌─────────────────────────┐
+│                         │
+│   You're all set!       │  ← h1, text-on-surface, tracking-tight
+│   Kotoka is now ready   │  ← body-lg, text-secondary, max-w-md
+│   to help you preserve… │
+│                         │
+│ ┌═══════════════════════╗│
+│ ║                       ║│  ← col-span-8, koko-mascot-bg (radial gradient)
+│ ║   ╔═══════════════╗   ║│     bg: radial-gradient(#e6f9fa → #ffffff)
+│ ║   ║  KOKO MASCOT  ║   ║│
+│ ║   ║ koko-celebrate║   ║│  ← KokoAnimation: koko-celebrate (w-64 h-64)
+│ ║   ║  or koko-wave ║   ║│     drop-shadow-xl, object-contain
+│ ║   ╚═══════════════╝   ║│
+│ ║  🛡 Account Secured   ║│  ← label-md, text-primary-container
+│ ╚═══════════════════════╝│
+│ ┌───────────────────────┐│
+│ │ ⭐ Smart Tags         ││  ← col-span-4, bento-card (border #e5eeff)
+│ │ Koko auto-categorizes ││
+│ └───────────────────────┘│
+│ ┌───────────────────────┐│
+│ │ ☁  Cloud Sync         ││
+│ │ Encrypted, all devices││
+│ └───────────────────────┘│
+│                          │
+│  ┌──────────────────────┐│
+│  │ Snap my first place →││  ← primary CTA, bg-primary-container
+│  └──────────────────────┘│
+│     Take a tour first    │  ← ghost, text-secondary
+│                          │
+│                ┌────────┐│  ← fixed bottom-right toast
+│                │✓ Setup ││    border-l-4 border-primary
+│                └────────┘│
+└──────────────────────────┘
+  No bottom nav (onboarding)
+```
+
+**KokoAnimation** → `koko-celebrate` is the hero of this screen. Centered in the large 8-col bento card on a soft radial teal gradient background. This is the primary celebratory moment in the onboarding flow.
 
 Snap button deep-links to Snap tab, camera mode (SNA-01)
 ```
@@ -1265,34 +1344,55 @@ Banner appears once on next HOM-01 visit after denial. Dismissed permanently on 
 Template: SplitHeaderContent
 
 ```
-┌─────────────────────────────────────────────┐
-│  Good morning, Pam                   🔔     │  ← HomeStreakHeader
-│                                             │
-│  ┌───────────────────────────────────────┐  │
-│  │  🔥 12-day streak                     │  │
-│  │  ████████████░░░░  240 XP today       │  │
-│  └───────────────────────────────────────┘  │
-│                                             │
-│  Due for review ─────────────────────────   │
-│  ┌─────────────────────────────────────┐    │
-│  │  📍 Silom Office  8 words           │    │  ← review card, tappable
-│  │  Review now →                       │    │
-│  └─────────────────────────────────────┘    │
-│                                             │
-│  Today's missions ──────────────────── ▼    │  ← collapsible section
-│  ┌────────────────┐  ┌────────────────┐     │
-│  │ MissionCard    │  │ MissionCard    │     │  ← 2-column grid
-│  │ 📷 Snap place  │  │ ✅ Session ×1  │     │
-│  │ [    ]  +50 XP │  │ [████]  ✓      │     │
-│  └────────────────┘  └────────────────┘     │
-│                                             │
-│  ┌─────────────────────────────────────┐    │
-│  │  Memory Map  [mini map thumbnail]   │    │  ← MemoryMapView compact
-│  │  3 pins near you                    │    │
-│  └─────────────────────────────────────┘    │
-│                                             │
-│  [Home]  [Snap]  [Review]  [Shop]  [Me]     │  ← BottomTabBar
-└─────────────────────────────────────────────┘
+┌─────────────────────────┐
+│ ☰   Kotoka         🔔   │  ← sticky header, bg-white, shadow-sm
+├─────────────────────────┤
+│ ┌═══════════════════════╗│
+│ ║ 🔥 12 DAY STREAK      ║│  ← bg-primary-container, rounded-xl, p-xl
+│ ║                       ║│     text: text-on-primary-container
+│ ║  Keep the fire        ║│
+│ ║  burning, Aiden.      ║│  ← h1/h2, leading-tight
+│ ║                       ║│
+│ ║  Your lucidity is at  ║│  ← body-lg, opacity-90
+│ ║  an all-time high…    ║│
+│ ║         ╭────────╮    ║│
+│ ║         │  85%   │    ║│  ← SVG progress ring, w-32 h-32
+│ ║         │  Daily │    ║│     stroke white/20 track + white progress
+│ ║         ╰────────╯    ║│
+│ ╚═══════════════════════╝│
+│                          │
+│  Daily Missions  View →  │  ← h3 + text-primary chevron link
+│ ┌───────────────┐ ┌─────┐│
+│ │ 📷 Visual     │ │[img]││  ← 2-col bento: md:col-span-2 + md:col-span-1
+│ │   Anchor      │ │     ││     main card: bg-white, icon + title + body
+│ │               │ │Grat.││     secondary: bg-surface-container-low + image hdr
+│ │ [avatar] +12  │ │     ││
+│ │ [Complete →]  │ │Resum││
+│ └───────────────┘ └─────┘│
+│                          │
+│  Spatial Archive         │  ← h3 + filter/location icon buttons
+│  Memories anchored…      │  ← caption, text-on-surface-variant
+│ ┌────────────────────────┐│
+│ │  [MAP IMAGE]    ❤ 📍  ││  ← h-[400px], relative, border-outline-variant
+│ │                        ││     markers: bg-primary / bg-tertiary rounded-full
+│ │    hover → [label]     ││     hover label: bg-white shadow-xl rounded-lg
+│ │           ┌──────────┐ ││
+│ │           │[img] Pk  │ ││  ← floating glass card: bg-white/90 blur-md
+│ │           │2 nearby  │ ││
+│ │           └──────────┘ ││
+│ └────────────────────────┘│
+│                          │
+│ ┌──────┐┌──────┐┌──────┐┌┐│  ← 4-col stat tiles, bg-white, text-primary h2
+│ │1,284 ││  92% ││  14  ││42│
+│ │Mem.  ││Focus ││Cities││Cn│
+│ └──────┘└──────┘└──────┘└┘│
+│                        ⊕  │  ← FAB: fixed bottom-24 right-6, bg-primary
+├─────────────────────────┤
+│ [🏠]  📷    🧠    🛍   👤│  ← Home tab active (bg-cyan-50 rounded-xl capsule)
+└─────────────────────────┘
+```
+
+**KokoAnimation** → `koko-idle` or `koko-encourage` as a small (64×64) widget tucked into the right side of the streak hero banner — gives the card personality and reinforces the Kotoka mascot identity during daily engagement.
 
 Review card: tapping navigates to REV-01 with those words pre-loaded
 Memory Map compact: tapping expands to PRO-02 full-screen map

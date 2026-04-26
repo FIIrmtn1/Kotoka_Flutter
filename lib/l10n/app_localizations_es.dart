@@ -406,7 +406,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get snapTabGps => 'GPS';
 
   @override
-  String get snapCameraViewfinder => 'Visor de cámara';
+  String get snapCameraViewfinder => 'Apunta a texto · menús · señales';
 
   @override
   String get snapTextPrompt =>
@@ -633,4 +633,282 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get reviewIncludesSpeaking => 'Incluye práctica oral';
+
+  @override
+  String get pdpaAgreeAndContinue => 'Aceptar y continuar';
+
+  @override
+  String get onbMissionCta => '¡Vamos!';
+
+  @override
+  String get snapFlash => 'Flash';
+
+  @override
+  String get snapGrid => 'Cuadrícula';
+
+  @override
+  String get kokoWavingSemantics => 'Koko saludando con la mano';
+
+  @override
+  String get kokoMascotSemantics => 'Mascota Koko';
+
+  @override
+  String get permissionNotifications => 'Notificaciones';
+
+  @override
+  String get permissionNotificationsReason =>
+      'Mantente constante con recordatorios diarios y avisos de racha';
+
+  @override
+  String get summaryTitle => '¡Todo listo!';
+
+  @override
+  String get summarySubtitle =>
+      'Kotoka está listo para ayudarte a construir tu vocabulario.';
+
+  @override
+  String get summaryAccountSecured => 'Account Secured';
+
+  @override
+  String get summaryAccountSecuredDesc => 'Your data is encrypted and safe.';
+
+  @override
+  String get summarySmartTags => 'Smart Tags';
+
+  @override
+  String get summarySmartTagsDesc => 'Koko auto-categorizes your vocabulary.';
+
+  @override
+  String get summaryCloudSync => 'Cloud Sync';
+
+  @override
+  String get summaryCloudSyncDesc => 'Encrypted backup across all devices.';
+
+  @override
+  String get summarySnapCta => 'Fotografía mi primer lugar';
+
+  @override
+  String get summaryTourLink => 'Ver el tutorial primero';
+
+  @override
+  String get summarySetupToast => 'Configuración completa';
+
+  @override
+  String get summaryKokoSemantics =>
+      'Koko celebra la finalización de tu configuración';
+
+  @override
+  String get goalWhatYoullLearn => 'What you\'ll learn:';
+
+  @override
+  String get goalSampleWords =>
+      'café · meeting · contract · invoice · deadline';
+
+  @override
+  String get levelSampleLabel => 'Sample:';
+
+  @override
+  String get levelSampleText => 'Hello · Thank you · Good morning';
+
+  @override
+  String get profileSettingsSection => 'Configuración';
+
+  @override
+  String get profileAppVersion => 'Versión 1.0.0';
+
+  @override
+  String get profileNotifications => 'Recordatorios diarios';
+
+  @override
+  String get profileSendFeedback => 'Enviar comentarios';
+
+  @override
+  String get profileSignOut => 'Cerrar sesión';
+
+  @override
+  String get profileChangeLanguage => 'Cambiar idioma';
+
+  @override
+  String get shopGetFreePack => 'Obtener paquete gratis';
+
+  @override
+  String get reviewCompleteSubtitle => '¡Buen trabajo! Sigue así.';
+
+  @override
+  String get reviewCompleteStatCards => 'Tarjetas';
+
+  @override
+  String get reviewCompleteStatAccuracy => 'Precisión';
+
+  @override
+  String get reviewCompleteStatXp => 'XP ganado';
+
+  @override
+  String get reviewConversationTitle => 'Práctica de conversación';
+
+  @override
+  String get reviewFillBlankHint => 'Escribe tu respuesta...';
+
+  @override
+  String get reviewFillBlankAnswer => 'Respuesta';
+
+  @override
+  String get reviewFillBlankHintBtn => 'Pista';
+
+  @override
+  String get reviewFillBlankNext => 'Siguiente';
+
+  @override
+  String get reviewFillBlankCheck => 'Comprobar';
+
+  @override
+  String get welcomeSignIn => 'Iniciar sesión';
+
+  @override
+  String get featureSnap => 'Snap';
+
+  @override
+  String get featureAI => 'AI';
+
+  @override
+  String get featureVault => 'Bóveda';
+
+  @override
+  String get authTitle => 'Bienvenido a Kotoka';
+
+  @override
+  String get authGoogle => 'Continuar con Google';
+
+  @override
+  String get authEmail => 'Correo electrónico';
+
+  @override
+  String get authPassword => 'Contraseña';
+
+  @override
+  String get authSignIn => 'Iniciar sesión en Kotoka';
+
+  @override
+  String get authNoAccount => '¿Sin cuenta? Regístrate →';
+
+  @override
+  String get authPrivacyTerms => 'Privacy · Terms';
+
+  @override
+  String get authOr => 'o';
+
+  @override
+  String get pdpaNewTitle => 'Ayuda a Kotoka a aprender';
+
+  @override
+  String get pdpaNewSubtitle =>
+      'Para una experiencia perfecta necesitamos algunos permisos.';
+
+  @override
+  String get pdpaCameraDesc => 'Captura recuerdos';
+
+  @override
+  String get pdpaLocationLabel => 'Ubicación';
+
+  @override
+  String get pdpaLocationDesc => 'Etiquetar recuerdos con ubicación';
+
+  @override
+  String get pdpaMicrophoneLabel => 'Micrófono';
+
+  @override
+  String get pdpaMicrophoneDesc => 'Notas de voz, IA';
+
+  @override
+  String get pdpaNotificationsDesc => 'Recordatorios inteligentes';
+
+  @override
+  String get pdpaAllow => 'Permitir seleccionados';
+
+  @override
+  String get pdpaMaybeLater => 'Quizás más tarde';
+
+  @override
+  String get pdpaSettings => 'Cambiar en Configuración del dispositivo →';
+
+  @override
+  String get assessTitle => 'Elige tu camino';
+
+  @override
+  String get assessSubtitle => '¿Qué tan familiar eres con este idioma?';
+
+  @override
+  String get assessBeginner => '¿Aprendiendo por primera vez?';
+
+  @override
+  String get assessBeginnerSub => '¡Empieza desde cero!';
+
+  @override
+  String get assessExperienced => '¿Ya sabes algo?';
+
+  @override
+  String get assessExperiencedSub => '¡Verifica tu nivel!';
+
+  @override
+  String get assessStep => 'Paso 2 de 4';
+
+  @override
+  String get goalFocusTitle => '¿Cuál es tu enfoque?';
+
+  @override
+  String get goalFocusSubtitle => 'Establece tus metas y ritmo diario';
+
+  @override
+  String get goalSelectGoals => 'Seleccionar metas';
+
+  @override
+  String get goalStep1 => 'Step 1/2';
+
+  @override
+  String get goalStep2 => 'Step 2/2';
+
+  @override
+  String get goalCommitment => 'Compromiso';
+
+  @override
+  String get goalBreezy => 'Suave';
+
+  @override
+  String get goalBreezyTime => '5–10 min/day';
+
+  @override
+  String get goalSteady => 'Constante';
+
+  @override
+  String get goalSteadyTime => '15–20 min/day';
+
+  @override
+  String get goalDeepDive => 'Inmersión';
+
+  @override
+  String get goalDeepDiveTime => '30+ min/day';
+
+  @override
+  String get goalConfirm => 'Confirmar selección';
+
+  @override
+  String get goalChangeSettings => 'Cambiar metas en configuración';
+
+  @override
+  String get reviewFlashcardMode => 'Tarjeta';
+
+  @override
+  String get reviewFlashcardDesc => 'Voltear y valorar';
+
+  @override
+  String get reviewFillMode => 'Completar';
+
+  @override
+  String get reviewFillDesc => 'Escribe la palabra';
+
+  @override
+  String get reviewConvMode => 'Conversación';
+
+  @override
+  String get reviewConvDesc => 'Practicar hablar';
 }

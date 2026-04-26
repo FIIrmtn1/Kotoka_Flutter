@@ -826,10 +826,10 @@ abstract class AppLocalizations {
   /// **'GPS'**
   String get snapTabGps;
 
-  /// Placeholder text inside camera viewfinder
+  /// Instructive hint inside camera viewfinder
   ///
   /// In en, this message translates to:
-  /// **'Camera viewfinder'**
+  /// **'Point at text · menus · signs'**
   String get snapCameraViewfinder;
 
   /// Prompt above text input in snap text mode
@@ -1245,6 +1245,552 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Includes speaking practice'**
   String get reviewIncludesSpeaking;
+
+  /// Primary CTA on PDPA consent screen
+  ///
+  /// In en, this message translates to:
+  /// **'Agree & Continue'**
+  String get pdpaAgreeAndContinue;
+
+  /// CTA on ONB-09 mission intro screen
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s go!'**
+  String get onbMissionCta;
+
+  /// Flash toggle label in snap advanced panel
+  ///
+  /// In en, this message translates to:
+  /// **'Flash'**
+  String get snapFlash;
+
+  /// Grid toggle label in snap advanced panel
+  ///
+  /// In en, this message translates to:
+  /// **'Grid'**
+  String get snapGrid;
+
+  /// Accessibility semantics label for Koko waving animation
+  ///
+  /// In en, this message translates to:
+  /// **'Koko waving hello'**
+  String get kokoWavingSemantics;
+
+  /// Accessibility semantics label for Koko mascot on home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Koko mascot'**
+  String get kokoMascotSemantics;
+
+  /// Notifications permission label on PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get permissionNotifications;
+
+  /// Reason for notifications permission on PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Stay on track with daily reminders and streak nudges'**
+  String get permissionNotificationsReason;
+
+  /// ONB-07 summary screen headline
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re all set!'**
+  String get summaryTitle;
+
+  /// ONB-07 summary screen subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Kotoka is now ready to help you build your vocabulary.'**
+  String get summarySubtitle;
+
+  /// Account secured badge label in hero card
+  ///
+  /// In en, this message translates to:
+  /// **'Account Secured'**
+  String get summaryAccountSecured;
+
+  /// Account secured badge description
+  ///
+  /// In en, this message translates to:
+  /// **'Your data is encrypted and safe.'**
+  String get summaryAccountSecuredDesc;
+
+  /// Smart tags feature card title
+  ///
+  /// In en, this message translates to:
+  /// **'Smart Tags'**
+  String get summarySmartTags;
+
+  /// Smart tags feature card description
+  ///
+  /// In en, this message translates to:
+  /// **'Koko auto-categorizes your vocabulary.'**
+  String get summarySmartTagsDesc;
+
+  /// Cloud sync feature card title
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud Sync'**
+  String get summaryCloudSync;
+
+  /// Cloud sync feature card description
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypted backup across all devices.'**
+  String get summaryCloudSyncDesc;
+
+  /// Primary CTA on summary screen
+  ///
+  /// In en, this message translates to:
+  /// **'Snap my first place'**
+  String get summarySnapCta;
+
+  /// Ghost secondary link on summary screen
+  ///
+  /// In en, this message translates to:
+  /// **'Take a tour first'**
+  String get summaryTourLink;
+
+  /// Bottom-right toast on summary screen
+  ///
+  /// In en, this message translates to:
+  /// **'Setup complete'**
+  String get summarySetupToast;
+
+  /// Accessibility label for Koko animation on summary screen
+  ///
+  /// In en, this message translates to:
+  /// **'Koko celebrating your setup completion'**
+  String get summaryKokoSemantics;
+
+  /// Label above sample word chips on goal select screen
+  ///
+  /// In en, this message translates to:
+  /// **'What you\'ll learn:'**
+  String get goalWhatYoullLearn;
+
+  /// Sample words preview on goal select screen
+  ///
+  /// In en, this message translates to:
+  /// **'café · meeting · contract · invoice · deadline'**
+  String get goalSampleWords;
+
+  /// Label before sample text on level select screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sample:'**
+  String get levelSampleLabel;
+
+  /// Sample vocabulary preview on level select screen
+  ///
+  /// In en, this message translates to:
+  /// **'Hello · Thank you · Good morning'**
+  String get levelSampleText;
+
+  /// No description provided for @profileSettingsSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get profileSettingsSection;
+
+  /// No description provided for @profileAppVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Version 1.0.0'**
+  String get profileAppVersion;
+
+  /// No description provided for @profileNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Reminders'**
+  String get profileNotifications;
+
+  /// No description provided for @profileSendFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Feedback'**
+  String get profileSendFeedback;
+
+  /// No description provided for @profileSignOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get profileSignOut;
+
+  /// No description provided for @profileChangeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get profileChangeLanguage;
+
+  /// No description provided for @shopGetFreePack.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Free Pack'**
+  String get shopGetFreePack;
+
+  /// No description provided for @reviewCompleteSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Great work! Keep it up.'**
+  String get reviewCompleteSubtitle;
+
+  /// No description provided for @reviewCompleteStatCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards'**
+  String get reviewCompleteStatCards;
+
+  /// No description provided for @reviewCompleteStatAccuracy.
+  ///
+  /// In en, this message translates to:
+  /// **'Accuracy'**
+  String get reviewCompleteStatAccuracy;
+
+  /// No description provided for @reviewCompleteStatXp.
+  ///
+  /// In en, this message translates to:
+  /// **'XP Earned'**
+  String get reviewCompleteStatXp;
+
+  /// No description provided for @reviewConversationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Conversation Practice'**
+  String get reviewConversationTitle;
+
+  /// No description provided for @reviewFillBlankHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your answer...'**
+  String get reviewFillBlankHint;
+
+  /// No description provided for @reviewFillBlankAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer'**
+  String get reviewFillBlankAnswer;
+
+  /// No description provided for @reviewFillBlankHintBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Hint'**
+  String get reviewFillBlankHintBtn;
+
+  /// No description provided for @reviewFillBlankNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get reviewFillBlankNext;
+
+  /// No description provided for @reviewFillBlankCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Check'**
+  String get reviewFillBlankCheck;
+
+  /// Ghost link below Get Started on welcome screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to account'**
+  String get welcomeSignIn;
+
+  /// Feature preview card label on welcome screen
+  ///
+  /// In en, this message translates to:
+  /// **'Snap'**
+  String get featureSnap;
+
+  /// Feature preview card label on welcome screen
+  ///
+  /// In en, this message translates to:
+  /// **'AI'**
+  String get featureAI;
+
+  /// Feature preview card label on welcome screen
+  ///
+  /// In en, this message translates to:
+  /// **'Vault'**
+  String get featureVault;
+
+  /// Auth screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Kotoka'**
+  String get authTitle;
+
+  /// Google sign-in button
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get authGoogle;
+
+  /// Email field label
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get authEmail;
+
+  /// Password field label
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get authPassword;
+
+  /// Primary sign-in CTA
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to Kotoka'**
+  String get authSignIn;
+
+  /// Sign up link on auth screen
+  ///
+  /// In en, this message translates to:
+  /// **'No account? Sign up →'**
+  String get authNoAccount;
+
+  /// Privacy and terms caption on auth screen
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy · Terms'**
+  String get authPrivacyTerms;
+
+  /// Divider label between Google and email sign-in
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get authOr;
+
+  /// Redesigned PDPA screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Help Kotoka learn'**
+  String get pdpaNewTitle;
+
+  /// Redesigned PDPA screen subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'To provide a seamless experience we need a few permissions.'**
+  String get pdpaNewSubtitle;
+
+  /// Camera permission description on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Snap memories'**
+  String get pdpaCameraDesc;
+
+  /// Location permission label on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get pdpaLocationLabel;
+
+  /// Location permission description on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Geo-tag memories'**
+  String get pdpaLocationDesc;
+
+  /// Microphone permission label on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Microphone'**
+  String get pdpaMicrophoneLabel;
+
+  /// Microphone permission description on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Voice notes, AI'**
+  String get pdpaMicrophoneDesc;
+
+  /// Notifications permission description on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Smart reminders'**
+  String get pdpaNotificationsDesc;
+
+  /// Allow selected permissions CTA on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Selected'**
+  String get pdpaAllow;
+
+  /// Maybe later ghost button on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Maybe Later'**
+  String get pdpaMaybeLater;
+
+  /// Caption below CTA on redesigned PDPA screen
+  ///
+  /// In en, this message translates to:
+  /// **'Change anytime in Device Settings →'**
+  String get pdpaSettings;
+
+  /// Proficiency assessment screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your path'**
+  String get assessTitle;
+
+  /// Proficiency assessment screen subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'How familiar are you with this language?'**
+  String get assessSubtitle;
+
+  /// Beginner path card title
+  ///
+  /// In en, this message translates to:
+  /// **'Learning for the first time?'**
+  String get assessBeginner;
+
+  /// Beginner path card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Start from scratch!'**
+  String get assessBeginnerSub;
+
+  /// Experienced path card title
+  ///
+  /// In en, this message translates to:
+  /// **'Already know some?'**
+  String get assessExperienced;
+
+  /// Experienced path card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Check your level!'**
+  String get assessExperiencedSub;
+
+  /// Step indicator on proficiency assessment screen
+  ///
+  /// In en, this message translates to:
+  /// **'Step 2 of 4'**
+  String get assessStep;
+
+  /// Goal commitment screen title
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s your focus?'**
+  String get goalFocusTitle;
+
+  /// Goal commitment screen subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Set your personalized goals and daily rhythm'**
+  String get goalFocusSubtitle;
+
+  /// Goals section heading on goal commitment screen
+  ///
+  /// In en, this message translates to:
+  /// **'Select Goals'**
+  String get goalSelectGoals;
+
+  /// Step badge on goal commitment screen
+  ///
+  /// In en, this message translates to:
+  /// **'Step 1/2'**
+  String get goalStep1;
+
+  /// Step badge on goal commitment screen
+  ///
+  /// In en, this message translates to:
+  /// **'Step 2/2'**
+  String get goalStep2;
+
+  /// Commitment section heading on goal commitment screen
+  ///
+  /// In en, this message translates to:
+  /// **'Commitment'**
+  String get goalCommitment;
+
+  /// Breezy time commitment label
+  ///
+  /// In en, this message translates to:
+  /// **'Breezy'**
+  String get goalBreezy;
+
+  /// Breezy time commitment duration
+  ///
+  /// In en, this message translates to:
+  /// **'5–10 min/day'**
+  String get goalBreezyTime;
+
+  /// Steady time commitment label
+  ///
+  /// In en, this message translates to:
+  /// **'Steady'**
+  String get goalSteady;
+
+  /// Steady time commitment duration
+  ///
+  /// In en, this message translates to:
+  /// **'15–20 min/day'**
+  String get goalSteadyTime;
+
+  /// Deep Dive time commitment label
+  ///
+  /// In en, this message translates to:
+  /// **'Deep Dive'**
+  String get goalDeepDive;
+
+  /// Deep Dive time commitment duration
+  ///
+  /// In en, this message translates to:
+  /// **'30+ min/day'**
+  String get goalDeepDiveTime;
+
+  /// Confirm selection CTA on goal commitment screen
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Selection'**
+  String get goalConfirm;
+
+  /// Caption below CTA on goal commitment screen
+  ///
+  /// In en, this message translates to:
+  /// **'Change goals in settings'**
+  String get goalChangeSettings;
+
+  /// Flashcard mode card title on review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Flashcard'**
+  String get reviewFlashcardMode;
+
+  /// Flashcard mode card description
+  ///
+  /// In en, this message translates to:
+  /// **'Flip & rate'**
+  String get reviewFlashcardDesc;
+
+  /// Fill-in-blank mode card title on review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Fill-in-blank'**
+  String get reviewFillMode;
+
+  /// Fill-in-blank mode card description
+  ///
+  /// In en, this message translates to:
+  /// **'Type the word'**
+  String get reviewFillDesc;
+
+  /// Conversation mode card title on review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Conversation'**
+  String get reviewConvMode;
+
+  /// Conversation mode card description
+  ///
+  /// In en, this message translates to:
+  /// **'Practice speaking'**
+  String get reviewConvDesc;
 }
 
 class _AppLocalizationsDelegate

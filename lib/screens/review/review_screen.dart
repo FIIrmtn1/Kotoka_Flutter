@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:kotoka_app/core/providers/due_cards_provider.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
-import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 import 'package:kotoka_app/core/widgets/k_card.dart';
+import 'package:kotoka_app/core/widgets/k_scaffold.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
-import 'package:kotoka_app/screens/review/review_flashcard_screen.dart';
 
-// REV-01 — Review Session Intro Screen
-// Mock data tagged //MOCKDATA
+// =============================================================================
+// ReviewScreen — session intro. Shows due count + estimated time.
+// Estimated time: dueCount * 30 seconds //MOCKDATA
+// =============================================================================
 
 class ReviewScreen extends ConsumerWidget {
   const ReviewScreen({super.key});
@@ -17,80 +19,208 @@ class ReviewScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
+    final dueCount = ref.watch(dueCardsCountProvider);
+    // Estimated time in minutes (30 s per card) //MOCKDATA
+    final estimatedMinutes = ((dueCount * 30) / 60).ceil(); //MOCKDATA
 
-    return KStitchScaffold(
-      body: SafeArea(
-        bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.all(KSpacing.sp24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Title row with skip button
-              Row(
+    return KScaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          l10n.reviewTitle,
+          style: KTypography.getStyle(KTextStyle.h4, locale)
+              .copyWith(color: KColors.neutral900),
+        ),
+        centerTitle: false,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: KSpacing.sp24, vertical: KSpacing.sp8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Session card
+            KCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Text(
-                      l10n.reviewTitle,
-                      style: KTypography.getStyle(KTextStyle.h3, locale)
-                          .copyWith(color: KColors.neutral900),
-                    ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          color: KColors.brand500.withValues(alpha: 0.12),
+                          borderRadius: KRadius.md,
+                        ),
+                        child: const Icon(Icons.layers_rounded,
+                            color: KColors.brand500, size: 26),
+                      ),
+                      const SizedBox(width: KSpacing.sp16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              l10n.reviewTitle,
+                              style: KTypography.getStyle(KTextStyle.h4, locale)
+                                  .copyWith(color: KColors.neutral900),
+                            ),
+                            const SizedBox(height: KSpacing.sp4),
+                            Text(
+                              l10n.reviewWordsDue(dueCount, estimatedMinutes),
+                              style: KTypography.getStyle(
+                                      KTextStyle.bodySmall, locale)
+                                  .copyWith(color: KColors.brand500),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.arrow_forward, color: KColors.neutral400),
-                    onPressed: () => Navigator.of(context).pop(),
-                    tooltip: 'Skip',
+                  const SizedBox(height: KSpacing.sp16),
+                  // Speaking practice chip
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: KSpacing.sp12, vertical: KSpacing.sp4),
+                    decoration: BoxDecoration(
+                      color: KColors.sky100,
+                      borderRadius: KRadius.full,
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.mic_rounded,
+                            size: 14, color: KColors.info500),
+                        const SizedBox(width: KSpacing.sp4),
+                        Text(
+                          l10n.reviewIncludesSpeaking,
+                          style: KTypography.getStyle(KTextStyle.label, locale)
+                              .copyWith(color: KColors.info500),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: KSpacing.sp16),
+            ),
+            const SizedBox(height: KSpacing.sp24),
 
-              // Session card
-              _SessionCard(l10n: l10n, locale: locale),
-              const SizedBox(height: KSpacing.sp24),
+            // Tips card
+            KCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.reviewTipsHeading,
+                    style: KTypography.getStyle(KTextStyle.h4, locale)
+                        .copyWith(color: KColors.brand600),
+                  ),
+                  const SizedBox(height: KSpacing.sp12),
+                  _TipRow(text: l10n.reviewTip1),
+                  const SizedBox(height: KSpacing.sp8),
+                  _TipRow(text: l10n.reviewTip2),
+                  const SizedBox(height: KSpacing.sp8),
+                  _TipRow(text: l10n.reviewTip3),
+                ],
+              ),
+            ),
+            const SizedBox(height: KSpacing.sp8),
 
-              // Progress indicator 0/8
-              ClipRRect(
-                borderRadius: KRadius.full,
-                child: const LinearProgressIndicator(
-                  value: 0.0, //MOCKDATA
-                  minHeight: KSpacing.sp8,
-                  backgroundColor: KColors.neutral200,
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(KColors.brand400),
+            // Mode selection cards
+            _ModeCard(
+              icon: Icons.style_outlined,
+              title: l10n.reviewFlashcardMode,
+              subtitle: l10n.reviewFlashcardDesc,
+              onTap: () => context.push('/review/flashcard'),
+              locale: locale,
+            ),
+            const SizedBox(height: KSpacing.sp8),
+            _ModeCard(
+              icon: Icons.edit_outlined,
+              title: l10n.reviewFillMode,
+              subtitle: l10n.reviewFillDesc,
+              onTap: () => context.push('/review/fillblank'),
+              locale: locale,
+            ),
+            const SizedBox(height: KSpacing.sp8),
+            _ModeCard(
+              icon: Icons.chat_bubble_outline,
+              title: l10n.reviewConvMode,
+              subtitle: l10n.reviewConvDesc,
+              onTap: () => context.push('/review/conversation'),
+              locale: locale,
+            ),
+            const SizedBox(height: KSpacing.sp24),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ModeCard extends StatelessWidget {
+  const _ModeCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+    required this.locale,
+  });
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+  final Locale locale;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: KColors.neutral0,
+      borderRadius: KRadius.lg,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: KRadius.lg,
+        child: Container(
+          padding: const EdgeInsets.all(KSpacing.sp16),
+          decoration: BoxDecoration(
+            borderRadius: KRadius.lg,
+            boxShadow: KElevation.shadow1,
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: KSpacing.sp40,
+                height: KSpacing.sp40,
+                decoration: BoxDecoration(
+                  color: KColors.brand500.withValues(alpha: 0.12),
+                  borderRadius: KRadius.md,
+                ),
+                child: Icon(icon, color: KColors.brand500, size: KSpacing.sp20),
+              ),
+              const SizedBox(width: KSpacing.sp12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: KTypography.getStyle(KTextStyle.h4, locale)
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: KSpacing.sp2),
+                    Text(
+                      subtitle,
+                      style: KTypography.getStyle(KTextStyle.caption, locale)
+                          .copyWith(color: KColors.textSecondary),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: KSpacing.sp8),
-              Text(
-                l10n.reviewProgressOf(0, 8), //MOCKDATA
-                style: KTypography.getStyle(KTextStyle.caption, locale),
-              ),
-
-              const SizedBox(height: KSpacing.sp24),
-
-              // Motivational tips card
-              _ReviewTipsCard(l10n: l10n, locale: locale),
-
-              const Spacer(),
-
-              KCtaButton(
-                label: l10n.reviewStartSession,
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (_) => const ReviewFlashcardScreen()),
-                  );
-                },
-              ),
-              const SizedBox(height: KSpacing.sp12),
-              KGhostButton(
-                label: l10n.reviewQuickMode, //MOCKDATA
-                onPressed: () {},
-              ),
-
-              SizedBox(
-                  height: MediaQuery.of(context).padding.bottom +
-                      KSpacing.sp16),
+              const Icon(Icons.chevron_right_rounded,
+                  color: KColors.brand500, size: 22),
             ],
           ),
         ),
@@ -99,156 +229,32 @@ class ReviewScreen extends ConsumerWidget {
   }
 }
 
-class _SessionCard extends StatelessWidget {
-  const _SessionCard({required this.l10n, required this.locale});
-
-  final AppLocalizations l10n;
-  final Locale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    return KCard(
-      padding: const EdgeInsets.all(KSpacing.sp16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.reviewWordsDue(8, 10), //MOCKDATA
-            style: KTypography.getStyle(KTextStyle.h4, locale)
-                .copyWith(color: KColors.neutral900),
-          ),
-          const SizedBox(height: KSpacing.sp16),
-          const Divider(color: KColors.neutral200, height: 1),
-          const SizedBox(height: KSpacing.sp12),
-          const _LocationRow(
-              icon: Icons.location_on_outlined,
-              label: 'Silom Office', //MOCKDATA
-              count: 5), //MOCKDATA
-          const SizedBox(height: KSpacing.sp8),
-          const _LocationRow(
-              icon: Icons.location_on_outlined,
-              label: 'Café Amazon', //MOCKDATA
-              count: 3), //MOCKDATA
-          const SizedBox(height: KSpacing.sp12),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: KSpacing.sp8,
-              vertical: KSpacing.sp4,
-            ),
-            decoration: BoxDecoration(
-              color: KColors.brand500.withValues(alpha: 0.10),
-              borderRadius: KRadius.full,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.mic_outlined, size: 14, color: KColors.brand500),
-                const SizedBox(width: KSpacing.sp4),
-                Text(
-                  l10n.reviewIncludesSpeaking,
-                  style: KTypography.getStyle(KTextStyle.caption, locale)
-                      .copyWith(color: KColors.brand500, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _ReviewTipsCard — fills dead space with useful spaced-repetition context
-// ---------------------------------------------------------------------------
-class _ReviewTipsCard extends StatelessWidget {
-  const _ReviewTipsCard({required this.l10n, required this.locale});
-  final AppLocalizations l10n;
-  final Locale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final tips = [
-      ('🧠', l10n.reviewTip1),
-      ('⏱️', l10n.reviewTip2),
-      ('📈', l10n.reviewTip3),
-    ];
-    return KCard(
-      padding: const EdgeInsets.all(KSpacing.sp16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.reviewTipsHeading,
-            style: KTypography.getStyle(KTextStyle.label, locale).copyWith(
-              color: KColors.brand500,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0,
-            ),
-          ),
-          const SizedBox(height: KSpacing.sp12),
-          ...tips.map((t) => Padding(
-                padding: const EdgeInsets.only(bottom: KSpacing.sp8),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(t.$1, style: const TextStyle(fontSize: 16)),
-                    const SizedBox(width: KSpacing.sp8),
-                    Expanded(
-                      child: Text(
-                        t.$2,
-                        style: KTypography.getStyle(KTextStyle.caption, locale)
-                            .copyWith(color: theme.colorScheme.onSurfaceVariant),
-                      ),
-                    ),
-                  ],
-                ),
-              )),
-        ],
-      ),
-    );
-  }
-}
-
-class _LocationRow extends StatelessWidget {
-  const _LocationRow({
-    required this.icon,
-    required this.label,
-    required this.count,
-  });
-
-  final IconData icon;
-  final String label;
-  final int count;
+class _TipRow extends StatelessWidget {
+  const _TipRow({required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context);
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: KSpacing.sp16, color: KColors.brand500),
+        const Padding(
+          padding: EdgeInsets.only(top: 6),
+          child: CircleAvatar(
+            radius: 3,
+            backgroundColor: KColors.brand400,
+          ),
+        ),
         const SizedBox(width: KSpacing.sp8),
         Expanded(
           child: Text(
-            label,
-            style: KTypography.getStyle(KTextStyle.body, locale)
-                .copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: KSpacing.sp8,
-            vertical: KSpacing.sp2,
-          ),
-          decoration: BoxDecoration(
-            color: KColors.brand500.withValues(alpha: 0.12),
-            borderRadius: KRadius.full,
-          ),
-          child: Text(
-            '$count',
-            style: KTypography.getStyle(KTextStyle.label, locale)
-                .copyWith(color: KColors.brand500),
+            text,
+            style: KTypography.getStyle(KTextStyle.bodySmall, context
+                    .findAncestorWidgetOfExactType<Localizations>() != null
+                ? locale
+                : const Locale('en'))
+                .copyWith(color: KColors.textSecondary),
           ),
         ),
       ],

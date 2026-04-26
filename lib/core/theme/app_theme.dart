@@ -63,7 +63,7 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: KColors.interactivePrimary,
-          side: const BorderSide(color: KColors.borderBrand, width: 1.5),
+          side: const BorderSide(color: KColors.brand500, width: 1.5),
           padding: const EdgeInsets.symmetric(
             horizontal: KSpacing.sp24,
             vertical: KSpacing.sp12,
@@ -268,7 +268,7 @@ class AppTheme {
   static const ColorScheme _lightColorScheme = ColorScheme(
     brightness: Brightness.light,
     primary: KColors.brand500,
-    onPrimary: KColors.neutral900,
+    onPrimary: KColors.neutral0,
     primaryContainer: KColors.brand100,
     onPrimaryContainer: KColors.neutral900,
     secondary: KColors.brand400,

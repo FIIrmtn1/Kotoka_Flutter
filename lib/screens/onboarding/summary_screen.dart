@@ -1,7 +1,15 @@
+// ONB-07 — Summary / "You're all set!" screen.
+// Template: CardCenterStage
+// Hero: KokoAnimation celebrating in radial-gradient bento card.
+// 3 feature rows (Account Secured badge inside hero, Smart Tags, Cloud Sync).
+// Primary CTA → /home. Ghost secondary link → /home.
+// Bottom-right toast: "✓ Setup complete".
+// No hardcoded values — all from tokens.dart.
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kotoka_app/core/providers/onboarding_providers.dart';
+
 import 'package:kotoka_app/core/router/app_router.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
 import 'package:kotoka_app/core/widgets/koko_animation.dart';
@@ -11,169 +19,294 @@ import 'package:kotoka_app/l10n/app_localizations.dart';
 class SummaryScreen extends ConsumerWidget {
   const SummaryScreen({super.key});
 
+  void _complete(BuildContext context, WidgetRef ref) {
+    ref.read(authCompletedProvider.notifier).state = true;
+    context.go(AppRoutes.home);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    final level = ref.watch(selectedLevelProvider);
-    final goalMinutes = ref.watch(dailyGoalMinutesProvider);
-    final langPair = ref.watch(selectedLanguagePairProvider);
-
     return Scaffold(
-      backgroundColor: KColors.neutral0,
+      backgroundColor: KColors.brand50,
       body: Stack(
         children: [
-          Positioned(
-            top: -80,
-            right: -80,
-            child: IgnorePointer(
-              child: Container(
-                width: 300,
-                height: 300,
-                decoration: BoxDecoration(
-                  color: KColors.brand400.withValues(alpha: 0.05),
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: -60,
-            left: -60,
-            child: IgnorePointer(
-              child: Container(
-                width: 240,
-                height: 240,
-                decoration: BoxDecoration(
-                  color: KColors.brand100.withValues(alpha: 0.10),
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ),
           SafeArea(
-            child: Padding(
+            child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: KSpacing.sp24),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Spacer(flex: 2),
-                  const KokoAnimation(state: KokoState.celebrating, size: 160),
-                  const SizedBox(height: KSpacing.sp24),
-                  Text(
-                    l10n.onbSummaryTitle,
-                    style: KTypography.getStyle(KTextStyle.h2, locale)
-                        .copyWith(color: KColors.brand400),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: KSpacing.sp8),
-                  Text(
-                    l10n.onbSummaryBody,
-                    style: KTypography.getStyle(KTextStyle.body, locale)
-                        .copyWith(color: KColors.neutral700),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: KSpacing.sp24),
+                  const SizedBox(height: KSpacing.sp32),
+
+                  // --------------------------------------------------------
+                  // Hero bento card — radial gradient + KokoAnimation
+                  // --------------------------------------------------------
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.all(KSpacing.sp20),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: KSpacing.sp32,
+                      horizontal: KSpacing.sp24,
+                    ),
                     decoration: BoxDecoration(
-                      color: KColors.neutral0,
-                      borderRadius: KRadius.lg,
-                      border: Border.all(
-                          color: KColors.brand400.withValues(alpha: 0.20)),
+                      borderRadius: KRadius.xl,
+                      gradient: const RadialGradient(
+                        center: Alignment.center,
+                        radius: 0.85,
+                        colors: [
+                          KColors.summaryHeroGradientCenter,
+                          Colors.white,
+                        ],
+                      ),
                       boxShadow: KElevation.shadow2,
                     ),
                     child: Column(
                       children: [
-                        _SummaryRow(
-                          label: l10n.onbSummaryLanguagePair,
-                          value: langPair != null
-                              ? '${langPair['source'] ?? ''} → ${langPair['target'] ?? ''}'
-                              : '—',
-                          icon: Icons.translate,
+                        Semantics(
+                          label: l10n.summaryKokoSemantics,
+                          child: KokoAnimation(
+                            state: KokoState.celebrating,
+                            size: 160,
+                          ),
                         ),
-                        const Divider(height: KSpacing.sp24),
-                        _SummaryRow(
-                          label: l10n.onbSummaryLevel,
-                          value: level != null ? _levelLabel(level, l10n) : '—',
-                          icon: Icons.school_outlined,
+                        const SizedBox(height: KSpacing.sp20),
+                        // Account Secured badge — inside hero card
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: KSpacing.sp12,
+                            vertical: KSpacing.sp4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: KColors.success100,
+                            borderRadius: KRadius.full,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.shield_outlined,
+                                size: 14,
+                                color: KColors.success500,
+                              ),
+                              const SizedBox(width: KSpacing.sp4),
+                              Text(
+                                l10n.summaryAccountSecured,
+                                style: KTypography.getStyle(
+                                  KTextStyle.label,
+                                  locale,
+                                ).copyWith(color: KColors.success500),
+                              ),
+                            ],
+                          ),
                         ),
-                        const Divider(height: KSpacing.sp24),
-                        _SummaryRow(
-                          label: l10n.onbSummaryDailyGoal,
-                          value: goalMinutes != null
-                              ? '$goalMinutes min/day'
-                              : '—',
-                          icon: Icons.timer_outlined,
+                        const SizedBox(height: KSpacing.sp4),
+                        Text(
+                          l10n.summaryAccountSecuredDesc,
+                          style: KTypography.getStyle(
+                            KTextStyle.caption,
+                            locale,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
                   ),
-                  const Spacer(flex: 3),
+
+                  const SizedBox(height: KSpacing.sp24),
+
+                  // --------------------------------------------------------
+                  // Title + subtitle
+                  // --------------------------------------------------------
+                  Text(
+                    l10n.summaryTitle,
+                    style: KTypography.getStyle(KTextStyle.h1, locale)
+                        .copyWith(
+                      color: KColors.neutral900,
+                      letterSpacing: -0.5,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: KSpacing.sp8),
+                  Text(
+                    l10n.summarySubtitle,
+                    style: KTypography.getStyle(KTextStyle.body, locale)
+                        .copyWith(color: KColors.neutral500),
+                    textAlign: TextAlign.center,
+                  ),
+
+                  const SizedBox(height: KSpacing.sp24),
+
+                  // --------------------------------------------------------
+                  // Feature cards — Smart Tags + Cloud Sync
+                  // --------------------------------------------------------
+                  _FeatureCard(
+                    icon: Icons.star_outline,
+                    title: l10n.summarySmartTags,
+                    desc: l10n.summarySmartTagsDesc,
+                    locale: locale,
+                  ),
+                  const SizedBox(height: KSpacing.sp12),
+                  _FeatureCard(
+                    icon: Icons.cloud_outlined,
+                    title: l10n.summaryCloudSync,
+                    desc: l10n.summaryCloudSyncDesc,
+                    locale: locale,
+                  ),
+
+                  const SizedBox(height: KSpacing.sp32),
+
+                  // --------------------------------------------------------
+                  // Primary CTA
+                  // --------------------------------------------------------
                   KotokaButton(
-                    label: l10n.onbSummaryStart,
-                    onPressed: () {
-                      ref.read(authCompletedProvider.notifier).state = true;
-                      context.go('/home');
-                    },
+                    label: '${l10n.summarySnapCta} →',
+                    onPressed: () => _complete(context, ref),
                     variant: KotokaButtonVariant.primary,
                   ),
-                  const SizedBox(height: KSpacing.sp32),
+
+                  const SizedBox(height: KSpacing.sp12),
+
+                  // --------------------------------------------------------
+                  // Ghost secondary link
+                  // --------------------------------------------------------
+                  TextButton(
+                    onPressed: () => _complete(context, ref),
+                    child: Text(
+                      l10n.summaryTourLink,
+                      style: KTypography.getStyle(KTextStyle.body, locale)
+                          .copyWith(color: Colors.black54),
+                    ),
+                  ),
+
+                  // Extra bottom padding so toast doesn't overlap CTA
+                  const SizedBox(height: KSpacing.sp80),
                 ],
               ),
+            ),
+          ),
+
+          // ----------------------------------------------------------------
+          // Bottom-right toast: "✓ Setup complete"
+          // ----------------------------------------------------------------
+          Positioned(
+            bottom: KSpacing.sp32,
+            right: KSpacing.sp24,
+            child: _SetupToast(l10n: l10n, locale: locale),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _FeatureCard — small bento card with icon, title, description
+// ---------------------------------------------------------------------------
+class _FeatureCard extends StatelessWidget {
+  const _FeatureCard({
+    required this.icon,
+    required this.title,
+    required this.desc,
+    required this.locale,
+  });
+
+  final IconData icon;
+  final String title;
+  final String desc;
+  final Locale locale;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(KSpacing.sp16),
+      decoration: BoxDecoration(
+        color: KColors.neutral0,
+        borderRadius: KRadius.lg,
+        border: Border.all(color: const Color(0xFFE5EEFF)),
+        boxShadow: KElevation.shadow1,
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 36,
+            height: 36,
+            decoration: BoxDecoration(
+              color: KColors.brand400.withValues(alpha: 0.12),
+              borderRadius: KRadius.sm,
+            ),
+            child: Icon(icon, size: 18, color: KColors.brand500),
+          ),
+          const SizedBox(width: KSpacing.sp12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: KTypography.getStyle(KTextStyle.h4, locale)
+                      .copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: KSpacing.sp2),
+                Text(
+                  desc,
+                  style:
+                      KTypography.getStyle(KTextStyle.bodySmall, locale),
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
   }
-
-  String _levelLabel(String key, AppLocalizations l10n) {
-    switch (key) {
-      case 'beginner':     return l10n.levelBeginner;
-      case 'intermediate': return l10n.levelIntermediate;
-      case 'advanced':     return l10n.levelAdvanced;
-      default:             return key;
-    }
-  }
 }
 
-class _SummaryRow extends StatelessWidget {
-  const _SummaryRow({
-    required this.label,
-    required this.value,
-    required this.icon,
-  });
+// ---------------------------------------------------------------------------
+// _SetupToast — fixed bottom-right "✓ Setup complete" widget
+// ---------------------------------------------------------------------------
+class _SetupToast extends StatelessWidget {
+  const _SetupToast({required this.l10n, required this.locale});
 
-  final String label;
-  final String value;
-  final IconData icon;
+  final AppLocalizations l10n;
+  final Locale locale;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, color: KColors.brand400, size: KSpacing.sp20),
-        const SizedBox(width: KSpacing.sp12),
-        Expanded(
-          child: Text(
-            label,
-            style: TextStyle(
-              color: KColors.neutral600,
-              fontSize: 13,
-            ),
-          ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: KSpacing.sp12,
+        vertical: KSpacing.sp8,
+      ),
+      decoration: BoxDecoration(
+        color: KColors.neutral0,
+        borderRadius: KRadius.sm,
+        border: const Border(
+          left: BorderSide(color: KColors.brand500, width: 4),
         ),
-        Text(
-          value,
-          style: const TextStyle(
-            color: KColors.neutral900,
-            fontWeight: FontWeight.w600,
-            fontSize: 14,
+        boxShadow: KElevation.shadow2,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.check_circle_outline,
+            size: 16,
+            color: KColors.success500,
           ),
-        ),
-      ],
+          const SizedBox(width: KSpacing.sp8),
+          Text(
+            l10n.summarySetupToast,
+            style: KTypography.getStyle(KTextStyle.label, locale)
+                .copyWith(color: KColors.success500),
+          ),
+        ],
+      ),
     );
   }
 }

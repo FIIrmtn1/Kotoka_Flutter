@@ -1,107 +1,223 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kotoka_app/core/providers/locale_provider.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/language_picker_sheet.dart';
-import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
-import 'package:kotoka_app/core/widgets/k_card.dart';
-import 'package:kotoka_app/core/widgets/k_section_header.dart';
+import 'package:kotoka_app/core/widgets/kotoka_button.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 
-// ---------------------------------------------------------------------------
-// Mock data
-// ---------------------------------------------------------------------------
-const String _mockName = 'Pam'; //MOCKDATA
-const String _mockLanguagePair = 'Thai → English'; //MOCKDATA
-const String _mockLevel = 'B1 Intermediate'; //MOCKDATA
-const int _mockStreakDays = 13; //MOCKDATA
-const int _mockWordsLearned = 847; //MOCKDATA
-const int _mockWordsThisWeek = 24; //MOCKDATA
-const int _mockSessionsThisWeek = 7; //MOCKDATA
-const int _mockAccuracyPct = 83; //MOCKDATA
-const String _mockActivePair = 'TH → EN (active)'; //MOCKDATA
-
-// ---------------------------------------------------------------------------
+// =============================================================================
 // ProfileScreen
-// ---------------------------------------------------------------------------
+// - User avatar (initials circle, brand400/20 bg)
+// - Stats row: Words Learned / Sessions / Accuracy (mock)
+// - Language section with KokoFlag + "Change Language" -> LanguagePickerSheet
+// - Settings section: App version, Sign out
+// =============================================================================
+
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context);
 
-    return KStitchScaffold(
-      body: Column(
-        children: [
-          _ProfileTopBar(title: l10n.profileTitle),
-          Expanded(
-            child: SingleChildScrollView(
+    const displayName = 'Nadia S.'; //MOCKDATA
+    const initials = 'NS'; //MOCKDATA
+    const wordsLearned = 247; //MOCKDATA
+    const sessions = 34; //MOCKDATA
+    const accuracy = '82%'; //MOCKDATA
+    const appVersion = '0.9.1-beta'; //MOCKDATA
+
+    return Scaffold(
+      backgroundColor: KColors.brand50,
+      body: CustomScrollView(
+        slivers: [
+          // ----------------------------------------------------------------
+          // App bar
+          // ----------------------------------------------------------------
+          SliverAppBar(
+            backgroundColor: KColors.brand50,
+            surfaceTintColor: Colors.transparent,
+            elevation: 0,
+            floating: true,
+            title: Text(
+              l10n.profileTitle,
+              style: KTypography.getStyle(KTextStyle.h3, locale),
+            ),
+          ),
+
+          // ----------------------------------------------------------------
+          // Avatar + name
+          // ----------------------------------------------------------------
+          SliverToBoxAdapter(
+            child: Padding(
               padding: const EdgeInsets.fromLTRB(
-                KSpacing.sp16,
-                KSpacing.sp16,
-                KSpacing.sp16,
-                KSpacing.sp96,
+                KSpacing.sp24,
+                KSpacing.sp8,
+                KSpacing.sp24,
+                KSpacing.sp24,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const _ProfileHeaderCard(),
-                  const SizedBox(height: KSpacing.sp24),
-                  KSectionHeader(title: l10n.profileMemoryMap),
-                  const SizedBox(height: KSpacing.sp12),
-                  _MemoryMapPlaceholder(l10n: l10n),
-                  const SizedBox(height: KSpacing.sp24),
-                  KSectionHeader(title: l10n.profileStatsWeek),
-                  const SizedBox(height: KSpacing.sp12),
-                  _StatsRow(l10n: l10n),
-                  const SizedBox(height: KSpacing.sp24),
-                  KSectionHeader(title: l10n.profileLanguagePairs),
-                  const SizedBox(height: KSpacing.sp12),
-                  const _LanguagePairBadge(),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      l10n.profileAddPair,
-                      style: const TextStyle(
-                        color: KColors.brand400,
-                        fontWeight: FontWeight.w600,
+                  // Avatar circle — brand400/20 bg
+                  Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: KColors.brand400.withValues(alpha: 0.20),
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: KColors.brand400.withValues(alpha: 0.50),
+                        width: 2,
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        initials,
+                        style: KTypography.getStyle(KTextStyle.h2, locale)
+                            .copyWith(color: KColors.brand600),
                       ),
                     ),
                   ),
-                  const SizedBox(height: KSpacing.sp24),
-                  KSectionHeader(title: l10n.langDisplayLanguage),
                   const SizedBox(height: KSpacing.sp12),
-                  KCard(
-                    padding: EdgeInsets.zero,
-                    child: ListTile(
-                      leading: const Icon(
-                        Icons.language_outlined,
-                        color: KColors.brand400,
-                      ),
-                      title: Text(
-                        l10n.langDisplayLanguage,
-                        style: const TextStyle(
-                          color: KColors.neutral900,
-                          fontWeight: FontWeight.w500,
+                  Text(
+                    displayName,
+                    style: KTypography.getStyle(KTextStyle.h3, locale),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // ----------------------------------------------------------------
+          // Stats row
+          // ----------------------------------------------------------------
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                KSpacing.sp24,
+                0,
+                KSpacing.sp24,
+                KSpacing.sp24,
+              ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: KSpacing.sp16,
+                ),
+                decoration: BoxDecoration(
+                  color: KColors.neutral0,
+                  borderRadius: KRadius.lg,
+                  boxShadow: KElevation.shadow2,
+                ),
+                child: Row(
+                  children: [
+                    _StatCell(
+                      value: '$wordsLearned', //MOCKDATA
+                      label: l10n.profileStatWords,
+                      locale: locale,
+                    ),
+                    _VertDivider(),
+                    _StatCell(
+                      value: '$sessions', //MOCKDATA
+                      label: l10n.profileStatSessions,
+                      locale: locale,
+                    ),
+                    _VertDivider(),
+                    _StatCell(
+                      value: accuracy, //MOCKDATA
+                      label: l10n.profileStatAccuracy,
+                      locale: locale,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          // ----------------------------------------------------------------
+          // Language section
+          // ----------------------------------------------------------------
+          SliverToBoxAdapter(
+            child: _SectionGroup(
+              header: l10n.profileLanguagePairs,
+              locale: locale,
+              children: [
+                _LanguageRow(l10n: l10n, locale: locale),
+              ],
+            ),
+          ),
+
+          // ----------------------------------------------------------------
+          // Settings section
+          // ----------------------------------------------------------------
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: KSpacing.sp40),
+              child: _SectionGroup(
+                header: l10n.profileSettingsSection,
+                locale: locale,
+                children: [
+                  // Daily reminders toggle
+                  _SettingsToggleRow(
+                    label: l10n.profileNotifications,
+                    locale: locale,
+                  ),
+                  const Divider(height: 1, color: KColors.borderDefault,
+                      indent: KSpacing.sp16, endIndent: KSpacing.sp16),
+                  // Send Feedback row
+                  _SettingsTapRow(
+                    icon: Icons.feedback_outlined,
+                    label: l10n.profileSendFeedback,
+                    locale: locale,
+                    onTap: () {}, // TODO: open feedback form
+                  ),
+                  const Divider(height: 1, color: KColors.borderDefault,
+                      indent: KSpacing.sp16, endIndent: KSpacing.sp16),
+                  // App version row
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: KSpacing.sp16,
+                      vertical: KSpacing.sp12,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          l10n.profileAppVersion,
+                          style: KTypography.getStyle(KTextStyle.body, locale),
                         ),
-                      ),
-                      trailing: const Icon(
-                        Icons.chevron_right,
-                        color: KColors.neutral400,
-                      ),
-                      onTap: () => showModalBottomSheet<void>(
-                        context: context,
-                        isScrollControlled: true,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(KRadius.radiusXl),
+                        Text(
+                          appVersion,
+                          style: KTypography.getStyle(
+                            KTextStyle.bodySmall,
+                            locale,
                           ),
                         ),
-                        builder: (_) => const LanguagePickerSheet(),
-                      ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: KSpacing.sp32),
+                  const Divider(
+                    height: 1,
+                    color: KColors.borderDefault,
+                    indent: KSpacing.sp16,
+                    endIndent: KSpacing.sp16,
+                  ),
+                  // Sign out
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      KSpacing.sp16,
+                      KSpacing.sp12,
+                      KSpacing.sp16,
+                      KSpacing.sp4,
+                    ),
+                    child: KotokaButton(
+                      label: l10n.profileSignOut,
+                      onPressed: () {
+                        // TODO: wire up Firebase sign-out
+                      },
+                      variant: KotokaButtonVariant.ghost,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -113,257 +229,33 @@ class ProfileScreen extends ConsumerWidget {
 }
 
 // ---------------------------------------------------------------------------
-// _ProfileTopBar
+// _StatCell — single stat number + label
 // ---------------------------------------------------------------------------
-class _ProfileTopBar extends StatelessWidget {
-  const _ProfileTopBar({required this.title});
-  final String title;
+class _StatCell extends StatelessWidget {
+  const _StatCell({
+    required this.value,
+    required this.label,
+    required this.locale,
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: KColors.pageBg,
-      padding: const EdgeInsets.symmetric(
-        horizontal: KSpacing.sp16,
-        vertical: KSpacing.sp12,
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontFamily: 'IBMPlexSans',
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: KColors.neutral900,
-              ),
-            ),
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings_outlined, color: KColors.neutral500),
-            onPressed: () {},
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _ProfileHeaderCard
-// ---------------------------------------------------------------------------
-class _ProfileHeaderCard extends StatelessWidget {
-  const _ProfileHeaderCard();
-
-  @override
-  Widget build(BuildContext context) {
-    return KCard(
-      padding: const EdgeInsets.all(KSpacing.sp16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            radius: 32,
-            backgroundColor: KColors.brand400,
-            child: Text(
-              _mockName[0], //MOCKDATA
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-                color: KColors.neutral1000,
-              ),
-            ),
-          ),
-          const SizedBox(width: KSpacing.sp16),
-          const Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  _mockName, //MOCKDATA
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: KColors.neutral900,
-                  ),
-                ),
-                SizedBox(height: KSpacing.sp2),
-                Text(
-                  _mockLanguagePair, //MOCKDATA
-                  style: TextStyle(fontSize: 13, color: KColors.neutral500),
-                ),
-                SizedBox(height: KSpacing.sp2),
-                Text(
-                  _mockLevel, //MOCKDATA
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: KColors.brand600,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SizedBox(height: KSpacing.sp8),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.local_fire_department,
-                      color: KColors.error500,
-                      size: 16,
-                    ),
-                    SizedBox(width: KSpacing.sp4),
-                    Text(
-                      '$_mockStreakDays days', //MOCKDATA
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: KColors.neutral900,
-                      ),
-                    ),
-                    SizedBox(width: KSpacing.sp12),
-                    Icon(
-                      Icons.menu_book_outlined,
-                      color: KColors.brand400,
-                      size: 16,
-                    ),
-                    SizedBox(width: KSpacing.sp4),
-                    Text(
-                      '$_mockWordsLearned words', //MOCKDATA
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: KColors.neutral900,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _MemoryMapPlaceholder
-// ---------------------------------------------------------------------------
-class _MemoryMapPlaceholder extends StatelessWidget {
-  const _MemoryMapPlaceholder({required this.l10n});
-  final AppLocalizations l10n;
-
-  @override
-  Widget build(BuildContext context) {
-    return KCard(
-      padding: const EdgeInsets.symmetric(
-        horizontal: KSpacing.sp24,
-        vertical: KSpacing.sp24,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(Icons.map_outlined, color: KColors.brand400, size: 48),
-          const SizedBox(height: KSpacing.sp12),
-          Text(
-            l10n.profileMapEmpty,
-            style: const TextStyle(
-              color: KColors.neutral900,
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: KSpacing.sp8),
-          Text(
-            l10n.profileMapEmptyDesc,
-            style: const TextStyle(color: KColors.neutral500, fontSize: 13),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: KSpacing.sp16),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: KColors.brand400,
-                foregroundColor: KColors.neutral1000,
-                shape: RoundedRectangleBorder(borderRadius: KRadius.full),
-                padding: const EdgeInsets.symmetric(vertical: KSpacing.sp12),
-              ),
-              child: Text(
-                l10n.profileMapEmptyCta,
-                style: const TextStyle(fontWeight: FontWeight.w600),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// _StatsRow
-// ---------------------------------------------------------------------------
-class _StatsRow extends StatelessWidget {
-  const _StatsRow({required this.l10n});
-  final AppLocalizations l10n;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: _StatTile(
-            value: '$_mockWordsThisWeek', //MOCKDATA
-            label: l10n.profileStatWords,
-          ),
-        ),
-        const SizedBox(width: KSpacing.sp8),
-        Expanded(
-          child: _StatTile(
-            value: '$_mockSessionsThisWeek', //MOCKDATA
-            label: l10n.profileStatSessions,
-          ),
-        ),
-        const SizedBox(width: KSpacing.sp8),
-        Expanded(
-          child: _StatTile(
-            value: '$_mockAccuracyPct%', //MOCKDATA
-            label: l10n.profileStatAccuracy,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _StatTile extends StatelessWidget {
-  const _StatTile({required this.value, required this.label});
   final String value;
   final String label;
+  final Locale locale;
 
   @override
   Widget build(BuildContext context) {
-    return KCard(
-      padding: const EdgeInsets.symmetric(
-        vertical: KSpacing.sp16,
-        horizontal: KSpacing.sp8,
-      ),
+    return Expanded(
       child: Column(
         children: [
           Text(
             value,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: KColors.brand400,
-            ),
+            style: KTypography.getStyle(KTextStyle.h3, locale)
+                .copyWith(color: KColors.brand500),
           ),
           const SizedBox(height: KSpacing.sp4),
           Text(
             label,
-            style: const TextStyle(fontSize: 11, color: KColors.neutral500),
+            style: KTypography.getStyle(KTextStyle.caption, locale),
             textAlign: TextAlign.center,
           ),
         ],
@@ -372,38 +264,412 @@ class _StatTile extends StatelessWidget {
   }
 }
 
+class _VertDivider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 1,
+      height: KSpacing.sp40,
+      color: KColors.borderDefault,
+    );
+  }
+}
+
 // ---------------------------------------------------------------------------
-// _LanguagePairBadge
+// _SectionGroup — card container with header + children
 // ---------------------------------------------------------------------------
-class _LanguagePairBadge extends StatelessWidget {
-  const _LanguagePairBadge();
+class _SectionGroup extends StatelessWidget {
+  const _SectionGroup({
+    required this.header,
+    required this.locale,
+    required this.children,
+  });
+
+  final String header;
+  final Locale locale;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        KSpacing.sp24,
+        0,
+        KSpacing.sp24,
+        KSpacing.sp16,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: KSpacing.sp8),
+            child: Text(
+              header,
+              style: KTypography.getStyle(KTextStyle.h4, locale)
+                  .copyWith(color: KColors.brand600),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: KColors.neutral0,
+              borderRadius: KRadius.lg,
+              boxShadow: KElevation.shadow2,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: children,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _LanguageRow — shows current pair + Change Language button
+// Tapping opens LanguagePickerSheet and updates localeProvider
+// ---------------------------------------------------------------------------
+class _LanguageRow extends ConsumerWidget {
+  const _LanguageRow({required this.l10n, required this.locale});
+
+  final AppLocalizations l10n;
+  final Locale locale;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Padding(
+      padding: const EdgeInsets.all(KSpacing.sp16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Current language pair with flag icons
+          Row(
+            children: [
+              _FlagChip(countryCode: 'gb', label: 'EN', locale: locale),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: KSpacing.sp8),
+                child: Icon(
+                  Icons.arrow_forward,
+                  size: KSpacing.sp16,
+                  color: KColors.textSecondary,
+                ),
+              ),
+              _FlagChip(countryCode: 'th', label: 'TH', locale: locale),
+            ],
+          ),
+          const SizedBox(height: KSpacing.sp12),
+          // Change Language CTA
+          KotokaButton(
+            label: l10n.profileChangeLanguage,
+            onPressed: () => _showLanguagePicker(context, ref),
+            variant: KotokaButtonVariant.secondary,
+            leadingIcon: Icons.language_outlined,
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showLanguagePicker(BuildContext context, WidgetRef ref) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => _LanguagePickerSheet(
+        onLocaleSelected: (selectedLocale) {
+          ref.read(localeProvider.notifier).setLocale(selectedLocale);
+          Navigator.of(context).pop();
+        },
+        locale: locale,
+        l10n: l10n,
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _FlagChip — flag + language code pill
+// ---------------------------------------------------------------------------
+class _FlagChip extends StatelessWidget {
+  const _FlagChip({
+    required this.countryCode,
+    required this.label,
+    required this.locale,
+  });
+
+  final String countryCode;
+  final String label;
+  final Locale locale;
+
+  @override
+  Widget build(BuildContext context) {
+    // Uses ClipRRect for rounded flag as per KokoFlag contract.
+    // Twemoji PNG from local assets/twemoji/ bundle.
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: KSpacing.sp8,
+        vertical: KSpacing.sp4,
+      ),
+      decoration: BoxDecoration(
+        color: KColors.sky100,
+        borderRadius: KRadius.sm,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(KRadius.radiusXs),
+            child: Image.asset(
+              'assets/twemoji/flag_$countryCode.png',
+              width: KSpacing.sp16,
+              height: KSpacing.sp16,
+              errorBuilder: (_, __, ___) => const SizedBox(
+                width: KSpacing.sp16,
+                height: KSpacing.sp16,
+                child: Icon(
+                  Icons.flag_outlined,
+                  size: KSpacing.sp12,
+                  color: KColors.textSecondary,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: KSpacing.sp4),
+          Text(
+            label,
+            style: KTypography.getStyle(KTextStyle.label, locale)
+                .copyWith(color: KColors.info500),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _LanguagePickerSheet — modal bottom sheet for locale selection
+// Language change updates localeProvider immediately and persists via prefs.
+// ---------------------------------------------------------------------------
+class _LanguagePickerSheet extends StatelessWidget {
+  const _LanguagePickerSheet({
+    required this.onLocaleSelected,
+    required this.locale,
+    required this.l10n,
+  });
+
+  final ValueChanged<Locale> onLocaleSelected;
+  final Locale locale;
+  final AppLocalizations l10n;
+
+  static const _languages = <(String, String, String)>[
+    ('en', 'English', 'gb'),
+    ('th', 'ภาษาไทย', 'th'),
+    ('zh', '普通话', 'cn'),
+    ('es', 'Español', 'es'),
+    ('vi', 'Tiếng Việt', 'vn'),
+    ('lo', 'ພາສາລາວ', 'la'),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: KSpacing.sp12,
-        vertical: KSpacing.sp8,
+      decoration: const BoxDecoration(
+        color: KColors.neutral0,
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(KRadius.radiusXl),
+        ),
       ),
-      decoration: BoxDecoration(
-        color: KColors.brand400.withValues(alpha: 0.08),
-        borderRadius: KRadius.full,
-        border: Border.all(color: KColors.brand400.withValues(alpha: 0.50)),
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(
+            KSpacing.sp24,
+            KSpacing.sp16,
+            KSpacing.sp24,
+            KSpacing.sp24,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Handle bar
+              Center(
+                child: Container(
+                  width: KSpacing.sp40,
+                  height: KSpacing.sp4,
+                  decoration: BoxDecoration(
+                    color: KColors.neutral300,
+                    borderRadius: KRadius.full,
+                  ),
+                ),
+              ),
+              const SizedBox(height: KSpacing.sp16),
+              Text(
+                l10n.langDisplayLanguage,
+                style: KTypography.getStyle(KTextStyle.h4, locale),
+              ),
+              const SizedBox(height: KSpacing.sp12),
+              ..._languages.map(
+                (lang) => _LangOption(
+                  code: lang.$1,
+                  label: lang.$2,
+                  countryCode: lang.$3,
+                  currentLocale: locale,
+                  onTap: () => onLocaleSelected(Locale(lang.$1)),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
-      child: const Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.language, color: KColors.brand400, size: 16),
-          SizedBox(width: KSpacing.sp8),
-          Text(
-            _mockActivePair, //MOCKDATA
-            style: TextStyle(
-              color: KColors.brand500,
-              fontWeight: FontWeight.w600,
-              fontSize: 13,
+    );
+  }
+}
+
+class _LangOption extends StatelessWidget {
+  const _LangOption({
+    required this.code,
+    required this.label,
+    required this.countryCode,
+    required this.currentLocale,
+    required this.onTap,
+  });
+
+  final String code;
+  final String label;
+  final String countryCode;
+  final Locale currentLocale;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final isSelected = currentLocale.languageCode == code;
+    final locale = Localizations.localeOf(context);
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: KRadius.md,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: KSpacing.sp12,
+          horizontal: KSpacing.sp4,
+        ),
+        child: Row(
+          children: [
+            // Flag
+            ClipRRect(
+              borderRadius: BorderRadius.circular(KRadius.radiusXs),
+              child: Image.asset(
+                'assets/twemoji/flag_$countryCode.png',
+                width: KSpacing.sp24,
+                height: KSpacing.sp24,
+                errorBuilder: (_, __, ___) => const SizedBox(
+                  width: KSpacing.sp24,
+                  height: KSpacing.sp24,
+                  child: Icon(Icons.flag_outlined, size: KSpacing.sp16),
+                ),
+              ),
             ),
+            const SizedBox(width: KSpacing.sp12),
+            Expanded(
+              child: Text(
+                label,
+                style: KTypography.getStyle(KTextStyle.body, locale).copyWith(
+                  fontWeight:
+                      isSelected ? FontWeight.w600 : FontWeight.w400,
+                  color:
+                      isSelected ? KColors.brand500 : KColors.textPrimary,
+                ),
+              ),
+            ),
+            if (isSelected)
+              const Icon(
+                Icons.check_circle,
+                color: KColors.brand500,
+                size: KSpacing.sp20,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _SettingsToggleRow — toggle row for boolean settings (e.g. notifications)
+// ---------------------------------------------------------------------------
+class _SettingsToggleRow extends StatefulWidget {
+  const _SettingsToggleRow({required this.label, required this.locale});
+  final String label;
+  final Locale locale;
+
+  @override
+  State<_SettingsToggleRow> createState() => _SettingsToggleRowState();
+}
+
+class _SettingsToggleRowState extends State<_SettingsToggleRow> {
+  bool _enabled = true; //MOCKDATA
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+          horizontal: KSpacing.sp16, vertical: KSpacing.sp4),
+      child: Row(
+        children: [
+          Icon(Icons.notifications_outlined,
+              size: 20, color: KColors.brand600),
+          const SizedBox(width: KSpacing.sp12),
+          Expanded(
+            child: Text(widget.label,
+                style: KTypography.getStyle(KTextStyle.body, widget.locale)),
+          ),
+          Switch(
+            value: _enabled,
+            onChanged: (v) => setState(() => _enabled = v), //MOCKDATA
+            activeColor: KColors.brand500,
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _SettingsTapRow — tappable row for navigation settings (e.g. feedback)
+// ---------------------------------------------------------------------------
+class _SettingsTapRow extends StatelessWidget {
+  const _SettingsTapRow({
+    required this.icon,
+    required this.label,
+    required this.locale,
+    required this.onTap,
+  });
+  final IconData icon;
+  final String label;
+  final Locale locale;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: KSpacing.sp16, vertical: KSpacing.sp12),
+        child: Row(
+          children: [
+            Icon(icon, size: 20, color: KColors.brand600),
+            const SizedBox(width: KSpacing.sp12),
+            Expanded(
+              child: Text(label,
+                  style: KTypography.getStyle(KTextStyle.body, locale)),
+            ),
+            const Icon(Icons.chevron_right_rounded,
+                size: 18, color: KColors.neutral400),
+          ],
+        ),
       ),
     );
   }

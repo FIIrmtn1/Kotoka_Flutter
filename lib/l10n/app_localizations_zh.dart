@@ -390,7 +390,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get snapTabGps => 'GPS';
 
   @override
-  String get snapCameraViewfinder => '相机取景框';
+  String get snapCameraViewfinder => '对准文字 · 菜单 · 标志';
 
   @override
   String get snapTextPrompt => '输入或粘贴您想学习的词汇：';
@@ -610,4 +610,278 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get reviewIncludesSpeaking => '包含口语练习';
+
+  @override
+  String get pdpaAgreeAndContinue => '同意并继续';
+
+  @override
+  String get onbMissionCta => '出发！';
+
+  @override
+  String get snapFlash => '闪光灯';
+
+  @override
+  String get snapGrid => '网格';
+
+  @override
+  String get kokoWavingSemantics => 'Koko挥手打招呼';
+
+  @override
+  String get kokoMascotSemantics => 'Koko吉祥物';
+
+  @override
+  String get permissionNotifications => '通知';
+
+  @override
+  String get permissionNotificationsReason => '通过每日提醒和连续学习提醒保持学习进度';
+
+  @override
+  String get summaryTitle => '大功告成！';
+
+  @override
+  String get summarySubtitle => 'Kotoka 已准备好帮助您建立词汇量。';
+
+  @override
+  String get summaryAccountSecured => 'Account Secured';
+
+  @override
+  String get summaryAccountSecuredDesc => 'Your data is encrypted and safe.';
+
+  @override
+  String get summarySmartTags => 'Smart Tags';
+
+  @override
+  String get summarySmartTagsDesc => 'Koko auto-categorizes your vocabulary.';
+
+  @override
+  String get summaryCloudSync => 'Cloud Sync';
+
+  @override
+  String get summaryCloudSyncDesc => 'Encrypted backup across all devices.';
+
+  @override
+  String get summarySnapCta => '拍摄我的第一个地点';
+
+  @override
+  String get summaryTourLink => '先浏览教程';
+
+  @override
+  String get summarySetupToast => '设置完成';
+
+  @override
+  String get summaryKokoSemantics => 'Koko 正在庆祝您完成设置';
+
+  @override
+  String get goalWhatYoullLearn => 'What you\'ll learn:';
+
+  @override
+  String get goalSampleWords =>
+      'café · meeting · contract · invoice · deadline';
+
+  @override
+  String get levelSampleLabel => 'Sample:';
+
+  @override
+  String get levelSampleText => 'Hello · Thank you · Good morning';
+
+  @override
+  String get profileSettingsSection => '设置';
+
+  @override
+  String get profileAppVersion => '版本 1.0.0';
+
+  @override
+  String get profileNotifications => '每日提醒';
+
+  @override
+  String get profileSendFeedback => '发送反馈';
+
+  @override
+  String get profileSignOut => '退出登录';
+
+  @override
+  String get profileChangeLanguage => '更改语言';
+
+  @override
+  String get shopGetFreePack => '获取免费包';
+
+  @override
+  String get reviewCompleteSubtitle => '做得好！继续保持';
+
+  @override
+  String get reviewCompleteStatCards => '卡片';
+
+  @override
+  String get reviewCompleteStatAccuracy => '准确率';
+
+  @override
+  String get reviewCompleteStatXp => '获得XP';
+
+  @override
+  String get reviewConversationTitle => '对话练习';
+
+  @override
+  String get reviewFillBlankHint => '输入您的答案...';
+
+  @override
+  String get reviewFillBlankAnswer => '答案';
+
+  @override
+  String get reviewFillBlankHintBtn => '提示';
+
+  @override
+  String get reviewFillBlankNext => '下一个';
+
+  @override
+  String get reviewFillBlankCheck => '检查';
+
+  @override
+  String get welcomeSignIn => '登录账户';
+
+  @override
+  String get featureSnap => 'Snap';
+
+  @override
+  String get featureAI => 'AI';
+
+  @override
+  String get featureVault => '保险库';
+
+  @override
+  String get authTitle => '欢迎来到 Kotoka';
+
+  @override
+  String get authGoogle => '使用 Google 继续';
+
+  @override
+  String get authEmail => '电子邮件地址';
+
+  @override
+  String get authPassword => '密码';
+
+  @override
+  String get authSignIn => '登录 Kotoka';
+
+  @override
+  String get authNoAccount => '没有账户？注册 →';
+
+  @override
+  String get authPrivacyTerms => 'Privacy · Terms';
+
+  @override
+  String get authOr => '或';
+
+  @override
+  String get pdpaNewTitle => '帮助 Kotoka 了解您';
+
+  @override
+  String get pdpaNewSubtitle => '为了提供流畅的体验，我们需要一些权限。';
+
+  @override
+  String get pdpaCameraDesc => '拍摄记忆';
+
+  @override
+  String get pdpaLocationLabel => '位置';
+
+  @override
+  String get pdpaLocationDesc => '地理标记记忆';
+
+  @override
+  String get pdpaMicrophoneLabel => '麦克风';
+
+  @override
+  String get pdpaMicrophoneDesc => '语音笔记，AI';
+
+  @override
+  String get pdpaNotificationsDesc => '智能提醒';
+
+  @override
+  String get pdpaAllow => '允许所选';
+
+  @override
+  String get pdpaMaybeLater => '稍后再说';
+
+  @override
+  String get pdpaSettings => '随时在设备设置中更改 →';
+
+  @override
+  String get assessTitle => '选择您的路径';
+
+  @override
+  String get assessSubtitle => '您对这门语言有多熟悉？';
+
+  @override
+  String get assessBeginner => '第一次学习？';
+
+  @override
+  String get assessBeginnerSub => '从头开始！';
+
+  @override
+  String get assessExperienced => '已经了解一些了？';
+
+  @override
+  String get assessExperiencedSub => '检查您的水平！';
+
+  @override
+  String get assessStep => '第 2 步，共 4 步';
+
+  @override
+  String get goalFocusTitle => '您的重点是什么？';
+
+  @override
+  String get goalFocusSubtitle => '设置您的个性化目标和每日节奏';
+
+  @override
+  String get goalSelectGoals => '选择目标';
+
+  @override
+  String get goalStep1 => 'Step 1/2';
+
+  @override
+  String get goalStep2 => 'Step 2/2';
+
+  @override
+  String get goalCommitment => '承诺';
+
+  @override
+  String get goalBreezy => '轻松';
+
+  @override
+  String get goalBreezyTime => '5–10 min/day';
+
+  @override
+  String get goalSteady => '稳定';
+
+  @override
+  String get goalSteadyTime => '15–20 min/day';
+
+  @override
+  String get goalDeepDive => '深度学习';
+
+  @override
+  String get goalDeepDiveTime => '30+ min/day';
+
+  @override
+  String get goalConfirm => '确认选择';
+
+  @override
+  String get goalChangeSettings => '在设置中更改目标';
+
+  @override
+  String get reviewFlashcardMode => '单词卡';
+
+  @override
+  String get reviewFlashcardDesc => '翻转并评分';
+
+  @override
+  String get reviewFillMode => '填空';
+
+  @override
+  String get reviewFillDesc => '输入单词';
+
+  @override
+  String get reviewConvMode => '对话';
+
+  @override
+  String get reviewConvDesc => '练习口语';
 }

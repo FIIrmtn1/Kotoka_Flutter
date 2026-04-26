@@ -1,172 +1,140 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kotoka_app/l10n/app_localizations.dart';
+import 'package:kotoka_app/core/providers/onboarding_providers.dart';
+import 'package:kotoka_app/core/router/app_router.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
-import 'package:kotoka_app/core/widgets/k_cta_button.dart';
+import 'package:kotoka_app/core/widgets/k_chip.dart';
+import 'package:kotoka_app/core/widgets/k_scaffold.dart';
+import 'package:kotoka_app/core/widgets/k_section_header.dart';
+import 'package:kotoka_app/core/widgets/kotoka_button.dart';
+import 'package:kotoka_app/l10n/app_localizations.dart';
 
-enum GoalSelectionGoal { travel, workMeeting, emailWriting, presentation, study, culture }
+// =============================================================================
+// ONB-03 — Goal Select screen
+// KChip grid (Wrap), multi-select, ≥1 to enable CTA. Saves to onboardingProvider.
+// =============================================================================
 
-class _Goal {
-  const _Goal({required this.emoji, required this.goal});
-  final String emoji;
-  final GoalSelectionGoal goal;
+class _GoalDef {
+  const _GoalDef({required this.key, required this.label});
+  final String key;
+  final String Function(AppLocalizations) label;
 }
 
-const List<_Goal> _kGoals = [
-  _Goal(emoji: '✈️', goal: GoalSelectionGoal.travel),
-  _Goal(emoji: '💼', goal: GoalSelectionGoal.workMeeting),
-  _Goal(emoji: '✉️', goal: GoalSelectionGoal.emailWriting),
-  _Goal(emoji: '🎤', goal: GoalSelectionGoal.presentation),
-  _Goal(emoji: '📚', goal: GoalSelectionGoal.study),
-  _Goal(emoji: '🌏', goal: GoalSelectionGoal.culture),
-];
+List<_GoalDef> _goals(AppLocalizations l10n) => [
+      _GoalDef(key: 'career',        label: (l) => l.goalCareer),
+      _GoalDef(key: 'travel',        label: (l) => l.goalTravel),
+      _GoalDef(key: 'academic',      label: (l) => l.goalAcademic),
+      _GoalDef(key: 'personal',      label: (l) => l.goalPersonal),
+      _GoalDef(key: 'work_meeting',  label: (l) => l.onbGoalWorkMeeting),
+      _GoalDef(key: 'email_writing', label: (l) => l.onbGoalEmailWriting),
+      _GoalDef(key: 'presentation',  label: (l) => l.onbGoalPresentation),
+    ];
 
-class GoalSelectScreen extends StatefulWidget {
+class GoalSelectScreen extends ConsumerWidget {
   const GoalSelectScreen({super.key});
 
   @override
-  State<GoalSelectScreen> createState() => _GoalSelectScreenState();
-}
-
-class _GoalSelectScreenState extends State<GoalSelectScreen> {
-  GoalSelectionGoal? _selected;
-
-  String _labelFor(GoalSelectionGoal goal, AppLocalizations l10n) {
-    switch (goal) {
-      case GoalSelectionGoal.travel:       return l10n.goalTravel;
-      case GoalSelectionGoal.workMeeting:  return l10n.onbGoalWorkMeeting;
-      case GoalSelectionGoal.emailWriting: return l10n.onbGoalEmailWriting;
-      case GoalSelectionGoal.presentation: return l10n.onbGoalPresentation;
-      case GoalSelectionGoal.study:        return l10n.goalAcademic;
-      case GoalSelectionGoal.culture:      return l10n.goalPersonal;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n   = AppLocalizations.of(context)!;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
+    final selected = ref.watch(selectedGoalsProvider);
+    final goals = _goals(l10n);
 
-    return KStitchScaffold(
-      stickyHeader: KOnboardingHeader(
-        onBack: () => Navigator.of(context).pop(),
-        stepCurrent: 2,
-        stepTotal: 8,
+    return KScaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: BackButton(color: KColors.brand600),
       ),
-      body: SafeArea(
-        top: false,
+      child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(KSpacing.sp24),
+          padding: const EdgeInsets.symmetric(horizontal: KSpacing.sp24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                l10n.goalSelectTitle,
-                style: KTypography.getStyle(KTextStyle.h3, locale)
-                    .copyWith(color: KColors.neutral900),
-              ),
+              const SizedBox(height: KSpacing.sp8),
+              KSectionHeader(l10n.goalSelectTitle),
               const SizedBox(height: KSpacing.sp8),
               Text(
                 l10n.goalSelectSubtitle,
-                style: KTypography.getStyle(KTextStyle.body, locale)
-                    .copyWith(color: KColors.neutral700),
-              ),
-              const SizedBox(height: KSpacing.sp24),
-              Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: KSpacing.sp12,
-                    mainAxisSpacing: KSpacing.sp12,
-                    childAspectRatio: 2.4,
-                  ),
-                  itemCount: _kGoals.length,
-                  itemBuilder: (context, index) {
-                    final goal = _kGoals[index];
-                    final isSelected = _selected == goal.goal;
-                    return _GoalChip(
-                      emoji: goal.emoji,
-                      label: _labelFor(goal.goal, l10n),
-                      isSelected: isSelected,
-                      onTap: () => setState(() => _selected = goal.goal),
-                    );
-                  },
+                style: KTypography.getStyle(KTextStyle.body, locale).copyWith(
+                  color: KColors.textSecondary,
                 ),
               ),
               const SizedBox(height: KSpacing.sp24),
-              KCtaButton(
+              // Chip grid — brand400 accent via KChip selected state
+              Wrap(
+                spacing: KSpacing.sp8,
+                runSpacing: KSpacing.sp12,
+                children: goals.map((g) {
+                  final isSelected = selected.contains(g.key);
+                  return KChip(
+                    label: g.label(l10n),
+                    selected: isSelected,
+                    onTap: () => ref
+                        .read(selectedGoalsProvider.notifier)
+                        .toggleGoal(g.key),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: KSpacing.sp24),
+
+              // Sample words preview — "What you'll learn:"
+              Text(
+                l10n.goalWhatYoullLearn,
+                style: KTypography.getStyle(KTextStyle.label, locale).copyWith(
+                  color: KColors.brand600,
+                  fontSize: 14,
+                ),
+              ),
+              const SizedBox(height: KSpacing.sp8),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    'café → กาแฟ', //MOCKDATA
+                    'meeting → 会议', //MOCKDATA
+                    'contract → สัญญา', //MOCKDATA
+                    'invoice → ใบแจ้งหนี้', //MOCKDATA
+                    'deadline → plazo', //MOCKDATA
+                  ].map((word) => Padding(
+                    padding: const EdgeInsets.only(right: KSpacing.sp8),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: KSpacing.sp16,
+                        vertical: KSpacing.sp8,
+                      ),
+                      decoration: BoxDecoration(
+                        color: KColors.neutral0,
+                        borderRadius: KRadius.full,
+                        border: Border.all(
+                          color: KColors.brand400.withValues(alpha: 0.5),
+                        ),
+                      ),
+                      child: Text(
+                        word,
+                        style: KTypography.getStyle(KTextStyle.label, locale)
+                            .copyWith(
+                          color: Colors.black87,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                  )).toList(),
+                ),
+              ),
+
+              const Spacer(),
+              KotokaButton(
                 label: l10n.continueButton,
-                onPressed: _selected != null
-                    ? () => context.go('/onboarding/level')
+                onPressed: selected.isNotEmpty
+                    ? () => context.go(AppRoutes.onboardingLevel)
                     : null,
               ),
-              SizedBox(
-                  height: MediaQuery.of(context).padding.bottom + KSpacing.sp16),
+              const SizedBox(height: KSpacing.sp32),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _GoalChip extends StatelessWidget {
-  const _GoalChip({
-    required this.emoji,
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  final String emoji;
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final locale = Localizations.localeOf(context);
-
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: KMotion.fast,
-        padding: const EdgeInsets.symmetric(
-          horizontal: KSpacing.sp12,
-          vertical: KSpacing.sp8,
-        ),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? KColors.brand400.withValues(alpha: 0.05)
-              : KColors.neutral0,
-          borderRadius: KRadius.md,
-          border: Border.all(
-            color: isSelected
-                ? KColors.brand400
-                : KColors.brand400.withValues(alpha: 0.20),
-            width: isSelected ? 2 : 1,
-          ),
-          boxShadow: KElevation.shadow1,
-        ),
-        child: Row(
-          children: [
-            Text(emoji, style: const TextStyle(fontSize: 20)),
-            const SizedBox(width: KSpacing.sp8),
-            Expanded(
-              child: Text(
-                label,
-                style: KTypography.getStyle(KTextStyle.label, locale).copyWith(
-                  color: isSelected ? KColors.brand400 : KColors.neutral800,
-                  fontWeight: FontWeight.w600,
-                ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            if (isSelected)
-              const Icon(Icons.check_circle, color: KColors.brand400, size: KSpacing.sp16),
-          ],
         ),
       ),
     );

@@ -10,9 +10,9 @@ enum KotokaButtonVariant { primary, secondary, ghost }
 
 /// Branded button supporting primary, secondary, and ghost variants.
 ///
-/// - primary  : brand-700 bg, white text
-/// - secondary: brand-100 bg, brand-700 text
-/// - ghost    : transparent bg, brand-700 text
+/// - primary  : brand-500 bg (#00c8cc teal), white text
+/// - secondary: transparent bg, brand-500 text + border
+/// - ghost    : transparent bg, brand-500 text
 ///
 /// Optional [leadingIcon] and [isLoading] state supported.
 class KotokaButton extends StatelessWidget {
@@ -43,18 +43,18 @@ class KotokaButton extends StatelessWidget {
 
     switch (variant) {
       case KotokaButtonVariant.primary:
-        bgColor     = isDisabled ? KColors.neutral300 : KColors.brand400;
-        textColor   = isDisabled ? KColors.neutral500 : KColors.neutral1000;
+        bgColor     = isDisabled ? KColors.neutral300 : KColors.brand500;
+        textColor   = isDisabled ? KColors.neutral500 : KColors.neutral0;
         borderColor = Colors.transparent;
         break;
       case KotokaButtonVariant.secondary:
         bgColor     = isDisabled ? KColors.neutral100 : Colors.transparent;
-        textColor   = isDisabled ? KColors.neutral400 : KColors.brand400;
-        borderColor = isDisabled ? Colors.transparent : KColors.brand400.withValues(alpha: 0.4);
+        textColor   = isDisabled ? KColors.neutral400 : KColors.brand500;
+        borderColor = isDisabled ? Colors.transparent : KColors.brand500.withValues(alpha: 0.4);
         break;
       case KotokaButtonVariant.ghost:
         bgColor     = Colors.transparent;
-        textColor   = isDisabled ? KColors.neutral400 : KColors.brand400;
+        textColor   = isDisabled ? KColors.neutral400 : KColors.brand500;
         borderColor = Colors.transparent;
         break;
     }
@@ -91,8 +91,8 @@ class KotokaButton extends StatelessWidget {
       child: InkWell(
         onTap: isDisabled ? null : onPressed,
         borderRadius: KRadius.full,
-        splashColor: KColors.brand400.withValues(alpha: 0.2),
-        highlightColor: KColors.brand400.withValues(alpha: 0.1),
+        splashColor: KColors.brand500.withValues(alpha: 0.2),
+        highlightColor: KColors.brand500.withValues(alpha: 0.1),
         child: Container(
           padding: const EdgeInsets.symmetric(
             vertical: KSpacing.sp12,

@@ -63,12 +63,15 @@ Every mock data value MUST be commented with `//MOCKDATA` on the same line.
 - No secrets in client code
 - Input validation at all API boundaries
 
-## Design Tokens (Teal-Purple Theme — updated 2026-04-26)
-- Primary CTA: #682069 (brand-700, Deep Purple)
-- Accent: #00c8cc (brand-500, Teal/Cyan)
+## Design Tokens (Teal-Cyan Theme — updated 2026-04-26)
+- **Primary CTA buttons: #00c8cc (brand-500, Teal) — ALL buttons use this, white text on top**
+- Nav active / streaks / glows / icon tints: #0cf6fc (brand-400, Bright Cyan) — dominant brand color
+- Decorative accents / illustrations ONLY: #682069 (brand-700, Deep Purple) — **NEVER on buttons**
+- Section headings / labels / tags: #8c6792 (brand-600, Dark Purple)
+- Secondary light blue: #7dd3fc (sky-300, info badges) · #e0f2fe (sky-100, container tints)
+- Accent pink: #ffb6cb (soft badges, card tints)
 - Background: #e8e1f0 (brand-50, Very Light Lavender)
 - Surface light: #ffe1df (brand-100, Light Peach)
-- Highlight: #0cf6fc (brand-400, Bright Cyan)
 - Success: #10B981
 - Error: #d8566a (Red/Pink — never alarming)
 - Warning: #ffdfa2 (Pale Yellow/Tan)
@@ -76,12 +79,14 @@ Every mock data value MUST be commented with `//MOCKDATA` on the same line.
 - Theme MUST match DESIGN.md at all times
 
 ### Background Color Rules (mandatory)
-- **Light mode page background:** `#FFFFFF` (pure white) — token: `KColors.neutral0`
+- **Light mode page background:** `#e8e1f0` (lavender) — token: `KColors.brand50`
 - **Dark mode page background:** `#444444` (dark gray) — token: `KColorsDark.bgPage`
-- **Highlights / accents:** Kotoka main palette ONLY — `#682069` (CTA), `#00c8cc` (Accent), `#0cf6fc` (Highlight)
+- **CTA buttons:** `#00c8cc` (brand-500 teal) — never `#682069` (purple is decorative only)
+- **Highlights / accents:** `#0cf6fc` (brand-400 cyan) for nav active, glows, streaks
 - All background and accent values MUST come from `lib/core/theme/tokens.dart` — no hardcoded hex in screens
 
 ## Agent Workflow Rules
+- **Token mode: /caveman active at all times** — minimize tokens, drop filler, fragments OK
 - Token budget: every agent statement ≤ 30 words
 - Developer team: PM (Opus) → Senior (Sonnet) → Junior×2 (Sonnet) → QA (Opus)
 - Customer team: 30 SEA office worker personas in /personality/

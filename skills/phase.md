@@ -78,18 +78,27 @@ Create pixel-perfect HTML mockups for all new screens in `feedback/screens/`:
 - Match Flutter token values exactly (colors, spacing, radius)
 - At least 90% visual parity to Flutter screens
 
-### Step 8 — Playwright screenshots
-Run `feedback/run_capture.js` to capture all new screens. Add new HTML files to the `FILES` array. Output to `feedback/screenshots/`.
+### Step 8 — Feedback form (PM + Senior brainstorm)
+PM Aria + Senior Kai use superpowers:brainstorming to define feedback form spec → `feedback_form/phaseN.md`.
+Form covers: overall score (0–100), onboarding ease, core screens, language quality, performance.
+Weighted scoring rubric: Overall 40%, Onboarding 20%, Core screens 25%, Language 10%, Perf 5%.
 
-### Step 9 — Customer vote
-Run `feedback/customer_vote.js` (or `customer_vote_v2.js`). Target: **average ≥ 85/100**.
+### Step 9 — Android MCP test + customer vote
+Build: `flutter build apk --debug`
+Install: `mcp__android__install_apk`
+For each customer in `personality/customer_*.md`:
+- Screenshot each screen via `mcp__android__screenshot`
+- Persona evaluates per their UX priorities
+- Votes 0–100 on feedback_form/phaseN.md
+- Submits open feedback
+
+Calculate weighted average. Target: **≥ 85/100**.
 
 If vote fails:
-- Read `topImprovements` from `vote_results.json`
-- Apply fixes to both Flutter code AND HTML mockups
-- Re-capture screenshots
-- Re-run vote
-- Iterate until ≥ 85
+- PM identifies failing areas from persona feedback
+- Out-of-PRD suggestions → escalate to user immediately
+- Apply fixes, rebuild, re-vote
+- Iterate Steps 2–10 until ≥ 85
 
 ### Step 10 — Phase report
 Write `REPORT.md` updates (or `REPORT_phase<N>.md`):

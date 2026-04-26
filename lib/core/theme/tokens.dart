@@ -98,6 +98,13 @@ class KColors {
 
   // STITCH page background — #F8F9FF (do NOT alias to neutral50 which is #F8F9FA)
   static const Color pageBg = Color(0xFFF8F9FF);
+
+  // Snap screen dark background colors
+  static const Color snapBgDark = Color(0xFF0b1c30);
+  static const Color snapBgMid  = Color(0xFF0d2540);
+
+  // Summary screen hero card radial gradient center color
+  static const Color summaryHeroGradientCenter = Color(0xFFE6F9FA);
 }
 
 // ---------------------------------------------------------------------------
@@ -229,6 +236,17 @@ enum KTextStyle {
   button,
   targetWord,
   romanization,
+}
+
+// ---------------------------------------------------------------------------
+// KFontSize — named font-size constants
+// ---------------------------------------------------------------------------
+class KFontSize {
+  KFontSize._();
+
+  static const double flashcardWord = 36.0;
+  static const double caption       = 12.0;
+  static const double micro         = 10.0;
 }
 
 // ---------------------------------------------------------------------------

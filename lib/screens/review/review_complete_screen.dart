@@ -1,208 +1,149 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kotoka_app/core/theme/tokens.dart';
-import 'package:kotoka_app/core/widgets/koko_animation.dart';
-import 'package:kotoka_app/core/widgets/k_stitch_scaffold.dart';
-import 'package:kotoka_app/core/widgets/k_cta_button.dart';
 import 'package:kotoka_app/core/widgets/k_card.dart';
+import 'package:kotoka_app/core/widgets/k_scaffold.dart';
+import 'package:kotoka_app/core/widgets/koko_animation.dart';
+import 'package:kotoka_app/core/widgets/kotoka_button.dart';
 import 'package:kotoka_app/l10n/app_localizations.dart';
 
-// REV-06 — Session Complete Screen
-// Mock data tagged //MOCKDATA
+// =============================================================================
+// ReviewCompleteScreen — session completion.
+// KokoAnimation celebrate. Stats KCard. "Back to Home" CTA.
+// Stats are mock data. //MOCKDATA
+// =============================================================================
 
-class ReviewCompleteScreen extends ConsumerWidget {
+class ReviewCompleteScreen extends StatelessWidget {
   const ReviewCompleteScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
 
-    return KStitchScaffold(
-      body: SafeArea(
-        bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.all(KSpacing.sp24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Spacer(),
+    // Mock session stats //MOCKDATA
+    const cardsReviewed = 12; //MOCKDATA
+    const accuracy = 83; //MOCKDATA
+    const xpEarned = 60; //MOCKDATA
 
-              const KokoAnimation(
-                state: KokoState.celebrating,
-                size: 160,
+    return KScaffold(
+      showOrbs: true,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: KSpacing.sp24, vertical: KSpacing.sp16),
+        child: Column(
+          children: [
+            const Spacer(),
+            // Koko celebrate animation
+            const KokoAnimation(
+              state: KokoState.celebrating,
+              size: 180,
+              semanticsLabel: 'Koko celebrating',
+            ),
+            const SizedBox(height: KSpacing.sp24),
+            // "Session Complete!" heading
+            Text(
+              l10n.reviewCompleteTitle,
+              style: KTypography.getStyle(KTextStyle.h1, locale)
+                  .copyWith(color: KColors.brand500),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: KSpacing.sp8),
+            Text(
+              l10n.reviewCompleteSubtitle,
+              style: KTypography.getStyle(KTextStyle.body, locale)
+                  .copyWith(color: KColors.textSecondary),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: KSpacing.sp32),
+            // Stats card
+            KCard(
+              child: Row(
+                children: [
+                  _StatTile(
+                    value: '$cardsReviewed',
+                    label: l10n.reviewCompleteStatCards,
+                    icon: Icons.layers_rounded,
+                  ),
+                  _VerticalDivider(),
+                  _StatTile(
+                    value: '$accuracy%',
+                    label: l10n.reviewCompleteStatAccuracy,
+                    icon: Icons.track_changes_rounded,
+                  ),
+                  _VerticalDivider(),
+                  _StatTile(
+                    value: '+$xpEarned',
+                    label: l10n.reviewCompleteStatXp,
+                    icon: Icons.bolt_rounded,
+                  ),
+                ],
               ),
-              const SizedBox(height: KSpacing.sp24),
-
-              Text(
-                l10n.reviewCompleteTitle,
-                style: KTypography.getStyle(KTextStyle.h1, locale)
-                    .copyWith(color: KColors.brand400),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: KSpacing.sp32),
-
-              // Score result card
-              _ScoreResultCard(l10n: l10n, locale: locale),
-              const SizedBox(height: KSpacing.sp24),
-
-              // Strongest / needs work
-              KCard(
-                padding: const EdgeInsets.all(KSpacing.sp16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _ResultRow(
-                      icon: Icons.star_outline,
-                      color: KColors.success500,
-                      label: 'Strongest: stakeholder', //MOCKDATA
-                      locale: locale,
-                    ),
-                    const SizedBox(height: KSpacing.sp8),
-                    _ResultRow(
-                      icon: Icons.build_circle_outlined,
-                      color: KColors.warning700,
-                      label: 'Needs work: agenda', //MOCKDATA
-                      locale: locale,
-                    ),
-                  ],
-                ),
-              ),
-
-              const Spacer(),
-
-              KCtaButton(
-                label: l10n.reviewCompleteBackHome,
-                onPressed: () {
-                  Navigator.of(context).popUntil((route) => route.isFirst);
-                },
-              ),
-              const SizedBox(height: KSpacing.sp12),
-              KGhostButton(
-                label: l10n.reviewCompleteSnapAnother,
-                onPressed: () {
-                  Navigator.of(context).popUntil((route) => route.isFirst);
-                  // Nav to /snap handled by shell router
-                },
-              ),
-
-              SizedBox(
-                  height: MediaQuery.of(context).padding.bottom +
-                      KSpacing.sp16),
-            ],
-          ),
+            ),
+            const Spacer(),
+            // CTAs
+            KotokaButton(
+              label: l10n.reviewCompleteBackHome,
+              onPressed: () => context.go('/home'),
+            ),
+            const SizedBox(height: KSpacing.sp12),
+            KotokaButton(
+              label: l10n.reviewCompleteSnapAnother,
+              variant: KotokaButtonVariant.secondary,
+              onPressed: () => context.go('/snap'),
+            ),
+            const SizedBox(height: KSpacing.sp24),
+          ],
         ),
       ),
     );
   }
 }
 
-class _ScoreResultCard extends StatelessWidget {
-  const _ScoreResultCard({required this.l10n, required this.locale});
+class _StatTile extends StatelessWidget {
+  const _StatTile({
+    required this.value,
+    required this.label,
+    required this.icon,
+  });
+  final String value;
+  final String label;
+  final IconData icon;
 
-  final AppLocalizations l10n;
-  final Locale locale;
+  @override
+  Widget build(BuildContext context) {
+    final locale = Localizations.localeOf(context);
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: KColors.brand500, size: 22),
+          const SizedBox(height: KSpacing.sp4),
+          Text(
+            value,
+            style: KTypography.getStyle(KTextStyle.h3, locale)
+                .copyWith(color: KColors.brand500),
+          ),
+          const SizedBox(height: KSpacing.sp2),
+          Text(
+            label,
+            style: KTypography.getStyle(KTextStyle.caption, locale)
+                .copyWith(color: KColors.textSecondary),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+}
 
+class _VerticalDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(KSpacing.sp24),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [KColors.brand400, KColors.brand500],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: KRadius.lg,
-        boxShadow: [
-          BoxShadow(
-            color: KColors.brand400.withValues(alpha: 0.30),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _ScoreStat(
-            value: '7/8', //MOCKDATA
-            label: 'correct',
-            locale: locale,
-          ),
-          _ScoreStat(
-            value: '+85 XP', //MOCKDATA
-            label: 'earned',
-            locale: locale,
-          ),
-          _ScoreStat(
-            value: '🔥 13', //MOCKDATA
-            label: 'day streak',
-            locale: locale,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ScoreStat extends StatelessWidget {
-  const _ScoreStat({
-    required this.value,
-    required this.label,
-    required this.locale,
-  });
-
-  final String value;
-  final String label;
-  final Locale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          value,
-          style: KTypography.getStyle(KTextStyle.h3, locale)
-              .copyWith(color: KColors.neutral1000, fontWeight: FontWeight.w700),
-        ),
-        Text(
-          label,
-          style: KTypography.getStyle(KTextStyle.caption, locale)
-              .copyWith(color: KColors.neutral900),
-        ),
-      ],
-    );
-  }
-}
-
-class _ResultRow extends StatelessWidget {
-  const _ResultRow({
-    required this.icon,
-    required this.color,
-    required this.label,
-    required this.locale,
-  });
-
-  final IconData icon;
-  final Color color;
-  final String label;
-  final Locale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, size: KSpacing.sp16, color: color),
-        const SizedBox(width: KSpacing.sp8),
-        Text(
-          label,
-          style: KTypography.getStyle(KTextStyle.body, locale)
-              .copyWith(color: Theme.of(context).colorScheme.onSurface),
-        ),
-      ],
+      width: 1,
+      height: 56,
+      color: KColors.neutral200,
     );
   }
 }

@@ -250,93 +250,135 @@
   "hotPaths": [
     {
       "path": "lib\\screens\\home\\home_screen.dart",
-      "accessCount": 61,
-      "lastAccessed": 1777216592429,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\language_select_screen.dart",
-      "accessCount": 43,
-      "lastAccessed": 1777219436893,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\profile\\profile_screen.dart",
-      "accessCount": 38,
-      "lastAccessed": 1777219862175,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_screen.dart",
-      "accessCount": 36,
-      "lastAccessed": 1777219804993,
-      "type": "file"
-    },
-    {
-      "path": "lib\\core\\theme\\tokens.dart",
-      "accessCount": 31,
-      "lastAccessed": 1777219741613,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_flashcard_screen.dart",
-      "accessCount": 28,
-      "lastAccessed": 1777216629148,
-      "type": "file"
-    },
-    {
-      "path": "lib\\core\\theme\\app_theme.dart",
-      "accessCount": 26,
-      "lastAccessed": 1777216028122,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\shop\\shop_screen.dart",
-      "accessCount": 26,
-      "lastAccessed": 1777216737690,
-      "type": "file"
-    },
-    {
-      "path": "lib\\l10n\\app_en.arb",
-      "accessCount": 22,
-      "lastAccessed": 1777208954229,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\schedule_screen.dart",
-      "accessCount": 22,
-      "lastAccessed": 1777219484305,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\pdpa_consent_screen.dart",
-      "accessCount": 19,
-      "lastAccessed": 1777219426035,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\snap\\snap_processing_screen.dart",
-      "accessCount": 17,
-      "lastAccessed": 1777219851760,
-      "type": "file"
-    },
-    {
-      "path": "lib",
-      "accessCount": 16,
-      "lastAccessed": 1777213144285,
-      "type": "directory"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\level_select_screen.dart",
-      "accessCount": 16,
-      "lastAccessed": 1777219420847,
+      "accessCount": 74,
+      "lastAccessed": 1777226881550,
       "type": "file"
     },
     {
       "path": "",
-      "accessCount": 15,
-      "lastAccessed": 1777219710388,
+      "accessCount": 61,
+      "lastAccessed": 1777228543825,
       "type": "directory"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\language_select_screen.dart",
+      "accessCount": 49,
+      "lastAccessed": 1777229168379,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\profile\\profile_screen.dart",
+      "accessCount": 49,
+      "lastAccessed": 1777229939009,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\theme\\tokens.dart",
+      "accessCount": 45,
+      "lastAccessed": 1777228557240,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_screen.dart",
+      "accessCount": 45,
+      "lastAccessed": 1777229765612,
+      "type": "file"
+    },
+    {
+      "path": "lib\\l10n\\app_en.arb",
+      "accessCount": 40,
+      "lastAccessed": 1777229847638,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_flashcard_screen.dart",
+      "accessCount": 34,
+      "lastAccessed": 1777224926748,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\shop\\shop_screen.dart",
+      "accessCount": 31,
+      "lastAccessed": 1777224715424,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\theme\\app_theme.dart",
+      "accessCount": 29,
+      "lastAccessed": 1777220819948,
+      "type": "file"
+    },
+    {
+      "path": "lib\\l10n\\app_th.arb",
+      "accessCount": 28,
+      "lastAccessed": 1777229879428,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\pdpa_consent_screen.dart",
+      "accessCount": 27,
+      "lastAccessed": 1777228825399,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\schedule_screen.dart",
+      "accessCount": 23,
+      "lastAccessed": 1777223644027,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\level_select_screen.dart",
+      "accessCount": 23,
+      "lastAccessed": 1777226730761,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_screen.dart",
+      "accessCount": 23,
+      "lastAccessed": 1777229775228,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\welcome_screen.dart",
+      "accessCount": 20,
+      "lastAccessed": 1777228801156,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\snap\\snap_processing_screen.dart",
+      "accessCount": 18,
+      "lastAccessed": 1777224281652,
+      "type": "file"
+    },
+    {
+      "path": "lib",
+      "accessCount": 18,
+      "lastAccessed": 1777224722952,
+      "type": "directory"
+    },
+    {
+      "path": "lib\\screens\\review\\review_conversation_screen.dart",
+      "accessCount": 16,
+      "lastAccessed": 1777224559946,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\goal_select_screen.dart",
+      "accessCount": 16,
+      "lastAccessed": 1777226721289,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\mission_screen.dart",
+      "accessCount": 15,
+      "lastAccessed": 1777223654864,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_complete_screen.dart",
+      "accessCount": 15,
+      "lastAccessed": 1777224448401,
+      "type": "file"
     },
     {
       "path": "checklist_UXUI.md",
@@ -345,75 +387,51 @@
       "type": "file"
     },
     {
-      "path": "lib\\l10n\\app_th.arb",
+      "path": "CLAUDE.md",
       "accessCount": 14,
-      "lastAccessed": 1777208967664,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\welcome_screen.dart",
-      "accessCount": 14,
-      "lastAccessed": 1777219326747,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_complete_screen.dart",
-      "accessCount": 14,
-      "lastAccessed": 1777219726652,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\mission_screen.dart",
-      "accessCount": 13,
-      "lastAccessed": 1777219335235,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\goal_select_screen.dart",
-      "accessCount": 13,
-      "lastAccessed": 1777219424300,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\snap\\snap_screen.dart",
-      "accessCount": 12,
-      "lastAccessed": 1777216780336,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_fillblank_screen.dart",
-      "accessCount": 12,
-      "lastAccessed": 1777219718185,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\review\\review_conversation_screen.dart",
-      "accessCount": 12,
-      "lastAccessed": 1777219753504,
+      "lastAccessed": 1777224357775,
       "type": "file"
     },
     {
       "path": "lib\\screens\\snap\\snap_text_screen.dart",
-      "accessCount": 12,
-      "lastAccessed": 1777219796719,
+      "accessCount": 14,
+      "lastAccessed": 1777224547212,
       "type": "file"
     },
     {
       "path": "lib\\screens\\snap\\snap_results_screen.dart",
-      "accessCount": 12,
-      "lastAccessed": 1777219821960,
+      "accessCount": 13,
+      "lastAccessed": 1777224307324,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\review\\review_fillblank_screen.dart",
+      "accessCount": 13,
+      "lastAccessed": 1777224395575,
       "type": "file"
     },
     {
       "path": "lib\\screens\\onboarding\\profile_setup_screen.dart",
-      "accessCount": 11,
-      "lastAccessed": 1777219485373,
+      "accessCount": 12,
+      "lastAccessed": 1777223615345,
       "type": "file"
     },
     {
       "path": "lib\\main.dart",
-      "accessCount": 8,
-      "lastAccessed": 1777214703922,
+      "accessCount": 10,
+      "lastAccessed": 1777223932412,
+      "type": "file"
+    },
+    {
+      "path": "lib\\screens\\onboarding\\commitment_screen.dart",
+      "accessCount": 9,
+      "lastAccessed": 1777223654433,
+      "type": "file"
+    },
+    {
+      "path": "lib\\core\\widgets\\koko_emoji.dart",
+      "accessCount": 9,
+      "lastAccessed": 1777223904163,
       "type": "file"
     },
     {
@@ -423,111 +441,93 @@
       "type": "file"
     },
     {
-      "path": "CLAUDE.md",
-      "accessCount": 7,
-      "lastAccessed": 1777194676726,
-      "type": "file"
-    },
-    {
-      "path": "lib\\screens\\onboarding\\commitment_screen.dart",
-      "accessCount": 7,
-      "lastAccessed": 1777213978281,
-      "type": "file"
-    },
-    {
-      "path": "lib\\core\\widgets\\koko_emoji.dart",
-      "accessCount": 6,
-      "lastAccessed": 1777193715823,
-      "type": "file"
-    },
-    {
       "path": "personality\\customer_pam_bangkok.md",
-      "accessCount": 5,
-      "lastAccessed": 1777188654291,
-      "type": "file"
-    },
-    {
-      "path": "personality\\customer_arm_silom.md",
-      "accessCount": 4,
-      "lastAccessed": 1777188654637,
-      "type": "file"
-    },
-    {
-      "path": "pubspec.yaml",
-      "accessCount": 4,
-      "lastAccessed": 1777193697800,
-      "type": "file"
-    },
-    {
-      "path": "personality\\customer_mint_sukhumvit.md",
-      "accessCount": 4,
-      "lastAccessed": 1777206639024,
+      "accessCount": 7,
+      "lastAccessed": 1777227680581,
       "type": "file"
     },
     {
       "path": "personality\\customer_raj_kl.md",
-      "accessCount": 4,
-      "lastAccessed": 1777206639842,
+      "accessCount": 6,
+      "lastAccessed": 1777227681521,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_mint_sukhumvit.md",
+      "accessCount": 6,
+      "lastAccessed": 1777227682261,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_arm_silom.md",
+      "accessCount": 6,
+      "lastAccessed": 1777227682714,
       "type": "file"
     },
     {
       "path": "personality\\customer_alex_sg.md",
-      "accessCount": 4,
-      "lastAccessed": 1777206640686,
+      "accessCount": 6,
+      "lastAccessed": 1777227684294,
       "type": "file"
     },
     {
-      "path": "personality\\customer_nam_chatuchak.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188655413,
+      "path": "pubspec.yaml",
+      "accessCount": 6,
+      "lastAccessed": 1777228398936,
       "type": "file"
     },
     {
       "path": "personality\\customer_nong_latkrabang.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188655801,
-      "type": "file"
-    },
-    {
-      "path": "personality\\customer_oak_bangna.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188656192,
-      "type": "file"
-    },
-    {
-      "path": "personality\\customer_top_asoke.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188656666,
-      "type": "file"
-    },
-    {
-      "path": "personality\\customer_fah_ari.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188657436,
+      "accessCount": 5,
+      "lastAccessed": 1777227681104,
       "type": "file"
     },
     {
       "path": "personality\\customer_lisa_kl.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188664767,
+      "accessCount": 5,
+      "lastAccessed": 1777227683032,
       "type": "file"
     },
     {
-      "path": "personality\\customer_james_sg.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188666237,
+      "path": "personality\\customer_fah_ari.md",
+      "accessCount": 5,
+      "lastAccessed": 1777227684123,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_top_asoke.md",
+      "accessCount": 5,
+      "lastAccessed": 1777227684616,
       "type": "file"
     },
     {
       "path": "personality\\customer_priya_sg.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188666441,
+      "accessCount": 5,
+      "lastAccessed": 1777227685379,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_nam_chatuchak.md",
+      "accessCount": 5,
+      "lastAccessed": 1777227685797,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_james_sg.md",
+      "accessCount": 5,
+      "lastAccessed": 1777227686421,
+      "type": "file"
+    },
+    {
+      "path": "personality\\customer_oak_bangna.md",
+      "accessCount": 5,
+      "lastAccessed": 1777227687187,
       "type": "file"
     },
     {
       "path": "personality\\customer_ana_manila.md",
-      "accessCount": 3,
-      "lastAccessed": 1777188666802,
+      "accessCount": 5,
+      "lastAccessed": 1777227687383,
       "type": "file"
     },
     {
@@ -538,14 +538,14 @@
     },
     {
       "path": "lib\\core\\providers\\locale_provider.dart",
-      "accessCount": 2,
-      "lastAccessed": 1777184082347,
+      "accessCount": 3,
+      "lastAccessed": 1777223872023,
       "type": "file"
     },
     {
       "path": "lib\\core\\widgets\\sensory_tag_bar.dart",
-      "accessCount": 1,
-      "lastAccessed": 1777180388247,
+      "accessCount": 2,
+      "lastAccessed": 1777223880104,
       "type": "file"
     }
   ],
