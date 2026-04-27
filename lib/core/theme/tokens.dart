@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ---------------------------------------------------------------------------
 // KColors — brand palette + semantic + mood tints
@@ -258,13 +259,8 @@ class KTypography {
   /// Locales that use Sarabun font
   static const Set<String> _sarabunLocales = {'th', 'lo'};
 
-  /// Returns the appropriate font family for the given locale.
-  static String fontFamilyForLocale(Locale locale) {
-    if (_sarabunLocales.contains(locale.languageCode)) {
-      return 'Sarabun';
-    }
-    return 'IBMPlexSans';
-  }
+  static bool _isSarabun(Locale locale) =>
+      _sarabunLocales.contains(locale.languageCode);
 
   /// Returns the minimum font size for Thai/Lao locales.
   static double _minThaiSize(double size, Locale locale) =>
@@ -272,111 +268,104 @@ class KTypography {
           ? math.max(size, 15.0)
           : size;
 
+  /// Applies the correct font family: Nunito for Latin/CJK, Sarabun for TH/LO.
+  static TextStyle _applyFont(TextStyle base, Locale locale) {
+    if (_isSarabun(locale)) return base.copyWith(fontFamily: 'Sarabun');
+    return GoogleFonts.nunito(textStyle: base);
+  }
+
   /// Returns a [TextStyle] for the given [KTextStyle] and [Locale].
   static TextStyle getStyle(KTextStyle style, Locale locale) {
-    final family = fontFamilyForLocale(locale);
-
     switch (style) {
       case KTextStyle.h1:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(const TextStyle(
           fontSize: 32.0,
           fontWeight: FontWeight.w700,
           height: 1.25,
           letterSpacing: -0.5,
           color: KColors.textPrimary,
-        );
+        ), locale);
       case KTextStyle.h2:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(const TextStyle(
           fontSize: 24.0,
           fontWeight: FontWeight.w700,
           height: 1.3,
           letterSpacing: -0.25,
           color: KColors.textPrimary,
-        );
+        ), locale);
       case KTextStyle.h3:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(const TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
           height: 1.35,
           letterSpacing: 0.0,
           color: KColors.textPrimary,
-        );
+        ), locale);
       case KTextStyle.h4:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(const TextStyle(
           fontSize: 17.0,
           fontWeight: FontWeight.w600,
           height: 1.4,
           letterSpacing: 0.0,
           color: KColors.textPrimary,
-        );
+        ), locale);
       case KTextStyle.body:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(TextStyle(
           fontSize: _minThaiSize(15.0, locale),
           fontWeight: FontWeight.w400,
           height: 1.5,
           letterSpacing: 0.1,
           color: KColors.textPrimary,
-        );
+        ), locale);
       case KTextStyle.bodySmall:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(const TextStyle(
           fontSize: 13.0,
           fontWeight: FontWeight.w400,
           height: 1.5,
           letterSpacing: 0.1,
           color: KColors.textSecondary,
-        );
+        ), locale);
       case KTextStyle.caption:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(TextStyle(
           fontSize: _minThaiSize(12.0, locale),
           fontWeight: FontWeight.w400,
           height: 1.4,
           letterSpacing: 0.2,
           color: KColors.textSecondary,
-        );
+        ), locale);
       case KTextStyle.label:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(const TextStyle(
           fontSize: 12.0,
           fontWeight: FontWeight.w500,
           height: 1.3,
           letterSpacing: 0.5,
           color: KColors.textSecondary,
-        );
+        ), locale);
       case KTextStyle.button:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(const TextStyle(
           fontSize: 15.0,
           fontWeight: FontWeight.w600,
           height: 1.2,
           letterSpacing: 0.3,
           color: KColors.textPrimary,
-        );
+        ), locale);
       case KTextStyle.targetWord:
-        return TextStyle(
-          fontFamily: family,
+        return _applyFont(const TextStyle(
           fontSize: 28.0,
           fontWeight: FontWeight.w700,
           height: 1.2,
           letterSpacing: -0.25,
           color: KColors.brand500,
-        );
+        ), locale);
       case KTextStyle.romanization:
-        return TextStyle(
-          fontFamily: 'IBMPlexSans', // Always Latin font for romanization
+        return GoogleFonts.nunito(textStyle: TextStyle(
           fontSize: _minThaiSize(14.0, locale),
           fontWeight: FontWeight.w400,
           height: 1.4,
           letterSpacing: 0.3,
           color: KColors.textSecondary,
           fontStyle: FontStyle.italic,
-        );
+        ));
     }
   }
 }
