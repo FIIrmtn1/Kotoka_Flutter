@@ -142,86 +142,142 @@ GoRouter appRouter(AppRouterRef ref) {
       // ------------------------------------------------------------------
       GoRoute(
         path: AppRoutes.onboarding,
-        pageBuilder: (context, state) => const NoTransitionPage(
-          child: WelcomeScreen(),
+        pageBuilder: (context, state) => NoTransitionPage(
+          child: Localizations.override(
+            context: context,
+            locale: const Locale('en'),
+            child: const WelcomeScreen(),
+          ),
         ),
         routes: [
           GoRoute(
             path: 'auth',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: AuthScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const AuthScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'language',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: LanguageSelectScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const LanguageSelectScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'assessment',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: ProficiencyAssessmentScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const ProficiencyAssessmentScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'goal-commitment',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: GoalCommitmentScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const GoalCommitmentScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'welcome',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: WelcomeScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const WelcomeScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'goal',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: GoalSelectScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const GoalSelectScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'level',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: LevelSelectScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const LevelSelectScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'schedule',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: ScheduleScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const ScheduleScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'commitment',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: CommitmentScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const CommitmentScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'pdpa',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: PdpaConsentScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const PdpaConsentScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'profile',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: ProfileSetupScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const ProfileSetupScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'mission',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: MissionScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const MissionScreen(),
+              ),
             ),
           ),
           GoRoute(
             path: 'summary',
-            pageBuilder: (context, state) => const MaterialPage(
-              child: SummaryScreen(),
+            pageBuilder: (context, state) => MaterialPage(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: const SummaryScreen(),
+              ),
             ),
           ),
         ],

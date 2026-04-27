@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"adb shell am start -n com.example.kotoka_app/com.example.kotoka_app.MainActivity --es \\\"route\\\" \\\"/home\\\" 2>&1\",\"description\":\"Try to start app with home route\"}",
-  "error": "Exit code 1\nStarting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=Files/Git/home (has extras) }\r\nError type 3\r\nError: Activity class {Files/Git/home} does not exist.",
-  "timestamp": "2026-04-27T08:41:02.846Z",
+  "tool_input_preview": "{\"command\":\"cd \\\"C:\\\\Users\\\\FIIrm\\\\OneDrive\\\\Desktop\\\\Kotoka_appv3\\\" && adb install -r build\\\\app\\\\outputs\\\\flutter-apk\\\\app-debug.apk 2>&1\",\"timeout\":60000,\"description\":\"Install APK on emulator\"}",
+  "error": "Exit code 1\nPerforming Streamed Install\r\nadb.exe: failed to stat buildappoutputsflutter-apkapp-debug.apk: No such file or directory",
+  "timestamp": "2026-04-27T09:02:20.225Z",
   "retry_count": 1
 }
