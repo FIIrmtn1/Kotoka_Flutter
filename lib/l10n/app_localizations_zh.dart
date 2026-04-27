@@ -884,4 +884,52 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get reviewConvDesc => '练习口语';
+
+  @override
+  String get reviewPronounMode => '发音';
+
+  @override
+  String get reviewPronounDesc => '大声说出来';
+
+  @override
+  String get homeMockDeck1 => '冰拿铁';
+
+  @override
+  String get homeMockDeck2 => '无线耳机';
+
+  @override
+  String get shopPack1Name => '职场泰语';
+
+  @override
+  String get shopPack1Desc => '会议、邮件和办公室生活必备词汇';
+
+  @override
+  String get shopPack2Name => '街头美食与咖啡厅';
+
+  @override
+  String get shopPack2Desc => '像当地人一样在摊位或咖啡店点餐';
+
+  @override
+  String get shopPack3Name => '旅行与交通';
+
+  @override
+  String get shopPack3Desc => '轻松应对机场、出租车和酒店';
+
+  @override
+  String get shopPack4Name => '健康与药房';
+
+  @override
+  String get shopPack4Desc => '描述症状并理解处方';
+
+  @override
+  String get shopPack5Name => '购物与砍价';
+
+  @override
+  String get shopPack5Desc => '价格、尺寸和礼貌议价用语';
+
+  @override
+  String get shopPack6Name => '社交与约会';
+
+  @override
+  String get shopPack6Desc => '闲聊、赞美和交朋友';
 }

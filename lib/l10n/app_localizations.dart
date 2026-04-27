@@ -1791,6 +1791,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Practice speaking'**
   String get reviewConvDesc;
+
+  /// Pronunciation mode card title on review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Pronunciation'**
+  String get reviewPronounMode;
+
+  /// Pronunciation mode card description
+  ///
+  /// In en, this message translates to:
+  /// **'Say it aloud'**
+  String get reviewPronounDesc;
+
+  /// Mock deck 1 name
+  ///
+  /// In en, this message translates to:
+  /// **'Iced Latte'**
+  String get homeMockDeck1;
+
+  /// Mock deck 2 name
+  ///
+  /// In en, this message translates to:
+  /// **'Wireless Earphones'**
+  String get homeMockDeck2;
+
+  /// No description provided for @shopPack1Name.
+  ///
+  /// In en, this message translates to:
+  /// **'Workplace Thai'**
+  String get shopPack1Name;
+
+  /// No description provided for @shopPack1Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Essential vocab for meetings, emails, and office life'**
+  String get shopPack1Desc;
+
+  /// No description provided for @shopPack2Name.
+  ///
+  /// In en, this message translates to:
+  /// **'Street Food & Cafés'**
+  String get shopPack2Name;
+
+  /// No description provided for @shopPack2Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Order like a local at any stall or coffee shop'**
+  String get shopPack2Desc;
+
+  /// No description provided for @shopPack3Name.
+  ///
+  /// In en, this message translates to:
+  /// **'Travel & Transport'**
+  String get shopPack3Name;
+
+  /// No description provided for @shopPack3Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigate airports, taxis, and hotels with ease'**
+  String get shopPack3Desc;
+
+  /// No description provided for @shopPack4Name.
+  ///
+  /// In en, this message translates to:
+  /// **'Health & Pharmacy'**
+  String get shopPack4Name;
+
+  /// No description provided for @shopPack4Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe symptoms and understand prescriptions'**
+  String get shopPack4Desc;
+
+  /// No description provided for @shopPack5Name.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping & Bargaining'**
+  String get shopPack5Name;
+
+  /// No description provided for @shopPack5Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices, sizes, and polite negotiation phrases'**
+  String get shopPack5Desc;
+
+  /// No description provided for @shopPack6Name.
+  ///
+  /// In en, this message translates to:
+  /// **'Social & Dating'**
+  String get shopPack6Name;
+
+  /// No description provided for @shopPack6Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Small talk, compliments, and making friends'**
+  String get shopPack6Desc;
 }
 
 class _AppLocalizationsDelegate

@@ -36,7 +36,7 @@ class WelcomeScreen extends ConsumerWidget {
                   // Koko waving character
                   KokoAnimation(
                     state: KokoState.waving,
-                    size: 180,
+                    size: 300,
                     semanticsLabel: l10n.kokoWavingSemantics,
                   ),
                   const SizedBox(height: KSpacing.sp32),
@@ -47,6 +47,7 @@ class WelcomeScreen extends ConsumerWidget {
                       color: KColors.brand400,
                       fontWeight: FontWeight.w800,
                       letterSpacing: -1.0,
+                      fontSize: 60,
                     ),
                   ),
                   const SizedBox(height: KSpacing.sp12),
@@ -80,40 +81,13 @@ class WelcomeScreen extends ConsumerWidget {
                     l10n.welcomeTerms,
                     textAlign: TextAlign.center,
                     style: KTypography.getStyle(KTextStyle.caption, locale).copyWith(
-                      color: KColors.textDisabled,
+                      color: KColors.textSecondary,
                     ),
                   ),
                   // Space for feature cards at bottom
                   const SizedBox(height: KSpacing.sp96),
                 ],
               ),
-            ),
-          ),
-
-          // Floating glass feature preview cards — above safe area bottom
-          Positioned(
-            left: KSpacing.sp24,
-            right: KSpacing.sp24,
-            bottom: KSpacing.sp32,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _FeatureCard(
-                  icon: Icons.camera_alt_outlined,
-                  label: l10n.featureSnap,
-                  locale: locale,
-                ),
-                _FeatureCard(
-                  icon: Icons.auto_awesome_outlined,
-                  label: l10n.featureAI,
-                  locale: locale,
-                ),
-                _FeatureCard(
-                  icon: Icons.lock_outlined,
-                  label: l10n.featureVault,
-                  locale: locale,
-                ),
-              ],
             ),
           ),
         ],

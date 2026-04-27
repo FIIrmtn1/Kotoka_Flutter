@@ -22,7 +22,7 @@ class CommitmentScreen extends ConsumerWidget {
     final locale = Localizations.localeOf(context);
 
     return Scaffold(
-      backgroundColor: KColors.brand50,
+      backgroundColor: KColors.neutral0,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(

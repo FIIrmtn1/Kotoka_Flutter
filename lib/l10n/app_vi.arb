@@ -313,5 +313,24 @@
   "reviewFillMode": "Điền vào chỗ trống",
   "reviewFillDesc": "Nhập từ",
   "reviewConvMode": "Hội thoại",
-  "reviewConvDesc": "Luyện nói"
+  "reviewConvDesc": "Luyện nói",
+
+  "reviewPronounMode": "Phát âm",
+  "reviewPronounDesc": "Nói to lên",
+
+  "homeMockDeck1": "Latte đá",
+  "homeMockDeck2": "Tai nghe không dây",
+
+  "shopPack1Name": "Tiếng Thái văn phòng",
+  "shopPack1Desc": "Từ vựng thiết yếu cho cuộc họp, email và môi trường văn phòng",
+  "shopPack2Name": "Ăn vặt & Quán cà phê",
+  "shopPack2Desc": "Gọi món như người địa phương tại bất kỳ quầy hoặc quán cà phê nào",
+  "shopPack3Name": "Du lịch & Giao thông",
+  "shopPack3Desc": "Di chuyển ở sân bay, taxi và khách sạn dễ dàng",
+  "shopPack4Name": "Sức khỏe & Nhà thuốc",
+  "shopPack4Desc": "Mô tả triệu chứng và hiểu đơn thuốc",
+  "shopPack5Name": "Mua sắm & Mặc cả",
+  "shopPack5Desc": "Giá cả, kích cỡ và cụm từ thương lượng lịch sự",
+  "shopPack6Name": "Giao lưu & Hẹn hò",
+  "shopPack6Desc": "Tán gẫu, khen ngợi và kết bạn"
 }

@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:kotoka_app/core/theme/tokens.dart';
@@ -87,8 +88,11 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
 
               // Continue with Google
               OutlinedButton.icon(
-                icon: const Icon(Icons.g_mobiledata,
-                    size: 24, color: KColors.brand500),
+                icon: SvgPicture.asset(
+                  'assets/icons/google_icon.svg',
+                  width: 20,
+                  height: 20,
+                ),
                 label: Text(
                   l10n.authGoogle,
                   style:
@@ -242,3 +246,4 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
     );
   }
 }
+

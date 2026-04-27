@@ -116,24 +116,33 @@ class _ProficiencyAssessmentScreenState
                 child: Column(
                   children: [
                     // Beginner card
-                    _PathCard(
-                      isSelected: _selectedPath == 'beginner',
-                      imagePath: 'Kokoanimation/child_koko.png',
-                      title: l10n.assessBeginner,
-                      subtitle: l10n.assessBeginnerSub,
-                      onTap: () => _selectPath('beginner'),
-                      locale: locale,
+                    SizedBox(
+                      height: 260,
+                      width: 300,
+                      child: _PathCard(
+                        isSelected: _selectedPath == 'beginner',
+                        imagePath: 'Kokoanimation/child_koko-removebg.png',
+                        title: l10n.assessBeginner,
+                        subtitle: l10n.assessBeginnerSub,
+                        onTap: () => _selectPath('beginner'),
+                        locale: locale,
+                      ),
                     ),
+
                     const SizedBox(height: KSpacing.sp16),
 
                     // Experienced card
-                    _PathCard(
-                      isSelected: _selectedPath == 'experienced',
-                      imagePath: 'Kokoanimation/graduate_koko.png',
-                      title: l10n.assessExperienced,
-                      subtitle: l10n.assessExperiencedSub,
-                      onTap: () => _selectPath('experienced'),
-                      locale: locale,
+                    SizedBox(
+                      height: 260,
+                      width: 300,
+                      child: _PathCard(
+                        isSelected: _selectedPath == 'experienced',
+                        imagePath: 'Kokoanimation/graduate_koko-removebg.png',
+                        title: l10n.assessExperienced,
+                        subtitle: l10n.assessExperiencedSub,
+                        onTap: () => _selectPath('experienced'),
+                        locale: locale,
+                      ),
                     ),
                   ],
                 ),
@@ -200,6 +209,7 @@ class _PathCard extends StatelessWidget {
           boxShadow: isSelected ? KElevation.shadow2 : KElevation.shadow1,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
               imagePath,

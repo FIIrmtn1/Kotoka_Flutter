@@ -890,5 +890,28 @@
   "reviewConvMode": "Conversation",
   "@reviewConvMode": { "description": "Conversation mode card title on review screen" },
   "reviewConvDesc": "Practice speaking",
-  "@reviewConvDesc": { "description": "Conversation mode card description" }
+  "@reviewConvDesc": { "description": "Conversation mode card description" },
+
+  "reviewPronounMode": "Pronunciation",
+  "@reviewPronounMode": { "description": "Pronunciation mode card title on review screen" },
+  "reviewPronounDesc": "Say it aloud",
+  "@reviewPronounDesc": { "description": "Pronunciation mode card description" },
+
+  "homeMockDeck1": "Iced Latte",
+  "@homeMockDeck1": { "description": "Mock deck 1 name" },
+  "homeMockDeck2": "Wireless Earphones",
+  "@homeMockDeck2": { "description": "Mock deck 2 name" },
+
+  "shopPack1Name": "Workplace Thai",
+  "shopPack1Desc": "Essential vocab for meetings, emails, and office life",
+  "shopPack2Name": "Street Food & Cafés",
+  "shopPack2Desc": "Order like a local at any stall or coffee shop",
+  "shopPack3Name": "Travel & Transport",
+  "shopPack3Desc": "Navigate airports, taxis, and hotels with ease",
+  "shopPack4Name": "Health & Pharmacy",
+  "shopPack4Desc": "Describe symptoms and understand prescriptions",
+  "shopPack5Name": "Shopping & Bargaining",
+  "shopPack5Desc": "Prices, sizes, and polite negotiation phrases",
+  "shopPack6Name": "Social & Dating",
+  "shopPack6Desc": "Small talk, compliments, and making friends"
 }

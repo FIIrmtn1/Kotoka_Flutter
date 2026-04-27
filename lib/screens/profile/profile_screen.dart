@@ -29,14 +29,14 @@ class ProfileScreen extends ConsumerWidget {
     const appVersion = '0.9.1-beta'; //MOCKDATA
 
     return Scaffold(
-      backgroundColor: KColors.brand50,
+      backgroundColor: KColors.neutral0,
       body: CustomScrollView(
         slivers: [
           // ----------------------------------------------------------------
           // App bar
           // ----------------------------------------------------------------
           SliverAppBar(
-            backgroundColor: KColors.brand50,
+            backgroundColor: KColors.neutral0,
             surfaceTintColor: Colors.transparent,
             elevation: 0,
             floating: true,
@@ -157,6 +157,10 @@ class ProfileScreen extends ConsumerWidget {
                 header: l10n.profileSettingsSection,
                 locale: locale,
                 children: [
+                  // Display language row
+                  _DisplayLanguageRow(l10n: l10n, locale: locale),
+                  const Divider(height: 1, color: KColors.borderDefault,
+                      indent: KSpacing.sp16, endIndent: KSpacing.sp16),
                   // Daily reminders toggle
                   _SettingsToggleRow(
                     label: l10n.profileNotifications,
@@ -591,6 +595,86 @@ class _LangOption extends StatelessWidget {
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// _DisplayLanguageRow — tappable row in Settings to change app display language
+// ---------------------------------------------------------------------------
+class _DisplayLanguageRow extends ConsumerWidget {
+  const _DisplayLanguageRow({required this.l10n, required this.locale});
+  final AppLocalizations l10n;
+  final Locale locale;
+
+  static const _langNames = {
+    'en': 'English',
+    'th': 'ภาษาไทย',
+    'zh': '普通话',
+    'es': 'Español',
+    'vi': 'Tiếng Việt',
+    'lo': 'ພາສາລາວ',
+  };
+
+  static const _flagCodes = {
+    'en': 'gb', 'th': 'th', 'zh': 'cn',
+    'es': 'es', 'vi': 'vn', 'lo': 'la',
+  };
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentCode = locale.languageCode;
+    final flagCode = _flagCodes[currentCode] ?? 'gb';
+    final langName = _langNames[currentCode] ?? 'English';
+
+    return InkWell(
+      onTap: () => _showPicker(context, ref),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: KSpacing.sp16, vertical: KSpacing.sp12),
+        child: Row(
+          children: [
+            Icon(Icons.language_outlined, size: 20, color: KColors.brand600),
+            const SizedBox(width: KSpacing.sp12),
+            Expanded(
+              child: Text(l10n.langDisplayLanguage,
+                  style: KTypography.getStyle(KTextStyle.body, locale)),
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(2),
+              child: Image.asset(
+                'assets/twemoji/flag_$flagCode.png',
+                width: 18,
+                height: 18,
+                errorBuilder: (_, __, ___) => const SizedBox(width: 18),
+              ),
+            ),
+            const SizedBox(width: KSpacing.sp4),
+            Text(langName,
+                style: KTypography.getStyle(KTextStyle.caption, locale)
+                    .copyWith(color: KColors.textSecondary)),
+            const SizedBox(width: KSpacing.sp4),
+            const Icon(Icons.chevron_right_rounded,
+                size: 18, color: KColors.neutral400),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showPicker(BuildContext context, WidgetRef ref) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => _LanguagePickerSheet(
+        onLocaleSelected: (selected) {
+          ref.read(localeProvider.notifier).setLocale(selected);
+          Navigator.of(context).pop();
+        },
+        locale: locale,
+        l10n: l10n,
       ),
     );
   }

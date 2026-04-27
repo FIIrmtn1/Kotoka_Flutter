@@ -25,7 +25,7 @@ class KScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KColors.brand50,
+      backgroundColor: KColors.neutral0,
       appBar: appBar,
       bottomNavigationBar: bottomNavigationBar,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,

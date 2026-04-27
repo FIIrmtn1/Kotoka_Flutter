@@ -81,8 +81,8 @@ flutter:
     - Kokoanimation/koko-wave.webp
     - Kokoanimation/koko-excited.webp
     - Kokoanimation/koko-encourage.webp
-    - Kokoanimation/child_koko.png
-    - Kokoanimation/graduate_koko.png
+    - Kokoanimation/child_koko-removebg.png
+    - Kokoanimation/graduate_koko-removebg.png
 
   # Font TTF files go in assets/fonts/ — declarations re-enable once files are present
   # fonts:

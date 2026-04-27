@@ -313,5 +313,24 @@
   "reviewFillMode": "Completar",
   "reviewFillDesc": "Escribe la palabra",
   "reviewConvMode": "Conversación",
-  "reviewConvDesc": "Practicar hablar"
+  "reviewConvDesc": "Practicar hablar",
+
+  "reviewPronounMode": "Pronunciación",
+  "reviewPronounDesc": "Dilo en voz alta",
+
+  "homeMockDeck1": "Latte frío",
+  "homeMockDeck2": "Auriculares inalámbricos",
+
+  "shopPack1Name": "Tailandés laboral",
+  "shopPack1Desc": "Vocabulario esencial para reuniones, correos y vida de oficina",
+  "shopPack2Name": "Comida callejera y cafés",
+  "shopPack2Desc": "Pide como un local en cualquier puesto o cafetería",
+  "shopPack3Name": "Viajes y transporte",
+  "shopPack3Desc": "Navega aeropuertos, taxis y hoteles con facilidad",
+  "shopPack4Name": "Salud y farmacia",
+  "shopPack4Desc": "Describe síntomas y entiende recetas médicas",
+  "shopPack5Name": "Compras y regateo",
+  "shopPack5Desc": "Precios, tallas y frases de negociación educada",
+  "shopPack6Name": "Social y citas",
+  "shopPack6Desc": "Charla casual, cumplidos y hacer amigos"
 }

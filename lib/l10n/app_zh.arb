@@ -313,5 +313,24 @@
   "reviewFillMode": "填空",
   "reviewFillDesc": "输入单词",
   "reviewConvMode": "对话",
-  "reviewConvDesc": "练习口语"
+  "reviewConvDesc": "练习口语",
+
+  "reviewPronounMode": "发音",
+  "reviewPronounDesc": "大声说出来",
+
+  "homeMockDeck1": "冰拿铁",
+  "homeMockDeck2": "无线耳机",
+
+  "shopPack1Name": "职场泰语",
+  "shopPack1Desc": "会议、邮件和办公室生活必备词汇",
+  "shopPack2Name": "街头美食与咖啡厅",
+  "shopPack2Desc": "像当地人一样在摊位或咖啡店点餐",
+  "shopPack3Name": "旅行与交通",
+  "shopPack3Desc": "轻松应对机场、出租车和酒店",
+  "shopPack4Name": "健康与药房",
+  "shopPack4Desc": "描述症状并理解处方",
+  "shopPack5Name": "购物与砍价",
+  "shopPack5Desc": "价格、尺寸和礼貌议价用语",
+  "shopPack6Name": "社交与约会",
+  "shopPack6Desc": "闲聊、赞美和交朋友"
 }

@@ -26,44 +26,13 @@ class _PackData {
   final IconData icon;
 }
 
-// Mock vocab packs — replace with Firestore query in production.
-const _mockPacks = <_PackData>[
-  _PackData( //MOCKDATA
-    name: 'Workplace Thai',
-    description: 'Essential vocab for meetings, emails, and office life',
-    langPair: 'EN → TH',
-    icon: Icons.business_center_outlined,
-  ),
-  _PackData( //MOCKDATA
-    name: 'Street Food Lover',
-    description: 'Order food like a local at any market or stall',
-    langPair: 'EN → TH',
-    icon: Icons.restaurant_menu_outlined,
-  ),
-  _PackData( //MOCKDATA
-    name: 'Travel Essentials',
-    description: 'Navigate transport, hotels, and tourist sites',
-    langPair: 'EN → ZH',
-    icon: Icons.flight_outlined,
-  ),
-  _PackData( //MOCKDATA
-    name: 'Daily Mandarin',
-    description: 'Greetings, shopping, and everyday conversation',
-    langPair: 'EN → ZH',
-    icon: Icons.chat_bubble_outline,
-  ),
-  _PackData( //MOCKDATA
-    name: 'Business Spanish',
-    description: 'Professional phrases for meetings and negotiations',
-    langPair: 'EN → ES',
-    icon: Icons.handshake_outlined,
-  ),
-  _PackData( //MOCKDATA
-    name: 'Vietnamese Basics',
-    description: 'Core vocabulary for beginners visiting Vietnam',
-    langPair: 'EN → VI',
-    icon: Icons.emoji_nature_outlined,
-  ),
+List<_PackData> _buildPacks(AppLocalizations l10n) => [ //MOCKDATA
+  _PackData(name: l10n.shopPack1Name, description: l10n.shopPack1Desc, langPair: 'EN → TH', icon: Icons.business_center_outlined),
+  _PackData(name: l10n.shopPack2Name, description: l10n.shopPack2Desc, langPair: 'EN → TH', icon: Icons.restaurant_menu_outlined),
+  _PackData(name: l10n.shopPack3Name, description: l10n.shopPack3Desc, langPair: 'EN → ZH', icon: Icons.flight_outlined),
+  _PackData(name: l10n.shopPack4Name, description: l10n.shopPack4Desc, langPair: 'EN → ZH', icon: Icons.local_hospital_outlined),
+  _PackData(name: l10n.shopPack5Name, description: l10n.shopPack5Desc, langPair: 'EN → ES', icon: Icons.shopping_bag_outlined),
+  _PackData(name: l10n.shopPack6Name, description: l10n.shopPack6Desc, langPair: 'EN → VI', icon: Icons.people_outline_rounded),
 ];
 
 class ShopScreen extends ConsumerWidget {
@@ -73,16 +42,17 @@ class ShopScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context);
+    final packs = _buildPacks(l10n);
 
     return Scaffold(
-      backgroundColor: KColors.brand50,
+      backgroundColor: KColors.neutral0,
       body: CustomScrollView(
         slivers: [
           // ----------------------------------------------------------------
           // App bar
           // ----------------------------------------------------------------
           SliverAppBar(
-            backgroundColor: KColors.brand50,
+            backgroundColor: KColors.neutral0,
             surfaceTintColor: Colors.transparent,
             elevation: 0,
             floating: true,
@@ -192,7 +162,7 @@ class ShopScreen extends ConsumerWidget {
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) => _PackCard(
-                  pack: _mockPacks[index],
+                  pack: packs[index],
                   l10n: l10n,
                   locale: locale,
                   onTap: () {
@@ -205,7 +175,7 @@ class ShopScreen extends ConsumerWidget {
                     );
                   },
                 ),
-                childCount: _mockPacks.length,
+                childCount: packs.length,
               ),
             ),
           ),
@@ -320,7 +290,7 @@ class _PackCard extends StatelessWidget {
 
             // Get Free button — brand500 CTA
             KotokaButton(
-              label: l10n.shopGetFreePack,
+              label: l10n.shopGetPack,
               onPressed: onTap,
               variant: KotokaButtonVariant.primary,
               isFullWidth: true,

@@ -18,7 +18,7 @@ class AppTheme {
       colorScheme: _lightColorScheme,
       fontFamily: 'IBMPlexSans',
 
-      scaffoldBackgroundColor: KColors.pageBg,
+      scaffoldBackgroundColor: KColors.neutral0,
 
       appBarTheme: const AppBarTheme(
         backgroundColor: KColors.surfacePrimary,

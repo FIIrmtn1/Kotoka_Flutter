@@ -312,5 +312,24 @@
   "reviewFillMode": "เติมคำ",
   "reviewFillDesc": "พิมพ์คำ",
   "reviewConvMode": "สนทนา",
-  "reviewConvDesc": "ฝึกพูด"
+  "reviewConvDesc": "ฝึกพูด",
+
+  "reviewPronounMode": "การออกเสียง",
+  "reviewPronounDesc": "พูดออกเสียง",
+
+  "homeMockDeck1": "ลาเต้เย็น",
+  "homeMockDeck2": "หูฟังไร้สาย",
+
+  "shopPack1Name": "ไทยในที่ทำงาน",
+  "shopPack1Desc": "คำศัพท์สำคัญสำหรับการประชุม อีเมล และชีวิตในออฟฟิศ",
+  "shopPack2Name": "อาหารข้างทาง & คาเฟ่",
+  "shopPack2Desc": "สั่งอาหารเหมือนคนท้องถิ่นที่แผงลอยหรือร้านกาแฟ",
+  "shopPack3Name": "การเดินทาง & ขนส่ง",
+  "shopPack3Desc": "เดินทางสนามบิน แท็กซี่ และโรงแรมได้อย่างง่ายดาย",
+  "shopPack4Name": "สุขภาพ & ร้านขายยา",
+  "shopPack4Desc": "อธิบายอาการและเข้าใจใบสั่งยา",
+  "shopPack5Name": "ช้อปปิ้ง & ต่อราคา",
+  "shopPack5Desc": "ราคา ขนาด และวลีต่อรองอย่างสุภาพ",
+  "shopPack6Name": "สังคม & ความสัมพันธ์",
+  "shopPack6Desc": "การพูดคุยทั่วไป คำชม และการสร้างมิตรภาพ"
 }

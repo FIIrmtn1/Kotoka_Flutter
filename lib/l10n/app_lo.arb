@@ -313,5 +313,24 @@
   "reviewFillMode": "ຕື່ມຄຳ",
   "reviewFillDesc": "ພິມຄຳ",
   "reviewConvMode": "ສົນທະນາ",
-  "reviewConvDesc": "ຝຶກເວົ້າ"
+  "reviewConvDesc": "ຝຶກເວົ້າ",
+
+  "reviewPronounMode": "ການອອກສຽງ",
+  "reviewPronounDesc": "ເວົ້າດັງໆ",
+
+  "homeMockDeck1": "ລາເຕ້ເຢັນ",
+  "homeMockDeck2": "ຫູຟັງໄຮ້ສາຍ",
+
+  "shopPack1Name": "ພາສາໄທໃນບ່ອນເຮັດວຽກ",
+  "shopPack1Desc": "ຄຳສັບສຳຄັນສຳລັບການປະຊຸມ ອີເມວ ແລະ ຊີວິດໃນຫ້ອງການ",
+  "shopPack2Name": "ອາຫານຂ້າງທາງ & ຮ້ານກາເຟ",
+  "shopPack2Desc": "ສັ່ງເໝືອນຄົນທ້ອງຖິ່ນທີ່ຮ້ານໃດກໍໄດ້",
+  "shopPack3Name": "ການທ່ອງທ່ຽວ & ການຂົນສົ່ງ",
+  "shopPack3Desc": "ໃຊ້ງານສະໜາມບິນ ແທັກຊີ ແລະ ໂຮງແຮມໄດ້ງ່າຍ",
+  "shopPack4Name": "ສຸຂະພາບ & ຮ້ານຂາຍຢາ",
+  "shopPack4Desc": "ອະທິບາຍອາການ ແລະ ເຂົ້າໃຈໃບສັ່ງຢາ",
+  "shopPack5Name": "ຊື້ເຄື່ອງ & ຕໍ່ລອງລາຄາ",
+  "shopPack5Desc": "ລາຄາ ຂະໜາດ ແລະ ປະໂຫຍກຕໍ່ລອງຢ່າງສຸພາບ",
+  "shopPack6Name": "ສັງຄົມ & ການນັດ",
+  "shopPack6Desc": "ການສົນທະນາທົ່ວໄປ ຄຳຊົມ ແລະ ການສ້າງໝູ່ເພື່ອນ"
 }

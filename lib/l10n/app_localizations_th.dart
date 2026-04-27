@@ -896,4 +896,53 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get reviewConvDesc => 'ฝึกพูด';
+
+  @override
+  String get reviewPronounMode => 'การออกเสียง';
+
+  @override
+  String get reviewPronounDesc => 'พูดออกเสียง';
+
+  @override
+  String get homeMockDeck1 => 'ลาเต้เย็น';
+
+  @override
+  String get homeMockDeck2 => 'หูฟังไร้สาย';
+
+  @override
+  String get shopPack1Name => 'ไทยในที่ทำงาน';
+
+  @override
+  String get shopPack1Desc =>
+      'คำศัพท์สำคัญสำหรับการประชุม อีเมล และชีวิตในออฟฟิศ';
+
+  @override
+  String get shopPack2Name => 'อาหารข้างทาง & คาเฟ่';
+
+  @override
+  String get shopPack2Desc => 'สั่งอาหารเหมือนคนท้องถิ่นที่แผงลอยหรือร้านกาแฟ';
+
+  @override
+  String get shopPack3Name => 'การเดินทาง & ขนส่ง';
+
+  @override
+  String get shopPack3Desc => 'เดินทางสนามบิน แท็กซี่ และโรงแรมได้อย่างง่ายดาย';
+
+  @override
+  String get shopPack4Name => 'สุขภาพ & ร้านขายยา';
+
+  @override
+  String get shopPack4Desc => 'อธิบายอาการและเข้าใจใบสั่งยา';
+
+  @override
+  String get shopPack5Name => 'ช้อปปิ้ง & ต่อราคา';
+
+  @override
+  String get shopPack5Desc => 'ราคา ขนาด และวลีต่อรองอย่างสุภาพ';
+
+  @override
+  String get shopPack6Name => 'สังคม & ความสัมพันธ์';
+
+  @override
+  String get shopPack6Desc => 'การพูดคุยทั่วไป คำชม และการสร้างมิตรภาพ';
 }

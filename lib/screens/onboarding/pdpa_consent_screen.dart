@@ -30,7 +30,7 @@ class _PdpaConsentScreenState extends ConsumerState<PdpaConsentScreen> {
     final locale = Localizations.localeOf(context);
 
     return Scaffold(
-      backgroundColor: KColors.brand50,
+      backgroundColor: KColors.neutral0,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

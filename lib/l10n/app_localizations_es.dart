@@ -911,4 +911,55 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get reviewConvDesc => 'Practicar hablar';
+
+  @override
+  String get reviewPronounMode => 'Pronunciación';
+
+  @override
+  String get reviewPronounDesc => 'Dilo en voz alta';
+
+  @override
+  String get homeMockDeck1 => 'Latte frío';
+
+  @override
+  String get homeMockDeck2 => 'Auriculares inalámbricos';
+
+  @override
+  String get shopPack1Name => 'Tailandés laboral';
+
+  @override
+  String get shopPack1Desc =>
+      'Vocabulario esencial para reuniones, correos y vida de oficina';
+
+  @override
+  String get shopPack2Name => 'Comida callejera y cafés';
+
+  @override
+  String get shopPack2Desc =>
+      'Pide como un local en cualquier puesto o cafetería';
+
+  @override
+  String get shopPack3Name => 'Viajes y transporte';
+
+  @override
+  String get shopPack3Desc =>
+      'Navega aeropuertos, taxis y hoteles con facilidad';
+
+  @override
+  String get shopPack4Name => 'Salud y farmacia';
+
+  @override
+  String get shopPack4Desc => 'Describe síntomas y entiende recetas médicas';
+
+  @override
+  String get shopPack5Name => 'Compras y regateo';
+
+  @override
+  String get shopPack5Desc => 'Precios, tallas y frases de negociación educada';
+
+  @override
+  String get shopPack6Name => 'Social y citas';
+
+  @override
+  String get shopPack6Desc => 'Charla casual, cumplidos y hacer amigos';
 }

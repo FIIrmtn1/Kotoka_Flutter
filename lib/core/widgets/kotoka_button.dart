@@ -79,6 +79,8 @@ class KotokaButton extends StatelessWidget {
         ],
         Text(
           label,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
           style: KTypography.getStyle(KTextStyle.button, Localizations.localeOf(context))
               .copyWith(color: textColor),
         ),

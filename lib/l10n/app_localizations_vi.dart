@@ -909,4 +909,54 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get reviewConvDesc => 'Luyện nói';
+
+  @override
+  String get reviewPronounMode => 'Phát âm';
+
+  @override
+  String get reviewPronounDesc => 'Nói to lên';
+
+  @override
+  String get homeMockDeck1 => 'Latte đá';
+
+  @override
+  String get homeMockDeck2 => 'Tai nghe không dây';
+
+  @override
+  String get shopPack1Name => 'Tiếng Thái văn phòng';
+
+  @override
+  String get shopPack1Desc =>
+      'Từ vựng thiết yếu cho cuộc họp, email và môi trường văn phòng';
+
+  @override
+  String get shopPack2Name => 'Ăn vặt & Quán cà phê';
+
+  @override
+  String get shopPack2Desc =>
+      'Gọi món như người địa phương tại bất kỳ quầy hoặc quán cà phê nào';
+
+  @override
+  String get shopPack3Name => 'Du lịch & Giao thông';
+
+  @override
+  String get shopPack3Desc => 'Di chuyển ở sân bay, taxi và khách sạn dễ dàng';
+
+  @override
+  String get shopPack4Name => 'Sức khỏe & Nhà thuốc';
+
+  @override
+  String get shopPack4Desc => 'Mô tả triệu chứng và hiểu đơn thuốc';
+
+  @override
+  String get shopPack5Name => 'Mua sắm & Mặc cả';
+
+  @override
+  String get shopPack5Desc => 'Giá cả, kích cỡ và cụm từ thương lượng lịch sự';
+
+  @override
+  String get shopPack6Name => 'Giao lưu & Hẹn hò';
+
+  @override
+  String get shopPack6Desc => 'Tán gẫu, khen ngợi và kết bạn';
 }

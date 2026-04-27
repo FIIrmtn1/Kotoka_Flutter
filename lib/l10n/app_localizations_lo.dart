@@ -897,4 +897,53 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String get reviewConvDesc => 'ຝຶກເວົ້າ';
+
+  @override
+  String get reviewPronounMode => 'ການອອກສຽງ';
+
+  @override
+  String get reviewPronounDesc => 'ເວົ້າດັງໆ';
+
+  @override
+  String get homeMockDeck1 => 'ລາເຕ້ເຢັນ';
+
+  @override
+  String get homeMockDeck2 => 'ຫູຟັງໄຮ້ສາຍ';
+
+  @override
+  String get shopPack1Name => 'ພາສາໄທໃນບ່ອນເຮັດວຽກ';
+
+  @override
+  String get shopPack1Desc =>
+      'ຄຳສັບສຳຄັນສຳລັບການປະຊຸມ ອີເມວ ແລະ ຊີວິດໃນຫ້ອງການ';
+
+  @override
+  String get shopPack2Name => 'ອາຫານຂ້າງທາງ & ຮ້ານກາເຟ';
+
+  @override
+  String get shopPack2Desc => 'ສັ່ງເໝືອນຄົນທ້ອງຖິ່ນທີ່ຮ້ານໃດກໍໄດ້';
+
+  @override
+  String get shopPack3Name => 'ການທ່ອງທ່ຽວ & ການຂົນສົ່ງ';
+
+  @override
+  String get shopPack3Desc => 'ໃຊ້ງານສະໜາມບິນ ແທັກຊີ ແລະ ໂຮງແຮມໄດ້ງ່າຍ';
+
+  @override
+  String get shopPack4Name => 'ສຸຂະພາບ & ຮ້ານຂາຍຢາ';
+
+  @override
+  String get shopPack4Desc => 'ອະທິບາຍອາການ ແລະ ເຂົ້າໃຈໃບສັ່ງຢາ';
+
+  @override
+  String get shopPack5Name => 'ຊື້ເຄື່ອງ & ຕໍ່ລອງລາຄາ';
+
+  @override
+  String get shopPack5Desc => 'ລາຄາ ຂະໜາດ ແລະ ປະໂຫຍກຕໍ່ລອງຢ່າງສຸພາບ';
+
+  @override
+  String get shopPack6Name => 'ສັງຄົມ & ການນັດ';
+
+  @override
+  String get shopPack6Desc => 'ການສົນທະນາທົ່ວໄປ ຄຳຊົມ ແລະ ການສ້າງໝູ່ເພື່ອນ';
 }
